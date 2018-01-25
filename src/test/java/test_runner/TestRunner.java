@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"step_definitions"},
-        tags = {"@first_test"},
+        tags = {"@Wishlist"},
         format = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",
