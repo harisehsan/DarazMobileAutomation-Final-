@@ -34,14 +34,14 @@ public class Pdp_Page extends Base_Page {
 
 
     public ProductDetailInfo getProductInfo(){
-        String productTitle = browser.textOf(productTitle_element);
+        String productTitle = productTitle_element.getText();
         return new ProductDetailInfo(productTitle);
     }
 
 
     public void addToWishlist(){
         browser.waitUntilVisible(wishlist_element);
-        browser.click(wishlist_element);
+        wishlist_element.click();
         browser.waitUntilVisible(wishlistActive_element);
     }
 

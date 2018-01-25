@@ -39,10 +39,5 @@ public class Browser {
         wait.until(ExpectedConditions.visibilityOf(ele));
     }
 
-    public void click(WebElement ele){
-        ele.click();
-    }
-
-    public String textOf(WebElement ele){return ele.getText();}
 
 }

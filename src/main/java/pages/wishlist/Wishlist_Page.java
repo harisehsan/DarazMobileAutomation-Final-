@@ -35,7 +35,7 @@ public class Wishlist_Page extends Base_Page {
 
     public boolean hasItem(ProductDetailInfo info){
         for(WebElement ele: item_elements){
-            if(browser.textOf(ele).contains(info.productTitle))return true;
+            if(ele.getText().contains(info.productTitle))return true;
         }
         return false;
     }
