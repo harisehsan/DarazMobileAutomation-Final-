@@ -17,7 +17,6 @@ import java.util.Map;
 public class Pdp_Page extends Base_Page {
 
     private static final String page_url = "https://pdp-p.lazada.sg/166912069.html";
-    private Browser browser;
 
     @FindBy(css = ".wishlist-icon") private WebElement wishlist_element;
     @FindBy(css = ".wishlist-icon.active") private WebElement wishlistActive_element;
@@ -29,8 +28,8 @@ public class Pdp_Page extends Base_Page {
     }
 
     public Pdp_Page(){
-        PageFactory.initElements(Global.browser.getWebDriver(), this);
-        this.browser = Global.browser;
+        super();
+        PageFactory.initElements(browser.getWebDriver(), this);
     }
 
 

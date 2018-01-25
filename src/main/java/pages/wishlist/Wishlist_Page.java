@@ -18,7 +18,6 @@ import java.util.List;
 public class Wishlist_Page extends Base_Page {
 
     private static final String page_url = "https://member.lazada.sg/wishlist/index";
-    private Browser browser;
 
     @FindBy(css = ".wishlist-item") private List<WebElement> item_elements;
 
@@ -27,8 +26,8 @@ public class Wishlist_Page extends Base_Page {
     }
 
     public Wishlist_Page(){
-        PageFactory.initElements(Global.browser.getWebDriver(), this);
-        this.browser = Global.browser;
+        super();
+        PageFactory.initElements(browser.getWebDriver(), this);
     }
 
     public void addAllToCart(){
