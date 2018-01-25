@@ -2,8 +2,7 @@ package pages.wishlist;
 
 import browser.Browser;
 import global.Global;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import model.ProductDetailInfo;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -35,10 +34,9 @@ public class Pdp_Page extends Base_Page {
     }
 
 
-    public Map<String,String> getProductInfo(){
-        Map<String,String> resultMap = new HashMap<String,String>();
-        resultMap.put("product_title",String.valueOf(browser.textOf(productTitle_element)));
-        return resultMap;
+    public ProductDetailInfo getProductInfo(){
+        String productTitle = browser.textOf(productTitle_element);
+        return new ProductDetailInfo(productTitle);
     }
 
 
@@ -52,7 +50,4 @@ public class Pdp_Page extends Base_Page {
     public boolean has_message(String message){
         return true;
     }
-
-
-
 }

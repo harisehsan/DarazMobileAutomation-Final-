@@ -3,6 +3,7 @@ package step_definitions.pdp;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import global.Global;
+import model.ProductDetailInfo;
 import pages.wishlist.Pdp_Page;
 
 /**
@@ -22,7 +23,7 @@ public class PpdSteps {
 
     @And("^I get PDP info")
     public void getPDPInfo() throws Throwable {
-        new Pdp_Page().getProductInfo();
+        Global.map.put("current_info",new Pdp_Page().getProductInfo());
     }
 
 
