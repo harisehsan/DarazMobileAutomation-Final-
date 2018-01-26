@@ -39,5 +39,13 @@ public class Browser {
         wait.until(ExpectedConditions.visibilityOf(ele));
     }
 
+    public String currentUrl(){
+        return driver.getCurrentUrl();
+    }
+
+    public WebElement findDynamicElement(By by){
+        return driver.findElement(by);
+    }
+
 
 }

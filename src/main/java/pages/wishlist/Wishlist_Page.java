@@ -2,6 +2,7 @@ package pages.wishlist;
 
 import browser.Browser;
 import global.Global;
+import helper.UrlHelper;
 import model.ProductDetailInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.Base_Page;
+import sun.jvm.hotspot.utilities.Assert;
 
 import java.util.List;
 
@@ -31,9 +33,18 @@ public class Wishlist_Page extends Base_Page {
     }
 
     public boolean hasItem(ProductDetailInfo info){
-        for(WebElement ele: item_elements){
-            if(ele.getText().contains(info.productTitle))return true;
-        }
+        WebElement ele = getItemElement(info.getProductUrl());
+        return ele.getText().contains(info.getProductTitle());
+    }
+
+    public WebElement getItemElement(String url){
+        String formatedUrl = UrlHelper.removePrefix(url);
+        By by = By.xpath(String.format("//*[contains(@href,'%s')]/parent::*/parent::div[contains(@class,'wishlist-item')]",formatedUrl));
+        return browser.findDynamicElement(by);
+    }
+
+    public boolean deleteItem(ProductDetailInfo info){
+        getItemElement(info.getProductUrl());
         return false;
     }
 

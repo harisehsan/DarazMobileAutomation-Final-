@@ -5,7 +5,7 @@ import cucumber.api.java.en.Given;
 import global.Global;
 import pages.account.Account_Page;
 import pages.account.Login_Page;
-import pages.wishlist.Pdp_Page;
+import pages.pdp.Pdp_Page;
 
 /**
  * Created by admin.son.ton on 1/25/18.

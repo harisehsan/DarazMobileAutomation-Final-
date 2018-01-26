@@ -14,7 +14,6 @@ import global.Global;
  */
 public class AddSteps {
 
-
     @Given("^I go to wishlist page")
     public void goToWishlistPage() throws Throwable {
         Wishlist_Page.visit();
@@ -28,7 +27,7 @@ public class AddSteps {
     @Then("^I should see item displayed in Wishlist$")
     public void hasItem() throws Throwable {
         boolean result = new Wishlist_Page().hasItem((ProductDetailInfo)Global.map.get("current_info"));
-        Assert.assertTrue(result);
+        Assert.assertTrue(result,"Wishlist item is not match PDP item");
     }
 
 
