@@ -25,10 +25,7 @@ public class Wishlist_Page extends Base_Page {
         Global.browser.goTo(page_url);
     }
 
-    public Wishlist_Page(){
-        super();
-        PageFactory.initElements(browser.getWebDriver(), this);
-    }
+    public Wishlist_Page(){ super();}
 
     public void addAllToCart(){
     }

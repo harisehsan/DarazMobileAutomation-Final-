@@ -24,10 +24,7 @@ public class Login_Page extends Base_Page {
     @FindBy(css = ".mod-login-btn button") private WebElement submit;
 
 
-    public Login_Page(){
-        super();
-        PageFactory.initElements(browser.getWebDriver(),this);
-    }
+    public Login_Page(){ super();}
 
     public void login(String email, String password){
         this.email.sendKeys(email);

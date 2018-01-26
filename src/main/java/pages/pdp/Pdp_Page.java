@@ -27,13 +27,10 @@ public class Pdp_Page extends Base_Page {
         Global.browser.goTo(page_url);
     }
 
-    public Pdp_Page(){
-        super();
-        PageFactory.initElements(browser.getWebDriver(), this);
-    }
-
+    public Pdp_Page(){ super();}
 
     public ProductDetailInfo getProductInfo(){
+        browser.waitUntilVisible(productTitle_element);
         String productTitle = productTitle_element.getText();
         return new ProductDetailInfo(productTitle);
     }

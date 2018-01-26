@@ -22,10 +22,7 @@ public class Account_Page extends Base_Page {
     @FindBy(css = "#container") private WebElement mainContainer_element;
 
 
-    public Account_Page(){
-        super();
-        PageFactory.initElements(browser.getWebDriver(),this);
-    }
+    public Account_Page(){ super();}
 
     public void untilLoaded(){
         browser.waitUntilVisible(mainContainer_element);
