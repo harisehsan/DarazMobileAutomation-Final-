@@ -13,4 +13,6 @@ public class Global {
 
     public static Map<String,Object> map;
 
+    public static Map<String,Object> config;
+
 }

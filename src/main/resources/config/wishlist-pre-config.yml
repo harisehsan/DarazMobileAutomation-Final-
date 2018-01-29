@@ -1,0 +1,20 @@
+#all time/duration based options are in seconds
+common: &common
+  authentication_user: TGFaYURh
+  authentication_pwd: MTJSb2NrVSQ=
+  cookies:
+    guest: MmYzZDVmMGMtZDgxZC00ODBiLWQzY2YtMGJjMTc0OTdiNjNi
+  account_name: TEST
+  registered_email: pdp_qaa_3@lzdtest.net
+  password_registered_email: cWFjdWN1bWJlcjE=
+  price_regex: (?-mix:[0-9\.\,]+)
+  checkout_steps_indexes:
+    checkout_delivery_information: '1'
+    checkout_order_summary: '3'
+  user_agent_string:
+    operamini: 'Opera/9.80 (J2ME/MIDP; Opera Mini/9.80 (J2ME/23.377; U; en) Presto/2.5.25 Version/10.54'
+  review_rejection_reason: 'spam'
+  my_review:
+    account_email: pdp_qaa_mr_2@lzdtest.net
+
+

@@ -13,7 +13,7 @@ public class UrlHelper {
             URI uri = new URI(url);
             return uri.getPath();
         }catch (URISyntaxException ex){
-            return null;
+            throw new RuntimeException("Wrong Url Syntax");
         }
 
     }
