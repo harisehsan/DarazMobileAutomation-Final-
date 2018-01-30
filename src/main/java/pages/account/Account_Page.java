@@ -13,11 +13,7 @@ import java.util.List;
  */
 public class Account_Page extends Base_Page {
 
-    private static final String page_url = "http://member.lazada.sg/user/profile#/";
-
-    public static void visit(){
-        Global.browser.goTo(page_url);
-    }
+    public static String page_url = "http://member.lazada.sg/user/profile#/";
 
     @FindBy(css = "#container") private WebElement mainContainer_element;
 

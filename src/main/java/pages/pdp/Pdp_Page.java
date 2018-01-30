@@ -17,17 +17,13 @@ import java.util.Random;
  */
 public class Pdp_Page extends Base_Page {
 
-    private static final String page_url = "https://pdp-p.lazada.sg/97287339.html";
+    public static String page_url = "https://pdp-p.lazada.sg/97287339.html";
 
     @FindBy(css = ".wishlist-icon") private WebElement wishlist_element;
     @FindBy(css = ".wishlist-icon.active") private WebElement wishlistActive_element;
     @FindBy(css = ".pdp-Cart_Page-concern button") private WebElement addToCart_element;
     @FindBy(css = ".pdp-product-title") private WebElement productTitle_element;
     @FindBy(css = ".sku-prop-content > span") private List<WebElement> variation_elements;
-
-    public static void visit(){
-        Global.browser.goTo(page_url);
-    }
 
     public Pdp_Page(){ super();}
 

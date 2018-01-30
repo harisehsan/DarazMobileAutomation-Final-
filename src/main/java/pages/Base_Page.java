@@ -15,4 +15,5 @@ public abstract class Base_Page {
         browser = Global.browser;
         PageFactory.initElements(browser.getWebDriver(), this);
     }
+
 }

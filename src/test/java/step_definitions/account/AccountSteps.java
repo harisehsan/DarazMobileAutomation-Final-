@@ -6,16 +6,17 @@ import global.Global;
 import pages.account.Account_Page;
 import pages.account.Login_Page;
 import pages.pdp.Pdp_Page;
+import step_definitions.BaseSteps;
 
 /**
  * Created by admin.son.ton on 1/25/18.
  */
-public class AccountSteps {
+public class AccountSteps extends BaseSteps{
 
     @Given("^I login from Account Page")
     public void loginFromAccPage() throws Throwable {
-        Login_Page.visit();
-        new Login_Page().login("pdp_qaa_3@lzdtest.net", "qacucumber1");
-        new Account_Page().untilLoaded();
+        visit(Login_Page.class);
+        on(Login_Page.class).login("pdp_qaa_3@lzdtest.net", "qacucumber1");
+        on(Account_Page.class).untilLoaded();
     }
 }

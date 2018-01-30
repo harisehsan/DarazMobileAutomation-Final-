@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class Wishlist_Page extends Base_Page {
 
-    private static final String page_url = "https://member.lazada.sg/wishlist/index";
+    public static String page_url = "https://member.lazada.sg/wishlist/index";
 
     @FindBy(css = ".wishlist-item") private List<WebElement> item_elements;
 

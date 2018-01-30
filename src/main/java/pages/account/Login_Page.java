@@ -13,11 +13,7 @@ import java.util.List;
  */
 public class Login_Page extends Base_Page {
 
-    private static final String page_url = "http://member.lazada.sg/user/login";
-
-    public static void visit(){
-        Global.browser.goTo(page_url);
-    }
+    public static String page_url = "http://member.lazada.sg/user/login";
 
     @FindBy(css = ".mod-input-email input") private WebElement email;
     @FindBy(css = "[type='password']") private WebElement password;
