@@ -9,9 +9,11 @@ import pages.Base_Page;
  */
 public class BaseSteps {
 
+    private static final String PAGE_URL = "page_url";
+
     protected void visit(Class page){
         try {
-            String url = String.valueOf(page.getField("page_url").get(null));
+            String url = String.valueOf(page.getField(PAGE_URL).get(null));
             Global.browser.goTo(url);
         } catch (NoSuchFieldException | IllegalAccessException e) {
             throw new RuntimeException(String.format("page_url is not defined for Page: %s | ERROR: %s ",page.toString(),e.getMessage()));
