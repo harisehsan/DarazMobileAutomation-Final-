@@ -47,5 +47,19 @@ public class Browser {
         return driver.findElement(by);
     }
 
+    public void waitUntilElementNotVisibleByXpath(String xpath){
+        WebElement explicitWait = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+    }
+    public void waitUntilElementNotVisibleByXCss(String css){
+        WebElement explicitWait = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(css)));
+    }
+
+    public void waitUntilNotVisible(WebElement ele){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.invisibilityOf(ele));
+    }
+
 
 }
