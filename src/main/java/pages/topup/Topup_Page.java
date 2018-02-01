@@ -20,7 +20,7 @@ public class Topup_Page extends Base_Page {
     @FindBy(css = ".topup__submit-button") private  WebElement submit;
     @FindBy(css = ".topup-login-prompt__link") private WebElement login_button;
 
-    private String hello_message = "//span[starts-with(string(), 'Hello,')]";
+    private By helloMessage = By.xpath("//span[starts-with(string(), 'Hello,')]");
 
 
     public static void visit(){
@@ -36,15 +36,15 @@ public class Topup_Page extends Base_Page {
 
     public void selectOperator(int id) {
         operator_field.click();
-        String css = ".next-menu-content li:nth-child("+ id +")";
-        browser.waitUntilElementNotVisibleByXCss(css);
-        browser.getWebDriver().findElement(By.cssSelector(css)).click();
+        By css = By.cssSelector(".next-menu-content li:nth-child("+ id +")");
+        browser.waitUntilPresentOfElementBy(css);
+        browser.findDynamicElement(css).click();
     }
 
     public void selectProduct(String nameProduct) throws InterruptedException {
-        String xpath = "//span[contains(string(), '" + nameProduct + "')]";
-        browser.waitUntilElementNotVisibleByXpath(xpath);
-        WebElement web = browser.findDynamicElement(By.xpath(xpath));
+        By xpath = By.xpath("//span[contains(string(), '" + nameProduct + "')]");
+        browser.waitUntilPresentOfElementBy(xpath);
+        WebElement web = browser.findDynamicElement(xpath);
         browser.waitUntilVisible(web);
         web.click();
     }
@@ -61,14 +61,16 @@ public class Topup_Page extends Base_Page {
     }
 
     public void checkAfterLogIn(){
-        browser.waitUntilElementNotVisibleByXpath(hello_message);
-        browser.getWebDriver().findElement(By.xpath(hello_message));
+        browser.waitUntilPresentOfElementBy(helloMessage);
+//        browser.waitUntilElementNotVisibleByXpath(hello_message);
+        browser.findDynamicElement(helloMessage).click();
+//        browser.getWebDriver().findElement(By.xpath(hello_message));
     }
 
     public void selectNumberFromList(int id){
         number_field.click();
-        String css = ".expandInDown li:nth-child("+ id +")";
-        WebElement number = browser.getWebDriver().findElement(By.cssSelector(css));
+        By css = By.cssSelector(".expandInDown li:nth-child("+ id +")");
+        WebElement number = browser.findDynamicElement(css);
         String listNumber = number.getText();
         number.click();
         String fieldNumber = number_field.getText();
