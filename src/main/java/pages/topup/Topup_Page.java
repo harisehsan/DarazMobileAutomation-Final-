@@ -65,7 +65,7 @@ public class Topup_Page extends Base_Page {
         browser.getWebDriver().findElement(By.xpath(hello_message));
     }
 
-    public void selectNumberFromList(int id){
+    public void selectNumberFromList(int id) throws Exception{
         number_field.click();
         String css = ".expandInDown li:nth-child("+ id +")";
         WebElement number = browser.getWebDriver().findElement(By.cssSelector(css));
@@ -73,7 +73,7 @@ public class Topup_Page extends Base_Page {
         number.click();
         String fieldNumber = number_field.getText();
         if(!listNumber.equals(fieldNumber)) {
-
+            throw new Exception("Numbers do not match");
         }
     }
 }
