@@ -58,21 +58,10 @@ public class Browser {
     }
 
 
-    public void wait(By by){
+    public void waitUntilClickable(By by){
         new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.visibilityOfElementLocated(by));
+                .until(ExpectedConditions.elementToBeClickable(by));
     }
-
-//    public void waitUntilElementNotVisibleByXpath(String xpath){
-//        WebElement explicitWait = (new WebDriverWait(driver, 10))
-//                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
-//    }
-//    public void waitUntilElementNotVisibleByXCss(String css){
-//        WebElement explicitWait = (new WebDriverWait(driver, 10))
-//                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(css)));
-//    }
-
-
 
 
 }

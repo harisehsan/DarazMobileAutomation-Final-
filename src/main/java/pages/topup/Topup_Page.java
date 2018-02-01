@@ -51,19 +51,9 @@ public class Topup_Page extends Base_Page {
 
     public void selectTab(String nameTab){
         By xpath = By.xpath("//button[contains(string(), '" + nameTab + "')]");
-        browser.waitUntilPresentOfElementBy(xpath);
-        browser.wait(xpath);
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        browser.waitUntilClickable(xpath);
         WebElement web = browser.findDynamicElement(xpath);
-        browser.waitUntilVisible(web);
         web.click();
-        web.isEnabled();
-        System.out.println(123);
     }
 
     public void pushSubmit(){
