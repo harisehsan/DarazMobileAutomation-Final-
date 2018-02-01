@@ -1,6 +1,7 @@
 package browser;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,6 +23,10 @@ public class Browser {
         }
     }
 
+    private void highLight(WebElement ele){
+        ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='3px solid red'", ele);
+    }
+
     public void tearDown(){
         driver.quit();
     }
@@ -37,6 +42,11 @@ public class Browser {
     public void waitUntilVisible(WebElement ele){
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(ele));
+    }
+
+    public void waitUntilNotVisible(WebElement ele){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.invisibilityOf(ele));
     }
 
     public String currentUrl(){
