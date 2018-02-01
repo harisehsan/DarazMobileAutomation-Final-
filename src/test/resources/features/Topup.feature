@@ -4,7 +4,7 @@ Feature: Topup Test
   @Guest
   Scenario: Guest go to topup page and enter number
     When I go to topup page
-    And I Enter number
+    And I Enter number "88888888"
     And I Select product "dewei_test_topup_vi"
     And I Push top-up now
 
@@ -18,7 +18,7 @@ Feature: Topup Test
   @CheckListOfNumber
   Scenario: Logged go to topup page and select number from list
     When I go to topup page
-    And I Log in from TopUp page
+    And I Log in from To65pUp page
     And I check after login
     And I select phone number from list
 
@@ -26,7 +26,6 @@ Feature: Topup Test
   @Logged
   Scenario: Logged go to topup page and select number from list
     When I go to topup page
-    And I Enter number
-    And I Select operator
+    And I Enter number "88888888"
     And I Select product "dewei_test_topup_vi"
     And I Push top-up now

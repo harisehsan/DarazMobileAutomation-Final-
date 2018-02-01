@@ -12,9 +12,9 @@ public class TopupSteps {
         Topup_Page.visit();
     }
 
-    @And("^I Enter number")
-    public void enterNumber() throws Throwable {
-        new Topup_Page().enterNumber("88888888");
+    @And("^I Enter number \"([^\"]*)\"")
+    public void enterNumber(String number) throws Throwable {
+        new Topup_Page().enterNumber(number);
     }
 
     @And("^I Select operator")
