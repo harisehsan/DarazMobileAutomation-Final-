@@ -44,11 +44,6 @@ public class Browser {
         wait.until(ExpectedConditions.visibilityOf(ele));
     }
 
-    public void waitUntilNotVisible(WebElement ele){
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.invisibilityOf(ele));
-    }
-
     public String currentUrl(){
         return driver.getCurrentUrl();
     }
@@ -60,6 +55,12 @@ public class Browser {
     public void waitUntilPresentOfElementBy(By by){
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.presenceOfElementLocated(by));
+    }
+
+
+    public void wait(By by){
+        new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
 //    public void waitUntilElementNotVisibleByXpath(String xpath){

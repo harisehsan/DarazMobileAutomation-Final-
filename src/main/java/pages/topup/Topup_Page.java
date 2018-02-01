@@ -16,7 +16,7 @@ public class Topup_Page extends Base_Page {
 
     @FindBy(css = ".topup-phone-field__input-container input") private WebElement number_field;
     @FindBy(css = ".topup-operators__select") private WebElement operator_field;
-    @FindBy(xpath = "//span[contains(string(), 'dewei_test_topup_vi')]") private WebElement product;
+    //@FindBy(xpath = "//span[contains(string(), 'dewei_test_topup_vi')]") private WebElement product;
     @FindBy(css = ".topup__submit-button") private  WebElement submit;
     @FindBy(css = ".topup-login-prompt__link") private WebElement login_button;
 
@@ -47,6 +47,23 @@ public class Topup_Page extends Base_Page {
         WebElement web = browser.findDynamicElement(xpath);
         browser.waitUntilVisible(web);
         web.click();
+    }
+
+    public void selectTab(String nameTab){
+        By xpath = By.xpath("//button[contains(string(), '" + nameTab + "')]");
+        browser.waitUntilPresentOfElementBy(xpath);
+        browser.wait(xpath);
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        WebElement web = browser.findDynamicElement(xpath);
+        browser.waitUntilVisible(web);
+        web.click();
+        web.isEnabled();
+        System.out.println(123);
     }
 
     public void pushSubmit(){

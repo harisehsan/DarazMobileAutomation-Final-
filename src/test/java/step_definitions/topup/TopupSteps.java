@@ -14,12 +14,17 @@ public class TopupSteps {
 
     @And("^I Enter number \"([^\"]*)\"")
     public void enterNumber(String number) throws Throwable {
-        new Topup_Page().enterNumber(number);
+        new Topup_Page().enterNumber("88888888");
     }
 
     @And("^I Select operator")
     public void selectOperator() throws Throwable {
         new Topup_Page().selectOperator(1);
+    }
+
+    @And("^I Select product tab \"([^\"]*)\"")
+    public void selectProdTab (String nameTab){
+        new Topup_Page().selectTab(nameTab);
     }
 
     @And("^I Select product \"([^\"]*)\"")
