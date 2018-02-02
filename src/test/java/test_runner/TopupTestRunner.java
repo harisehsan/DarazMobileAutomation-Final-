@@ -11,7 +11,7 @@ import step_definitions.topup.TopupSteps;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"step_definitions"},
-        tags = {"@Topup"},
+        tags = {"@CheckListOfNumber"},
         format = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",

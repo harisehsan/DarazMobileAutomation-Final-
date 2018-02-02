@@ -22,6 +22,11 @@ public class TopupSteps {
         new Topup_Page().selectOperator(1);
     }
 
+    @And("^I Select product tab \"([^\"]*)\"")
+    public void selectProdTab (String nameTab){
+        new Topup_Page().selectTab(nameTab);
+    }
+
     @And("^I Select product \"([^\"]*)\"")
     public void selectProduct(String nameProduct) throws Throwable {
         //new Topup_Page().selectProduct("dewei_test_topup_vi");
@@ -33,9 +38,9 @@ public class TopupSteps {
         new Topup_Page().pushSubmit();
     }
 
-    @And("^I Log in from TopUp page")
-    public void logIn() throws Throwable {
-        new Topup_Page().openLogIn("tangsi.hwt@taobao.com", "hello1234");
+    @And("^I Log in from TopUp page, account: \"([^\"]*)\", password: \"([^\"]*)\"")
+    public void logIn(String user, String pass) throws Throwable {
+        new Topup_Page().openLogIn(user, pass);
     }
     @And("^I check after login")
     public void checkLogIn() throws Throwable {

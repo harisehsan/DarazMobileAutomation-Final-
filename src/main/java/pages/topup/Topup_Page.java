@@ -12,20 +12,18 @@ import pages.account.Login_Page;
 
 public class Topup_Page extends Base_Page {
 
-    private static final String page_url = "http://pdp-p.lazada.sg/mobilerecharge.html";
+    private static final String page_url = "http://pdp.lazada.sg/mobilerecharge.html";
 
     @FindBy(css = ".topup-phone-field__input-container input") private WebElement number_field;
     @FindBy(css = ".topup-operators__select") private WebElement operator_field;
-    @FindBy(xpath = "//span[contains(string(), 'dewei_test_topup_vi')]") private WebElement product;
+    //@FindBy(xpath = "//span[contains(string(), 'dewei_test_topup_vi')]") private WebElement product;
     @FindBy(css = ".topup__submit-button") private  WebElement submit;
     @FindBy(css = ".topup-login-prompt__link") private WebElement login_button;
 
     private By helloMessage = By.xpath("//span[starts-with(string(), 'Hello,')]");
 
 
-    public static void visit(){
-        Global.browser.goTo(page_url);
-    }
+    public static void visit(){ Global.browser.goTo(page_url); }
 
     public Topup_Page(){ super();}
 
@@ -37,7 +35,7 @@ public class Topup_Page extends Base_Page {
     public void selectOperator(int id) {
         operator_field.click();
         By css = By.cssSelector(".next-menu-content li:nth-child("+ id +")");
-        browser.waitUntilPresentOfElementBy(css);
+        //browser.waitUntilPresentOfElementBy(css);
         browser.findDynamicElement(css).click();
     }
 
@@ -46,6 +44,13 @@ public class Topup_Page extends Base_Page {
         browser.waitUntilPresentOfElementBy(xpath);
         WebElement web = browser.findDynamicElement(xpath);
         browser.waitUntilVisible(web);
+        web.click();
+    }
+
+    public void selectTab(String nameTab){
+        By xpath = By.xpath("//button[contains(string(), '" + nameTab + "')]");
+        browser.waitUntilClickable(xpath);
+        WebElement web = browser.findDynamicElement(xpath);
         web.click();
     }
 
@@ -73,7 +78,7 @@ public class Topup_Page extends Base_Page {
         WebElement number = browser.findDynamicElement(css);
         String listNumber = number.getText();
         number.click();
-        String fieldNumber = number_field.getText();
+        String fieldNumber = number_field.getAttribute("value");
         if(!listNumber.equals(fieldNumber)) {
             throw new Exception("Numbers do not match");
         }
