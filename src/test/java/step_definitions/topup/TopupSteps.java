@@ -14,7 +14,7 @@ public class TopupSteps {
 
     @And("^I Enter number \"([^\"]*)\"")
     public void enterNumber(String number) throws Throwable {
-        new Topup_Page().enterNumber("88888888");
+        new Topup_Page().enterNumber(number);
     }
 
     @And("^I Select operator")
@@ -38,9 +38,9 @@ public class TopupSteps {
         new Topup_Page().pushSubmit();
     }
 
-    @And("^I Log in from TopUp page")
-    public void logIn() throws Throwable {
-        new Topup_Page().openLogIn("tangsi.hwt@taobao.com", "hello1234");
+    @And("^I Log in from TopUp page, account: \"([^\"]*)\", password: \"([^\"]*)\"")
+    public void logIn(String user, String pass) throws Throwable {
+        new Topup_Page().openLogIn(user, pass);
     }
     @And("^I check after login")
     public void checkLogIn() throws Throwable {

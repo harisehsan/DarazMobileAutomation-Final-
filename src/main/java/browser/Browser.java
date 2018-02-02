@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.Base_Page;
+import java.lang.*;
 
 /**
  * Created by admin.son.ton on 1/23/18.
@@ -40,7 +41,7 @@ public class Browser {
     }
 
     public void waitUntilVisible(WebElement ele){
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(ele));
     }
 
@@ -53,13 +54,13 @@ public class Browser {
     }
 
     public void waitUntilPresentOfElementBy(By by){
-        new WebDriverWait(driver, 10)
+        new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
 
     public void waitUntilClickable(By by){
-        new WebDriverWait(driver, 10)
+        new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.elementToBeClickable(by));
     }
 
