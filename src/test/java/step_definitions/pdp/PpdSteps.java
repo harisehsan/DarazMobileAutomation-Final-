@@ -7,6 +7,8 @@ import global.Global;
 import pages.pdp.Pdp_Page;
 import step_definitions.BaseSteps;
 
+import java.util.LinkedHashMap;
+
 /**
  * Created by admin.son.ton on 1/16/18.
  */
@@ -19,7 +21,9 @@ public class PpdSteps extends BaseSteps{
 
     @Given("^I go to \"([^\"]*)\" pdp page$")
     public void goToSpecificPDPage(String PDPType) throws Throwable {
-        on(Pdp_Page.class).goToSpecificPDP(PDPType);
+        LinkedHashMap map = (LinkedHashMap) Global.config.get("page_url");
+        Object url = map.get(PDPType);
+        on(Pdp_Page.class).goToPDP((String) url);
     }
 
     @And("^I add product to Wishlist from PDP")
