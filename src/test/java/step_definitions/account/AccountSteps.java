@@ -13,10 +13,11 @@ import step_definitions.BaseSteps;
  */
 public class AccountSteps extends BaseSteps{
 
-    @Given("^I login from Account Page")
-    public void loginFromAccPage() throws Throwable {
+    @Given("^I login from Account Page by account: \"([^\"]*)\", password: \"([^\"]*)\"")
+    public void loginFromAccPage(String user, String pass) throws Throwable {
         visit(Login_Page.class);
-        on(Login_Page.class).login("pdp_qaa_3@lzdtest.net", "qacucumber1");
+        //on(Login_Page.class).login("pdp_qaa_3@lzdtest.net", "qacucumber1");
+        on(Login_Page.class).login(user, pass);
         on(Account_Page.class).untilLoaded();
     }
 }

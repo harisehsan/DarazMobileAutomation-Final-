@@ -12,20 +12,18 @@ import pages.account.Login_Page;
 
 public class Topup_Page extends PageObject {
 
-    private static final String page_url = "http://pdp-p.lazada.sg/mobilerecharge.html";
+    private static final String page_url = "http://pdp.lazada.test/mobilerecharge.html";
 
     @FindBy(css = ".topup-phone-field__input-container input") private WebElement number_field;
     @FindBy(css = ".topup-operators__select") private WebElement operator_field;
-    @FindBy(xpath = "//span[contains(string(), 'dewei_test_topup_vi')]") private WebElement product;
+    //@FindBy(xpath = "//span[contains(string(), 'dewei_test_topup_vi')]") private WebElement product;
     @FindBy(css = ".topup__submit-button") private  WebElement submit;
     @FindBy(css = ".topup-login-prompt__link") private WebElement login_button;
 
     private By helloMessage = By.xpath("//span[starts-with(string(), 'Hello,')]");
 
 
-    public static void visit(){
-        Global.browser.goTo(page_url);
-    }
+    public static void visit(String page_url){ Global.browser.goTo(page_url); }
 
     public Topup_Page(){ super();}
 
@@ -46,6 +44,13 @@ public class Topup_Page extends PageObject {
         waitUntilPresentOfElementBy(xpath);
         WebElement web = findDynamicElement(xpath);
         waitUntilVisible(web);
+        web.click();
+    }
+
+    public void selectTab(String nameTab){
+        By xpath = By.xpath("//button[contains(string(), '" + nameTab + "')]");
+        waitUntilClickable(xpath);
+        WebElement web = findDynamicElement(xpath);
         web.click();
     }
 
@@ -73,7 +78,19 @@ public class Topup_Page extends PageObject {
         WebElement number = findDynamicElement(css);
         String listNumber = number.getText();
         number.click();
-        String fieldNumber = number_field.getText();
+        String fieldNumber = number_field.getAttribute("value");
+        if(!listNumber.equals(fieldNumber)) {
+            throw new Exception("Numbers do not match");
+        }
+    }
+
+    public void selectNumberFromList(String number) throws Exception{
+        number_field.click();
+        By css = By.xpath("//li[contains(string(), '" + number + "')]");
+        WebElement numberWeb = findDynamicElement(css);
+        String listNumber = numberWeb.getText();
+        numberWeb.click();
+        String fieldNumber = number_field.getAttribute("value");
         if(!listNumber.equals(fieldNumber)) {
             throw new Exception("Numbers do not match");
         }

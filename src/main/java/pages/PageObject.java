@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  * Created by admin.son.ton on 1/23/18.
  */
-public abstract class PageObject {
+public class PageObject {
 
     private WebDriver driver;
 
@@ -37,11 +37,29 @@ public abstract class PageObject {
     }
 
     protected void waitUntilPresentOfElementBy(By by) {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(by));
+        new WebDriverWait(driver, 30)
+                .until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
-    protected void waitUntilELementClickable(By by) {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(by));
+    protected void waitUntilClickable(By by) {
+        new WebDriverWait(driver, 30)
+                .until(ExpectedConditions.elementToBeClickable(by));
     }
+
+    protected void waitUntilLocated(By by) {
+        new WebDriverWait(driver, 30)
+                .until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+
+    protected void waitUntilInvisibilityOf(By by) {
+        new WebDriverWait(driver, 30)
+                .until(ExpectedConditions.invisibilityOfElementLocated(by));
+    }
+
+    protected void waitLongUntilInvisibilityOf(By by, int time) {
+        new WebDriverWait(driver, time)
+                .until(ExpectedConditions.invisibilityOfElementLocated(by));
+    }
+
 
 }
