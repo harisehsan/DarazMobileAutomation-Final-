@@ -4,14 +4,14 @@ import global.Global;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pages.Base_Page;
+import pages.PageObject;
 
 import java.util.List;
 
 /**
  * Created by admin.son.ton on 1/25/18.
  */
-public class Account_Page extends Base_Page {
+public class Account_Page extends PageObject {
 
     public static String page_url = "http://member.lazada.sg/user/profile#/";
 
@@ -21,7 +21,7 @@ public class Account_Page extends Base_Page {
     public Account_Page(){ super();}
 
     public void untilLoaded(){
-        browser.waitUntilVisible(mainContainer_element);
+        waitUntilVisible(mainContainer_element);
     }
 
 }

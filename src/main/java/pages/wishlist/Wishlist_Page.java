@@ -9,23 +9,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pages.Base_Page;
-import sun.jvm.hotspot.utilities.Assert;
+import pages.PageObject;
 
 import java.util.List;
 
 /**
  * Created by admin.son.ton on 1/16/18.
  */
-public class Wishlist_Page extends Base_Page {
+public class Wishlist_Page extends PageObject {
 
     public static String page_url = "https://member.lazada.sg/wishlist/index";
 
     @FindBy(css = ".wishlist-item") private List<WebElement> item_elements;
-
-    public static void visit(){
-        Global.browser.goTo(page_url);
-    }
 
     public Wishlist_Page(){ super();}
 
@@ -40,7 +35,7 @@ public class Wishlist_Page extends Base_Page {
     public WebElement getItemElement(String url){
         String formatedUrl = UrlHelper.removePrefix(url);
         By by = By.xpath(String.format("//*[contains(@href,'%s')]/parent::*/parent::div[contains(@class,'wishlist-item')]",formatedUrl));
-        return browser.findDynamicElement(by);
+        return findDynamicElement(by);
     }
 
     public boolean deleteItem(ProductDetailInfo info){
