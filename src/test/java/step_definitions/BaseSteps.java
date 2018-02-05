@@ -9,7 +9,9 @@ import pages.PageObject;
 public class BaseSteps {
 
     @SuppressWarnings("unchecked")
-    protected <T extends PageObject> void visit(Class<T> page){Global.browser.goTo(Global.pageHierarchy.getPageUrl(page));}
+    protected <T extends PageObject> void visit(Class<T> page){
+        Global.browser.goTo(Global.pageHierarchy.getPageUrl(page));
+    }
 
     @SuppressWarnings("unchecked")
     protected <T extends PageObject>T on(Class<T> page){

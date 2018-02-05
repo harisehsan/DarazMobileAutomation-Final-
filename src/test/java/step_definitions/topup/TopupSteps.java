@@ -5,8 +5,9 @@ import cucumber.api.java.en.Given;
 import global.Global;
 import model.ProductDetailInfo;
 import pages.topup.Topup_Page;
+import step_definitions.BaseSteps;
 
-public class TopupSteps {
+public class TopupSteps extends BaseSteps{
     @Given("^I go to topup daily page")
     public void goToDailyTopupPage() throws Throwable {
         Topup_Page.visit("http://pdp.lazada.test/mobilerecharge.html");
@@ -24,48 +25,48 @@ public class TopupSteps {
 
     @And("^I Enter number \"([^\"]*)\"")
     public void enterNumber(String number) throws Throwable {
-        new Topup_Page().enterNumber(number);
+        on(Topup_Page.class).enterNumber(number);
     }
 
     @And("^I Select operator")
     public void selectOperator() throws Throwable {
-        new Topup_Page().selectOperator(1);
+        on(Topup_Page.class).selectOperator(1);
     }
 
     @And("^I Select product tab \"([^\"]*)\"")
     public void selectProdTab (String nameTab){
-        new Topup_Page().selectTab(nameTab);
+        on(Topup_Page.class).selectTab(nameTab);
     }
 
     @And("^I Select product \"([^\"]*)\"")
     public void selectProduct(String nameProduct) throws Throwable {
         //new Topup_Page().selectProduct("dewei_test_topup_vi");
-        new Topup_Page().selectProduct(nameProduct);
+        on(Topup_Page.class).selectProduct(nameProduct);
     }
 
     @And("^I Push top-up now")
     public void pushSubmit() throws Throwable {
-        new Topup_Page().pushSubmit();
+        on(Topup_Page.class).pushSubmit();
     }
 
     @And("^I Log in from TopUp page, account: \"([^\"]*)\", password: \"([^\"]*)\"")
     public void logIn(String user, String pass) throws Throwable {
-        new Topup_Page().openLogIn(user, pass);
+        on(Topup_Page.class).openLogIn(user, pass);
     }
 
     @And("^I check after login")
     public void checkLogIn() throws Throwable {
-        new Topup_Page().checkAfterLogIn();
+        on(Topup_Page.class).checkAfterLogIn();
     }
 
     @And("^I select phone number from list")
     public void selectPhoneNumber() throws Throwable {
-        new Topup_Page().selectNumberFromList(1);
+        on(Topup_Page.class).selectNumberFromList(1);
     }
 
     @And("^I select phone number from list by number: \"([^\"]*)\"")
     public void selectPhoneNumber(String number) throws Throwable {
-        new Topup_Page().enterNumber(number);
+        on(Topup_Page.class).enterNumber(number);
     }
 
 }

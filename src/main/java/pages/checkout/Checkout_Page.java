@@ -3,11 +3,11 @@ package pages.checkout;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.Base_Page;
+import pages.PageObject;
 import java.lang.*;
 
 
-public class Checkout_Page extends Base_Page {
+public class Checkout_Page extends PageObject {
     @FindBy(id = "automation-payment-method-item-4") private WebElement creditCardMethod;
 
     //private By newCard = By.xpath("//span[contains(string(), 'New Credit/Debit Card')]");
@@ -22,30 +22,30 @@ public class Checkout_Page extends Base_Page {
 
     public void selectCardMethod() {
         try {
-            browser.waitUntilLocated(By.id("automation-payment-method-item-4"));
-            browser.waitUntilClickable(By.id("automation-payment-method-item-4"));
+            waitUntilLocated(By.id("automation-payment-method-item-4"));
+            waitUntilClickable(By.id("automation-payment-method-item-4"));
             creditCardMethod.click();
         }catch(Throwable t){}
     }
 
     public void newCrad() {
         try {
-            WebElement web = browser.getWebDriver().findElement(newCard);
-            browser.waitUntilInvisibilityOf(By.cssSelector(".next-overlay-backdrop"));
-            browser.waitUntilLocated(newCard);
-            browser.waitUntilPresentOfElementBy(newCard);
-            browser.waitUntilClickable(newCard);
+            WebElement web = findDynamicElement(newCard);
+            waitUntilInvisibilityOf(By.cssSelector(".next-overlay-backdrop"));
+            waitUntilLocated(newCard);
+            waitUntilPresentOfElementBy(newCard);
+            waitUntilClickable(newCard);
             web.click();
         }catch (Throwable t){ }
     }
 
     public void enterCardData(String creditCard, String cardName, String expiryDate, String cvv){
-        browser.waitUntilLocated(this.creditCard);
+        waitUntilLocated(this.creditCard);
 
-        WebElement webCreditCard = browser.getWebDriver().findElement(this.creditCard);
-        WebElement webCardName = browser.getWebDriver().findElement(this.cardName);
-        WebElement webExpiryDate = browser.getWebDriver().findElement(this.expiryDate);
-        WebElement webCvv = browser.getWebDriver().findElement(this.cvv);
+        WebElement webCreditCard = findDynamicElement(this.creditCard);
+        WebElement webCardName = findDynamicElement(this.cardName);
+        WebElement webExpiryDate = findDynamicElement(this.expiryDate);
+        WebElement webCvv = findDynamicElement(this.cvv);
 
         webCreditCard.sendKeys(creditCard);
         webCardName.sendKeys(cardName);
@@ -55,24 +55,24 @@ public class Checkout_Page extends Base_Page {
 
     public void switchSaveCard(){
         try {
-            if (!browser.getWebDriver().findElement(saveCard).isSelected()) {
-                browser.getWebDriver().findElement(saveCard).click();
+            if (!findDynamicElement(saveCard).isSelected()) {
+                findDynamicElement(saveCard).click();
             }
-        }catch (Throwable t){ }
-
+        }catch (Throwable t){ //Why do nothing in catch ??
+            }
     }
 
     public void confirm(){
-        browser.waitUntilInvisibilityOf(By.cssSelector(".next-overlay-backdrop"));
-        browser.waitUntilLocated(confirmButton);
-        browser.getWebDriver().findElement(confirmButton).click();
-        browser.waitUntilInvisibilityOf(byLoader);
+        waitUntilInvisibilityOf(By.cssSelector(".next-overlay-backdrop"));
+        waitUntilLocated(confirmButton);
+        findDynamicElement(confirmButton).click();
+        waitUntilInvisibilityOf(byLoader);
     }
 
     public void waitLoader(String STime){
         int time = Integer.parseInt(STime);
-        browser.waitUntilLocated(byLoader);
-        browser.waitLongUntilInvisibilityOf(byLoader,time);
+        waitUntilLocated(byLoader);
+        waitLongUntilInvisibilityOf(byLoader,time);
     }
 
 
