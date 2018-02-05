@@ -7,10 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.Base_Page;
+import pages.PageObject;
 import pages.account.Login_Page;
 
-public class Topup_Page extends Base_Page {
+public class Topup_Page extends PageObject {
 
     private static final String page_url = "http://pdp-p.lazada.sg/mobilerecharge.html";
 
@@ -37,40 +37,40 @@ public class Topup_Page extends Base_Page {
     public void selectOperator(int id) {
         operator_field.click();
         By css = By.cssSelector(".next-menu-content li:nth-child("+ id +")");
-        browser.waitUntilPresentOfElementBy(css);
-        browser.findDynamicElement(css).click();
+        waitUntilPresentOfElementBy(css);
+        findDynamicElement(css).click();
     }
 
     public void selectProduct(String nameProduct) throws InterruptedException {
         By xpath = By.xpath("//span[contains(string(), '" + nameProduct + "')]");
-        browser.waitUntilPresentOfElementBy(xpath);
-        WebElement web = browser.findDynamicElement(xpath);
-        browser.waitUntilVisible(web);
+        waitUntilPresentOfElementBy(xpath);
+        WebElement web = findDynamicElement(xpath);
+        waitUntilVisible(web);
         web.click();
     }
 
     public void pushSubmit(){
-        browser.waitUntilVisible(submit);
+        waitUntilVisible(submit);
         submit.click();
     }
 
     public void openLogIn(String login, String password){
-        browser.waitUntilVisible(login_button);
+        waitUntilVisible(login_button);
         login_button.click();
         new Login_Page().login(login,password);
     }
 
     public void checkAfterLogIn(){
-        browser.waitUntilPresentOfElementBy(helloMessage);
-//        browser.waitUntilElementNotVisibleByXpath(hello_message);
-        browser.findDynamicElement(helloMessage).click();
-//        browser.getWebDriver().findElement(By.xpath(hello_message));
+        waitUntilPresentOfElementBy(helloMessage);
+//        waitUntilElementNotVisibleByXpath(hello_message);
+        findDynamicElement(helloMessage).click();
+//        getWebDriver().findElement(By.xpath(hello_message));
     }
 
     public void selectNumberFromList(int id) throws Exception{
         number_field.click();
         By css = By.cssSelector(".expandInDown li:nth-child("+ id +")");
-        WebElement number = browser.findDynamicElement(css);
+        WebElement number = findDynamicElement(css);
         String listNumber = number.getText();
         number.click();
         String fieldNumber = number_field.getText();

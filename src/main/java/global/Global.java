@@ -1,6 +1,7 @@
 package global;
 
 import browser.Browser;
+import helper.PageHierarchy;
 
 import java.util.Map;
 
@@ -15,4 +16,5 @@ public class Global {
 
     public static Map<String,Object> config;
 
+    public static PageHierarchy pageHierarchy;
 }
