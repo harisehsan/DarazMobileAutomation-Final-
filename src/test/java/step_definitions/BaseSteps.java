@@ -15,7 +15,7 @@ public class BaseSteps {
 
     @SuppressWarnings("unchecked")
     protected <T extends PageObject>T on(Class<T> page){
-        return (T) Global.pageHierarchy.getPage(page);
+        return (T) Global.pageHierarchy.getPageInstance(page);
     }
 
 }

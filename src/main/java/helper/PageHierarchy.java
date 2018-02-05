@@ -15,7 +15,7 @@ public class PageHierarchy<T> {
         pageHierarchy = new HashMap<>();
     }
 
-    public T getPage(Class<T> page) {
+    public T getPageInstance(Class<T> page) {
         T pageObject;
         try {
             if (pageHierarchy.get(page) != null)
