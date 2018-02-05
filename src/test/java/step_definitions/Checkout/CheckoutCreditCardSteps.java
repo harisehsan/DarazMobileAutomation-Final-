@@ -2,36 +2,37 @@ package step_definitions.Checkout;
 
 import cucumber.api.java.en.And;
 import pages.checkout.Checkout_Page;
+import step_definitions.BaseSteps;
 
 
-public class CheckoutCreditCardSteps {
+public class CheckoutCreditCardSteps extends BaseSteps{
 
     @And("^I select credit card payment method")
     public void selectOperator() throws Throwable {
-        new Checkout_Page().selectCardMethod();
+        on(Checkout_Page.class).selectCardMethod();
     }
 
     @And("^I open new card")
     public void selectNewCard() throws Throwable {
-        new Checkout_Page().newCrad();
+        on(Checkout_Page.class).newCrad();
     }
 
     @And("^I enter card data number:\"([^\"]*)\", name:\"([^\"]*)\", date:\"([^\"]*)\", cvv:\"([^\"]*)\"")
     public void enterData(String number, String name, String date, String cvv) throws Throwable {
-        new Checkout_Page().enterCardData(number, name, date, cvv);
+        on(Checkout_Page.class).enterCardData(number, name, date, cvv);
     }
     @And("^I don't save card")
     public void dontSaveCard(){
-        new Checkout_Page().switchSaveCard();
+        on(Checkout_Page.class).switchSaveCard();
     }
 
     @And("^I confirm pay")
     public void confirm(){
-        new Checkout_Page().confirm();
+        on(Checkout_Page.class).confirm();
     }
 
     @And("^I wait loader, waiting:\"([^\"]*)\"")
     public void waitLoader(String time) {
-        new  Checkout_Page().waitLoader(time);
+        on(Checkout_Page.class).waitLoader(time);
     }
 }
