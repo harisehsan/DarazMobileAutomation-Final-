@@ -22,4 +22,9 @@ public class TopupSuccessfulSteps {
     public void orderDetails(String name, String phone) throws Throwable {
         new TopupSuccessful_Page().checkOrder(name, phone);
     }
+
+    @And("^I check pending")
+    public void checkPending() throws Throwable {
+        new TopupSuccessful_Page().checkPending();
+    }
 }
