@@ -12,7 +12,7 @@ import pages.account.Login_Page;
 
 public class Topup_Page extends Base_Page {
 
-    private static final String page_url = "http://pdp.lazada.sg/mobilerecharge.html";
+    private static final String page_url = "http://pdp.lazada.test/mobilerecharge.html";
 
     @FindBy(css = ".topup-phone-field__input-container input") private WebElement number_field;
     @FindBy(css = ".topup-operators__select") private WebElement operator_field;
@@ -23,7 +23,7 @@ public class Topup_Page extends Base_Page {
     private By helloMessage = By.xpath("//span[starts-with(string(), 'Hello,')]");
 
 
-    public static void visit(){ Global.browser.goTo(page_url); }
+    public static void visit(String page_url){ Global.browser.goTo(page_url); }
 
     public Topup_Page(){ super();}
 
@@ -78,6 +78,18 @@ public class Topup_Page extends Base_Page {
         WebElement number = browser.findDynamicElement(css);
         String listNumber = number.getText();
         number.click();
+        String fieldNumber = number_field.getAttribute("value");
+        if(!listNumber.equals(fieldNumber)) {
+            throw new Exception("Numbers do not match");
+        }
+    }
+
+    public void selectNumberFromList(String number) throws Exception{
+        number_field.click();
+        By css = By.xpath("//li[contains(string(), '" + number + "')]");
+        WebElement numberWeb = browser.findDynamicElement(css);
+        String listNumber = numberWeb.getText();
+        numberWeb.click();
         String fieldNumber = number_field.getAttribute("value");
         if(!listNumber.equals(fieldNumber)) {
             throw new Exception("Numbers do not match");

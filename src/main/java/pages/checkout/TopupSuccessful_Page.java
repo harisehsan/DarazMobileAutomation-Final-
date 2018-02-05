@@ -11,9 +11,15 @@ public class TopupSuccessful_Page extends Base_Page{
 
     private By thankYou = By.cssSelector("thank-you-heading");
     private By orderNumber = By.cssSelector("thank-you-order-number");
+    private By wait10Sec = By.xpath("//div[contains(string(), 'You will be taken to My Orders after 10 seconds.')]");
 
     public void checkSuccessful (){
+        browser.waitUntilPresentOfElementBy(thankYou);
         browser.getWebDriver().findElement(thankYou);
+    }
+
+    public void checkPending (){
+        browser.getWebDriver().findElement(wait10Sec);
     }
 
     public String orderNumber(){

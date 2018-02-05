@@ -58,11 +58,24 @@ public class Browser {
                 .until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
-
     public void waitUntilClickable(By by){
         new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.elementToBeClickable(by));
     }
 
+    public void waitUntilLocated(By by) {
+        new WebDriverWait(driver,30)
+                .until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+
+    public void waitUntilInvisibilityOf(By by) {
+        new WebDriverWait(driver,30)
+                .until(ExpectedConditions.invisibilityOfElementLocated(by));
+    }
+
+    public void waitLongUntilInvisibilityOf(By by, int time) {
+        new WebDriverWait(driver,time)
+                .until(ExpectedConditions.invisibilityOfElementLocated(by));
+    }
 
 }

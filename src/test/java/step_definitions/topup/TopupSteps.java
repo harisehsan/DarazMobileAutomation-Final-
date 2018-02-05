@@ -7,9 +7,19 @@ import model.ProductDetailInfo;
 import pages.topup.Topup_Page;
 
 public class TopupSteps {
-    @Given("^I go to topup page")
-    public void goToTopupPage() throws Throwable {
-        Topup_Page.visit();
+    @Given("^I go to topup daily page")
+    public void goToDailyTopupPage() throws Throwable {
+        Topup_Page.visit("http://pdp.lazada.test/mobilerecharge.html");
+    }
+
+    @Given("^I go to topup pre-live page")
+    public void goToPreLiveTopupPage() throws Throwable {
+        Topup_Page.visit("http://pdpdesc-m.lazada.sg/mobilerecharge.html");
+    }
+
+    @Given("^I go to topup live page")
+    public void goToLiveTopupPage() throws Throwable {
+        Topup_Page.visit("http://pdp.lazada.sg/mobilerecharge.html");
     }
 
     @And("^I Enter number \"([^\"]*)\"")
@@ -42,13 +52,20 @@ public class TopupSteps {
     public void logIn(String user, String pass) throws Throwable {
         new Topup_Page().openLogIn(user, pass);
     }
+
     @And("^I check after login")
     public void checkLogIn() throws Throwable {
         new Topup_Page().checkAfterLogIn();
     }
+
     @And("^I select phone number from list")
     public void selectPhoneNumber() throws Throwable {
         new Topup_Page().selectNumberFromList(1);
+    }
+
+    @And("^I select phone number from list by number: \"([^\"]*)\"")
+    public void selectPhoneNumber(String number) throws Throwable {
+        new Topup_Page().enterNumber(number);
     }
 
 }

@@ -24,8 +24,14 @@ public class CheckoutCreditCardSteps {
     public void dontSaveCard(){
         new Checkout_Page().switchSaveCard();
     }
+
     @And("^I confirm pay")
     public void confirm(){
         new Checkout_Page().confirm();
+    }
+
+    @And("^I wait loader, waiting:\"([^\"]*)\"")
+    public void waitLoader(String time) {
+        new  Checkout_Page().waitLoader(time);
     }
 }
