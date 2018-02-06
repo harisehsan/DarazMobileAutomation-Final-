@@ -20,6 +20,7 @@ public class Account_Page extends Base_Page {
     }
 
     @FindBy(css = "#container") private WebElement mainContainer_element;
+    @FindBy(id = "lzd_current_logon_user_name") private List<WebElement> nameofuser;
 
 
     public Account_Page(){
@@ -31,4 +32,7 @@ public class Account_Page extends Base_Page {
         browser.waitUntilVisible(mainContainer_element);
     }
 
+    public boolean hasName(){
+        nameofuser.isEmpty();
+        {return false;}}
 }

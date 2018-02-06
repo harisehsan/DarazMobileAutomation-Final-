@@ -10,7 +10,7 @@ import pages.wishlist.Pdp_Page;
 /**
  * Created by admin.son.ton on 1/25/18.
  */
-public class AccountSteps {
+public class AccountSteps  {
 
     @Given("^I login from Account Page")
     public void loginFromAccPage() throws Throwable {
