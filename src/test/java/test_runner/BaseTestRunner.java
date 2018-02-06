@@ -1,20 +1,22 @@
 package test_runner;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.testng.TestNGCucumberRunner;
-import org.testng.annotations.*;
 import browser.Browser;
+import cucumber.api.testng.TestNGCucumberRunner;
 import global.Global;
+import helper.PageHierarchy;
+import helper.YamlHelper;
+import org.testng.annotations.*;
 
 import java.util.HashMap;
 
-public class Base_TestRunner {
+public class BaseTestRunner {
 
     protected static TestNGCucumberRunner testNGCucumberRunner;
 
     @BeforeSuite
     public void initConfiguration(){
-        //do some configuration
+        Global.config = YamlHelper.loadToMap("/config/wishlist-pre-config.yml");
+        Global.map = new HashMap<>();
     }
 
     @BeforeClass(alwaysRun = true)
@@ -27,14 +29,13 @@ public class Base_TestRunner {
         testNGCucumberRunner.finish();
     }
 
-    @BeforeTest(alwaysRun = true)
-    public void setUp(){
+    @BeforeMethod(alwaysRun = true)
+    public void setupBrowser() throws Exception {
         Global.browser = new Browser("chrome");
-        Global.map = new HashMap<String, Object>();
+        Global.pageHierarchy = new PageHierarchy();
     }
-
-    @AfterTest
-    public void tearDown(){
+    @AfterMethod(alwaysRun = true)
+    public void teardownBrowser() throws Exception {
         Global.browser.tearDown();
     }
 }
