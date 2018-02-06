@@ -66,3 +66,8 @@ Feature: PDP Test
   Scenario: Guest can go to video PDP
     When I go to "video" pdp page
     Then I can see the PDP page loaded
+
+  @Guest @fbl
+  Scenario: Guest can go to fbl PDP
+    When I go to "fbl" pdp page
+    Then I can see the PDP page loaded

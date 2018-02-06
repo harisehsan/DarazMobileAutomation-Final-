@@ -16,7 +16,7 @@ common: &common
   review_rejection_reason: 'spam'
   my_review:
     account_email: pdp_qaa_mr_2@lzdtest.net
-page_url:
+pdp_url:
   normal: https://www.lazada.sg/logitech-mk235-keyboard-and-mice-combo-39644681.html?pdpVersion=v2
   digital: https://www.lazada.sg/google-play-gift-code-sgd-30-51661524.html?pdpVersion=v2
   multisource:    https://www.lazada.sg/samsung-galaxy-a7-a7000-4g-lte-smart-phone-dual-sim-black-export-424495.html?pdpVersion=v2
@@ -30,3 +30,4 @@ page_url:
   many_pictures:   https://www.lazada.sg/wd06-c-mobile-phone-charging-base-mobile-phone-charging-bracket-three-bracket-with-bamboo-wood-charging-function-intl-61802881.html?pdpVersion=v2
   official_store: https://www.lazada.sg/jabra-elite-sport-upgraded-70051257.html?pdpVersion=v2
   video: https://www.lazada.sg/jabra-elite-sport-upgraded-70051257.html?pdpVersion=v2
+  fbl: https://www.lazada.sg/products/apple-iphone-8-plus-7-plus-leather-case-productred-i153111068-s191149494.html?pdpVersion=v2

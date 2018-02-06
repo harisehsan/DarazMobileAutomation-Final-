@@ -20,9 +20,9 @@ public class PpdSteps extends BaseSteps{
     }
 
     @Given("^I go to \"([^\"]*)\" pdp page$")
-    public void goToSpecificPDPage(String PDPType) throws Throwable {
-        LinkedHashMap map = (LinkedHashMap) Global.config.get("page_url");
-        Object url = map.get(PDPType);
+    public void goToSpecificPDPage(String pdpType) throws Throwable {
+        LinkedHashMap map = (LinkedHashMap) Global.config.get("pdp_url");
+        Object url = map.get(pdpType);
         on(Pdp_Page.class).goToPDP((String) url);
     }
 
