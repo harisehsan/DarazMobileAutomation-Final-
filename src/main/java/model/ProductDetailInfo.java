@@ -5,12 +5,21 @@ package model;
  */
 public class ProductDetailInfo {
 
-    public String productTitle;
+    private String productTitle;
+    private String productUrl;
 
-    public ProductDetailInfo(String title){
+    public ProductDetailInfo(String title,String url){
         productTitle = title;
+        productUrl=url;
     }
 
+    public String getProductTitle(){
+        return productTitle;
+    }
+
+    public String getProductUrl(){
+        return productUrl;
+    }
 }
 
 

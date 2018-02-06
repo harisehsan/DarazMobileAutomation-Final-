@@ -1,12 +1,10 @@
 package browser;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.Base_Page;
+import java.lang.*;
 
 /**
  * Created by admin.son.ton on 1/23/18.
@@ -33,11 +31,4 @@ public class Browser {
     public void goTo(String url){
         driver.get(url);
     }
-
-    public void waitUntilVisible(WebElement ele){
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOf(ele));
-    }
-
-
 }

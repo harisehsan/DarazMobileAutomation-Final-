@@ -5,20 +5,25 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import global.Global;
+import helper.PageHierarchy;
+import helper.YamlHelper;
 
 import java.util.HashMap;
 
 public class Hooks {
     @Before
     public void initializeTest(){
-        // Code to setup initial configurations
+        Global.config = YamlHelper.loadToMap("/config/wishlist-pre-config.yml");
+
+        Global.map = new HashMap<>();
+
         Global.browser = new Browser("chrome");
-        Global.map = new HashMap<String, Object>();
+
+        Global.pageHierarchy = new PageHierarchy();
     }
 
     @After
     public void embedScreenshot(Scenario scenario) {
-        Global.browser.tearDown();
         if (scenario.isFailed()) {
             try {
                 // Code to capture and embed images in test reports (if scenario fails)
@@ -26,5 +31,6 @@ public class Hooks {
                 e.printStackTrace();
             }
         }
+        Global.browser.tearDown();
     }
 }
