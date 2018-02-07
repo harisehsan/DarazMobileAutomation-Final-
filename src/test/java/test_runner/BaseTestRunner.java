@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class BaseTestRunner {
 
-    protected static TestNGCucumberRunner testNGCucumberRunner;
+    static TestNGCucumberRunner testNGCucumberRunner;
 
     @BeforeSuite
     public void initConfiguration(){
