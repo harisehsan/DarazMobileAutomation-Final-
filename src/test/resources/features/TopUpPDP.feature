@@ -33,4 +33,12 @@ Feature: TopUp testing on pre-live environment for Guest and LogIn user
     When I go to topup pre-live page
     And I Log in from TopUp page, account: "tangsi.hwt@taobao.com", password: "hello1234"
     And I check after login
+
+  @CheckListOfNumber2
+  Scenario: Logged go to topup page and select number from list, enter other number and select number again
+    When I go to topup pre-live page
+    And I Log in from TopUp page, account: "tangsi.hwt@taobao.com", password: "hello1234"
+    And I check after login
     And I select phone number from list
+    And I Enter number "83573125"
+    And I select phone number from list by number: "88888888"    And I select phone number from list
