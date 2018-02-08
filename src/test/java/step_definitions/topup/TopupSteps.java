@@ -64,9 +64,9 @@ public class TopupSteps extends BaseSteps{
         on(Topup_Page.class).selectNumberFromList(1);
     }
 
-    @And("^I select phone number from list by number: \"([^\"]*)\"")
-    public void selectPhoneNumber(String number) throws Throwable {
-        on(Topup_Page.class).enterNumber(number);
+    @And("^I select phone number \"([^\"]*)\" in list")
+    public void selectPhoneNumberByNumber(String number) throws Throwable {
+        on(Topup_Page.class).selectNumberFromList(number);
     }
 
 }
