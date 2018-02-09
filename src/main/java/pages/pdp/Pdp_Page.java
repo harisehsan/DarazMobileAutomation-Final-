@@ -3,6 +3,8 @@ package pages.pdp;
 import model.ProductDetailInfo;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import pages.PageObject;
 import pages.Base_Page;
 
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.Random;
 /**
  * Created by admin.son.ton on 1/16/18.
  */
-public class Pdp_Page extends Base_Page {
+public class Pdp_Page extends PageObject {
 
     //private static String page_url = "https://www.lazada.sg/google-play-gift-code-sgd-30-51661524.html?pdpVersion=v2";
 
@@ -30,32 +32,32 @@ public class Pdp_Page extends Base_Page {
         super();
     }
 
-    public ProductDetailInfo getProductInfo() {
-        browser.waitUntilVisible(productTitle_element);
+    public ProductDetailInfo getProductInfo(){
+        waitUntilVisible(productTitle_element);
         return new ProductDetailInfo(productTitle_element.getText(),
-                browser.currentUrl());
+                                     currentUrl());
     }
 
     public void selectVariation() {
         if (variation_elements.size() > 0) {
             WebElement random_element = variation_elements.get(new Random().nextInt(variation_elements.size()));
             random_element.click();
-            browser.waitUntilVisible(random_element);
+            waitUntilVisible(random_element);
         }
     }
 
-    public void addToWishlist() {
-        browser.waitUntilVisible(wishlist_element);
+    public void addToWishlist(){
+        waitUntilVisible(wishlist_element);
         wishlist_element.click();
-        browser.waitUntilVisible(wishlistActive_element);
+        waitUntilVisible(wishlistActive_element);
     }
 
     public void Loaded() {
-        browser.waitUntilVisible(productTitle_element);
+        waitUntilVisible(productTitle_element);
     }
 
     public void goToPDP(String url) {
-        browser.goTo(url);
+        goTo(url);
     }
 
     public boolean has_message(String message) {

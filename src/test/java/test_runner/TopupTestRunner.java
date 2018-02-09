@@ -3,15 +3,15 @@ package test_runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.CucumberFeatureWrapper;
+import cucumber.api.testng.PickleEventWrapper;
 import global.Global;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import step_definitions.topup.TopupSteps;
 
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"step_definitions"},
-        tags = {"@CheckListOfNumber"},
+        tags = {"@TopupPDP"},
         format = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",
@@ -20,15 +20,16 @@ import step_definitions.topup.TopupSteps;
         })
 
 
-public class TopupTestRunner extends Base_TestRunner {
-    @Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "features")
-    public void feature(CucumberFeatureWrapper cucumberFeature) {
-        testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
-        Global.browser.tearDown();
+
+public class TopupTestRunner extends BaseTestRunner {
+
+    @Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "scenarios")
+    public void scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
+        testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
     }
 
     @DataProvider
-    public Object[][] features() {
-        return testNGCucumberRunner.provideFeatures();
+    public Object[][] scenarios() {
+        return testNGCucumberRunner.provideScenarios();
     }
 }

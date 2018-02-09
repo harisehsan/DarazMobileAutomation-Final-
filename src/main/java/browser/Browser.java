@@ -1,13 +1,9 @@
 package browser;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.Base_Page;
 import java.lang.*;
 
 /**
@@ -24,10 +20,6 @@ public class Browser {
         }
     }
 
-    private void highLight(WebElement ele){
-        ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='3px solid red'", ele);
-    }
-
     public void tearDown(){
         driver.quit();
     }
@@ -39,30 +31,4 @@ public class Browser {
     public void goTo(String url){
         driver.get(url);
     }
-
-    public void waitUntilVisible(WebElement ele){
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOf(ele));
-    }
-
-    public String currentUrl(){
-        return driver.getCurrentUrl();
-    }
-
-    public WebElement findDynamicElement(By by){
-        return driver.findElement(by);
-    }
-
-    public void waitUntilPresentOfElementBy(By by){
-        new WebDriverWait(driver, 30)
-                .until(ExpectedConditions.presenceOfElementLocated(by));
-    }
-
-
-    public void waitUntilClickable(By by){
-        new WebDriverWait(driver, 30)
-                .until(ExpectedConditions.elementToBeClickable(by));
-    }
-
-
 }
