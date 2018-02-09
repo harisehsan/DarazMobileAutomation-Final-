@@ -2,10 +2,12 @@ package step_definitions.pdp;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import global.Global;
-import model.ProductDetailInfo;
 import pages.pdp.Pdp_Page;
 import step_definitions.BaseSteps;
+
+import java.util.LinkedHashMap;
 
 /**
  * Created by admin.son.ton on 1/16/18.
@@ -15,6 +17,13 @@ public class PpdSteps extends BaseSteps{
     @Given("^I go to pdp page")
     public void goToPDPage() throws Throwable {
         visit(Pdp_Page.class);
+    }
+
+    @Given("^I go to \"([^\"]*)\" pdp page$")
+    public void goToSpecificPDPage(String pdpType) throws Throwable {
+        LinkedHashMap map = (LinkedHashMap) Global.config.get("pdp_url");
+        Object url = map.get(pdpType);
+        on(Pdp_Page.class).goToPDP((String) url);
     }
 
     @And("^I add product to Wishlist from PDP")
@@ -32,5 +41,8 @@ public class PpdSteps extends BaseSteps{
         on(Pdp_Page.class).selectVariation();
     }
 
-
+    @Then("^I can see the PDP page loaded")
+    public void pdpLoaded() throws Throwable {
+        on(Pdp_Page.class).Loaded();
+    }
 }
