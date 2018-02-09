@@ -1,11 +1,10 @@
 package pages.pdp;
 
+import global.Global;
 import model.ProductDetailInfo;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import pages.PageObject;
-import pages.Base_Page;
 
 import java.util.List;
 import java.util.Random;
@@ -57,7 +56,7 @@ public class Pdp_Page extends PageObject {
     }
 
     public void goToPDP(String url) {
-        goTo(url);
+        Global.browser.goTo(url);
     }
 
     public boolean has_message(String message) {
