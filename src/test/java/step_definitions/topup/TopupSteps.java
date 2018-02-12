@@ -8,6 +8,11 @@ import pages.topup.Topup_Page;
 import step_definitions.BaseSteps;
 
 public class TopupSteps extends BaseSteps{
+    @Given("^I go to topup page \"([^\"]*)\"")
+    public void goToTopupPage(String url) throws Throwable {
+        Topup_Page.visit(url);
+    }
+
     @Given("^I go to topup daily page")
     public void goToDailyTopupPage() throws Throwable {
         Topup_Page.visit("http://pdp.lazada.test/mobilerecharge.html");
