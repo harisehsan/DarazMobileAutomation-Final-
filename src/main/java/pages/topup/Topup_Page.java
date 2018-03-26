@@ -36,6 +36,17 @@ public class Topup_Page extends PageObject {
         findDynamicElement(css).click();
     }
 
+    public void checkOperator(String operatorName) throws Exception{
+        By css = By.cssSelector(".topup-operators__select-inner .topup-operators__menu-item__name");
+        waitUntilPresentOfElementBy(css);
+        WebElement web = findDynamicElement(css);
+        String operatorValue = web.getText();
+        if(!operatorValue.equals(operatorName)) {
+            throw new Exception("auto-detection of the operator does not work correctly");
+        }
+        Global.browser.getWebDriver().getCurrentUrl();
+    }
+
     public void selectProduct(String nameProduct) throws InterruptedException {
         By xpath = By.xpath("//span[contains(string(), '" + nameProduct + "')]");
         waitUntilPresentOfElementBy(xpath);
@@ -62,11 +73,9 @@ public class Topup_Page extends PageObject {
         new Login_Page().login(login,password);
     }
 
-    public void checkAfterLogIn(){
+    public void checkAfterLogIn() throws Exception{
         waitUntilPresentOfElementBy(helloMessage);
-//        waitUntilElementNotVisibleByXpath(hello_message);
         findDynamicElement(helloMessage).click();
-//        getWebDriver().findElement(By.xpath(hello_message));
     }
 
     public void selectNumberFromList(int id) throws Exception{

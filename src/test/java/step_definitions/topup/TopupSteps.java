@@ -74,4 +74,9 @@ public class TopupSteps extends BaseSteps{
         on(Topup_Page.class).selectNumberFromList(number);
     }
 
+    @And("I check operator \"([^\"]*)\"")
+    public void checkOperatorByName (String name) throws Throwable {
+        on(Topup_Page.class).checkOperator(name);
+    }
+
 }
