@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
 import pages.account.Login_Page;
+import helper.PageHelper;
 
 public class Topup_Page extends PageObject {
 
@@ -13,12 +14,8 @@ public class Topup_Page extends PageObject {
 
     @FindBy(css = ".topup-phone-field__input-container input") private WebElement number_field;
     @FindBy(css = ".topup-operators__select") private WebElement operator_field;
-    //@FindBy(xpath = "//span[contains(string(), 'dewei_test_topup_vi')]") private WebElement product;
     @FindBy(css = ".topup__submit-button") private  WebElement submit;
     @FindBy(css = ".topup-login-prompt__link") private WebElement login_button;
-
-    private By helloMessage = By.xpath("//span[starts-with(string(), 'Hello,')]");
-
 
     public static void visit(String page_url){ Global.browser.goTo(page_url); }
 
@@ -34,6 +31,17 @@ public class Topup_Page extends PageObject {
         By css = By.cssSelector(".next-menu-content li:nth-child("+ id +")");
         waitUntilPresentOfElementBy(css);
         findDynamicElement(css).click();
+    }
+
+    public void checkOperator(String operatorName) throws Exception{
+        By css = By.cssSelector(".topup-operators__select-inner .topup-operators__menu-item__name");
+        waitUntilPresentOfElementBy(css);
+        WebElement web = findDynamicElement(css);
+        String operatorValue = web.getText();
+        if(!operatorValue.equals(operatorName)) {
+            throw new Exception("auto-detection of the operator does not work correctly");
+        }
+        Global.browser.getWebDriver().getCurrentUrl();
     }
 
     public void selectProduct(String nameProduct) throws InterruptedException {
@@ -62,11 +70,17 @@ public class Topup_Page extends PageObject {
         new Login_Page().login(login,password);
     }
 
-    public void checkAfterLogIn(){
+    public void checkAfterLogIn() throws Exception{
+        String country = PageHelper.GetVenture();
+        By helloMessage = null;
+        if (country == "SG") {
+           helloMessage = By.xpath("//span[contains(string(), 'Hello')]");
+        }
+        else {
+           helloMessage = By.xpath("//span[contains(string(), 'topup')]");
+        }
         waitUntilPresentOfElementBy(helloMessage);
-//        waitUntilElementNotVisibleByXpath(hello_message);
         findDynamicElement(helloMessage).click();
-//        getWebDriver().findElement(By.xpath(hello_message));
     }
 
     public void selectNumberFromList(int id) throws Exception{
