@@ -17,7 +17,7 @@ public class Browser {
     public Browser(String browserName){
         String baseDir = System.getProperty("user.dir");
         if(browserName.equals("chrome")){
-            System.setProperty("webdriver.chrome.driver", baseDir + "/src/main/resources/data/linux/chromedriverlinux");
+            System.setProperty("webdriver.chrome.driver", baseDir + "/src/main/resources/data/chromedriver.exe");
             driver = new ChromeDriver();
         }
     }
