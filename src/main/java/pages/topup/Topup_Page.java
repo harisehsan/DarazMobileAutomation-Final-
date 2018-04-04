@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
 import pages.account.Login_Page;
+import helper.PageHelper;
 
 public class Topup_Page extends PageObject {
 
@@ -13,12 +14,8 @@ public class Topup_Page extends PageObject {
 
     @FindBy(css = ".topup-phone-field__input-container input") private WebElement number_field;
     @FindBy(css = ".topup-operators__select") private WebElement operator_field;
-    //@FindBy(xpath = "//span[contains(string(), 'dewei_test_topup_vi')]") private WebElement product;
     @FindBy(css = ".topup__submit-button") private  WebElement submit;
     @FindBy(css = ".topup-login-prompt__link") private WebElement login_button;
-
-    private By helloMessage = By.xpath("//span[starts-with(string(), 'Hello,')]");
-
 
     public static void visit(String page_url){ Global.browser.goTo(page_url); }
 
@@ -74,6 +71,14 @@ public class Topup_Page extends PageObject {
     }
 
     public void checkAfterLogIn() throws Exception{
+        String country = PageHelper.GetVenture();
+        By helloMessage = null;
+        if (country == "SG") {
+           helloMessage = By.xpath("//span[contains(string(), 'Hello')]");
+        }
+        else {
+           helloMessage = By.xpath("//span[contains(string(), 'topup')]");
+        }
         waitUntilPresentOfElementBy(helloMessage);
         findDynamicElement(helloMessage).click();
     }
