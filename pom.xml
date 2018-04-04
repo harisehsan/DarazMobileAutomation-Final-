@@ -44,24 +44,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>com.lazerycode.selenium</groupId>
-                <artifactId>driver-binary-downloader-maven-plugin</artifactId>
-                <version>1.0.17</version>
-                <configuration>
-                    <!-- root directory that downloaded driver binaries will be stored in -->
-                    <rootStandaloneServerDirectory>/usr/local/Cellar/chromedriver/2.36v2/bin/chromedriver</rootStandaloneServerDirectory>
-                    <!-- Where you want to store downloaded zip files -->
-                    <downloadedZipFileDirectory>/usr/local/Cellar/chromedriver/</downloadedZipFileDirectory>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>selenium</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
     <properties>

@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.lang.*;
+import java.nio.file.Paths;
 
 /**
  * Created by admin.son.ton on 1/23/18.
@@ -14,8 +15,9 @@ public class Browser {
     private WebDriver driver;
 
     public Browser(String browserName){
+        String baseDir = System.getProperty("user.dir");
         if(browserName.equals("chrome")){
-            System.setProperty("webdriver.chrome.driver", "/usr/local/Cellar/chromedriver/2.36v2/bin/chromedriver/osx/googlechrome/64bit/chromedriver");
+            System.setProperty("webdriver.chrome.driver", baseDir + "/src/main/resources/data/chromedriver");
             driver = new ChromeDriver();
         }
     }
@@ -33,4 +35,5 @@ public class Browser {
     }
 
     public String getUrl() {return driver.getCurrentUrl(); }
+
 }
