@@ -15,7 +15,7 @@ public class Browser {
 
     public Browser(String browserName){
         if(browserName.equals("chrome")){
-            System.setProperty("webdriver.chrome.driver", "/usr/local/Cellar/chromedriver/2.36/bin/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "/usr/local/Cellar/chromedriver/2.36v2/bin/chromedriver/osx/googlechrome/64bit/chromedriver");
             driver = new ChromeDriver();
         }
     }
