@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = {"src/test/resources/features"},
+        tags = {"@test1"},
         glue = {"step_definitions"},
         format = {
                 "pretty",

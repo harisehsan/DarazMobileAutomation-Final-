@@ -9,6 +9,11 @@ import java.lang.*;
 
 public class Checkout_Page extends PageObject {
     @FindBy(id = "automation-payment-method-item-4") private WebElement creditCardMethod;
+    @FindBy(xpath = "//div[contains(@class,'pay-method-item') and contains(.,'Cash on Delivery')]") private WebElement cod_method_btn;
+    @FindBy(css = ".btn-place-order-wrap > button") private WebElement place_order_btn;
+    @FindBy(css = ".thank-you-order-number") private WebElement order_number_field;
+
+
 
     //private By newCard = By.xpath("//span[contains(string(), 'New Credit/Debit Card')]");
     private By newCard = By.cssSelector(".automation-btn-add-card > div");
@@ -19,6 +24,26 @@ public class Checkout_Page extends PageObject {
     private By saveCard = By.id("automation-checkbox-save-card");
     private By confirmButton = By.cssSelector(".btn-place-order-wrap > button");
     private By byLoader = By.cssSelector(".loading-wrap");
+    private By orderNumberField_by = By.cssSelector(".thank-you-order-number");
+    private By codMethod_by = By.xpath("//div[contains(@class,'pay-method-item') and contains(.,'Cash on Delivery')]");
+
+
+
+
+    private void waitUntilLoaded(){
+        waitUntilPageReady();
+    }
+
+    public String placeCODOrder(){
+        waitUntilLoaded();
+        waitUntilInvisibilityOf(By.cssSelector(".next-overlay-backdrop"));
+        waitUntilVisibility(codMethod_by);
+        cod_method_btn.click();
+        waitUntilVisibility(confirmButton);
+        place_order_btn.click();
+        waitUntilVisibility(orderNumberField_by);
+        return order_number_field.getText();
+    }
 
     public void selectCardMethod() {
         try {
@@ -74,6 +99,7 @@ public class Checkout_Page extends PageObject {
         waitUntilLocated(byLoader);
         waitLongUntilInvisibilityOf(byLoader,time);
     }
+
 
 
 }

@@ -1,44 +1,44 @@
 package helper;
 
-//import org.yaml.snakeyaml.Yaml;
-//import org.yaml.snakeyaml.DumperOptions;
-
-import java.io.IOException;
-//import java.io.InputStream;
-//import java.nio.file.Files;
-//import java.nio.file.Paths;
-//import java.util.Map;
-//import static javafx.scene.input.KeyCode.Y;
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
 
 import java.io.File;
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import helper.yaml.Topup;
-
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class ConfigHelper {
 
-    public static void main(String[] args) throws IOException {
+    private static final String CONF_FOLDER = "src/main/resources/config/";
+    private static final String CONF_FILE_EXTENSION = ".conf";
 
+    public static Config loadConfig(String env){
+        return loadAllConfigOfEnv(EnvHelper.getEnvKey(env));
+    }
 
-
-
-        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        try {
-            System.out.println();
-//            Topup object = mapper.readValue(
-//                    new File("/Users/nikita.bokarev/develop/java/Tests/UI_Automation/src/main/resources/config/topup.yml"),
-//                    Topup.class
-//            );
-//            System.out.println(ReflectionToStringBuilder.toString(object,ToStringStyle.MULTI_LINE_STYLE));
-//            System.out.println(object.getUser().getLastname());
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            System.out.println(e.getMessage());
+    private static Config loadAllConfigOfEnv(String env){
+        File configFolder = new File(CONF_FOLDER);
+        List<Path> listConfigPath = FileHelper.listAllInDirectory(configFolder,CONF_FILE_EXTENSION);
+        Config finalConfig = ConfigFactory.load();
+        for (Path configPath : listConfigPath) {
+            String subConfigName = extractConfigFileName(configPath.toFile());
+            Config subConfig = ConfigFactory.parseResources(subConfigName);
+            finalConfig = finalConfig.withFallback(subConfig);
         }
+        return finalConfig.resolve().getConfig(env);
+    }
+
+    private static String extractConfigFileName(File configFile){
+        File configFolder = new File(CONF_FOLDER);
+        String resourceFolderPath = configFolder.getParentFile().getAbsolutePath()+File.separator;
+        return configFile.getAbsolutePath().replace(resourceFolderPath,"");
     }
 }

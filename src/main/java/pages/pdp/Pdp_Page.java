@@ -2,6 +2,7 @@ package pages.pdp;
 
 import global.Global;
 import model.ProductDetailInfo;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
@@ -14,22 +15,22 @@ import java.util.Random;
  */
 public class Pdp_Page extends PageObject {
 
-    //private static String page_url = "https://www.lazada.sg/google-play-gift-code-sgd-30-51661524.html?pdpVersion=v2";
+    public static String page_url = "https://p.daraz.com.bd/-i1646886-s31627922.html";
 
-    @FindBy(css = ".wishlist-icon")
-    private WebElement wishlist_element;
-    @FindBy(css = ".wishlist-icon.active")
-    private WebElement wishlistActive_element;
-    @FindBy(css = ".pdp-Cart_Page-concern button")
-    private WebElement addToCart_element;
-    @FindBy(css = ".pdp-product-title")
-    private WebElement productTitle_element;
-    @FindBy(css = ".sku-prop-content > span")
-    private List<WebElement> variation_elements;
+    @FindBy(css = ".wishlist-icon") private WebElement wishlist_element;
+    @FindBy(css = ".wishlist-icon.active") private WebElement wishlistActive_element;
+    @FindBy(css = ".pdp-Cart_Page-concern button") private WebElement addToCart_element;
+    @FindBy(css = ".pdp-product-title") private WebElement productTitle_element;
+    @FindBy(css = ".sku-prop-content > span") private List<WebElement> variation_elements;
+    @FindBy(css = ".pdp-button_theme_yellow") private WebElement buy_now_btn;
+    @FindBy(css = ".next-number-picker-input input") private WebElement number_of_item_input;
+    @FindBy(css = ".next-number-picker-handler-up") private WebElement increase_item_quantity_btn;
 
-    public Pdp_Page() {
-        super();
-    }
+    private By pdpTitle_by = By.cssSelector(".pdp-product-title");
+    private By buyNow_by = By.cssSelector(".pdp-button_theme_yellow");
+    private By numberOfItems_by = By.cssSelector(".next-number-picker-input input");
+    private By increaseItemQuantity_by = By.cssSelector(".next-number-picker-handler-up");
+    private By loadingSkeleton_by = By.cssSelector(".pdp-skeleton__product-info");
 
     public ProductDetailInfo getProductInfo(){
         waitUntilVisible(productTitle_element);
@@ -51,12 +52,22 @@ public class Pdp_Page extends PageObject {
         waitUntilVisible(wishlistActive_element);
     }
 
-    public void Loaded() {
-        waitUntilVisible(productTitle_element);
+    public void waitUntilLoaded() {
+        waitUntilPageReady();
+        waitUntilInvisibilityOf(loadingSkeleton_by);
+        waitUntilVisibility(pdpTitle_by);
     }
 
-    public void goToPDP(String url) {
-        Global.browser.goTo(url);
+    public void openBuyNowPage(){
+        waitUntilLoaded();
+        waitUntilClickable(buyNow_by);
+        buy_now_btn.click();
+    }
+
+    public void selectNumberOfItem(String numberOfItems){
+        waitUntilLoaded();
+        waitUntilVisibility(numberOfItems_by,180);
+        number_of_item_input.sendKeys(numberOfItems);
     }
 
     public boolean has_message(String message) {
