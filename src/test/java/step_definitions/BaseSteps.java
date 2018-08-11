@@ -14,8 +14,12 @@ public class BaseSteps {
     }
 
     @SuppressWarnings("unchecked")
+    protected <T extends PageObject> void visitWithParam(Class<T> page, String param){
+        Global.browser.goTo(Global.pageHierarchy.getPageUrl(page)+param);
+    }
+
+    @SuppressWarnings("unchecked")
     protected <T extends PageObject>T on(Class<T> page){
         return (T) Global.pageHierarchy.getPageInstance(page);
     }
-
 }

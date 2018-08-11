@@ -1,5 +1,6 @@
 package pages.account;
 
+import global.Global;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
@@ -9,19 +10,18 @@ import pages.PageObject;
  */
 public class Login_Page extends PageObject {
 
-    public static String page_url = "http://member.lazada.sg/user/login";
+    public static String page_url = Global.config.getString("member_url")+"/user/login";
 
-    @FindBy(css = ".mod-input-email input") private WebElement email;
+    @FindBy(css = ".mod-input-loginName input") private WebElement email;
     @FindBy(css = "[type='password']") private WebElement password;
     @FindBy(css = ".mod-login-btn button") private WebElement submit;
 
-
-    public Login_Page(){ super();}
-
     public void login(String email, String password){
+        waitUntilPageReady();
         this.email.sendKeys(email);
         this.password.sendKeys(password);
         submit.click();
+        waitUntilPageReady();
     }
 
 
