@@ -44,17 +44,18 @@ public class Browser {
 
     public String getUrl() {return driver.getCurrentUrl(); }
 
-    public void takeScreenShot(){
+    public byte[] takeScreenShot(){
         TakesScreenshot scrShot =((TakesScreenshot)driver);
-        File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-        String currentDir = System.getProperty("user.dir");
-        String DateToStr = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss").format(new Date());
-        File DestFile=new File(currentDir+"/failed_screenshot/"+DateToStr+".png");
-        try {
-            FileUtils.copyFile(SrcFile, DestFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return scrShot.getScreenshotAs(OutputType.BYTES);
+//        String currentDir = System.getProperty("user.dir");
+//        String DateToStr = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss").format(new Date());
+//        File DestFile=new File(currentDir+"/failed_screenshot/"+DateToStr+".png");
+//        try {
+//            FileUtils.copyFile(srcFile, DestFile);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return DestFile;
     }
 
     public void dumpDOMToFile(){
