@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
         features = {"src/test/resources/features"},
         tags = {"@normal"},
         glue = {"step_definitions"},
-        format = {"pretty",
+        plugin = {"pretty",
                 "io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm",
                 "html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/json-reports/CucumberTestReport.json",

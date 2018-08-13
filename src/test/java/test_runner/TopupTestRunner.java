@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
         features = "src/test/resources/features",
         glue = {"step_definitions"},
         tags = {"@TopupPDP"},
-        format = {
+        plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/json-reports/CucumberTestReport.json",

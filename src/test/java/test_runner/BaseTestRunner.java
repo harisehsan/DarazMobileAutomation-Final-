@@ -5,10 +5,7 @@ import browser.Browser;
 import cucumber.api.testng.TestNGCucumberRunner;
 import global.Global;
 import helper.ConfigHelper;
-import helper.EnvHelper;
 import helper.PageHierarchy;
-import helper.YamlHelper;
-import io.qameta.allure.Attachment;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -42,17 +39,12 @@ public class BaseTestRunner {
 
     @AfterMethod(alwaysRun = true)
     public void teardownBrowser(ITestResult result) throws Exception {
-        if (result.getStatus() == ITestResult.FAILURE) {
-            addScreenShot();
-            Global.browser.dumpDOMToFile();
-        }
         Global.browser.tearDown();
-        AllureGenerator.generateResult();
     }
 
-    @Attachment(value = "Page screenshot", type = "image/png")
-    public byte[] addScreenShot(){
-        return Global.browser.takeScreenShot();
+    @AfterSuite(alwaysRun = true)
+    public void finish(){
+        AllureGenerator.generateResult();
     }
 
 }
