@@ -15,8 +15,6 @@ public class Cancel_Form extends PageObject {
     @FindBy(css = ".cancel-dialog .next-dialog-close") private WebElement close_button;
 
 
-
-
     private By cancelDialog_by = By.cssSelector(".cancel-dialog");
     private By cancelReasonList_by = By.cssSelector(".expandInDown");
     private By cancelSuccessfull_by = By.xpath("//div[@class='next-feedback-content' and contains(.,'Cancellation is successful')]");

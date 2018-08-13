@@ -44,31 +44,11 @@ public class Browser {
 
     public String getUrl() {return driver.getCurrentUrl(); }
 
-    public void takeScreenShot(){
-        TakesScreenshot scrShot =((TakesScreenshot)driver);
-        File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-        String currentDir = System.getProperty("user.dir");
-        String DateToStr = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss").format(new Date());
-        File DestFile=new File(currentDir+"/failed_screenshot/"+DateToStr+".png");
-        try {
-            FileUtils.copyFile(SrcFile, DestFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public byte[] takeScreenShot(){
+        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
     }
 
-    public void dumpDOMToFile(){
-        String currentDir = System.getProperty("user.dir");
-        String DateToStr = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss").format(new Date());
-        File htmlFile=new File(currentDir+"/failed_screenshot/"+DateToStr+".html");
-        String dom = String.valueOf(((JavascriptExecutor) driver).executeScript("return document.getElementsByTagName('body')[0].innerHTML"));
-        try (PrintWriter out = new PrintWriter(htmlFile)) {
-            out.println(dom);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+    public String getHtml(){
+        return String.valueOf(((JavascriptExecutor) driver).executeScript("return document.getElementsByTagName('body')[0].innerHTML"));
     }
-
-
-
 }

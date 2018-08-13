@@ -14,10 +14,10 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = {"src/test/resources/features"},
-        tags = {"@test1"},
+        tags = {"@normal"},
         glue = {"step_definitions"},
-        format = {
-                "pretty",
+        plugin = {"pretty",
+                "io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm",
                 "html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/json-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun-reports/rerun.txt"
