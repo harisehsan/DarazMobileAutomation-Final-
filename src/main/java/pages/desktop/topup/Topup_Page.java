@@ -1,12 +1,11 @@
-package pages.topup;
+package pages.desktop.topup;
 
 import global.Global;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
-import pages.account.Login_Page;
-import helper.PageHelper;
+import pages.desktop.account.Login_Page;
 
 public class Topup_Page extends PageObject {
 
@@ -71,16 +70,16 @@ public class Topup_Page extends PageObject {
     }
 
     public void checkAfterLogIn() throws Exception{
-        String country = PageHelper.GetVenture();
-        By helloMessage = null;
-        if (country == "SG") {
-           helloMessage = By.xpath("//span[contains(string(), 'Hello')]");
-        }
-        else {
-           helloMessage = By.xpath("//span[contains(string(), 'topup')]");
-        }
-        waitUntilPresentOfElementBy(helloMessage);
-        findDynamicElement(helloMessage).click();
+//        String country = PageHelper.GetVenture();
+//        By helloMessage = null;
+//        if (country == "SG") {
+//           helloMessage = By.xpath("//span[contains(string(), 'Hello')]");
+//        }
+//        else {
+//           helloMessage = By.xpath("//span[contains(string(), 'topup')]");
+//        }
+//        waitUntilPresentOfElementBy(helloMessage);
+//        findDynamicElement(helloMessage).click();
     }
 
     public void selectNumberFromList(int id) throws Exception{

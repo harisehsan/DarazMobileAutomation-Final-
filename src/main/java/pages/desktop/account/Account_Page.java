@@ -1,12 +1,8 @@
-package pages.account;
+package pages.desktop.account;
 
-import global.Global;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import pages.PageObject;
-
-import java.util.List;
 
 /**
  * Created by admin.son.ton on 1/25/18.

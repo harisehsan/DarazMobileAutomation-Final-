@@ -1,7 +1,7 @@
 package step_definitions.checkout;
 
 import cucumber.api.java.en.And;
-import pages.checkout.TopupSuccessful_Page;
+import pages.desktop.checkout.TopupSuccessful_Page;
 import step_definitions.BaseSteps;
 
 public class TopupSuccessfulSteps extends BaseSteps{

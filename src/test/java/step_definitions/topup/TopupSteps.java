@@ -2,9 +2,7 @@ package step_definitions.topup;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import global.Global;
-import model.ProductDetailInfo;
-import pages.topup.Topup_Page;
+import pages.desktop.topup.Topup_Page;
 import step_definitions.BaseSteps;
 
 public class TopupSteps extends BaseSteps{

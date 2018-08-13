@@ -1,4 +1,4 @@
-package pages.asc;
+package pages.desktop.asc;
 
 import global.Global;
 import org.openqa.selenium.WebElement;

@@ -1,4 +1,4 @@
-package pages.cart;
+package pages.desktop.cart;
 
 /**
  * Created by admin.son.ton on 1/16/18.

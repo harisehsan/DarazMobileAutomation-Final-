@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class FileHelper {
+public interface FileHelper {
 
-    public static List<Path> listAllInDirectory(File dir, final String fileExtension){
+    static List<Path> listAllInDirectory(File dir, final String fileExtension){
         try(Stream<Path> fileStream = Files.find(Paths.get(dir.getPath()), 5, (p, bfa) -> bfa.isRegularFile())){
             return fileStream
                     .filter(path -> path.toString().endsWith(fileExtension))

@@ -1,4 +1,4 @@
-package pages.account;
+package pages.desktop.account;
 
 import global.Global;
 import org.openqa.selenium.WebElement;

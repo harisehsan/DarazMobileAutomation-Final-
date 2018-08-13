@@ -2,11 +2,9 @@ package step_definitions.wishlist;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import model.ProductDetailInfo;
 import org.testng.Assert;
-import pages.*;
-import pages.wishlist.Wishlist_Page;
+import pages.desktop.wishlist.Wishlist_Page;
 import global.Global;
 import step_definitions.BaseSteps;
 

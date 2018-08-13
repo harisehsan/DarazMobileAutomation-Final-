@@ -1,4 +1,4 @@
-package pages.checkout;
+package pages.desktop.checkout;
 
 import org.openqa.selenium.By;
 import pages.PageObject;

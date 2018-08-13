@@ -5,16 +5,15 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import global.Global;
-import helper.ConfigHelper;
-import helper.PageHierarchy;
-import helper.YamlHelper;
+import initializer.ConfigInit;
+import initializer.PageHierarchy;
 
 import java.util.HashMap;
 
 public class Hooks {
     @Before
     public void initializeTest(){
-        Global.config = ConfigHelper.loadConfig(System.getProperty("env"));
+        Global.config = ConfigInit.loadConfig(System.getProperty("env"));
 
         Global.map = new HashMap<>();
 

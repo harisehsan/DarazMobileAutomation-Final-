@@ -1,7 +1,7 @@
 package step_definitions.checkout;
 
 import cucumber.api.java.en.And;
-import pages.checkout.Checkout_Page;
+import pages.desktop.checkout.Checkout_Page;
 import step_definitions.BaseSteps;
 
 

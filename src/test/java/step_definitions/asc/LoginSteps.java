@@ -6,8 +6,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import global.Global;
 import org.testng.Assert;
-import pages.asc.Seller_Home_Page;
-import pages.asc.Seller_Login_Page;
+import pages.desktop.asc.Seller_Home_Page;
+import pages.desktop.asc.Seller_Login_Page;
 import step_definitions.BaseSteps;
 
 /**

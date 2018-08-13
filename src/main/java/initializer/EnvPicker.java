@@ -1,11 +1,11 @@
-package helper;
+package initializer;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 
-public class EnvHelper {
+public class EnvPicker {
 
-    private static final String ENV_KEY = "environment";
+    private static final String ENV_KEY = "available_environment";
     private static final String ENV_RESOURCE_FILE = "env.conf";
 
     static String getEnvKey(String env){

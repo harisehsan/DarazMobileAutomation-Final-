@@ -1,6 +1,5 @@
-package pages.pdp;
+package pages.desktop.pdp;
 
-import global.Global;
 import model.ProductDetailInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

@@ -1,4 +1,4 @@
-package pages.checkout;
+package pages.desktop.checkout;
 
 import global.Global;
 import org.openqa.selenium.WebElement;
