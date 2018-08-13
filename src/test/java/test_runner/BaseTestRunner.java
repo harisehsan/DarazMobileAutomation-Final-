@@ -4,8 +4,8 @@ import allure.AllureGenerator;
 import browser.Browser;
 import cucumber.api.testng.TestNGCucumberRunner;
 import global.Global;
-import helper.ConfigHelper;
-import helper.PageHierarchy;
+import initializer.ConfigInit;
+import initializer.PageHierarchy;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -17,7 +17,7 @@ public class BaseTestRunner {
 
     @BeforeSuite
     public void initConfiguration(){
-        Global.config = ConfigHelper.loadConfig(System.getProperty("env"));
+        Global.config = ConfigInit.loadConfig(System.getProperty("env"));
         Global.map = new HashMap<>();
     }
 

@@ -1,11 +1,9 @@
 package step_definitions.account;
 
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import global.Global;
-import pages.account.Account_Page;
-import pages.account.Login_Page;
-import pages.pdp.Pdp_Page;
+import pages.desktop.account.Account_Page;
+import pages.desktop.account.Login_Page;
 import step_definitions.BaseSteps;
 
 /**

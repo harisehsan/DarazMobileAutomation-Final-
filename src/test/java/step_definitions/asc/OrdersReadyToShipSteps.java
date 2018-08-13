@@ -2,8 +2,8 @@ package step_definitions.asc;
 
 import cucumber.api.java.en.Then;
 import global.Global;
-import pages.asc.orders_management.Rts_Form;
-import pages.asc.orders_management.OrderManagement_Page;
+import pages.desktop.asc.orders_management.Rts_Form;
+import pages.desktop.asc.orders_management.OrderManagement_Page;
 import step_definitions.BaseSteps;
 
 public class OrdersReadyToShipSteps extends BaseSteps {

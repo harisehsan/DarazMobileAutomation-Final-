@@ -4,10 +4,8 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import global.Global;
-import pages.pdp.Pdp_Page;
+import pages.desktop.pdp.Pdp_Page;
 import step_definitions.BaseSteps;
-
-import java.util.LinkedHashMap;
 
 /**
  * Created by admin.son.ton on 1/16/18.
