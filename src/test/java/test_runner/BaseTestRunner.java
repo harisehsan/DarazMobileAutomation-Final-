@@ -1,10 +1,12 @@
 package test_runner;
 
+import allure.AllureGenerator;
 import browser.Browser;
 import cucumber.api.testng.TestNGCucumberRunner;
 import global.Global;
-import helper.PageHierarchy;
-import helper.YamlHelper;
+import initializer.ConfigInit;
+import initializer.PageHierarchy;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.util.HashMap;
@@ -15,7 +17,7 @@ public class BaseTestRunner {
 
     @BeforeSuite
     public void initConfiguration(){
-        Global.config = YamlHelper.loadToMap("/config/wishlist-pre-config.yml");
+        Global.config = ConfigInit.loadConfig(System.getProperty("env"));
         Global.map = new HashMap<>();
     }
 
@@ -29,13 +31,20 @@ public class BaseTestRunner {
         testNGCucumberRunner.finish();
     }
 
-    @BeforeMethod(alwaysRun = true)
+    @BeforeMethod
     public void setupBrowser() throws Exception {
         Global.browser = new Browser("chrome");
         Global.pageHierarchy = new PageHierarchy();
     }
+
     @AfterMethod(alwaysRun = true)
-    public void teardownBrowser() throws Exception {
+    public void teardownBrowser(ITestResult result) throws Exception {
         Global.browser.tearDown();
     }
+
+    @AfterSuite(alwaysRun = true)
+    public void finish(){
+        AllureGenerator.generateResult();
+    }
+
 }

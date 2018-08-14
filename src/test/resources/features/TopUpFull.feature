@@ -3,13 +3,15 @@ Feature: TopUp testing on daily environment for logIn user
 
     @ChecklogIn
     Scenario: Logged go to topup page
-        When I go to topup daily page
+        When I go to topup page "http://pdp.lazada.test/mobilerecharge.html"
         And I Log in from TopUp page, account: "test.topup.lazada@gmail.com", password: "rock4you"
         And I check after login
 
     @CheckPay
     Scenario: Logged go to topup page
-        When I go to topup daily page
+        When I go to topup page "http://pdp.lazada.test/mobilerecharge.html"
+        And I Log in from TopUp page, account: "test.topup.lazada@gmail.com", password: "rock4you"
+        And I check after login
         And I Enter number "83573125"
         And I Select product "M1- $50 hi! Top-up Card"
         And I Push top-up now
@@ -23,7 +25,9 @@ Feature: TopUp testing on daily environment for logIn user
 
     @CheckSavePhoneNumber
     Scenario: checking save phone number
-        When I go to topup daily page
+        When I go to topup page "http://pdp.lazada.test/mobilerecharge.html"
+        And I Log in from TopUp page, account: "test.topup.lazada@gmail.com", password: "rock4you"
+        And I check after login
         And I Enter number "83573126"
         And I Select product "M1- $50 hi! Top-up Card"
         And I Push top-up now

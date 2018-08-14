@@ -2,12 +2,15 @@ package step_definitions.topup;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import global.Global;
-import model.ProductDetailInfo;
-import pages.topup.Topup_Page;
+import pages.desktop.topup.Topup_Page;
 import step_definitions.BaseSteps;
 
 public class TopupSteps extends BaseSteps{
+    @Given("^I go to topup page \"([^\"]*)\"")
+    public void goToTopupPage(String url) throws Throwable {
+        Topup_Page.visit(url);
+    }
+
     @Given("^I go to topup daily page")
     public void goToDailyTopupPage() throws Throwable {
         Topup_Page.visit("http://pdp.lazada.test/mobilerecharge.html");
@@ -64,9 +67,14 @@ public class TopupSteps extends BaseSteps{
         on(Topup_Page.class).selectNumberFromList(1);
     }
 
-    @And("^I select phone number from list by number: \"([^\"]*)\"")
-    public void selectPhoneNumber(String number) throws Throwable {
-        on(Topup_Page.class).enterNumber(number);
+    @And("^I select phone number \"([^\"]*)\" in list")
+    public void selectPhoneNumberByNumber(String number) throws Throwable {
+        on(Topup_Page.class).selectNumberFromList(number);
+    }
+
+    @And("I check operator \"([^\"]*)\"")
+    public void checkOperatorByName (String name) throws Throwable {
+        on(Topup_Page.class).checkOperator(name);
     }
 
 }
