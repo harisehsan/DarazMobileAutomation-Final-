@@ -22,8 +22,8 @@ public class AccountSteps extends BaseSteps{
 
     @Given("^I login from Account Page")
     public void loginFromAccPageWithConfigAccount() throws Throwable {
-        String user = Global.config.getString("asc.member_account.mail");
-        String pass = Global.config.getString("asc.member_account.pass");
+        String user = Global.config.getString("member.account.mail");
+        String pass = Global.config.getString("member.account.pass");
         visit(Login_Page.class);
         on(Login_Page.class).login(user, pass);
         on(Account_Page.class).untilLoaded();

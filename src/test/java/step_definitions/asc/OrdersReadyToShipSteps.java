@@ -1,5 +1,6 @@
 package step_definitions.asc;
 
+import allure.AllureAttachment;
 import cucumber.api.java.en.Then;
 import global.Global;
 import pages.desktop.asc.orders_management.Rts_Form;
@@ -15,5 +16,6 @@ public class OrdersReadyToShipSteps extends BaseSteps {
         on(OrderManagement_Page.class).openRTSForm(orderNumber);
         on(Rts_Form.class).performRTS();
         Global.map.put("current_OrderNo",orderNumber);
+        AllureAttachment.attachComment("Current Order Number",orderNumber);
     }
 }

@@ -3,6 +3,7 @@ package browser;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -28,7 +29,18 @@ public class Browser {
             System.setProperty("webdriver.chrome.driver", baseDir + "/drivers/chromedriver");
             driver = new ChromeDriver();
         }
+        if(browserName.equals("headless")){
+            System.setProperty("webdriver.chrome.driver", baseDir + "/drivers/chromedriver");
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("headless");
+            options.addArguments("window-size=1200x600");
+            driver = new ChromeDriver(options);
+        }
     }
+
+    private Browser (String browserName,String headLess){
+    }
+
 
     public void tearDown(){
         driver.quit();
