@@ -12,5 +12,6 @@ public class AllureAspectLogger {
     public void logAfterFailed(JoinPoint joinPoint, Throwable error) {
         AllureAttachment.attachScreenShot("Failed Screenshot");
         AllureAttachment.attachHtml("Failed HTML");
+        AllureAttachment.attachURL("Current URL");
     }
 }

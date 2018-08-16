@@ -1,5 +1,6 @@
 package step_definitions.asc;
 
+import allure.AllureAttachment;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import global.Global;

@@ -17,8 +17,15 @@ public class PpdSteps extends BaseSteps{
         visit(Pdp_Page.class);
     }
 
+    @Given("^I go to normal pdp page")
+    public void goToNormalPdpPage() throws Throwable {
+        Pdp_Page.setUrl(Global.config.getConfig("asc").getString("pdp_url"));
+        visit(Pdp_Page.class);
+    }
+
     @Given("^I go to \"([^\"]*)\" pdp page$")
     public void goToSpecificPDPage(String pdpType) throws Throwable {
+        throw new RuntimeException("test exception");
 //        LinkedHashMap map = (LinkedHashMap) Global.config.getString("pdp_url");
 //        Object url = map.get(pdpType);
 //        on(Pdp_Page.class).goToPDP((String) url);

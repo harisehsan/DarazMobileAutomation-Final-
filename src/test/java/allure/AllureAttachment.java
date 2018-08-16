@@ -14,5 +14,15 @@ public interface AllureAttachment {
     static String attachHtml(String name) {
         return Global.browser.getHtml();
     }
+
+    @Attachment(value = "{0}", type = "text/plain")
+    static String attachURL(String name) {
+        return Global.browser.getUrl();
+    }
+
+    @Attachment(value = "{0}", type = "text/plain")
+    static String attachComment(String name, String comment) {
+        return comment;
+    }
 }
 

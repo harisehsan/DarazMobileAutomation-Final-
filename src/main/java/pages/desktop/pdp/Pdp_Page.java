@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class Pdp_Page extends PageObject {
 
-    public static String page_url = "https://p.daraz.com.bd/-i1646886-s31627922.html";
+    public static String page_url = "";
 
     @FindBy(css = ".wishlist-icon") private WebElement wishlist_element;
     @FindBy(css = ".wishlist-icon.active") private WebElement wishlistActive_element;
@@ -30,6 +30,10 @@ public class Pdp_Page extends PageObject {
     private By numberOfItems_by = By.cssSelector(".next-number-picker-input input");
     private By increaseItemQuantity_by = By.cssSelector(".next-number-picker-handler-up");
     private By loadingSkeleton_by = By.cssSelector(".pdp-skeleton__product-info");
+
+    public static void setUrl(String url){
+        page_url = url;
+    }
 
     public ProductDetailInfo getProductInfo(){
         waitUntilVisible(productTitle_element);
@@ -64,9 +68,11 @@ public class Pdp_Page extends PageObject {
     }
 
     public void selectNumberOfItem(String numberOfItems){
+        Long startTime = System.currentTimeMillis();
         waitUntilLoaded();
         waitUntilVisibility(numberOfItems_by,180);
         number_of_item_input.sendKeys(numberOfItems);
+        System.out.println("Times: "+(System.currentTimeMillis()-startTime));
     }
 
     public boolean has_message(String message) {

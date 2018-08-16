@@ -7,7 +7,7 @@ import pages.PageObject;
 
 public class Shipping_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member_url")+"/shipping";
+    public static String page_url = Global.config.getString("member.url")+"/shipping";
 
     @FindBy(css = ".checkout-order-total-button") private WebElement place_order_btn;
 

@@ -17,6 +17,7 @@ public class BaseTestRunner {
 
     @BeforeSuite
     public void initConfiguration(){
+        AllureGenerator.removeAllureResultFolder();
         Global.config = ConfigInit.loadConfig(System.getProperty("env"));
         Global.map = new HashMap<>();
     }
@@ -33,7 +34,7 @@ public class BaseTestRunner {
 
     @BeforeMethod
     public void setupBrowser() throws Exception {
-        Global.browser = new Browser("chrome");
+        Global.browser = new Browser("headless");
         Global.pageHierarchy = new PageHierarchy();
     }
 
@@ -41,10 +42,4 @@ public class BaseTestRunner {
     public void teardownBrowser(ITestResult result) throws Exception {
         Global.browser.tearDown();
     }
-
-    @AfterSuite(alwaysRun = true)
-    public void finish(){
-        AllureGenerator.generateResult();
-    }
-
 }
