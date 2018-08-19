@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Chrome extends Browser {
 
-    Chrome(String [] options){
+    public Chrome(String [] options){
         System.setProperty("webdriver.chrome.driver", properties.getProperty("chrome.driver.path"));
         ChromeOptions cOptions = new ChromeOptions();
         cOptions.addArguments(options);

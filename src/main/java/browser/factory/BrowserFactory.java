@@ -25,7 +25,7 @@ public class BrowserFactory {
         String [] browserOptions = bf.getBrowserOptionsFromComfig(browserName);
         try {
             Class<?> cls = Class.forName(BROWSER_PACKAGE + StringUtils.capitalize(browserName) );
-            return (T) cls.getConstructor(String[].class).newInstance(new Object[]{browserOptions});
+            return (T) cls.getConstructor(browserOptions.getClass()).newInstance(new Object[]{browserOptions});
         } catch (InstantiationException | ClassNotFoundException |InvocationTargetException|NoSuchMethodException| IllegalAccessException e) {
             throw new RuntimeException(String.format("Can not create browser: %s, With options: %s, ERROR: %s", browserName, Arrays.toString(browserOptions), e.getMessage()));
         }
@@ -43,6 +43,7 @@ public class BrowserFactory {
         String browserOptionsKey = browserName+".browser.options";
         String optionStringFromConfig = browserInitializeInfo.getProperty(browserOptionsKey);
         String optionStringFromSystem = System.getProperty("browser.options");
+        if(optionStringFromConfig==null && optionStringFromSystem==null) return new String[0];
         optionStringFromSystem = optionStringFromSystem == null ? "" : optionStringFromSystem;
         String optionString = String.format("%s,%s",optionStringFromConfig,optionStringFromSystem);
         return optionString.split(",");

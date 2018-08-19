@@ -6,7 +6,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class Firefox extends Browser {
 
-    Firefox(String [] options){
+    public Firefox(String [] options){
         System.setProperty("webdriver.gecko.driver", properties.getProperty("firefox.driver.path"));
         FirefoxOptions fOptions = new FirefoxOptions();
         fOptions.addArguments(options);
