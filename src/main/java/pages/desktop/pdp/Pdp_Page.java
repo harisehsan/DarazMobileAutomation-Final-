@@ -21,12 +21,12 @@ public class Pdp_Page extends PageObject {
     @FindBy(css = ".pdp-Cart_Page-concern button") private WebElement addToCart_element;
     @FindBy(css = ".pdp-product-title") private WebElement productTitle_element;
     @FindBy(css = ".sku-prop-content > span") private List<WebElement> variation_elements;
-    @FindBy(css = ".pdp-button_theme_yellow") private WebElement buy_now_btn;
+    @FindBy(css = ".pdp-button_theme_bluedaraz") private WebElement buy_now_btn;
     @FindBy(css = ".next-number-picker-input input") private WebElement number_of_item_input;
     @FindBy(css = ".next-number-picker-handler-up") private WebElement increase_item_quantity_btn;
 
     private By pdpTitle_by = By.cssSelector(".pdp-product-title");
-    private By buyNow_by = By.cssSelector(".pdp-button_theme_yellow");
+    private By buyNow_by = By.cssSelector(".pdp-button_theme_bluedaraz");
     private By numberOfItems_by = By.cssSelector(".next-number-picker-input input");
     private By increaseItemQuantity_by = By.cssSelector(".next-number-picker-handler-up");
     private By loadingSkeleton_by = By.cssSelector(".pdp-skeleton__product-info");

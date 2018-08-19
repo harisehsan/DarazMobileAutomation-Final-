@@ -1,7 +1,7 @@
 package test_runner;
 
 import allure.AllureGenerator;
-import browser.Browser;
+import browser.factory.BrowserFactory;
 import cucumber.api.testng.TestNGCucumberRunner;
 import global.Global;
 import initializer.ConfigInit;
@@ -34,7 +34,7 @@ public class BaseTestRunner {
 
     @BeforeMethod
     public void setupBrowser() throws Exception {
-        Global.browser = new Browser("headless");
+        Global.browser = BrowserFactory.createBrowser();
         Global.pageHierarchy = new PageHierarchy();
     }
 

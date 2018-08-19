@@ -1,6 +1,5 @@
 package support;
 
-import browser.Browser;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -17,7 +16,7 @@ public class Hooks {
 
         Global.map = new HashMap<>();
 
-        Global.browser = new Browser("chrome");
+//        Global.browser = new ChromeBrowser();
 
         Global.pageHierarchy = new PageHierarchy();
     }
