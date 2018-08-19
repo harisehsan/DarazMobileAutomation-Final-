@@ -1,6 +1,7 @@
 package browser.base;
 
 import helper.PropHelper;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 
 import java.lang.*;
@@ -13,6 +14,7 @@ public class Browser {
 
     protected WebDriver driver;
     protected Properties properties;
+    protected Logger logger = Logger.getLogger(Browser.class);
 
     protected Browser(){
         properties = PropHelper.loadPropertiesByFilePath("src/test/resources/browser.properties");
