@@ -2,7 +2,7 @@
 Feature: Place order Test
 
 
-  @PlaceNormalOrder1
+  @test3
   Scenario: Guest can place a normal order
     When I login from Account Page
     And I go to normal pdp page

@@ -1,7 +1,6 @@
 @ASC
 Feature: Smoke
 
-
   @test1
   Scenario: Seller cancel order successful
     Given I go to ASC login page

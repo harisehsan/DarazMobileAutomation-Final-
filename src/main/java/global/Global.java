@@ -1,6 +1,6 @@
 package global;
 
-import browser.Browser;
+import browser.base.Browser;
 import initializer.PageHierarchy;
 
 import java.util.Map;
