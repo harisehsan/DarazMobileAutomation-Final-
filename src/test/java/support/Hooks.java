@@ -1,5 +1,6 @@
 package support;
 
+import allure.AllureGenerator;
 import browser.factory.BrowserFactory;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -13,6 +14,9 @@ import java.util.HashMap;
 public class Hooks {
     @Before
     public void initializeTest(){
+
+        AllureGenerator.removeAllureResultFolder();
+
         Global.config = ConfigInit.loadConfig(System.getProperty("env"));
 
         Global.map = new HashMap<>();

@@ -8,11 +8,14 @@ import java.io.IOException;
 public interface AllureGenerator {
 
     static void removeAllureResultFolder(){
-        File allureResultFolder = new File(System.getProperty("allure.results.directory"));
-        try {
-            FileUtils.deleteDirectory(allureResultFolder);
-        } catch (IOException e) {
-            e.printStackTrace();
+        String allureFilePath = System.getProperty("allure.results.directory");
+        if(allureFilePath!=null){
+            File allureResultFolder = new File(allureFilePath);
+            try {
+                FileUtils.deleteDirectory(allureResultFolder);
+            } catch (IOException e) {
+                throw new RuntimeException("Cannot delete allure result folder");
+            }
         }
     }
 }
