@@ -1,6 +1,7 @@
 package support;
 
-import browser.Browser;
+import allure.AllureGenerator;
+import browser.factory.BrowserFactory;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -13,11 +14,16 @@ import java.util.HashMap;
 public class Hooks {
     @Before
     public void initializeTest(){
+
+        AllureGenerator.removeAllureResultFolder();
+
         Global.config = ConfigInit.loadConfig(System.getProperty("env"));
 
         Global.map = new HashMap<>();
 
-        Global.browser = new Browser("chrome");
+        Global.browser = BrowserFactory.createBrowser();
+
+//        Global.browser = new ChromeBrowser();
 
         Global.pageHierarchy = new PageHierarchy();
     }
