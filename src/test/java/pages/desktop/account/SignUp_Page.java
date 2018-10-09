@@ -1,5 +1,6 @@
 package pages.desktop.account;
 
+import global.Global;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
@@ -7,31 +8,41 @@ import pages.PageObject;
 /**
  * Created by admin.son.ton on 1/26/18.
  */
+
 public class SignUp_Page extends PageObject {
 
-    private static final String page_url = "https://member.lazada.sg/user/register";
+    public static String page_url = Global.config.getString("member.url") + "/user/register";
 
-    @FindBy(css = ".mod-input-email input") private WebElement email;
-    @FindBy(css = ".mod-input-password input") private WebElement password;
-    @FindBy(css = ".mod-input-re-password input") private WebElement reinpassword;
-    @FindBy(css = ".mod-input-name input") private WebElement name;
-    @FindBy(css = ".mod-login-btn button") private WebElement submmit;
+    @FindBy(className = "mod-change-register-btn")
+    private WebElement emailbutton;
+    @FindBy(css = ".mod-input-email input")
+    private WebElement email;
+    @FindBy(css = ".mod-input-password input")
+    private WebElement password;
+    @FindBy(css = ".mod-input-name input")
+    private WebElement name;
+    @FindBy(className = "mod-login-btn")
+    private WebElement submit;
 
-    public SignUp_Page(){
-        super();
+    public void signemail() {
+        waitUntilPageReady();
+        emailbutton.click();
     }
 
-    public void emailtextfiel(String email){
-        this.email.sendKeys(email); }
+    public void emailtextfiel(String s) {
+        this.email.sendKeys(s);
+    }
 
-    public void passwordfield(String password,String repo){
-        this.password.sendKeys(password);
-        this.reinpassword.sendKeys(repo); }
+    public void passwordfield(String p) {
+        this.password.sendKeys(p);
+    }
 
-    public void namefield(String name){
-        this.name.sendKeys(name);
-        submmit.click();}
 
+    public void namefield(String n) {
+            this.name.sendKeys(n);
+            submit.click();
+            waitUntilPageReady();
+
+
+    }
 }
-
-
