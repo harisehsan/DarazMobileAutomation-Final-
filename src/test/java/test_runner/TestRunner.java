@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = {"src/test/resources/features"},
-        tags = {"@Signup"},
+        tags = {"@Loginbymobilephone"},
         glue = {"step_definitions"},
         plugin = {"pretty",
                 "io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm",

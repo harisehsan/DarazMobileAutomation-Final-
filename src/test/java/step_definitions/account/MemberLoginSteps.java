@@ -17,6 +17,14 @@ public class MemberLoginSteps extends BaseSteps {
         on(Member_Login_Page.class).loginEmail(email);
     }
 
+    @Given("I go to the login page and input the mobilephone information")
+    public void loginMobilePhone() throws Throwable {
+        String mobilephone = Global.config.getString("member.phonenumberlogin");
+        visit(Member_Login_Page.class);
+        on(Member_Login_Page.class).loginEmail(mobilephone);
+    }
+
+
     @And("^I input the password information")
     public void loginPass() throws Throwable {
         String password = Global.config.getString("member.account.pass");

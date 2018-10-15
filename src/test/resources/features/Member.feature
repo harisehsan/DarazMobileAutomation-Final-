@@ -23,5 +23,13 @@ Feature: Member Test
         Then I should see account page
 
 
+    @Loginbymobilephone
+    Scenario: User login account by mobilephone
+        When I go to the login page and input the mobilephone information
+        And I input the password information
+        And I click submit button
+        Then I should see account page
+
+
 
 
