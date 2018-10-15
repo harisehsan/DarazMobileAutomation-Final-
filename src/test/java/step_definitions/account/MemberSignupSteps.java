@@ -8,7 +8,7 @@ import pages.desktop.account.SignUp_Page;
 import random_email.GetRandomEmail;
 import step_definitions.BaseSteps;
 
-public class MemberSteps extends BaseSteps {
+public class MemberSignupSteps extends BaseSteps {
 
     @Given("^I go to the sign up page by email")
     public void signUpByEmail() throws Throwable {
