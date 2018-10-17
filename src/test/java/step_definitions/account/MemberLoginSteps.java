@@ -36,10 +36,4 @@ public class MemberLoginSteps extends BaseSteps {
         on(Member_Login_Page.class).submitButton();
     }
 
-
-    @Then("^I should see account page$")
-    public void hasName() throws Throwable {
-        visit(Member_Login_Page.class);
-        on(Account_Page.class).hasName("Manage My Account");
-    }
 }

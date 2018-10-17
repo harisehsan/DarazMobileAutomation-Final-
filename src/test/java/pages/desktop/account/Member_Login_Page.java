@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
 
 
+
 public class Member_Login_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url")+"/user/login";
@@ -24,11 +25,9 @@ public class Member_Login_Page extends PageObject {
     public void loginPass(String password){
         waitUntilPageReady();
         this.password.sendKeys(password);
-        waitUntilPageReady();
     }
 
     public void submitButton(){
-        waitUntilPageReady();
         submit.click();
         waitUntilPageReady();
     }

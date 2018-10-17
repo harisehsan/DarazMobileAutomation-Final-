@@ -30,19 +30,24 @@ public class SignUp_Page extends PageObject {
     }
 
     public void emailtextfiel(String s) {
+        waitUntilPageReady();
         this.email.sendKeys(s);
     }
 
     public void passwordfield(String p) {
+        waitUntilPageReady();
         this.password.sendKeys(p);
     }
 
 
     public void namefield(String n) {
-            this.name.sendKeys(n);
-            submit.click();
-            waitUntilPageReady();
+        waitUntilPageReady();
+        this.name.sendKeys(n);
+    }
 
+    public void submitButton() {
+        this.submit.click();
+        waitUntilPageReady();
 
     }
 }
