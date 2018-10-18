@@ -1,6 +1,6 @@
 @Member_PC
     
-Feature: Member Test
+Feature: Member PC Test
     @Signupemail
     Scenario: Guest signup new account by email
         When I go to the sign up page by email
