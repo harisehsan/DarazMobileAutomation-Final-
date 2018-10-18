@@ -41,4 +41,8 @@ public class Browser {
     public String getHtml(){
         return String.valueOf(((JavascriptExecutor) driver).executeScript("return document.getElementsByTagName('body')[0].innerHTML"));
     }
+
+    public void refresh(){
+        driver.navigate().refresh();
+    }
 }

@@ -15,6 +15,8 @@ public class Member_Login_Page extends PageObject {
     @FindBy(css = ".mod-input-loginName input") private WebElement email;
     @FindBy(css = "[type='password']") private WebElement password;
     @FindBy(css = ".mod-login-btn button") private WebElement submit;
+    @FindBy(className = "mod-login-btn") private WebElement login;
+
 
     public void loginEmail(String email){
         waitUntilPageReady();
@@ -30,6 +32,10 @@ public class Member_Login_Page extends PageObject {
     public void submitButton(){
         submit.click();
         waitUntilPageReady();
+    }
+
+    public void hasID(){
+        waitUntilVisible(login);
     }
 
 

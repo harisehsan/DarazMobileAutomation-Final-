@@ -40,6 +40,15 @@ Feature: Member Test
         Then I should see the account page
 
 
+    @Logoutonpc
+    Scenario: User login account then logout account on
+        When I go to the login page and input the email information
+        And I input the password information
+        And I click submit button
+        And I click on my account menu
+        And I click on logout account
+        Then I logout successful
+
 
 
 

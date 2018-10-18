@@ -37,6 +37,5 @@ public class MemberSignupSteps extends BaseSteps {
     @Then("^I should see the account page$")
     public void hasName() {
         on(Account_Page.class).untilLoaded();
-
     }
 }

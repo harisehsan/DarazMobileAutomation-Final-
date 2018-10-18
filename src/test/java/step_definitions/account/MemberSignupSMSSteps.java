@@ -9,6 +9,7 @@ public class MemberSignupSMSSteps extends BaseSteps {
     @Given("^I go to the sign up page by smsphone")
     public void signupPage() throws Throwable {
         visit(Member_SignUp_SMS_Page.class);
+        Global.browser.refresh();
 
     }
 

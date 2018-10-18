@@ -15,7 +15,8 @@ public class Account_Page extends PageObject {
 
     @FindBy(css = "#container") private WebElement mainContainer_element;
     @FindBy(id = "Manage-My-Account") private WebElement name_of_user;
-
+    @FindBy(id = "myAccountTrigger") private WebElement myAccount_trigger;
+    @FindBy(css = ".account-icon.logout") private WebElement logout;
 
     public void untilLoaded(){
         waitUntilVisible(mainContainer_element);
@@ -24,4 +25,16 @@ public class Account_Page extends PageObject {
         waitUntilPageReady();
         return this.name_of_user.getText().equals(name);
     }
+
+    public void setMyAccount_trigger() {
+        waitUntilPageReady();
+        this.myAccount_trigger.click();
+    }
+
+    public void setLogout() {
+        waitUntilPageReady();
+        this.logout.click();
+    }
+
+
 }
