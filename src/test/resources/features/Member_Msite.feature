@@ -24,3 +24,11 @@ Feature: Member Msite Test
     And I will input the password on form
     And I will click submit on form
     Then I should see account page
+
+  @MsiteLoginEmail
+  Scenario: User login account by email
+    When I go to login by email on Msite
+    And I input email info on Msite
+    And I input password info on Msite
+    And I click login button on Msite
+    Then I should see account page
