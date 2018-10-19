@@ -41,3 +41,15 @@ Feature: Member Msite Test
     And I input code info on Msite
     And I click on loginbutton on Msite
     Then I should see account page
+
+
+  @MsiteLogout
+  Scenario: User Logout account on Msite
+    When I go to login by email on Msite
+    And I input email info on Msite
+    And I input password info on Msite
+    And I click login button on Msite
+    And I should see account page
+    And I go to setting page
+    And I click Logout button and choose OK button
+    Then I should logout success

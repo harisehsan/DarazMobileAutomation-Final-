@@ -35,5 +35,10 @@ public class Member_Loginemail_Msite_Page extends PageObject {
         this.clicksmsbutton.click();
     }
 
+    public void waitUnstillVisible(){
+        waitUntilPageReady();
+        waitUntilVisible(clickloginbutton);
+    }
+
 
 }
