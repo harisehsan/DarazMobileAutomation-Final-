@@ -12,6 +12,8 @@ public class Member_Loginemail_Msite_Page extends PageObject {
     @FindBy(css = ".mod-input-loginName input") private WebElement inputemail;
     @FindBy(css =".mod-input-password input") private WebElement inputpass;
     @FindBy(className = "login-btn") private WebElement clickloginbutton;
+    @FindBy(css = ".login-foot-btn") private WebElement clicksmsbutton;
+
 
     public void setInputemail(String e) {
         waitUntilPageReady();
@@ -28,7 +30,10 @@ public class Member_Loginemail_Msite_Page extends PageObject {
         this.clickloginbutton.click();
     }
 
-
+    public void setClicksmsbutton(){
+        waitUntilPageReady();
+        this.clicksmsbutton.click();
+    }
 
 
 }

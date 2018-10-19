@@ -32,3 +32,12 @@ Feature: Member Msite Test
     And I input password info on Msite
     And I click login button on Msite
     Then I should see account page
+
+  @MsiteLoginSMS
+  Scenario: User login account by SMS
+    When I go to login by SMS on Msite
+    And I input phonenumber info on Msite
+    And I click the info sendcode button on Msite
+    And I input code info on Msite
+    And I click on loginbutton on Msite
+    Then I should see account page
