@@ -5,21 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
 
-public class Member_Signupemail_Msite_Page extends PageObject {
+public class Member_Complete_Your_Profile_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url1") + "/user/register";
+    public static String page_url = Global.config.getString("member.url1") + "/user/complete-profile";
 
-    @FindBy(css = ".signup-by-mobile-foot-btn") private WebElement signupemail;
     @FindBy(css = ".mod-input-name input") private WebElement inputname;
     @FindBy(css = ".mod-input-email input") private WebElement inputemail;
     @FindBy(css = ".mod-input-password input") private WebElement inputpassword;
-    @FindBy(className = "signup-by-email-btn") private WebElement signupbutton;
+    @FindBy(className = "complete-profile-btn") private WebElement completebutton;
 
 
-    public void setSignupemail(){
-        waitUntilPageReady();
-        this.signupemail.click();
-    }
 
     public void setInputname(String n){
         waitUntilPageReady();
@@ -36,9 +31,9 @@ public class Member_Signupemail_Msite_Page extends PageObject {
         this.inputpassword.sendKeys(p);
     }
 
-    public void setSignupbutton() {
+    public void setCompletebutton() {
         waitUntilPageReady();
-        this.signupbutton.click();
+        this.completebutton.click();
     }
 
 }

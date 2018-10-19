@@ -7,7 +7,7 @@ import pages.PageObject;
 
 public class Member_Account_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url") + "/user/account";
+    public static String page_url = Global.config.getString("member.url1") + "/user/account";
 
     @FindBy(id = "title-wrap") private WebElement accounttittle;
 
