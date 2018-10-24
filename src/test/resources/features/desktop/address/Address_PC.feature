@@ -13,5 +13,6 @@ Feature: Address on PC
     And I select the location 1
     And I input the location 2
     And I input the location 3
+    And I input address detail
     And I click on save button
     Then I should see the new address on account page

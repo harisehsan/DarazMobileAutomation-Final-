@@ -21,6 +21,7 @@ public class Account_Page extends PageObject {
     @FindBy(id = "lzd_current_logon_user_name") private WebElement name_of_user;
     @FindBy(id = "myAccountTrigger") private WebElement myAccount_trigger;
     @FindBy(css = ".account-icon.logout") private WebElement logout;
+    @FindBy(className = "dashboard-address-item shipping") private WebElement shippingdefault;
 
     public void untilLoaded(){
         waitUntilVisible(mainContainer_element);
@@ -38,6 +39,11 @@ public class Account_Page extends PageObject {
     public void setLogout() {
         waitUntilPageReady();
         this.logout.click();
+    }
+
+    public boolean hasAddressName(String addressname){
+        waitUntilPageReady();
+        return this.shippingdefault.getText().equals(addressname);
     }
 
 
