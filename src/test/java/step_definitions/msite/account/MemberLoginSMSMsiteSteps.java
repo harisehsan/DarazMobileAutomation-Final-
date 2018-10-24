@@ -1,10 +1,10 @@
-package step_definitions.account;
+package step_definitions.msite.account;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import global.Global;
-import pages.desktop.account.Member_Loginemail_Msite_Page;
-import pages.desktop.account.Member_Loginsms_Msite_Page;
+import pages.msite.account.Member_Loginemail_Msite_Page;
+import pages.msite.account.Member_Loginsms_Msite_Page;
 import step_definitions.BaseSteps;
 
 public class MemberLoginSMSMsiteSteps extends BaseSteps {

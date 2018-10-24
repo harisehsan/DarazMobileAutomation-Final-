@@ -1,4 +1,4 @@
-package step_definitions.account;
+package step_definitions.desktop.account;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -6,7 +6,7 @@ import pages.desktop.account.Account_Page;
 import pages.desktop.account.Member_AccEdit_PC_Page;
 import step_definitions.BaseSteps;
 
-public class Member_Editname_PC_Steps extends BaseSteps {
+public class MemberEditnamePCSteps extends BaseSteps {
 
     @And("^I go to edit profile page and edit name info")
     public void accessEditName() throws Throwable{

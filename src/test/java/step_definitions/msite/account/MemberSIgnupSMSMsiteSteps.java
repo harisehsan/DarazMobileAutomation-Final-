@@ -1,10 +1,10 @@
-package step_definitions.account;
+package step_definitions.msite.account;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import global.Global;
 import helper.RandomeHelper;
-import pages.desktop.account.Member_SIgnupsms_Msite_Page;
+import pages.msite.account.Member_SIgnupsms_Msite_Page;
 import step_definitions.BaseSteps;
 
 public class MemberSIgnupSMSMsiteSteps extends BaseSteps {
@@ -32,7 +32,6 @@ public class MemberSIgnupSMSMsiteSteps extends BaseSteps {
         on(Member_SIgnupsms_Msite_Page.class).setInputsmscode("888888");
 
     }
-
 
     @And("^I click continue button")
     public void clickContinue() throws Throwable{

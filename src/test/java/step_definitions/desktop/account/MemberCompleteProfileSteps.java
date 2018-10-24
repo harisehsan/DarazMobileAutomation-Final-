@@ -1,4 +1,4 @@
-package step_definitions.account;
+package step_definitions.desktop.account;
 
 import cucumber.api.java.en.And;
 import helper.RandomeHelper;

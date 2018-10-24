@@ -1,4 +1,4 @@
-package pages.desktop.account;
+package pages.msite.account;
 
 import global.Global;
 import org.openqa.selenium.WebElement;
@@ -11,7 +11,8 @@ public class Member_Account_Msite_Page extends PageObject {
 
     @FindBy(id = "title-wrap") private WebElement accounttittle;
 
-    public void setAccounttittle() throws Throwable{
+    public void setAccounttittle() {
         waitUntilVisible(accounttittle);
     }
+
 }

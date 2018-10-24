@@ -1,10 +1,9 @@
-package step_definitions.account;
+package step_definitions.desktop.account;
 
 import java.lang.String;
 
 import cucumber.api.java.en.*;
 import global.Global;
-import pages.desktop.account.Account_Page;
 import pages.desktop.account.Member_Login_Page;
 import step_definitions.BaseSteps;
 
