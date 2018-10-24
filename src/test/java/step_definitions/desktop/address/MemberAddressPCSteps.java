@@ -58,6 +58,6 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @Then("^I should see the new address on account page")
     public void hasAddressName() throws Throwable{
-        on(Account_Page.class).hasAddressName("DEFAULT SHIPPING ADDRESS");
+        on(Member_AddressPC_Page.class).sethasAddress();
     }
 }

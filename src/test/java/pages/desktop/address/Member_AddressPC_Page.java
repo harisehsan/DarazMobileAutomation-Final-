@@ -12,7 +12,7 @@ public class Member_AddressPC_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url") + "/address";
 
-    @FindBy(css = ".next-btn-large") private WebElement addNewAddress;
+    @FindBy(css = ".next-btn-normal") private WebElement addNewAddress;
     @FindBy(css = ".mod-input-name input") private WebElement inputName;
     @FindBy(css = ".mod-input-phone input") private WebElement inputPhone;
     @FindBy(css = ".mod-select-location-tree-1") private WebElement locationTree1;
@@ -21,6 +21,7 @@ public class Member_AddressPC_Page extends PageObject {
     @FindBy(css = ".mod-select-location-tree-3") private WebElement locationTree3;
     @FindBy(css = ".mod-input-detailAddress input") private WebElement inputAddress;
     @FindBy(css =".mod-address-form-btn") private WebElement clickSavebtn;
+    @FindBy(className = "mod-address-book-default") private WebElement hasAddress;
 
 
     public void setAddNewAddress(){
@@ -52,6 +53,7 @@ public class Member_AddressPC_Page extends PageObject {
         }
     }
 
+
     public void setLocationTree2(){
         waitUntilPageReady();
         this.locationTree2.click();
@@ -71,4 +73,10 @@ public class Member_AddressPC_Page extends PageObject {
         waitUntilPageReady();
         this.clickSavebtn.click();
     }
+
+    public boolean sethasAddress() {
+        waitUntilVisible(hasAddress);
+        return this.hasAddress.isDisplayed();
+    }
+
 }
