@@ -1,4 +1,4 @@
-package step_definitions.wishlist;
+package step_definitions.desktop.wishlist;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

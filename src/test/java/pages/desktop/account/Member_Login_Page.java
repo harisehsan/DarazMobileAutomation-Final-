@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
 
-
-
 public class Member_Login_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url")+"/user/login";

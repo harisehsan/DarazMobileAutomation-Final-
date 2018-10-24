@@ -1,4 +1,4 @@
-package step_definitions.pdp;
+package step_definitions.desktop.pdp;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;

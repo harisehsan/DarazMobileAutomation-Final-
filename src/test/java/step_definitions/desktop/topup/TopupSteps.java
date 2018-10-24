@@ -1,4 +1,4 @@
-package step_definitions.topup;
+package step_definitions.desktop.topup;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;

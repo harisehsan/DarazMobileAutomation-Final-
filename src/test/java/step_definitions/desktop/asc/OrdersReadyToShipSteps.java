@@ -1,10 +1,10 @@
-package step_definitions.asc;
+package step_definitions.desktop.asc;
 
 import allure.AllureAttachment;
 import cucumber.api.java.en.Then;
 import global.Global;
-import pages.desktop.asc.orders_management.Rts_Form;
 import pages.desktop.asc.orders_management.OrderManagement_Page;
+import pages.desktop.asc.orders_management.Rts_Form;
 import step_definitions.BaseSteps;
 
 public class OrdersReadyToShipSteps extends BaseSteps {

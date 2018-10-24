@@ -1,4 +1,4 @@
-package step_definitions.checkout;
+package step_definitions.desktop.checkout;
 
 import cucumber.api.java.en.And;
 import pages.desktop.checkout.TopupSuccessful_Page;

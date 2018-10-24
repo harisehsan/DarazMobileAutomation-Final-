@@ -1,4 +1,4 @@
-package step_definitions.asc;
+package step_definitions.desktop.asc;
 
 import cucumber.api.java.en.Then;
 import global.Global;

@@ -1,4 +1,4 @@
-package support;
+package test_runner.support;
 
 import allure.AllureGenerator;
 import browser.factory.BrowserFactory;

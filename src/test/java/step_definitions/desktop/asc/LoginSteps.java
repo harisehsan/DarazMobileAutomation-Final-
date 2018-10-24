@@ -1,4 +1,4 @@
-package step_definitions.asc;
+package step_definitions.desktop.asc;
 
 import com.typesafe.config.Config;
 import cucumber.api.java.en.Given;
