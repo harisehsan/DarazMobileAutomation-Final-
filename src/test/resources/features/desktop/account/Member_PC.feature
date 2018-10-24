@@ -22,7 +22,7 @@ Feature: Member PC Test
     And I input the name information
     And I input the email information
     And On signup by SMS i click submit button
-    Then I should see the account page
+    Then I should see the account is verified
 
 
   @Loginbyemail

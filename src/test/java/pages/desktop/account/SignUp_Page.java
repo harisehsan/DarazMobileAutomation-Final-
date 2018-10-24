@@ -31,23 +31,27 @@ public class SignUp_Page extends PageObject {
 
     public void emailtextfiel(String s) {
         waitUntilPageReady();
+        waitUntilVisible(email);
         this.email.sendKeys(s);
     }
 
     public void passwordfield(String p) {
         waitUntilPageReady();
+        waitUntilVisible(password);
         this.password.sendKeys(p);
     }
 
 
     public void namefield(String n) {
         waitUntilPageReady();
+        waitUntilVisible(name);
         this.name.sendKeys(n);
     }
 
     public void submitButton() {
-        this.submit.click();
         waitUntilPageReady();
+        waitUntilVisible(submit);
+        this.submit.click();
 
     }
 }

@@ -21,30 +21,34 @@ public class Account_Page extends PageObject {
     @FindBy(id = "lzd_current_logon_user_name") private WebElement name_of_user;
     @FindBy(id = "myAccountTrigger") private WebElement myAccount_trigger;
     @FindBy(css = ".account-icon.logout") private WebElement logout;
-    @FindBy(className = "dashboard-address-item shipping") private WebElement shippingdefault;
+    @FindBy(id = "lzd_current_logon_user_isVerified") private WebElement isVerified;
 
     public void untilLoaded(){
         waitUntilVisible(mainContainer_element);
     }
     public boolean hasName(String name) {
         waitUntilPageReady();
+        waitUntilVisible(name_of_user);
         return this.name_of_user.getText().equals(name);
+    }
+
+    public boolean isVerified(){
+        waitUntilVisible(isVerified);
+        return this.isVerified.isDisplayed();
     }
 
     public void setMyAccount_trigger() {
         waitUntilPageReady();
+        waitUntilVisible(myAccount_trigger);
         this.myAccount_trigger.click();
     }
 
     public void setLogout() {
         waitUntilPageReady();
+        waitUntilVisible(logout);
         this.logout.click();
     }
 
-    public boolean hasAddressName(String addressname){
-        waitUntilPageReady();
-        return this.shippingdefault.getText().equals(addressname);
-    }
 
 
 }

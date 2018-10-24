@@ -18,21 +18,25 @@ public class Member_Complete_Your_Profile_Page extends PageObject {
 
     public void setInputname(String n){
         waitUntilPageReady();
+        waitUntilVisible(inputname);
         this.inputname.sendKeys(n);
     }
 
     public void setInputemail(String e) {
         waitUntilPageReady();
+        waitUntilVisible(inputemail);
         this.inputemail.sendKeys(e);
     }
 
     public void setInputpassword(String p){
         waitUntilPageReady();
+        waitUntilVisible(inputpassword);
         this.inputpassword.sendKeys(p);
     }
 
     public void setCompletebutton() {
         waitUntilPageReady();
+        waitUntilVisible(completebutton);
         this.completebutton.click();
     }
 

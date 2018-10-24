@@ -15,16 +15,19 @@ public class Member_AccEdit_PC_Page extends PageObject {
 
     public void setClearOldname(){
         waitUntilPageReady();
+        waitUntilVisible(clearOldname);
         this.clearOldname.click();
     }
 
     public void setEditName(String en) {
         waitUntilPageReady();
+        waitUntilVisible(editName);
         this.editName.sendKeys(en);
     }
 
     public void setSaveChangesbtn() {
         waitUntilPageReady();
+        waitUntilVisible(saveChangesbtn);
         this.saveChangesbtn.click();
     }
 

@@ -26,21 +26,25 @@ public class Member_AddressPC_Page extends PageObject {
 
     public void setAddNewAddress(){
         waitUntilPageReady();
+        waitUntilVisible(addNewAddress);
         this.addNewAddress.click();
     }
 
     public void setInputName(String name){
         waitUntilPageReady();
+        waitUntilVisible(inputName);
         this.inputName.sendKeys(name);
     }
 
     public void setInputPhone(String ph){
         waitUntilPageReady();
+        waitUntilVisible(inputPhone);
         this.inputPhone.sendKeys(ph);
     }
 
     public void setLocationTree1(){
         waitUntilPageReady();
+        waitUntilVisible(locationTree1);
         this.locationTree1.click();
 
     }
@@ -56,21 +60,25 @@ public class Member_AddressPC_Page extends PageObject {
 
     public void setLocationTree2(){
         waitUntilPageReady();
+        waitUntilVisible(locationTree2);
         this.locationTree2.click();
     }
 
     public void setLocationTree3(){
         waitUntilPageReady();
+        waitUntilVisible(locationTree3);
         this.locationTree3.click();
     }
 
     public void setInputAddress(String add){
         waitUntilPageReady();
+        waitUntilVisible(inputAddress);
         this.inputAddress.sendKeys(add);
     }
 
     public void setClickSavebtn(){
         waitUntilPageReady();
+        waitUntilVisible(clickSavebtn);
         this.clickSavebtn.click();
     }
 

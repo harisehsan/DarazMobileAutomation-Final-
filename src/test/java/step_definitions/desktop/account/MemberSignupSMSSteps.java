@@ -1,6 +1,7 @@
 package step_definitions.desktop.account;
 import cucumber.api.java.en.*;
 import global.Global;
+import pages.desktop.account.Account_Page;
 import pages.desktop.account.Member_SignUp_SMS_Page;
 import step_definitions.BaseSteps;
 import helper.RandomeHelper;
@@ -38,8 +39,9 @@ public class MemberSignupSMSSteps extends BaseSteps {
         on(Member_SignUp_SMS_Page.class).setSubmitbutton();
     }
 
-
-
-
+    @And("^I should see the account is verified")
+    public void isVerified() throws Throwable {
+        on(Account_Page.class).isVerified();
+    }
 
 }

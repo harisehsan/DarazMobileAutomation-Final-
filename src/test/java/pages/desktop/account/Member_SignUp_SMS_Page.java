@@ -17,32 +17,38 @@ public class Member_SignUp_SMS_Page extends PageObject {
 
     public void setInputphone(String s) {
         waitUntilPageReady();
+        waitUntilVisible(inputphone);
         this.inputphone.sendKeys(s);
     }
 
     public void setSendcode(){
         waitUntilPageReady();
+        waitUntilVisible(sendcode);
         this.sendcode.click();
     }
 
     public void setInputsmscode(String m){
         waitUntilPageReady();
+        waitUntilVisible(inputsmscode);
         this.inputsmscode.sendKeys(m);
     }
 
     public void setInputpassword(String p){
         waitUntilPageReady();
+        waitUntilVisible(inputpassword);
         this.inputpassword.sendKeys(p);
 
     }
 
     public void setInputemail(String e){
         waitUntilPageReady();
+        waitUntilVisible(inputemail);
         this.inputemail.sendKeys(e);
     }
 
     public void setSubmitbutton(){
         waitUntilPageReady();
+        waitUntilVisible(submitbutton);
         this.submitbutton.click();
     }
 
