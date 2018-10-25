@@ -13,7 +13,7 @@
         <aspectj.version>1.9.1</aspectj.version>
         <timestamp>${maven.build.timestamp}</timestamp>
         <maven.build.timestamp.format>yyyy-MM-dd.HH:mm:ss</maven.build.timestamp.format>
-        <env>bd.staging</env>
+        <env>lk.live</env>
         <allure.result.dir>${project.build.directory}/allure-results</allure.result.dir>
         <allure.report.dir>${project.build.directory}/allure-report</allure.report.dir>
     </properties>

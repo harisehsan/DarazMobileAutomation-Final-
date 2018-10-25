@@ -43,11 +43,14 @@ public class Browser {
         return String.valueOf(((JavascriptExecutor) driver).executeScript("return document.getElementsByTagName('body')[0].innerHTML"));
     }
 
+    public void refresh(){
+        driver.navigate().refresh();
+    }
+
     public void openNewTab(String url){
         ((JavascriptExecutor) driver).executeScript("window.open(arguments[0], '_blank');", url);
         Set<String> winHandles = driver.getWindowHandles();
         String[] windHandlesArray = winHandles.toArray(new String[0]);
         driver.switchTo().window(windHandlesArray[windHandlesArray.length-1]);
     }
-
 }
