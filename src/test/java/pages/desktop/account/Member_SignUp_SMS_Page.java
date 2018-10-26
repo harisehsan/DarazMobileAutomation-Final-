@@ -2,6 +2,8 @@ package pages.desktop.account;
 
 import global.Global;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
 
@@ -14,6 +16,7 @@ public class Member_SignUp_SMS_Page extends PageObject {
     @FindBy(css = ".mod-input-password input") private WebElement inputpassword;
     @FindBy(css = "[type='text']") private WebElement inputemail;
     @FindBy(className = "mod-login-btn") private WebElement submitbutton;
+    @FindBy(css = ".btn_slide") private WebElement sliderbtn;
 
     public void setInputphone(String s) {
         waitUntilPageReady();
@@ -50,6 +53,12 @@ public class Member_SignUp_SMS_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(submitbutton);
         this.submitbutton.click();
+    }
+
+    public void setSliderbtn(){
+        Actions move = new Actions(Global.browser.getWebDriver());
+        Action actions = move.clickAndHold(sliderbtn).moveByOffset(500,0).release().build();
+        actions.perform();
     }
 
 }

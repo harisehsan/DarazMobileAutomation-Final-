@@ -35,6 +35,11 @@ public class MemberSignupSteps extends BaseSteps {
         on(SignUp_Page.class).submitButton();
     }
 
+    @And("^I click and hold on slider button")
+    public void sliderbtn() throws Throwable {
+        on(SignUp_Page.class).setSliderbtn();
+    }
+
 
     @Then("^I should see the account page$")
     public void hasName() {
