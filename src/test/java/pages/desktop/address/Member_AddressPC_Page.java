@@ -1,6 +1,7 @@
 package pages.desktop.address;
 
 import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
@@ -22,6 +23,7 @@ public class Member_AddressPC_Page extends PageObject {
     @FindBy(css = ".mod-input-detailAddress input") private WebElement inputAddress;
     @FindBy(css =".mod-address-form-btn") private WebElement clickSavebtn;
     @FindBy(className = "mod-address-book-default") private WebElement hasAddress;
+    @FindBy(css = ".mod-input-detailAddress input") private WebElement detailAddress;
 
 
     public void setAddNewAddress(){
@@ -52,8 +54,9 @@ public class Member_AddressPC_Page extends PageObject {
     public void setSelectTree(){
         if(selectTree1.size() > 0){
             WebElement random_element = selectTree1.get(new Random().nextInt(selectTree1.size()));
-            random_element.click();
             waitUntilVisible(random_element);
+            random_element.click();
+            waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         }
     }
 
@@ -85,6 +88,11 @@ public class Member_AddressPC_Page extends PageObject {
     public boolean sethasAddress() {
         waitUntilVisible(hasAddress);
         return this.hasAddress.isDisplayed();
+    }
+
+    public void setDetailAddress(String da){
+        waitUntilVisible(detailAddress);
+        this.detailAddress.sendKeys(da);
     }
 
 }
