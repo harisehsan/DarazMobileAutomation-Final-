@@ -15,11 +15,10 @@ import java.util.concurrent.TimeUnit;
 public class PageObject {
 
     private WebDriver driver;
-    private static final int DEFAULT_TIMEOUT = 40;
+    private static final int DEFAULT_TIMEOUT = 30;
 
     protected PageObject() {
         driver = Global.browser.getWebDriver();
-//        driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
         PageFactory.initElements(driver, this);
     }
 
