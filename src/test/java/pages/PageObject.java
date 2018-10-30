@@ -7,8 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * Created by admin.son.ton on 1/23/18.
  */
@@ -94,6 +92,4 @@ public class PageObject {
         new WebDriverWait(driver, time)
                 .until(ExpectedConditions.invisibilityOfElementLocated(by));
     }
-
-
 }
