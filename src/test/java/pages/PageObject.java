@@ -92,5 +92,4 @@ public class PageObject {
         new WebDriverWait(driver, time)
                 .until(ExpectedConditions.invisibilityOfElementLocated(by));
     }
-
 }

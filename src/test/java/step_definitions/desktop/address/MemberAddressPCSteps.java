@@ -1,7 +1,6 @@
 package step_definitions.desktop.address;
 
 import cucumber.api.java.en.*;
-import cucumber.api.java.en_lol.AN;
 import global.Global;
 import pages.desktop.account.Account_Page;
 import pages.desktop.account.Member_AccEdit_PC_Page;
@@ -54,6 +53,11 @@ public class MemberAddressPCSteps extends BaseSteps {
     @And("^I click on save button")
     public void clickSave() throws Throwable{
         on(Member_AddressPC_Page.class).setClickSavebtn();
+    }
+
+    @And("^I input floor/unit number address detail")
+    public void inputfloor() throws Throwable{
+        on(Member_AddressPC_Page.class).setDetailAddress("123 QA add new address");
     }
 
 
