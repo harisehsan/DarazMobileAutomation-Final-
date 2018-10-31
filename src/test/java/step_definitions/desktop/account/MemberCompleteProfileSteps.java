@@ -1,6 +1,7 @@
 package step_definitions.desktop.account;
 
 import cucumber.api.java.en.And;
+import global.Global;
 import helper.RandomeHelper;
 import pages.desktop.account.Member_Complete_Your_Profile_Page;
 import step_definitions.BaseSteps;
@@ -13,7 +14,8 @@ public class MemberCompleteProfileSteps extends BaseSteps {
     }
     @And("^I will input the name on form")
     public void inputName() throws Throwable{
-        on(Member_Complete_Your_Profile_Page.class).setInputname("QA testing signup on Msite");
+        String namemsite = Global.config.getString("member.account.namemsite");
+        on(Member_Complete_Your_Profile_Page.class).setInputname(namemsite);
     }
 
 
@@ -25,7 +27,8 @@ public class MemberCompleteProfileSteps extends BaseSteps {
 
     @And("^I will input the password on form")
     public void inputPass() throws Throwable{
-        on(Member_Complete_Your_Profile_Page.class).setInputpassword("q12345");
+        String pass = Global.config.getString("member.account.pass");
+        on(Member_Complete_Your_Profile_Page.class).setInputpassword(pass);
     }
 
 

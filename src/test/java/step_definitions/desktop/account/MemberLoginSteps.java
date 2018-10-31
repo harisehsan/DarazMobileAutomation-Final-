@@ -5,6 +5,7 @@ import java.lang.String;
 import cucumber.api.java.en.*;
 import global.Global;
 import pages.desktop.account.Member_Login_Page;
+import pages.msite.account.Member_Loginemail_Msite_Page;
 import step_definitions.BaseSteps;
 
 public class MemberLoginSteps extends BaseSteps {
@@ -33,6 +34,12 @@ public class MemberLoginSteps extends BaseSteps {
     @And("^I click submit button")
     public void submitButton() throws Throwable {
         on(Member_Login_Page.class).submitButton();
+    }
+
+    @And("I login with new password")
+    public void loginNewPass() throws Throwable {
+        String new_pass = Global.config.getString("member.account.newpass");
+        on(Member_Login_Page.class).loginNewPass((String)Global.map.get("email_random"),new_pass);
     }
 
 }

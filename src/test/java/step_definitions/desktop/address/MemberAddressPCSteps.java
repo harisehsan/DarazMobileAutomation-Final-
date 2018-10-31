@@ -12,9 +12,10 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I open add new address page and input name info")
     public void inputName() throws Throwable{
+        String name = Global.config.getString("member.account.name");
         visit(Member_AddressPC_Page.class);
         on(Member_AddressPC_Page.class).setAddNewAddress();
-        on(Member_AddressPC_Page.class).setInputName("QA testing adding new address");
+        on(Member_AddressPC_Page.class).setInputName(name);
 
     }
 
@@ -47,7 +48,8 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I input address detail")
     public void inputAddress() throws Throwable{
-        on(Member_AddressPC_Page.class).setInputAddress("QA add new address");
+        String addressdetail = Global.config.getString("member.account.addressdetail");
+        on(Member_AddressPC_Page.class).setInputAddress(addressdetail);
 
     }
 

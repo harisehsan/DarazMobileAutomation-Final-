@@ -21,7 +21,8 @@ public class MemberSignupSMSSteps extends BaseSteps {
     }
     @And("^I input password information on signup by sms")
     public void inputPass() throws Throwable {
-        on(Member_SignUp_SMS_Page.class).setInputpassword("q12345");
+        String pass = Global.config.getString("member.account.pass");
+        on(Member_SignUp_SMS_Page.class).setInputpassword(pass);
     }
 
     @And("^I click the sendcode button")
@@ -31,7 +32,8 @@ public class MemberSignupSMSSteps extends BaseSteps {
 
     @And("^I input the SMS code information")
     public void inputSMSCode() throws Throwable {
-        on(Member_SignUp_SMS_Page.class).setInputsmscode("888888");
+        String smscode = Global.config.getString("member.account.smscode");
+        on(Member_SignUp_SMS_Page.class).setInputsmscode(smscode);
     }
 
     @And("^On signup by SMS i click submit button")

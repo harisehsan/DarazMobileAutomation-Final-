@@ -35,8 +35,18 @@ public class Member_Login_Page extends PageObject {
         submit.click();
     }
 
+
     public void hasID(){
         waitUntilVisible(login);
+    }
+
+    public void loginNewPass(String x, String y){
+        waitUntilPageReady();
+        waitUntilVisible(email);
+        this.email.sendKeys(x);
+        this.password.sendKeys(y);
+        this.submit.click();
+
     }
 
 
