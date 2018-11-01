@@ -13,19 +13,19 @@ public class Member_AccEdit_PC_Page extends PageObject {
     @FindBy(className = "mod-input-close-icon") private WebElement clearOldname;
     @FindBy(css = ".next-btn-large") private WebElement saveChangesbtn;
 
-    public void setClearOldname(){
+    public void clearOldName(){
         waitUntilPageReady();
         waitUntilVisible(clearOldname);
         this.clearOldname.click();
     }
 
-    public void setEditName(String en) {
+    public void editName(String newName) {
         waitUntilPageReady();
         waitUntilVisible(editName);
-        this.editName.sendKeys(en);
+        this.editName.sendKeys(newName);
     }
 
-    public void setSaveChangesbtn() {
+    public void saveChangesBtn() {
         waitUntilPageReady();
         waitUntilVisible(saveChangesbtn);
         this.saveChangesbtn.click();

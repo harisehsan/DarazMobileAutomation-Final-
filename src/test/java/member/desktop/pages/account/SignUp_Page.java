@@ -28,29 +28,29 @@ public class SignUp_Page extends PageObject {
     @FindBy(css = ".btn_slide") private WebElement sliderbtn;
 
 
-    public void signemail() {
+    public void signEmail() {
         waitUntilPageReady();
         waitUntilVisible(emailbutton);
         emailbutton.click();
     }
 
-    public void emailtextfiel(String s) {
+    public void emailTextField(String emailInfo) {
         waitUntilPageReady();
         waitUntilVisible(email);
-        this.email.sendKeys(s);
+        this.email.sendKeys(emailInfo);
     }
 
-    public void passwordfield(String p) {
+    public void passWordField(String pass) {
         waitUntilPageReady();
         waitUntilVisible(password);
-        this.password.sendKeys(p);
+        this.password.sendKeys(pass);
     }
 
 
-    public void namefield(String n) {
+    public void nameField(String nameInfo) {
         waitUntilPageReady();
         waitUntilVisible(name);
-        this.name.sendKeys(n);
+        this.name.sendKeys(nameInfo);
     }
 
     public void submitButton() {

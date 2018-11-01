@@ -16,17 +16,17 @@ public class Member_Login_Page extends PageObject {
     @FindBy(className = "mod-login-btn") private WebElement login;
 
 
-    public void loginEmail(String em){
+    public void loginEmail(String emailInfo){
         waitUntilPageReady();
         waitUntilVisible(email);
-        this.email.sendKeys(em);
+        this.email.sendKeys(emailInfo);
 
     }
 
-    public void loginPass(String pa){
+    public void loginPass(String pass){
         waitUntilPageReady();
         waitUntilVisible(password);
-        this.password.sendKeys(pa);
+        this.password.sendKeys(pass);
     }
 
     public void submitButton(){
@@ -35,8 +35,18 @@ public class Member_Login_Page extends PageObject {
         submit.click();
     }
 
+
     public void hasID(){
         waitUntilVisible(login);
+    }
+
+    public void loginNewPass(String emailinfo, String newpass){
+        waitUntilPageReady();
+        waitUntilVisible(email);
+        this.email.sendKeys(emailinfo);
+        this.password.sendKeys(newpass);
+        this.submit.click();
+
     }
 
 

@@ -84,6 +84,23 @@ Feature: Member PC Test for Daraz project
     Then I logout successful
 
 
+  @Changepassword
+  Scenario: Guest signup new account by email
+    When I go to the sign up page by email
+    And I input the email information
+    And I input the password and repassword information
+    And I input the name information
+    And I click on submit button
+    And I go to change password page
+    And I click on my account menu
+    And I click on logout account
+    And I login with new password
+    Then I should see the account page
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-package member.msite.pages.msite.account;
+package member.msite.pages.account;
 
 import global.Global;
 import org.openqa.selenium.WebElement;
@@ -14,22 +14,22 @@ public class Member_SIgnupsms_Msite_Page extends PageObject {
     @FindBy(css = ".mod-input-sms input") private WebElement inputsmscode;
     @FindBy(className = "signup-by-mobile-btn") private WebElement clickcontinue;
 
-    public void setInputphone(String p){
+    public void inputPhone(String phone){
         waitUntilPageReady();
-        this.inputphone.sendKeys(p);
+        this.inputphone.sendKeys(phone);
     }
 
-    public void setClicksend() {
+    public void clickSend() {
         waitUntilPageReady();
         this.clicksend.click();
     }
 
-    public void setInputsmscode(String s) {
+    public void inputSMSCode(String smsCode) {
         waitUntilPageReady();
-        this.inputsmscode.sendKeys(s);
+        this.inputsmscode.sendKeys(smsCode);
     }
 
-    public void setClickcontinue() {
+    public void clickContinue() {
         waitUntilPageReady();
         this.clickcontinue.click();
     }

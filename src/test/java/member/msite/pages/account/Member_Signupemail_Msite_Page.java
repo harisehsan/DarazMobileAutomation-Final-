@@ -1,4 +1,4 @@
-package member.msite.pages.msite.account;
+package member.msite.pages.account;
 
 import global.Global;
 import org.openqa.selenium.WebElement;
@@ -16,27 +16,27 @@ public class Member_Signupemail_Msite_Page extends PageObject {
     @FindBy(className = "signup-by-email-btn") private WebElement signupbutton;
 
 
-    public void setSignupemail(){
+    public void signUpEmail(){
         waitUntilPageReady();
         this.signupemail.click();
     }
 
-    public void setInputname(String n){
+    public void inputName(String name){
         waitUntilPageReady();
-        this.inputname.sendKeys(n);
+        this.inputname.sendKeys(name);
     }
 
-    public void setInputemail(String e) {
+    public void inputEmail(String email) {
         waitUntilPageReady();
-        this.inputemail.sendKeys(e);
+        this.inputemail.sendKeys(email);
     }
 
-    public void setInputpassword(String p){
+    public void inputPassword(String pass){
         waitUntilPageReady();
-        this.inputpassword.sendKeys(p);
+        this.inputpassword.sendKeys(pass);
     }
 
-    public void setSignupbutton() {
+    public void signUpButton() {
         waitUntilPageReady();
         this.signupbutton.click();
     }

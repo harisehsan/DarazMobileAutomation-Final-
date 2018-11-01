@@ -17,7 +17,7 @@ public class Login_Page extends PageObject {
     @FindBy(css = "[type='password']") private WebElement password;
     @FindBy(css = ".mod-login-btn button") private WebElement submit;
 
-    public void login(String email, String password){
+    public void logIn(String email, String password){
         waitUntilPageReady();
         this.email.sendKeys(email);
         this.password.sendKeys(password);

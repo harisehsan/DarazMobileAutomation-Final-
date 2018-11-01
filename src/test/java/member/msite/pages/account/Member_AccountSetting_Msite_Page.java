@@ -1,4 +1,4 @@
-package member.msite.pages.msite.account;
+package member.msite.pages.account;
 
 import global.Global;
 import org.openqa.selenium.WebElement;
@@ -13,12 +13,12 @@ public class Member_AccountSetting_Msite_Page extends PageObject {
     @FindBy(className = "ok") private WebElement okbutton;
     @FindBy(className = "cancel") private WebElement cancelbutton;
 
-    public void setLogout(){
+    public void logOut(){
         waitUntilPageReady();
         this.logout.click();
     }
 
-    public void setOkbutton(){
+    public void setOkButton(){
         waitUntilPageReady();
         this.okbutton.click();
     }

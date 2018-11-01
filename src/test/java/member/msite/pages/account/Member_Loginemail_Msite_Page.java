@@ -1,4 +1,4 @@
-package member.msite.pages.msite.account;
+package member.msite.pages.account;
 
 import global.Global;
 import org.openqa.selenium.WebElement;
@@ -15,22 +15,22 @@ public class Member_Loginemail_Msite_Page extends PageObject {
     @FindBy(css = ".login-foot-btn") private WebElement clicksmsbutton;
 
 
-    public void setInputemail(String e) {
+    public void inputEmail(String email) {
         waitUntilPageReady();
-        this.inputemail.sendKeys(e);
+        this.inputemail.sendKeys(email);
     }
 
-    public void setInputpass(String p) {
+    public void inputPass(String pass) {
         waitUntilPageReady();
-        this.inputpass.sendKeys(p);
+        this.inputpass.sendKeys(pass);
     }
 
-    public void setClickloginbutton(){
+    public void clickLoginButton(){
         waitUntilPageReady();
         this.clickloginbutton.click();
     }
 
-    public void setClicksmsbutton(){
+    public void clickSMSButton(){
         waitUntilPageReady();
         this.clicksmsbutton.click();
     }
