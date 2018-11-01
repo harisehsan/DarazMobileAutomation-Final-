@@ -24,7 +24,6 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
 
     @And("^I input the email on form")
     public void inputEmail() throws Throwable {
-//        on(Member_Signupemail_Msite_Page.class).setInputEmail(RandomeHelper.generateEmail() + "@hotmail.com");
         String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
         Global.map.put("email_random",randomEmail);
         on(Member_Signupemail_Msite_Page.class).inputEmail((String) Global.map.get("email_random"));

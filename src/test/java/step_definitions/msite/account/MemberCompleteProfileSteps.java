@@ -1,27 +1,30 @@
-package step_definitions.desktop.account;
+package step_definitions.msite.account;
 
 import cucumber.api.java.en.And;
 import global.Global;
 import helper.RandomeHelper;
-import pages.desktop.account.Member_Complete_Your_Profile_Page;
+import pages.msite.account.Member_Complete_Your_Profile_Page;
 import step_definitions.BaseSteps;
 
 public class MemberCompleteProfileSteps extends BaseSteps {
 
     @And("^I jumps to email info page")
-    public void jumpEmailInfo() throws Throwable{
+    public void jumpEmailInfo() throws Throwable {
         visit(Member_Complete_Your_Profile_Page.class);
     }
+
     @And("^I will input the name on form")
-    public void inputName() throws Throwable{
-        String namemsite = Global.config.getString("member.account.namemsite");
-        on(Member_Complete_Your_Profile_Page.class).inputName(namemsite);
+    public void inputName() throws Throwable {
+        String name_msite = Global.config.getString("member.account.name_msite");
+        on(Member_Complete_Your_Profile_Page.class).inputName(name_msite);
     }
 
 
     @And("^I will input the email on form")
-    public void inputEmail() throws Throwable{
-        on(Member_Complete_Your_Profile_Page.class).inputEmail(RandomeHelper.generateEmail()+"@hotmail.com");
+    public void inputEmail() throws Throwable {
+        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
+        Global.map.put("email_random",randomEmail);
+        on(Member_Complete_Your_Profile_Page.class).inputEmail((String) Global.map.get("email_random"));
     }
 
 

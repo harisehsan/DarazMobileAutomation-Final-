@@ -21,7 +21,7 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I input the mobile phone number")
     public void inputPhone() throws Throwable{
-        String mobile = Global.config.getString("member.phonenumberlogin");
+        String mobile = Global.config.getString("member.phone_number_login");
         on(Member_AddressPC_Page.class).inputPhone(mobile);
 
     }
@@ -48,7 +48,7 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I input address detail")
     public void inputAddress() throws Throwable{
-        String addressdetail = Global.config.getString("member.account.addressdetail");
+        String addressdetail = Global.config.getString("member.account.address_detail");
         on(Member_AddressPC_Page.class).inputAddress(addressdetail);
 
     }

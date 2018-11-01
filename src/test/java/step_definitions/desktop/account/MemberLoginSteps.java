@@ -19,7 +19,7 @@ public class MemberLoginSteps extends BaseSteps {
 
     @Given("I go to the login page and input the mobilephone information")
     public void loginMobilePhone() throws Throwable {
-        String mobilephone = Global.config.getString("member.phonenumberlogin");
+        String mobilephone = Global.config.getString("member.phone_number_login");
         visit(Member_Login_Page.class);
         on(Member_Login_Page.class).loginEmail(mobilephone);
     }
@@ -38,7 +38,7 @@ public class MemberLoginSteps extends BaseSteps {
 
     @And("I login with new password")
     public void loginNewPass() throws Throwable {
-        String new_pass = Global.config.getString("member.account.newpass");
+        String new_pass = Global.config.getString("member.account.new_pass");
         on(Member_Login_Page.class).loginNewPass((String)Global.map.get("email_random"),new_pass);
     }
 

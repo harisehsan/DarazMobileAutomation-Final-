@@ -11,10 +11,10 @@ public class MemberEditnamePCSteps extends BaseSteps {
 
     @And("^I go to edit profile page and edit name info")
     public void accessEditName() throws Throwable{
-        String nameedit = Global.config.getString("member.account.nameedit");
+        String name_edit = Global.config.getString("member.account.name_edit");
         visit(Member_AccEdit_PC_Page.class);
         on(Member_AccEdit_PC_Page.class).clearOldName();
-        on(Member_AccEdit_PC_Page.class).editName(nameedit);
+        on(Member_AccEdit_PC_Page.class).editName(name_edit);
     }
 
     @And("^I click on savechanges button")
