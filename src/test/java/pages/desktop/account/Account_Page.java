@@ -22,6 +22,7 @@ public class Account_Page extends PageObject {
     @FindBy(id = "myAccountTrigger") private WebElement myAccount_trigger;
     @FindBy(css = ".account-icon.logout") private WebElement logout;
     @FindBy(id = "lzd_current_logon_user_isVerified") private WebElement isVerified;
+    @FindBy(id = "My-profile") private WebElement myaccountprofile;
 
     public void untilLoaded(){
         waitUntilVisible(mainContainer_element);
@@ -43,7 +44,13 @@ public class Account_Page extends PageObject {
         this.myAccount_trigger.click();
     }
 
-    public void setLogout() {
+    public void setMyAccountProfile() {
+        waitUntilPageReady();
+        waitUntilVisible(myaccountprofile);
+        this.myaccountprofile.click();
+    }
+
+    public void logOut() {
         waitUntilPageReady();
         waitUntilVisible(logout);
         this.logout.click();

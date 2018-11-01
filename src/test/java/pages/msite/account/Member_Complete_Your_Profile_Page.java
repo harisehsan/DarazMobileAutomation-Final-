@@ -1,4 +1,4 @@
-package pages.desktop.account;
+package pages.msite.account;
 
 import global.Global;
 import org.openqa.selenium.WebElement;
@@ -16,25 +16,25 @@ public class Member_Complete_Your_Profile_Page extends PageObject {
 
 
 
-    public void setInputname(String n){
+    public void inputName(String name){
         waitUntilPageReady();
         waitUntilVisible(inputname);
-        this.inputname.sendKeys(n);
+        this.inputname.sendKeys(name);
     }
 
-    public void setInputemail(String e) {
+    public void inputEmail(String email) {
         waitUntilPageReady();
         waitUntilVisible(inputemail);
-        this.inputemail.sendKeys(e);
+        this.inputemail.sendKeys(email);
     }
 
-    public void setInputpassword(String p){
+    public void inputPassword(String pass){
         waitUntilPageReady();
         waitUntilVisible(inputpassword);
-        this.inputpassword.sendKeys(p);
+        this.inputpassword.sendKeys(pass);
     }
 
-    public void setCompletebutton() {
+    public void completeButton() {
         waitUntilPageReady();
         waitUntilVisible(completebutton);
         this.completebutton.click();

@@ -8,7 +8,7 @@ import helper.RandomeHelper;
 
 public class MemberSignupSMSSteps extends BaseSteps {
     @Given("^I go to the sign up page by smsphone")
-    public void signupPage() throws Throwable {
+    public void signUpPage() throws Throwable {
         visit(Member_SignUp_SMS_Page.class);
         Global.browser.refresh();
 
@@ -16,17 +16,18 @@ public class MemberSignupSMSSteps extends BaseSteps {
 
     @And("^I input the phonenumber")
     public void inputPhone() throws Throwable {
-        String mobilephone = Global.config.getString("member.phonenumbersignup");
-        on(Member_SignUp_SMS_Page.class).setInputphone(mobilephone + RandomeHelper.generatePhoneNumber());
+        String mobilephone = Global.config.getString("member.phone_number_signup");
+        on(Member_SignUp_SMS_Page.class).inputPhone(mobilephone + RandomeHelper.generatePhoneNumber());
     }
     @And("^I input password information on signup by sms")
     public void inputPass() throws Throwable {
-        on(Member_SignUp_SMS_Page.class).setInputpassword("q12345");
+        String pass = Global.config.getString("member.account.pass");
+        on(Member_SignUp_SMS_Page.class).inputPassword(pass);
     }
 
     @And("^I click the sendcode button")
     public void sendCode() throws Throwable {
-        on(Member_SignUp_SMS_Page.class).setSendcode();
+        on(Member_SignUp_SMS_Page.class).sendCode();
     }
 
     @And("^I click the slider button")
@@ -36,12 +37,13 @@ public class MemberSignupSMSSteps extends BaseSteps {
 
     @And("^I input the SMS code information")
     public void inputSMSCode() throws Throwable {
-        on(Member_SignUp_SMS_Page.class).setInputsmscode("888888");
+        String smscode = Global.config.getString("member.account.sms_code");
+        on(Member_SignUp_SMS_Page.class).inputSMSCode(smscode);
     }
 
     @And("^On signup by SMS i click submit button")
     public void clickSubmit() throws Throwable {
-        on(Member_SignUp_SMS_Page.class).setSubmitbutton();
+        on(Member_SignUp_SMS_Page.class).submitButton();
     }
 
     @And("^I should see the account is verified")
