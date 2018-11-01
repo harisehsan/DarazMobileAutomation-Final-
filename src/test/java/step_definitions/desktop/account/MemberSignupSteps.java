@@ -24,13 +24,13 @@ public class MemberSignupSteps extends BaseSteps {
     }
 
     @And("^I input the password and repassword information")
-    public void passwordfield() throws Throwable {
+    public void passWordField() throws Throwable {
         String pass = Global.config.getString("member.account.pass");
         on(SignUp_Page.class).passWordField(pass);
     }
 
     @And("^I input the name information")
-    public void namefield() throws Throwable {
+    public void nameField() throws Throwable {
         String name = Global.config.getString("member.account.name");
         on(SignUp_Page.class).nameField(name);
     }

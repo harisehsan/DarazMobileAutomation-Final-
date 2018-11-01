@@ -44,13 +44,13 @@ public class Account_Page extends PageObject {
         this.myAccount_trigger.click();
     }
 
-    public void setMyaccountprofile() {
+    public void setMyAccountProfile() {
         waitUntilPageReady();
         waitUntilVisible(myaccountprofile);
         this.myaccountprofile.click();
     }
 
-    public void setLogout() {
+    public void logOut() {
         waitUntilPageReady();
         waitUntilVisible(logout);
         this.logout.click();

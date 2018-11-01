@@ -15,22 +15,22 @@ public class Member_Loginemail_Msite_Page extends PageObject {
     @FindBy(css = ".login-foot-btn") private WebElement clicksmsbutton;
 
 
-    public void setInputEmail(String e) {
+    public void inputEmail(String email) {
         waitUntilPageReady();
-        this.inputemail.sendKeys(e);
+        this.inputemail.sendKeys(email);
     }
 
-    public void setInputPass(String p) {
+    public void inputPass(String pass) {
         waitUntilPageReady();
-        this.inputpass.sendKeys(p);
+        this.inputpass.sendKeys(pass);
     }
 
-    public void setClickLoginButton(){
+    public void clickLoginButton(){
         waitUntilPageReady();
         this.clickloginbutton.click();
     }
 
-    public void setClickSMSButton(){
+    public void clickSMSButton(){
         waitUntilPageReady();
         this.clicksmsbutton.click();
     }

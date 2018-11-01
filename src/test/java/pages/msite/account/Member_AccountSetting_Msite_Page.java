@@ -13,7 +13,7 @@ public class Member_AccountSetting_Msite_Page extends PageObject {
     @FindBy(className = "ok") private WebElement okbutton;
     @FindBy(className = "cancel") private WebElement cancelbutton;
 
-    public void setLogOut(){
+    public void logOut(){
         waitUntilPageReady();
         this.logout.click();
     }

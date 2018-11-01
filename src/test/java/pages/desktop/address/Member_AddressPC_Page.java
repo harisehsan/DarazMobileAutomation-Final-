@@ -24,22 +24,22 @@ public class Member_AddressPC_Page extends PageObject {
     @FindBy(className = "mod-address-book-default") private WebElement hasAddress;
 
 
-    public void setAddNewAddress(){
+    public void addNewAddress(){
         waitUntilPageReady();
         waitUntilVisible(addNewAddress);
         this.addNewAddress.click();
     }
 
-    public void setInputName(String name){
+    public void inputName(String name){
         waitUntilPageReady();
         waitUntilVisible(inputName);
         this.inputName.sendKeys(name);
     }
 
-    public void setInputPhone(String ph){
+    public void inputPhone(String phone){
         waitUntilPageReady();
         waitUntilVisible(inputPhone);
-        this.inputPhone.sendKeys(ph);
+        this.inputPhone.sendKeys(phone);
     }
 
     public void setLocationTree1(){
@@ -49,7 +49,7 @@ public class Member_AddressPC_Page extends PageObject {
 
     }
 
-    public void setSelectTree(){
+    public void selectTree(){
         if(selectTree1.size() > 0){
             WebElement random_element = selectTree1.get(new Random().nextInt(selectTree1.size()));
             random_element.click();
@@ -70,19 +70,19 @@ public class Member_AddressPC_Page extends PageObject {
         this.locationTree3.click();
     }
 
-    public void setInputAddress(String add){
+    public void inputAddress(String address){
         waitUntilPageReady();
         waitUntilVisible(inputAddress);
-        this.inputAddress.sendKeys(add);
+        this.inputAddress.sendKeys(address);
     }
 
-    public void setClickSaveBtn(){
+    public void clickSaveBtn(){
         waitUntilPageReady();
         waitUntilVisible(clickSavebtn);
         this.clickSavebtn.click();
     }
 
-    public boolean sethasAddress() {
+    public boolean hasAddress() {
         waitUntilVisible(hasAddress);
         return this.hasAddress.isDisplayed();
     }

@@ -17,7 +17,7 @@ public class AccountSteps extends BaseSteps{
     @Given("^I login from Account Page by account: \"([^\"]*)\", password: \"([^\"]*)\"")
     public void loginFromAccPage(String user, String pass) throws Throwable {
         visit(Login_Page.class);
-        on(Login_Page.class).login(user, pass);
+        on(Login_Page.class).logIn(user, pass);
         on(Account_Page.class).untilLoaded();
     }
 
@@ -26,7 +26,7 @@ public class AccountSteps extends BaseSteps{
         String user = Global.config.getString("member.account.mail");
         String pass = Global.config.getString("member.account.pass");
         visit(Login_Page.class);
-        on(Login_Page.class).login(user, pass);
+        on(Login_Page.class).logIn(user, pass);
         on(Account_Page.class).untilLoaded();
     }
 
@@ -37,7 +37,7 @@ public class AccountSteps extends BaseSteps{
     }
     @And("^I click on logout account")
     public void logOut() throws Throwable {
-        on(Account_Page.class).setLogout();
+        on(Account_Page.class).logOut();
     }
 
     @Then("^I logout successful")

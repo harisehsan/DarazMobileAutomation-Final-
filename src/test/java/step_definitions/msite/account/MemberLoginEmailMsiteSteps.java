@@ -18,20 +18,20 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
     @And("^I input email info on Msite")
     public void inputEmail() throws Throwable {
         String email = Global.config.getString("member.account.mail");
-        on(Member_Loginemail_Msite_Page.class).setInputEmail(email);
+        on(Member_Loginemail_Msite_Page.class).inputEmail(email);
 
     }
 
     @And("^I input password info on Msite")
     public void inputPass() throws Throwable {
         String pass = Global.config.getString("member.account.pass");
-        on(Member_Loginemail_Msite_Page.class).setInputPass(pass);
+        on(Member_Loginemail_Msite_Page.class).inputPass(pass);
 
     }
 
     @And("^I click login button on Msite")
     public void clickLoginButton() throws Throwable {
-        on(Member_Loginemail_Msite_Page.class).setClickLoginButton();
+        on(Member_Loginemail_Msite_Page.class).clickLoginButton();
 
     }
 
@@ -42,8 +42,8 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
     }
 
     @And("I click Logout button and choose OK button")
-    public void logoutAction() throws Throwable {
-        on(Member_AccountSetting_Msite_Page.class).setLogOut();
+    public void logOutAction() throws Throwable {
+        on(Member_AccountSetting_Msite_Page.class).logOut();
         on(Member_AccountSetting_Msite_Page.class).setOkButton();
     }
 

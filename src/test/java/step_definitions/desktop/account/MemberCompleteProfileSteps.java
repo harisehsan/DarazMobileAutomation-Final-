@@ -15,25 +15,25 @@ public class MemberCompleteProfileSteps extends BaseSteps {
     @And("^I will input the name on form")
     public void inputName() throws Throwable{
         String namemsite = Global.config.getString("member.account.namemsite");
-        on(Member_Complete_Your_Profile_Page.class).setInputName(namemsite);
+        on(Member_Complete_Your_Profile_Page.class).inputName(namemsite);
     }
 
 
     @And("^I will input the email on form")
     public void inputEmail() throws Throwable{
-        on(Member_Complete_Your_Profile_Page.class).setInputEmail(RandomeHelper.generateEmail()+"@hotmail.com");
+        on(Member_Complete_Your_Profile_Page.class).inputEmail(RandomeHelper.generateEmail()+"@hotmail.com");
     }
 
 
     @And("^I will input the password on form")
     public void inputPass() throws Throwable{
         String pass = Global.config.getString("member.account.pass");
-        on(Member_Complete_Your_Profile_Page.class).setInputPassword(pass);
+        on(Member_Complete_Your_Profile_Page.class).inputPassword(pass);
     }
 
 
     @And("^I will click submit on form")
     public void  submitButton() throws Throwable{
-        on(Member_Complete_Your_Profile_Page.class).setCompleteButton();
+        on(Member_Complete_Your_Profile_Page.class).completeButton();
     }
 }
