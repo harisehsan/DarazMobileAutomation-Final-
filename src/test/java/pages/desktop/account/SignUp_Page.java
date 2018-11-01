@@ -2,6 +2,8 @@ package pages.desktop.account;
 
 import global.Global;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.*;
 import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
 
@@ -23,9 +25,12 @@ public class SignUp_Page extends PageObject {
     private WebElement name;
     @FindBy(className = "mod-login-btn")
     private WebElement submit;
+    @FindBy(css = ".btn_slide") private WebElement sliderbtn;
+
 
     public void signEmail() {
         waitUntilPageReady();
+        waitUntilVisible(emailbutton);
         emailbutton.click();
     }
 
@@ -53,5 +58,11 @@ public class SignUp_Page extends PageObject {
         waitUntilVisible(submit);
         this.submit.click();
 
+    }
+
+    public void setSliderbtn(){
+        Actions move = new Actions(Global.browser.getWebDriver());
+        Action actions = move.clickAndHold(sliderbtn).moveByOffset(300,0).release().build();
+        actions.perform();
     }
 }

@@ -30,6 +30,11 @@ public class MemberSignupSMSSteps extends BaseSteps {
         on(Member_SignUp_SMS_Page.class).sendCode();
     }
 
+    @And("^I click the slider button")
+    public void sliderbtn() throws Throwable{
+        on(Member_SignUp_SMS_Page.class).setSliderbtn();
+    }
+
     @And("^I input the SMS code information")
     public void inputSMSCode() throws Throwable {
         String smscode = Global.config.getString("member.account.sms_code");

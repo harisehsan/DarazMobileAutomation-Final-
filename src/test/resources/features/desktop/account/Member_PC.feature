@@ -1,8 +1,8 @@
 @Member_PC
 
-Feature: Member PC Test
+Feature: Member PC Test for Daraz project
 
-  @Signupemail
+  @Signupemail @no_lazada_live
   Scenario: Guest signup new account by email
     When I go to the sign up page by email
     And I input the email information
@@ -11,12 +11,33 @@ Feature: Member PC Test
     And I click on submit button
     Then I should see the account page
 
+  @Signupemail @no_staging
+  Scenario: Guest signup new account by email
+    When I go to the sign up page by email
+    And I input the email information
+    And I input the password and repassword information
+    And I input the name information
+    And I click and hold on slider button
+    Then I should see the account page
 
-  @Signupsmsphone
+
+  @Signupsmsphone @no_lazada_live
   Scenario: Guest signup new account by smsphone
     When I go to the sign up page by smsphone
     And I input the phonenumber
     And I click the sendcode button
+    And I input the SMS code information
+    And I input password information on signup by sms
+    And I input the name information
+    And I input the email information
+    And On signup by SMS i click submit button
+    Then I should see the account is verified
+
+  @Signupsmsphone @no_staging
+  Scenario: Guest signup new account by smsphone
+    When I go to the sign up page by smsphone
+    And I input the phonenumber
+    And I click the slider button
     And I input the SMS code information
     And I input password information on signup by sms
     And I input the name information
@@ -33,14 +54,14 @@ Feature: Member PC Test
     Then I should see the account page
 
 
-  @Loginbymobilephone
+  @Loginbymobilephone @no_lazada_live
   Scenario: User login account by mobilephone
     When I go to the login page and input the mobilephone information
     And I input the password information
     And I click submit button
     Then I should see the account page
 
-  @EditNameinfo
+  @EditNameinfo @no_lazada_live
   Scenario: Guest signup new account by email
     When I go to the sign up page by email
     And I input the email information
