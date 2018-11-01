@@ -29,23 +29,23 @@ public class SignUp_Page extends PageObject {
         emailbutton.click();
     }
 
-    public void emailTextFiel(String emailinfo) {
+    public void emailTextField(String emailInfo) {
         waitUntilPageReady();
         waitUntilVisible(email);
-        this.email.sendKeys(emailinfo);
+        this.email.sendKeys(emailInfo);
     }
 
-    public void passwordfield(String pass) {
+    public void passWordField(String pass) {
         waitUntilPageReady();
         waitUntilVisible(password);
         this.password.sendKeys(pass);
     }
 
 
-    public void namefield(String nameinfo) {
+    public void nameField(String nameInfo) {
         waitUntilPageReady();
         waitUntilVisible(name);
-        this.name.sendKeys(nameinfo);
+        this.name.sendKeys(nameInfo);
     }
 
     public void submitButton() {

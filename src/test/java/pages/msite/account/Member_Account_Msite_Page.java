@@ -11,7 +11,7 @@ public class Member_Account_Msite_Page extends PageObject {
 
     @FindBy(id = "title-wrap") private WebElement accounttittle;
 
-    public void setAccounttittle() {
+    public void setAccountTittle() {
         waitUntilVisible(accounttittle);
     }
 

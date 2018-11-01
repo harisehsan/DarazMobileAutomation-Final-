@@ -17,28 +17,28 @@ public class MemberSignupSMSSteps extends BaseSteps {
     @And("^I input the phonenumber")
     public void inputPhone() throws Throwable {
         String mobilephone = Global.config.getString("member.phonenumbersignup");
-        on(Member_SignUp_SMS_Page.class).setInputphone(mobilephone + RandomeHelper.generatePhoneNumber());
+        on(Member_SignUp_SMS_Page.class).setInputPhone(mobilephone + RandomeHelper.generatePhoneNumber());
     }
     @And("^I input password information on signup by sms")
     public void inputPass() throws Throwable {
         String pass = Global.config.getString("member.account.pass");
-        on(Member_SignUp_SMS_Page.class).setInputpassword(pass);
+        on(Member_SignUp_SMS_Page.class).setInputPassword(pass);
     }
 
     @And("^I click the sendcode button")
     public void sendCode() throws Throwable {
-        on(Member_SignUp_SMS_Page.class).setSendcode();
+        on(Member_SignUp_SMS_Page.class).setSendCode();
     }
 
     @And("^I input the SMS code information")
     public void inputSMSCode() throws Throwable {
         String smscode = Global.config.getString("member.account.smscode");
-        on(Member_SignUp_SMS_Page.class).setInputsmscode(smscode);
+        on(Member_SignUp_SMS_Page.class).setInputSMSCode(smscode);
     }
 
     @And("^On signup by SMS i click submit button")
     public void clickSubmit() throws Throwable {
-        on(Member_SignUp_SMS_Page.class).setSubmitbutton();
+        on(Member_SignUp_SMS_Page.class).setSubmitButton();
     }
 
     @And("^I should see the account is verified")

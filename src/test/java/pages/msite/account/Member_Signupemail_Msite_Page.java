@@ -21,19 +21,19 @@ public class Member_Signupemail_Msite_Page extends PageObject {
         this.signupemail.click();
     }
 
-    public void setInputName(String n){
+    public void setInputName(String name){
         waitUntilPageReady();
-        this.inputname.sendKeys(n);
+        this.inputname.sendKeys(name);
     }
 
-    public void setInputEmail(String e) {
+    public void setInputEmail(String email) {
         waitUntilPageReady();
-        this.inputemail.sendKeys(e);
+        this.inputemail.sendKeys(email);
     }
 
-    public void setInputPassword(String p){
+    public void setInputPassword(String pass){
         waitUntilPageReady();
-        this.inputpassword.sendKeys(p);
+        this.inputpassword.sendKeys(pass);
     }
 
     public void setSignupButton() {

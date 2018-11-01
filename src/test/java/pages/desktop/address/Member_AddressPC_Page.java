@@ -76,7 +76,7 @@ public class Member_AddressPC_Page extends PageObject {
         this.inputAddress.sendKeys(add);
     }
 
-    public void setClickSavebtn(){
+    public void setClickSaveBtn(){
         waitUntilPageReady();
         waitUntilVisible(clickSavebtn);
         this.clickSavebtn.click();

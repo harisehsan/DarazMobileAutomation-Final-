@@ -46,7 +46,7 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
 
     @Then("^I should see account page")
     public void titleAccount() throws Throwable {
-        on(Member_Account_Msite_Page.class).setAccounttittle();
+        on(Member_Account_Msite_Page.class).setAccountTittle();
     }
 }
 

@@ -20,19 +20,19 @@ public class MemberSignupSteps extends BaseSteps {
     public void inputEmail() throws Throwable {
         String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
         Global.map.put("email_random",randomEmail);
-        on(SignUp_Page.class).emailTextFiel((String) Global.map.get("email_random"));
+        on(SignUp_Page.class).emailTextField((String) Global.map.get("email_random"));
     }
 
     @And("^I input the password and repassword information")
     public void passwordfield() throws Throwable {
         String pass = Global.config.getString("member.account.pass");
-        on(SignUp_Page.class).passwordfield(pass);
+        on(SignUp_Page.class).passWordField(pass);
     }
 
     @And("^I input the name information")
     public void namefield() throws Throwable {
         String name = Global.config.getString("member.account.name");
-        on(SignUp_Page.class).namefield(name);
+        on(SignUp_Page.class).nameField(name);
     }
 
     @And("^I click on submit button")

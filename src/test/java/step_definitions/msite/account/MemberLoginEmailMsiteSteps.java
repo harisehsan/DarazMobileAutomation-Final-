@@ -43,8 +43,8 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
 
     @And("I click Logout button and choose OK button")
     public void logoutAction() throws Throwable {
-        on(Member_AccountSetting_Msite_Page.class).setLogout();
-        on(Member_AccountSetting_Msite_Page.class).setOkbutton();
+        on(Member_AccountSetting_Msite_Page.class).setLogOut();
+        on(Member_AccountSetting_Msite_Page.class).setOkButton();
     }
 
 

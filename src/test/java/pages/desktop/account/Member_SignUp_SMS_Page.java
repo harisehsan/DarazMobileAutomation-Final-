@@ -15,38 +15,38 @@ public class Member_SignUp_SMS_Page extends PageObject {
     @FindBy(css = "[type='text']") private WebElement inputemail;
     @FindBy(className = "mod-login-btn") private WebElement submitbutton;
 
-    public void setInputphone(String phone) {
+    public void setInputPhone(String phone) {
         waitUntilPageReady();
         waitUntilVisible(inputphone);
         this.inputphone.sendKeys(phone);
     }
 
-    public void setSendcode(){
+    public void setSendCode(){
         waitUntilPageReady();
         waitUntilVisible(sendcode);
         this.sendcode.click();
     }
 
-    public void setInputsmscode(String smscode){
+    public void setInputSMSCode(String smsCode){
         waitUntilPageReady();
         waitUntilVisible(inputsmscode);
-        this.inputsmscode.sendKeys(smscode);
+        this.inputsmscode.sendKeys(smsCode);
     }
 
-    public void setInputpassword(String password){
+    public void setInputPassword(String passWord){
         waitUntilPageReady();
         waitUntilVisible(inputpassword);
-        this.inputpassword.sendKeys(password);
+        this.inputpassword.sendKeys(passWord);
 
     }
 
-    public void setInputemail(String email){
+    public void setInputEmail(String email){
         waitUntilPageReady();
         waitUntilVisible(inputemail);
         this.inputemail.sendKeys(email);
     }
 
-    public void setSubmitbutton(){
+    public void setSubmitButton(){
         waitUntilPageReady();
         waitUntilVisible(submitbutton);
         this.submitbutton.click();

@@ -16,10 +16,10 @@ public class Member_Login_Page extends PageObject {
     @FindBy(className = "mod-login-btn") private WebElement login;
 
 
-    public void loginEmail(String emailinfo){
+    public void loginEmail(String emailInfo){
         waitUntilPageReady();
         waitUntilVisible(email);
-        this.email.sendKeys(emailinfo);
+        this.email.sendKeys(emailInfo);
 
     }
 

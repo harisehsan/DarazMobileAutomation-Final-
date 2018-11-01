@@ -36,7 +36,7 @@ public class AccountSteps extends BaseSteps{
         on(Account_Page.class).setMyAccount_trigger();
     }
     @And("^I click on logout account")
-    public void logout() throws Throwable {
+    public void logOut() throws Throwable {
         on(Account_Page.class).setLogout();
     }
 

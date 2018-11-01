@@ -55,7 +55,7 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I click on save button")
     public void clickSave() throws Throwable{
-        on(Member_AddressPC_Page.class).setClickSavebtn();
+        on(Member_AddressPC_Page.class).setClickSaveBtn();
     }
 
 

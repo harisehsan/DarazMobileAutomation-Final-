@@ -14,9 +14,9 @@ public class Member_Loginsms_Msite_Page extends PageObject {
     @FindBy(css =".mod-input-sms input") private WebElement inputsmscode;
     @FindBy(className = "login-btn") private WebElement clickloginbtn;
 
-    public void setInputPhone(String p){
+    public void setInputPhone(String phone){
         waitUntilPageReady();
-        this.inputphone.sendKeys(p);
+        this.inputphone.sendKeys(phone);
     }
 
     public void setClickSendCode() {
@@ -24,9 +24,9 @@ public class Member_Loginsms_Msite_Page extends PageObject {
         this.clicksendcode.click();
     }
 
-    public void setInputSMSCode(String c){
+    public void setInputSMSCode(String code){
         waitUntilPageReady();
-        this.inputsmscode.sendKeys(c);
+        this.inputsmscode.sendKeys(code);
     }
 
     public void setClickLoginbtn(){
