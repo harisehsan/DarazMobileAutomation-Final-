@@ -16,27 +16,27 @@ public class Member_Signupemail_Msite_Page extends PageObject {
     @FindBy(className = "signup-by-email-btn") private WebElement signupbutton;
 
 
-    public void setSignupemail(){
+    public void setSignupEmail(){
         waitUntilPageReady();
         this.signupemail.click();
     }
 
-    public void setInputname(String n){
+    public void setInputName(String n){
         waitUntilPageReady();
         this.inputname.sendKeys(n);
     }
 
-    public void setInputemail(String e) {
+    public void setInputEmail(String e) {
         waitUntilPageReady();
         this.inputemail.sendKeys(e);
     }
 
-    public void setInputpassword(String p){
+    public void setInputPassword(String p){
         waitUntilPageReady();
         this.inputpassword.sendKeys(p);
     }
 
-    public void setSignupbutton() {
+    public void setSignupButton() {
         waitUntilPageReady();
         this.signupbutton.click();
     }

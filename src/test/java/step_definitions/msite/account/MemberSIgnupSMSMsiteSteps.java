@@ -18,24 +18,25 @@ public class MemberSIgnupSMSMsiteSteps extends BaseSteps {
     @And("^I input the phone number on Msite")
     public void inputPhone() throws Throwable{
         String mobilephone = Global.config.getString("member.phonenumbersignup");
-        on(Member_SIgnupsms_Msite_Page.class).setInputphone(mobilephone + RandomeHelper.generatePhoneNumber());
+        on(Member_SIgnupsms_Msite_Page.class).setInputPhone(mobilephone + RandomeHelper.generatePhoneNumber());
     }
 
 
     @And("^I click sendcode button on Msite")
     public void clickSendcode() throws Throwable{
-        on(Member_SIgnupsms_Msite_Page.class).setClicksend();
+        on(Member_SIgnupsms_Msite_Page.class).setClickSend();
     }
 
     @And("^I input the smscode on Msite")
     public void inputSMSCode() throws Throwable{
-        on(Member_SIgnupsms_Msite_Page.class).setInputsmscode("888888");
+        String smscode = Global.config.getString("member.smscode");
+        on(Member_SIgnupsms_Msite_Page.class).setInputSMSCode(smscode);
 
     }
 
     @And("^I click continue button")
     public void clickContinue() throws Throwable{
-        on(Member_SIgnupsms_Msite_Page.class).setClickcontinue();
+        on(Member_SIgnupsms_Msite_Page.class).setClickContinue();
     }
 
 

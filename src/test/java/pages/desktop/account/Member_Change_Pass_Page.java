@@ -15,12 +15,12 @@ public class Member_Change_Pass_Page extends PageObject {
     @FindBy(css = ".next-btn-large") private WebElement savebtn;
     @FindBy(css = ".next-btn-medium") private WebElement okbtn;
 
-    public void resetPass(String x,String y, String z) {
+    public void resetPass(String oldpass,String newpass, String renewpass) {
         waitUntilPageReady();
         waitUntilVisible(currentpass);
-        this.currentpass.sendKeys(x);
-        this.newpass.sendKeys(y);
-        this.renewpass.sendKeys(z);
+        this.currentpass.sendKeys(oldpass);
+        this.newpass.sendKeys(newpass);
+        this.renewpass.sendKeys(renewpass);
         this.savebtn.click();
         waitUntilVisible(okbtn);
         this.okbtn.click();

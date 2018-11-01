@@ -13,14 +13,14 @@ public class MemberSignupSteps extends BaseSteps {
     public void signUpByEmail() throws Throwable {
         visit(SignUp_Page.class);
         Global.browser.refresh();
-        on(SignUp_Page.class).signemail();
+        on(SignUp_Page.class).signEmail();
     }
 
     @Given("^I input the email information")
     public void inputEmail() throws Throwable {
-        String randomEmail = RandomeHelper.generateEmail()+ "@hotmail.com";
+        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
         Global.map.put("email_random",randomEmail);
-        on(SignUp_Page.class).emailtextfiel((String) Global.map.get("email_random"));
+        on(SignUp_Page.class).emailTextFiel((String) Global.map.get("email_random"));
     }
 
     @And("^I input the password and repassword information")

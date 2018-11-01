@@ -12,31 +12,35 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
     public void signUpMsite() throws Throwable {
         visit(Member_Signupemail_Msite_Page.class);
         Global.browser.refresh();
-        on(Member_Signupemail_Msite_Page.class).setSignupemail();
+        on(Member_Signupemail_Msite_Page.class).setSignupEmail();
     }
 
 
     @And("^I input the name on form")
     public void inputName() throws Throwable {
-        on(Member_Signupemail_Msite_Page.class).setInputname("QA testing signup on Msite");
+        on(Member_Signupemail_Msite_Page.class).setInputName("QA testing signup on Msite");
     }
 
 
     @And("^I input the email on form")
     public void inputEmail() throws Throwable {
-        on(Member_Signupemail_Msite_Page.class).setInputemail(RandomeHelper.generateEmail() + "@hotmail.com");
+//        on(Member_Signupemail_Msite_Page.class).setInputEmail(RandomeHelper.generateEmail() + "@hotmail.com");
+        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
+        Global.map.put("email_random",randomEmail);
+        on(Member_Signupemail_Msite_Page.class).setInputEmail((String) Global.map.get("email_random"));
     }
 
 
     @And("^I input the password on form")
     public void inputPass() throws Throwable {
-        on(Member_Signupemail_Msite_Page.class).setInputpassword("q12345");
+        String pass = Global.config.getString("member.pass");
+        on(Member_Signupemail_Msite_Page.class).setInputPassword(pass);
     }
 
 
     @And("^I click submit on form")
     public void submitButton() throws Throwable {
-        on(Member_Signupemail_Msite_Page.class).setSignupbutton();
+        on(Member_Signupemail_Msite_Page.class).setSignupButton();
     }
 
 

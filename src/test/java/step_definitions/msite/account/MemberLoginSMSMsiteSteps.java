@@ -10,33 +10,34 @@ import step_definitions.BaseSteps;
 public class MemberLoginSMSMsiteSteps extends BaseSteps {
 
     @Given("^I go to login by SMS on Msite")
-    public void loginsms() throws Throwable{
+    public void loginSMS() throws Throwable{
         visit(Member_Loginemail_Msite_Page.class);
-        on(Member_Loginemail_Msite_Page.class).setClicksmsbutton();
+        on(Member_Loginemail_Msite_Page.class).setClickSMSButton();
     }
 
 
     @And("^I input phonenumber info on Msite")
     public void inputPhone() throws Throwable{
         String mobile = Global.config.getString("member.phonenumberlogin");
-        on(Member_Loginsms_Msite_Page.class).setInputphone(mobile);
+        on(Member_Loginsms_Msite_Page.class).setInputPhone(mobile);
 
     }
 
     @And("^I click the info sendcode button on Msite")
     public void clickSend() throws Throwable{
-        on(Member_Loginsms_Msite_Page.class).setClicksendcode();
+        on(Member_Loginsms_Msite_Page.class).setClickSendCode();
     }
 
     @And("^I input code info on Msite")
     public void inputCode() throws Throwable{
-        on(Member_Loginsms_Msite_Page.class).setInputsmscode("888888");
+        String smscode = Global.config.getString("member.smscode");
+        on(Member_Loginsms_Msite_Page.class).setInputSMSCode(smscode);
 
     }
 
     @And("^I click on loginbutton on Msite")
     public void clickLogin() throws Throwable{
-        on(Member_Loginsms_Msite_Page.class).setClickloginbtn();
+        on(Member_Loginsms_Msite_Page.class).setClickLoginbtn();
 
     }
 

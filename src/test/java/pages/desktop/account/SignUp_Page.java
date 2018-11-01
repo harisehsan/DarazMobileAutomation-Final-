@@ -24,28 +24,28 @@ public class SignUp_Page extends PageObject {
     @FindBy(className = "mod-login-btn")
     private WebElement submit;
 
-    public void signemail() {
+    public void signEmail() {
         waitUntilPageReady();
         emailbutton.click();
     }
 
-    public void emailtextfiel(String s) {
+    public void emailTextFiel(String emailinfo) {
         waitUntilPageReady();
         waitUntilVisible(email);
-        this.email.sendKeys(s);
+        this.email.sendKeys(emailinfo);
     }
 
-    public void passwordfield(String p) {
+    public void passwordfield(String pass) {
         waitUntilPageReady();
         waitUntilVisible(password);
-        this.password.sendKeys(p);
+        this.password.sendKeys(pass);
     }
 
 
-    public void namefield(String n) {
+    public void namefield(String nameinfo) {
         waitUntilPageReady();
         waitUntilVisible(name);
-        this.name.sendKeys(n);
+        this.name.sendKeys(nameinfo);
     }
 
     public void submitButton() {

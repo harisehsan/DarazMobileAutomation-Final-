@@ -14,22 +14,22 @@ public class Member_Loginsms_Msite_Page extends PageObject {
     @FindBy(css =".mod-input-sms input") private WebElement inputsmscode;
     @FindBy(className = "login-btn") private WebElement clickloginbtn;
 
-    public void setInputphone(String p){
+    public void setInputPhone(String p){
         waitUntilPageReady();
         this.inputphone.sendKeys(p);
     }
 
-    public void setClicksendcode() {
+    public void setClickSendCode() {
         waitUntilPageReady();
         this.clicksendcode.click();
     }
 
-    public void setInputsmscode(String c){
+    public void setInputSMSCode(String c){
         waitUntilPageReady();
         this.inputsmscode.sendKeys(c);
     }
 
-    public void setClickloginbtn(){
+    public void setClickLoginbtn(){
         waitUntilPageReady();
         this.clickloginbtn.click();
     }
