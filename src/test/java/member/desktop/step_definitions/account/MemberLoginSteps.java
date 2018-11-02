@@ -1,23 +1,22 @@
-package step_definitions.desktop.account;
+package member.desktop.step_definitions.account;
 
 import java.lang.String;
 
+import base.BaseSteps;
 import cucumber.api.java.en.*;
 import global.Global;
-import pages.desktop.account.Member_Login_Page;
-import pages.msite.account.Member_Loginemail_Msite_Page;
-import step_definitions.BaseSteps;
+import member.desktop.pages.account.Member_Login_Page;
 
 public class MemberLoginSteps extends BaseSteps {
 
-    @Given("I go to the login page and input the email information")
+    @Given("I go to the login page, input the email information")
     public void loginEmail() throws Throwable {
         String email = Global.config.getString("member.account.mail");
         visit(Member_Login_Page.class);
         on(Member_Login_Page.class).loginEmail(email);
     }
 
-    @Given("I go to the login page and input the mobilephone information")
+    @Given("I go to the login page, input the mobilephone information")
     public void loginMobilePhone() throws Throwable {
         String mobilephone = Global.config.getString("member.phone_number_login");
         visit(Member_Login_Page.class);

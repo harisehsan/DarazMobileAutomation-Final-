@@ -1,11 +1,14 @@
-package step_definitions.desktop.account;
-import cucumber.api.java.en.*;
+package member.desktop.step_definitions.account;
+
+import base.BaseSteps;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import global.Global;
-import pages.desktop.account.Account_Page;
-import member.desktop.pages.account.Member_Change_Pass_Page;
-import pages.desktop.account.SignUp_Page;
-import step_definitions.BaseSteps;
 import helper.RandomeHelper;
+import member.desktop.pages.account.Account_Page;
+import member.desktop.pages.account.Member_Change_Pass_Page;
+import member.desktop.pages.account.SignUp_Page;
 
 public class MemberSignupSteps extends BaseSteps {
 
@@ -23,7 +26,7 @@ public class MemberSignupSteps extends BaseSteps {
         on(SignUp_Page.class).emailTextField((String) Global.map.get("email_random"));
     }
 
-    @And("^I input the password and repassword information")
+    @And("^I input password information")
     public void passWordField() throws Throwable {
         String pass = Global.config.getString("member.account.pass");
         on(SignUp_Page.class).passWordField(pass);
