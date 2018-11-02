@@ -118,4 +118,18 @@ public class Member_AddressPC_Page extends PageObject {
         this.detailAddress.sendKeys(da);
     }
 
+    public void createFastNewAddress(String phone, String detailAddress){
+        waitUntilVisible(inputPhone);
+        this.inputPhone.sendKeys(phone);
+        waitUntilVisible(locationTree1);
+        this.locationTree1.click();
+        selectTree();
+        this.locationTree2.click();
+        selectTree();
+        this.locationTree3.click();
+        selectTree();
+        this.inputAddress.sendKeys(detailAddress);
+        this.clickSavebtn.click();
+    }
+
 }

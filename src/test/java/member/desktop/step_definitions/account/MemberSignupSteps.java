@@ -26,7 +26,7 @@ public class MemberSignupSteps extends BaseSteps {
         on(SignUp_Page.class).emailTextField((String) Global.map.get("email_random"));
     }
 
-    @And("^I input the password and repassword information")
+    @And("^I input the password, repassword information")
     public void passWordField() throws Throwable {
         String pass = Global.config.getString("member.account.pass");
         on(SignUp_Page.class).passWordField(pass);

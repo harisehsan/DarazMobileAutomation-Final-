@@ -9,14 +9,14 @@ import member.desktop.pages.account.Member_Login_Page;
 
 public class MemberLoginSteps extends BaseSteps {
 
-    @Given("I go to the login page and input the email information")
+    @Given("I go to the login page, input the email information")
     public void loginEmail() throws Throwable {
         String email = Global.config.getString("member.account.mail");
         visit(Member_Login_Page.class);
         on(Member_Login_Page.class).loginEmail(email);
     }
 
-    @Given("I go to the login page and input the mobilephone information")
+    @Given("I go to the login page, input the mobilephone information")
     public void loginMobilePhone() throws Throwable {
         String mobilephone = Global.config.getString("member.phone_number_login");
         visit(Member_Login_Page.class);
