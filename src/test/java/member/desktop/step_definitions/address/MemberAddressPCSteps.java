@@ -7,7 +7,7 @@ import base.BaseSteps;
 
 public class MemberAddressPCSteps extends BaseSteps {
 
-    @And("^I open add new address page, input name info")
+    @And("^I open add new address page input name info")
     public void inputName() throws Throwable {
         String name = Global.config.getString("member.account.name");
         visit(Member_AddressPC_Page.class);
