@@ -24,7 +24,8 @@ public class Member_AddressPC_Page extends PageObject {
     @FindBy(css =".mod-address-form-btn") private WebElement clickSavebtn;
     @FindBy(className = "mod-address-book-default") private WebElement hasAddress;
     @FindBy(css = ".mod-input-detailAddress input") private WebElement detailAddress;
-
+    @FindBy(css= ".next-table-cell") private WebElement editaddress;
+    @FindBy(className = "next-table-cell-wrapper") private WebElement hasNewName;
 
     public void addNewAddress(){
         waitUntilPageReady();
@@ -50,6 +51,23 @@ public class Member_AddressPC_Page extends PageObject {
         this.locationTree1.click();
 
     }
+
+    public void setEditaddress(){
+        waitUntilPageReady();
+        waitUntilVisible(editaddress);
+        this.editaddress.click();
+    }
+
+    public void clearName(){
+        waitUntilVisible(inputName);
+        this.inputName.clear();
+    }
+
+    public void clearPhone(){
+        waitUntilVisible(inputPhone);
+        this.inputPhone.clear();
+    }
+
 
     public void selectTree(){
         if(selectTree1.size() > 0){
@@ -88,6 +106,11 @@ public class Member_AddressPC_Page extends PageObject {
     public boolean hasAddress() {
         waitUntilVisible(hasAddress);
         return this.hasAddress.isDisplayed();
+    }
+
+    public boolean hasNewName(String newName) {
+        waitUntilVisible(hasNewName);
+        return this.hasNewName.getText().equals(newName);
     }
 
     public void setDetailAddress(String da){
