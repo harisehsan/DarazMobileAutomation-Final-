@@ -1,11 +1,11 @@
-package step_definitions.desktop.account;
+package member.desktop.step_definitions.account;
 
+import base.BaseSteps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import global.Global;
-import pages.desktop.account.Account_Page;
-import pages.desktop.account.Member_AccEdit_PC_Page;
-import step_definitions.BaseSteps;
+import member.desktop.pages.account.Account_Page;
+import member.desktop.pages.account.Member_AccEdit_PC_Page;
 
 public class MemberEditnamePCSteps extends BaseSteps {
 

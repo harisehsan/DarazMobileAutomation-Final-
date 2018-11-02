@@ -13,9 +13,9 @@ import org.testng.annotations.Test;
  */
 
 @CucumberOptions(
-        features = {"src/test/java/member/features"},
+        features = {"src/test/java/member/desktop/features"},
         tags = {"@addaddresspclzd"},
-        glue = {"member.step_definitions"},
+        glue = {"member.desktop.step_definitions"},
         plugin = {"pretty",
                 "io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm",
                 "html:target/cucumber-reports/cucumber-pretty",

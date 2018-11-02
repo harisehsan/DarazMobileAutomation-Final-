@@ -66,7 +66,7 @@ public class Topup_Page extends PageObject {
     public void openLogIn(String login, String password){
         waitUntilVisible(login_button);
         login_button.click();
-        new Login_Page().login(login,password);
+//        new Login_Page().login(login,password);
     }
 
     public void checkAfterLogIn() throws Exception{
