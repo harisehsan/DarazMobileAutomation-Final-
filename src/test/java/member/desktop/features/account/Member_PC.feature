@@ -65,7 +65,7 @@ Feature: Member PC Test for Daraz project
   Scenario: Guest signup new account by email
     When I go to the sign up page by email
     And I input the email information
-    And I input the password, repassword information
+    And I input the name information
     And I input the name information
     And I click on submit button
     And I should see the account page
@@ -88,7 +88,7 @@ Feature: Member PC Test for Daraz project
   Scenario: Guest signup new account by email
     When I go to the sign up page by email
     And I input the email information
-    And I input the password, repassword information
+    And I input the name information
     And I input the name information
     And I click on submit button
     And I go to change password page
@@ -96,6 +96,15 @@ Feature: Member PC Test for Daraz project
     And I click on logout account
     And I login with new password
     Then I should see the account page
+
+  @NewsletterConfig
+  Scenario: User login account by email
+    When I go to the login page, input the email information
+    And I input the password information
+    And I click submit button
+    And I click on newsletter button to turn on or off config
+    Then I go back account without error message
+
 
 
 
