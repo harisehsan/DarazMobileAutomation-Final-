@@ -20,6 +20,9 @@ public class Account_Page extends PageObject {
     @FindBy(css = ".account-icon.logout") private WebElement logout;
     @FindBy(id = "lzd_current_logon_user_isVerified") private WebElement isVerified;
     @FindBy(id = "My-profile") private WebElement myaccountprofile;
+    @FindBy(css = "#container > div > div.dashboard-profile > div.dashboard-info > div.dashboard-info-item.last > a") private WebElement newsLetter;
+    @FindBy(css = ".next-btn-primary") private WebElement okBtn;
+
 
 
     public void untilLoaded(){
@@ -47,6 +50,19 @@ public class Account_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(myaccountprofile);
         this.myaccountprofile.click();
+    }
+
+    public void setNewsLetter(){
+        waitUntilPageReady();
+        waitUntilVisible(newsLetter);
+        this.newsLetter.click();
+        waitUntilClickable(By.cssSelector(".next-btn-primary"));
+        this.okBtn.click();
+    }
+
+    public boolean hasNewsLetter(){
+        waitUntilPageReady();
+        return this.newsLetter.isDisplayed();
     }
 
     public void logOut() {

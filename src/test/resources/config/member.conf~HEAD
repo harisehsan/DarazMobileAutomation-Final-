@@ -8,6 +8,7 @@ common.member{
     name_msite = "QA testing signup on Msite"
     sms_code = "888888"
     address_detail = "QA testing address detail"
+    address_delete = "QA testing address for delete"
   }
 
 }

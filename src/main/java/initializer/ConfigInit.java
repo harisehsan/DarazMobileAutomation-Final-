@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ConfigInit {
 
-    private static final String CONF_FOLDER = "src/main/resources/config/";
+    private static final String CONF_FOLDER = "src/test/resources/config/";
     private static final String CONF_FILE_EXTENSION = ".conf";
     private static final String COMMON_CONF_KEY = "common";
 
