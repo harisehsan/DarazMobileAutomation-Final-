@@ -15,6 +15,7 @@ public class CheckoutByCODSteps extends BaseSteps {
     {
         Pdp_Page.setUrl(Global.config.getConfig("asc").getString("pdp_url"));
         visit(Pdp_Page.class);
+        on(Pdp_Page.class).getProductTitle();
     }
 
     @And("^I click on Add to cart button$")
@@ -27,7 +28,7 @@ public class CheckoutByCODSteps extends BaseSteps {
     @And("^I click Checkout button on Cart popup$")
     public void clickCheckout()
     {
-        on(Cart_Page.class).clickCheckout();
+        on(Cart_PopUp.class).clickCheckout();
     }
 
     @And("^I click Place Order button on Checkout Shipping page$")
@@ -55,6 +56,16 @@ public class CheckoutByCODSteps extends BaseSteps {
         Assert.assertTrue(on(CheckoutSuccess_Page.class).hasThankyouTitle());
     }
 
+    @And("^I click Go To Cart button on Cart popup$")
+    public void clickGoToCart()
+    {
+        on(Cart_Page.class).clickGoToCartButton();
+    }
 
+
+    @Then("^I should see the product title is in the list$")
+    public void checkProductExistInTheList(){
+        on(Cart_Page.class).checkProductExistInTheList();
+    }
 
 }
