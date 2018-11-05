@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = {"src/test/java/member/desktop/features"},
-        tags = {"@NewsletterConfig"},
+        tags = {" @Changepassword"},
         glue = {"member.desktop.step_definitions"},
         plugin = {"pretty",
                 "io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm",

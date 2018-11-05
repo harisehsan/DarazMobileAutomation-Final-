@@ -46,8 +46,8 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I input address detail")
     public void inputAddress() throws Throwable {
-        String addressdetail = Global.config.getString("member.account.address_detail");
-        on(Member_AddressPC_Page.class).inputAddress(addressdetail);
+        String address_detail = Global.config.getString("member.account.address_detail");
+        on(Member_AddressPC_Page.class).inputAddress(address_detail);
 
     }
 
@@ -58,6 +58,21 @@ public class MemberAddressPCSteps extends BaseSteps {
         on(Member_AddressPC_Page.class).createFastNewAddress(mobile, address_detail);
 
     }
+
+    @And("^I create an address to delete")
+    public void createAddressDelete() throws Throwable {
+        String mobile = Global.config.getString("member.phone_number_login");
+        String address_delete = Global.config.getString("member.account.address_delete");
+        on(Member_AddressPC_Page.class).createFastNewAddress(mobile, address_delete);
+        Global.map.put("no_name_delete", address_delete);
+
+    }
+
+    @And("^I access edit page to delete address")
+    public void accessDeleteAddress() throws Throwable {
+        on(Member_AddressPC_Page.class).accessDeleteAddress();
+    }
+
 
     @And("^I click on save button")
     public void clickSave() throws Throwable {
@@ -88,6 +103,11 @@ public class MemberAddressPCSteps extends BaseSteps {
         on(Member_AddressPC_Page.class).clickSaveBtn();
     }
 
+    @And("^I click delete button")
+    public void deleteAddress() throws Throwable {
+        on(Member_AddressPC_Page.class).deleteBtn();
+
+    }
 
     @Then("^I should see the new editing name of address")
     public void hasNewName() throws Throwable {
@@ -97,5 +117,10 @@ public class MemberAddressPCSteps extends BaseSteps {
     @Then("^I should see the new address on account page")
     public void hasAddressName() throws Throwable {
         on(Member_AddressPC_Page.class).hasAddress();
+    }
+
+    @Then("^I should not see address has deleted on page")
+    public void hasnoNameDelete() throws Throwable {
+        on(Member_AddressPC_Page.class).hasNoAddress();
     }
 }

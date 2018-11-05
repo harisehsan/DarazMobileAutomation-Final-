@@ -25,15 +25,12 @@ public class Account_Page extends PageObject {
 
 
 
-
-
     public void untilLoaded(){
         waitUntilVisible(mainContainer_element);
     }
     public boolean hasName(String name) {
         waitUntilPageReady();
         waitUntilVisible(name_of_user);
-        Global.browser.getWebDriver().findElement(By.id("1234"));
         return this.name_of_user.getText().equals(name);
     }
 
