@@ -65,7 +65,7 @@ Feature: Member PC Test for Daraz project
   Scenario: Guest signup new account by email
     When I go to the sign up page by email
     And I input the email information
-    And I input the name information
+    And I input password information
     And I input the name information
     And I click on submit button
     And I should see the account page
@@ -88,7 +88,7 @@ Feature: Member PC Test for Daraz project
   Scenario: Guest signup new account by email
     When I go to the sign up page by email
     And I input the email information
-    And I input the name information
+    And I input password information
     And I input the name information
     And I click on submit button
     And I go to change password page
