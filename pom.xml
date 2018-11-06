@@ -98,7 +98,7 @@
                         <env>${env}</env>
                         <allure.results.directory>${allure.result.dir}</allure.results.directory>
                     </systemPropertyVariables>
-                    <testFailureIgnore>true</testFailureIgnore>
+                    <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
             </plugin>
             <plugin>
