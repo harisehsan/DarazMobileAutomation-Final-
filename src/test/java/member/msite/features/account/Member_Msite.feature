@@ -53,3 +53,13 @@ Feature: Member Msite Test
     And I go to setting page
     And I click Logout button and choose OK button
     Then I should logout success
+
+  @MsiteNewsltterConfig
+  Scenario: User login and try to confif newslteter
+    When I go to login by email on Msite
+    And I input email info on Msite
+    And I input password info on Msite
+    And I click login button on Msite
+    And I should see account page
+    And I trigger on newsletter config
+    Then I should see corrcet current newsletter config

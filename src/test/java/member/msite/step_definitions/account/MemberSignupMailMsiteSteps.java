@@ -42,10 +42,21 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
         on(Member_Signupemail_Msite_Page.class).signUpButton();
     }
 
+    @And("^I trigger on newsletter config")
+    public void newsLetterConfig() throws  Throwable {
+        on(Member_Account_Msite_Page.class).setNewsletterTrigger();
+    }
+
 
     @Then("^I should see account page")
     public void hasTitleAccount() throws Throwable {
         on(Member_Account_Msite_Page.class).setAccountTittle();
+    }
+
+    @Then("^I should see corrcet current newsletter config")
+    public void hasCurrentNews() throws Throwable {
+        String current_news  = on(Member_Account_Msite_Page.class).getCurrentNewsletter();
+        on(Member_Account_Msite_Page.class).hasCurrentNewsletter(current_news);
     }
 }
 
