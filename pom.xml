@@ -97,6 +97,7 @@
                     <groups></groups>
                     <systemPropertyVariables>
                         <env>${env}</env>
+                        <theme>${theme}</theme>
                         <allure.results.directory>${allure.result.dir}</allure.results.directory>
                     </systemPropertyVariables>
                     <testFailureIgnore>false</testFailureIgnore>
