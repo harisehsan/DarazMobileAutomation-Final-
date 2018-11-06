@@ -1,10 +1,10 @@
 package browser;
 
 import browser.base.Browser;
-import com.sun.javafx.PlatformUtil;
 import helper.OsHelper;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
 import java.util.Arrays;
 
 public class Chrome extends Browser {
