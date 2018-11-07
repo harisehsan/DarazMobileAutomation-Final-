@@ -1,6 +1,6 @@
 package member.msite;
 
-import base.BaseTestRunner;
+import base.CucumberRunner;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.PickleEventWrapper;
@@ -16,14 +16,8 @@ import org.testng.annotations.Test;
 @CucumberOptions(
         features = {"src/test/java/member/msite/features"},
         tags = {"@Member_Msite"},
-        glue = {"member.msite.step_definitions"},
-        plugin = {"pretty",
-                "io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm",
-                "html:target/cucumber-reports/cucumber-pretty",
-                "json:target/cucumber-reports/json-reports/CucumberTestReport.json",
-                "rerun:target/cucumber-reports/rerun-reports/rerun.txt"
-        })
-public class MsiteRunner extends BaseTestRunner {
+        glue = {"member.msite.step_definitions"})
+public class MsiteRunner extends CucumberRunner {
 
     @Test
     public void test(){
