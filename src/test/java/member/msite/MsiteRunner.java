@@ -17,20 +17,4 @@ import org.testng.annotations.Test;
         features = {"src/test/java/member/msite/features"},
         tags = {"@Member_Msite"},
         glue = {"member.msite.step_definitions"})
-public class MsiteRunner extends CucumberRunner {
-
-    @Test
-    public void test(){
-        System.out.println(123);
-    }
-
-    @Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "scenarios")
-    public void scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
-        testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
-    }
-
-    @DataProvider
-    public Object[][] scenarios() {
-        return testNGCucumberRunner.provideScenarios();
-    }
-}
+public class MsiteRunner extends CucumberRunner {}

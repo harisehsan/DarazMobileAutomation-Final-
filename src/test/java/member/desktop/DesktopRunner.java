@@ -16,15 +16,4 @@ import org.testng.annotations.Test;
         features = {"src/test/java/member/desktop/features"},
         tags = {"@Loginbyemail"},
         glue = {"member.desktop.step_definitions"})
-public class DesktopRunner extends TestRunner {
-
-    @Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "scenarios")
-    public void scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
-        testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
-    }
-
-    @DataProvider
-    public Object[][] scenarios() {
-        return testNGCucumberRunner.provideScenarios();
-    }
-}
+public class DesktopRunner extends TestRunner {}
