@@ -36,12 +36,6 @@ public class MemberLoginSteps extends BaseSteps {
         on(Member_Login_Page.class).submitButton();
     }
 
-    @And("I login with new password")
-    public void loginNewPass() throws Throwable {
-        String new_pass = Global.config.getString("member.account.new_pass");
-        on(Member_Login_Page.class).loginNewPass((String)Global.map.get("email_random"),new_pass);
-    }
-
     @And("^I click on newsletter button to turn on or off config")
     public void setNewsLetter() throws Throwable {
         on(Account_Page.class).setNewsLetter();

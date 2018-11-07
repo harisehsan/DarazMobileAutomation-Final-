@@ -40,7 +40,7 @@ public class Member_Login_Page extends PageObject {
         waitUntilVisible(login);
     }
 
-    public void loginNewPass(String emailinfo, String newpass){
+    public void loginEmail(String emailinfo, String newpass){
         waitUntilPageReady();
         waitUntilVisible(email);
         this.email.sendKeys(emailinfo);
