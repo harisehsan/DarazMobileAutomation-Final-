@@ -11,7 +11,7 @@ import org.testng.annotations.*;
 
 import java.util.HashMap;
 
-public class BaseTestRunner {
+public class CucumberRunner {
 
     protected static TestNGCucumberRunner testNGCucumberRunner;
 
