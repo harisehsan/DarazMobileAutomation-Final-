@@ -73,6 +73,15 @@
             <artifactId>guice</artifactId>
             <version>4.2.0</version>
         </dependency>
+
+        <!-- selenide -->
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>4.12.3</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
