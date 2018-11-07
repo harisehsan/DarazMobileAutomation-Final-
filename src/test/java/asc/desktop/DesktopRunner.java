@@ -17,20 +17,4 @@ import org.testng.annotations.Test;
         features = {"src/test/java/member/features"},
         tags = {"@addaddresspclzd"},
         glue = {"member.step_definitions"})
-public class DesktopRunner extends TestRunner {
-
-    @Test
-    public void test(){
-        System.out.println(123);
-    }
-
-    @Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "scenarios")
-    public void scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
-        testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
-    }
-
-    @DataProvider
-    public Object[][] scenarios() {
-        return testNGCucumberRunner.provideScenarios();
-    }
-}
+public class DesktopRunner extends TestRunner {}
