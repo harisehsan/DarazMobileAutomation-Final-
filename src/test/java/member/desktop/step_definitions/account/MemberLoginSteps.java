@@ -5,6 +5,7 @@ import java.lang.String;
 import base.BaseSteps;
 import cucumber.api.java.en.*;
 import global.Global;
+import member.desktop.pages.account.Account_Page;
 import member.desktop.pages.account.Member_Login_Page;
 
 public class MemberLoginSteps extends BaseSteps {
@@ -39,6 +40,19 @@ public class MemberLoginSteps extends BaseSteps {
     public void loginNewPass() throws Throwable {
         String new_pass = Global.config.getString("member.account.new_pass");
         on(Member_Login_Page.class).loginNewPass((String)Global.map.get("email_random"),new_pass);
+    }
+
+    @And("^I click on newsletter button to turn on or off config")
+    public void setNewsLetter() throws Throwable {
+        on(Account_Page.class).setNewsLetter();
+
+    }
+
+
+    @Then("^I go back account without error message")
+    public void hasNewsLetter() throws Throwable {
+        on(Account_Page.class).hasNewsLetter();
+
     }
 
 }

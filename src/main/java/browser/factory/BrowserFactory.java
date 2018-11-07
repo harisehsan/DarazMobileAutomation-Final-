@@ -40,7 +40,8 @@ public class BrowserFactory {
     }
 
     private String[] getBrowserOptionsFromComfig(String browserName){
-        String browserOptionsKey = browserName+".browser.options";
+        String browserTheme = System.getProperty("theme");
+        String browserOptionsKey = browserTheme+"."+browserName+".browser.options";
         String optionStringFromConfig = browserInitializeInfo.getProperty(browserOptionsKey);
         String optionStringFromSystem = System.getProperty("browser.options");
         if(optionStringFromConfig==null && optionStringFromSystem==null) return new String[0];

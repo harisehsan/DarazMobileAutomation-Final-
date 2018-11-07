@@ -30,7 +30,7 @@ public class MemberLoginSMSMsiteSteps extends BaseSteps {
 
     @And("^I input code info on Msite")
     public void inputCode() throws Throwable{
-        String smscode = Global.config.getString("member.sms_code");
+        String smscode = Global.config.getString("member.account.sms_code");
         on(Member_Loginsms_Msite_Page.class).inputSMSCode(smscode);
 
     }

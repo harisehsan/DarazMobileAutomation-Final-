@@ -10,7 +10,7 @@ import base.PageObject;
  */
 public class Login_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url")+"/user/login";
+    public static String page_url = Global.config.getString("member.url") +"/user/login";
 
 
     @FindBy(css = ".mod-input-loginName input") private WebElement email;
