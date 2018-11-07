@@ -13,7 +13,4 @@ public class CheckoutShipping_Page extends PageObject {
         placeorder_btn.click();
     }
 
-
-
-
 }

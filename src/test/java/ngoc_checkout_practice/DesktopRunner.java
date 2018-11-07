@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = {"src/test/java/ngoc_checkout_practice/desktop/features"},
-        tags = {"@checkoutByCOD"},
+        tags = {"@Check_Product_On_Cart"},
         glue = {"ngoc_checkout_practice.desktop.step_definitions","member.desktop.step_definitions"},
         plugin = {"pretty",
                 "io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm",

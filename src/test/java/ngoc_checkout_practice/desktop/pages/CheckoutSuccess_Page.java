@@ -7,10 +7,7 @@ import org.openqa.selenium.support.FindBy;
 public class CheckoutSuccess_Page extends PageObject {
     @FindBy (css = ".thank-you-heading") WebElement thankyouTitle;
 
-    public boolean hasThankyouTitle()
-
-    {
-
+    public boolean hasThankyouTitle() {
         waitUntilVisible(thankyouTitle);
         return thankyouTitle.isDisplayed();
     }

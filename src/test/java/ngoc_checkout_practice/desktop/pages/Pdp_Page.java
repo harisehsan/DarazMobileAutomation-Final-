@@ -17,9 +17,12 @@ public class Pdp_Page extends PageObject {
         page_url = url;
     }
 
-    public void getProductTitle(){
-        Global.map.put("ProductTitle", productTitle);
+    public String getProductTitle(){
+        return productTitle.getText();
+    }
 
+    public void setProductTitle(String title){
+        Global.map.put("currentProductTitle", title);
     }
 
     public void clickAddToCartButton()

@@ -11,61 +11,50 @@ import org.testng.Assert;
 public class CheckoutByCODSteps extends BaseSteps {
 
     @When("^I go to a pdp page$")
-    public void goToAPDPPage()
-    {
-        Pdp_Page.setUrl(Global.config.getConfig("asc").getString("pdp_url"));
+    public void goToPdpPage() {
+        Pdp_Page.setUrl(Global.config.getConfig("checkout").getString("cod_pdp_url"));
         visit(Pdp_Page.class);
-        on(Pdp_Page.class).getProductTitle();
+    }
+
+    @When("^I get the product title$")
+    public void getProductTitle(){
+        on(Pdp_Page.class).setProductTitle(on(Pdp_Page.class).getProductTitle());
     }
 
     @And("^I click on Add to cart button$")
-    public void clickAddToCart()
-    {
+    public void clickAddToCart() {
         on(Pdp_Page.class).clickAddToCartButton();
     }
 
-
     @And("^I click Checkout button on Cart popup$")
-    public void clickCheckout()
-    {
+    public void clickCheckout() {
         on(Cart_PopUp.class).clickCheckout();
     }
 
     @And("^I click Place Order button on Checkout Shipping page$")
-    public void clickPlaceOrder()
-
-    {
+    public void clickPlaceOrder() {
         on(CheckoutShipping_Page.class).clickPlaceOrder();
     }
 
-    @And("^I select COD payment method$")
-    public void selectCOD()
-    {
+    @And("^I place order with COD payment method$")
+    public void selectCOD() {
         on(CheckoutPaymentMethod_Page.class).selectCOD();
-    }
-
-    @And("^I click Confirm Order button$")
-    public void clickconfirmOrder()
-    {
         on(CheckoutPaymentMethod_Page.class).clickConfirmOrderButton();
     }
 
     @Then("^I should be on Checkout Success page$")
-    public void confirmOnCheckoutSuccess()
-    {
+    public void confirmOnCheckoutSuccess() {
         Assert.assertTrue(on(CheckoutSuccess_Page.class).hasThankyouTitle());
     }
 
     @And("^I click Go To Cart button on Cart popup$")
-    public void clickGoToCart()
-    {
+    public void clickGoToCart() {
         on(Cart_Page.class).clickGoToCartButton();
     }
 
-
-    @Then("^I should see the product title is in the list$")
-    public void checkProductExistInTheList(){
-        on(Cart_Page.class).checkProductExistInTheList();
+    @Then("^I should see the product title in the Cart$")
+    public void checkProductTitleExistInTheCart() {
+        on(Cart_Page.class).checkProductExistInTheCart();
     }
 
 }
