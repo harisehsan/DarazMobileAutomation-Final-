@@ -14,6 +14,7 @@
         <timestamp>${maven.build.timestamp}</timestamp>
         <maven.build.timestamp.format>yyyy-MM-dd.HH:mm:ss</maven.build.timestamp.format>
         <env>lk.live</env>
+        <theme>desktop</theme>
         <allure.result.dir>${project.build.directory}/allure-results</allure.result.dir>
         <allure.report.dir>${project.build.directory}/allure-report</allure.report.dir>
     </properties>
@@ -96,9 +97,10 @@
                     <groups></groups>
                     <systemPropertyVariables>
                         <env>${env}</env>
+                        <theme>${theme}</theme>
                         <allure.results.directory>${allure.result.dir}</allure.results.directory>
                     </systemPropertyVariables>
-                    <testFailureIgnore>true</testFailureIgnore>
+                    <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
             </plugin>
             <plugin>
