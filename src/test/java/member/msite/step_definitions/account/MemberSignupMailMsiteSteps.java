@@ -32,7 +32,7 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
 
     @And("^I input the password on form")
     public void inputPass() throws Throwable {
-        String pass = Global.config.getString("member.pass");
+        String pass = Global.config.getString("member.account.pass");
         on(Member_Signupemail_Msite_Page.class).inputPassword(pass);
     }
 
