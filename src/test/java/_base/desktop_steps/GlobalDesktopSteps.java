@@ -10,7 +10,7 @@ import member.desktop.pages.account.Member_Login_Page;
 
 public class GlobalDesktopSteps extends BaseSteps {
 
-    @And("^I login by email")
+    @And("^I login by email on lazada/daraz")
     public void globalLoginByEmail()throws Throwable {
         visit(Member_Login_Page.class);
         String email = Global.config.getString("member.account.mail");
