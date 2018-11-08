@@ -1,4 +1,4 @@
-package lazada.page_object;
+package global.page_object;
 
 import com.codeborne.selenide.SelenideElement;
 import global.helpers.AbstractPage;
