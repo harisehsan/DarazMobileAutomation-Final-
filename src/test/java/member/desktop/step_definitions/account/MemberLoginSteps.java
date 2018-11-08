@@ -10,18 +10,23 @@ import member.desktop.pages.account.Member_Login_Page;
 
 public class MemberLoginSteps extends BaseSteps {
 
-    @Given("I go to the login page, input the email information")
-    public void loginEmail() throws Throwable {
-        String email = Global.config.getString("member.account.mail");
-        visit(Member_Login_Page.class);
-        on(Member_Login_Page.class).loginEmail(email);
-    }
-
     @Given("I go to the login page, input the mobilephone information")
     public void loginMobilePhone() throws Throwable {
         String mobilephone = Global.config.getString("member.phone_number_login");
         visit(Member_Login_Page.class);
         on(Member_Login_Page.class).loginEmail(mobilephone);
+    }
+
+    @When("^I go to the login by email page")
+    public void accessLoginPage(){
+        visit(Member_Login_Page.class);
+    }
+
+    @And("^I login account information on login by email page")
+    public void loginByEmail()throws Throwable {
+        String email = Global.config.getString("member.account.mail");
+        String pass = Global.config.getString("member.account.pass");
+        on(Member_Login_Page.class).loginEmailPass(email,pass);
     }
 
 
@@ -39,7 +44,7 @@ public class MemberLoginSteps extends BaseSteps {
     @And("I login with new password")
     public void loginNewPass() throws Throwable {
         String new_pass = Global.config.getString("member.account.new_pass");
-        on(Member_Login_Page.class).loginNewPass((String)Global.map.get("email_random"),new_pass);
+        on(Member_Login_Page.class).loginEmailPass((String)Global.map.get("email_random"),new_pass);
     }
 
     @And("^I click on newsletter button to turn on or off config")
