@@ -54,6 +54,29 @@ Feature: Member Msite Test
     And I click Logout button and choose OK button
     Then I should logout success
 
+  @MsiteChangePassword
+  Scenario: User change password and login again with new password on Msite
+    When I go to Msite and open the sign up page by email
+    And I input the name on form
+    And I input the email on form
+    And I input the password on form
+    And I click submit on form
+    And I should see account page
+    And I go to setting page
+    And I click to change password button
+    And I go to change pass page on Msite
+    And I input all information to change pass
+    And I click save password button
+    And I click got it button on popup
+    And I go to setting page
+    And I click Logout button and choose OK button
+    And I should logout success
+    And I go to login by email on Msite
+    And I input email just signned up on Msite
+    And I input new password info on Msite
+    And I click login button on Msite
+    Then I should see account page
+x
   @MsiteNewsltterConfig
   Scenario: User login and try to confif newslteter
     When I go to login by email on Msite
