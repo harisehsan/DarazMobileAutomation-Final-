@@ -63,10 +63,15 @@ public class PracticeCheckoutSteps_COD extends BaseSteps {
         on(PdpPage.class).addToCartSuccess();
     }
 
-    @Then("^I click place order on shipping page")
-    public void PlaceOrder()
+    @Then("^I click on first place order button on shipping page")
+    public void PlaceOrderBuyNow()
     {
         on(CheckoutPage.class).placeOrder();
+    }
+
+    @And("^I select all items in Cart")
+    public void SelectAllItems(){
+        on(cartPage.class).SelectAllItems();
     }
     @Then("^I select COD on payment page")
     public void SelectCOD () {

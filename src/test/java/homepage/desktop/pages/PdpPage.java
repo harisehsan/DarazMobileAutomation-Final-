@@ -2,6 +2,7 @@ package homepage.desktop.pages;
 
 import base.PageObject;
 import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -28,6 +29,8 @@ public class PdpPage extends PageObject {
     {
         waitUntilVisible(btnAddToCart);
         btnAddToCart.click();
+        waitUntilInvisibilityOf(By.id("_x38_0x80-loading-logo"));
+
     }
 
     public void addToCartSuccess () {
@@ -37,6 +40,7 @@ public class PdpPage extends PageObject {
 
     public void goToCart() {
         btnGoToCart.click();
-
+        waitUntilInvisibilityOf(By.id("_x38_0x80-loading-logo"));
+        //waitUntilPageReady();
     }
 }

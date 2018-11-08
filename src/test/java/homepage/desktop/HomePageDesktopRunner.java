@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = {"src/test/java/homepage/desktop/features"},
-        tags = {"@buynow"},
+        tags = {"@addToCart"},
         glue = {"homepage.desktop.step_definitions"},
         plugin = {"pretty",
                 "io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm",

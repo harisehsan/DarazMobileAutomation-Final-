@@ -8,31 +8,30 @@ import org.openqa.selenium.support.FindBy;
 public class CheckoutPage extends PageObject {
 
     @FindBy(xpath = "//*[@id='toPayBtn_10021']/button")
-    private WebElement placeOrderBtn;
-    @FindBy(xpath = "//*[@id='automation-payment-method-item-1']")
+    private WebElement placeOrderBtnWithBuyNow;
+    @FindBy(xpath = "//*[text()= 'Cash on Delivery']")
     private WebElement selectCODBtn;
     @FindBy(xpath = "//*[@id='paymentMethodList_10001\']/div[2]/div[2]/button")
     private WebElement confirmOrderBtn;
 
-
+    @FindBy(xpath="//*[@id='rightContainer_CR']/div[2]/div[2]/div/div[3]/button") private WebElement placeOrderBtnNormal;
     public void placeOrder() {
         waitUntilPageReady();
-        placeOrderBtn.click();
+
+        placeOrderBtnWithBuyNow.click();
+        waitUntilInvisibilityOf(By.id("_x38_0x80-loading-logo"));
     }
 
     public void selectCOD() {
-       /* waitUntilPageReady();
-        System.out.println("confirmOrderBtn = " + confirmOrderBtn.getText());
-        while(confirmOrderBtn.getText()==null)
-            {
-        selectCODBtn.click();
-            }*/
+
         waitUntilPageReady();
-        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilInvisibilityOf(By.id("_x38_0x80-loading-logo"));
         selectCODBtn.click();
+        waitUntilInvisibilityOf(By.id("_x38_0x80-loading-logo"));
     }
 
     public void confirmOrder() {
+        waitUntilInvisibilityOf(By.id("_x38_0x80-loading-logo"));
         confirmOrderBtn.click();
     }
 
