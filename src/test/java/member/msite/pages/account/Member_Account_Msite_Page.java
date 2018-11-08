@@ -9,8 +9,10 @@ public class Member_Account_Msite_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url1") + "/user/account";
 
-    @FindBy(css = "#container > div > div.account-newsletter > div") private WebElement accounttittle;
+    @FindBy(css = "#container > div > div.mod-minlogin.member") private WebElement accounttittle;
     @FindBy(css ="#container > div > div.account-newsletter > div") private WebElement newsletterConfig;
+    @FindBy(css="#address-book > a") private WebElement addressBook;
+
 
     public void setAccountTittle() {
         waitUntilVisible(accounttittle);
@@ -20,21 +22,17 @@ public class Member_Account_Msite_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(newsletterConfig);
         this.newsletterConfig.click();
-        Global.map.put("current_newsletter",newsletterConfig.getAttribute("class"));
-
     }
 
     public String getCurrentNewsletter() {
-        String current_news = (String) Global.map.get("current_newsletter");
-        return current_news;
+        return newsletterConfig.getAttribute("class");
     }
 
-
-    public boolean hasCurrentNewsletter(String name){
+    public void clickAddress(){
         waitUntilPageReady();
-        waitUntilVisible(newsletterConfig);
-        return this.newsletterConfig.getAttribute("class").equals(name);
-    }
+        waitUntilVisible(addressBook);
+        this.addressBook.click();
 
+    }
 
 }

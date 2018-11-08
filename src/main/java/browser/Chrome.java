@@ -1,14 +1,16 @@
 package browser;
 
 import browser.base.Browser;
+import helper.OsHelper;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
 import java.util.Arrays;
 
 public class Chrome extends Browser {
 
     public Chrome(String [] options){
-        System.setProperty("webdriver.chrome.driver", properties.getProperty("chrome.driver.path"));
+        System.setProperty("webdriver.chrome.driver", properties.getProperty(OsHelper.getOperatingSystemType() +".chrome.driver.path"));
         ChromeOptions cOptions = new ChromeOptions();
         cOptions.addArguments(options);
         driver = new ChromeDriver(cOptions);

@@ -12,35 +12,4 @@ Feature: Place order Test
     And I place order from shipping page
     And I checkout with Cod method
     And I place normal order with "5" products
-    And I place normal order with "4" products
-    And I place normal order with "3" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "4" products
-    And I place normal order with "3" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "4" products
-    And I place normal order with "3" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "4" products
-    And I place normal order with "3" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
-    And I place normal order with "5" products
 

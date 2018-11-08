@@ -61,5 +61,6 @@ Feature: Member Msite Test
     And I input password info on Msite
     And I click login button on Msite
     And I should see account page
+    And I get result of newsletter config before trigger
     And I trigger on newsletter config
-    Then I should see corrcet current newsletter config
+    Then I should see the result of current newsletter config changed

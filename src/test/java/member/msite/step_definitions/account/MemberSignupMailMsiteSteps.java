@@ -6,6 +6,7 @@ import member.msite.pages.account.Member_Account_Msite_Page;
 import member.msite.pages.account.Member_Signupemail_Msite_Page;
 import base.BaseSteps;
 import cucumber.api.java.en.*;
+import org.testng.Assert;
 
 public class MemberSignupMailMsiteSteps extends BaseSteps {
     @Given("^I go to Msite and open the sign up page by email")
@@ -32,7 +33,7 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
 
     @And("^I input the password on form")
     public void inputPass() throws Throwable {
-        String pass = Global.config.getString("member.pass");
+        String pass = Global.config.getString("member.account.pass");
         on(Member_Signupemail_Msite_Page.class).inputPassword(pass);
     }
 
@@ -42,21 +43,27 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
         on(Member_Signupemail_Msite_Page.class).signUpButton();
     }
 
+    @And("^I get result of newsletter config before trigger")
+    public void currentNewsLetterConfig() throws  Throwable {
+        String beforeTriggerNewsLetter = on(Member_Account_Msite_Page.class).getCurrentNewsletter();
+        Global.map.put("current_newsletter",beforeTriggerNewsLetter);
+    }
+
     @And("^I trigger on newsletter config")
     public void newsLetterConfig() throws  Throwable {
         on(Member_Account_Msite_Page.class).setNewsletterTrigger();
     }
-
 
     @Then("^I should see account page")
     public void hasTitleAccount() throws Throwable {
         on(Member_Account_Msite_Page.class).setAccountTittle();
     }
 
-    @Then("^I should see corrcet current newsletter config")
+    @Then("^I should see the result of current newsletter config changed")
     public void hasCurrentNews() throws Throwable {
-        String current_news  = on(Member_Account_Msite_Page.class).getCurrentNewsletter();
-        on(Member_Account_Msite_Page.class).hasCurrentNewsletter(current_news);
+        String before = (String) Global.map.get("current_newsletter");
+        String after = on(Member_Account_Msite_Page.class).getCurrentNewsletter();
+        Assert.assertEquals(before,after);
     }
 }
 
