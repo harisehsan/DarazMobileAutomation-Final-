@@ -22,11 +22,22 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
 
     }
 
+    @And("^I input email just signned up on Msite")
+    public void inputEmailSignUp() throws Throwable {
+        on(Member_Loginemail_Msite_Page.class).inputEmail((String) Global.map.get("email_random"));
+    }
+
     @And("^I input password info on Msite")
     public void inputPass() throws Throwable {
         String pass = Global.config.getString("member.account.pass");
         on(Member_Loginemail_Msite_Page.class).inputPass(pass);
 
+    }
+
+    @And("^I input new password info on Msite")
+    public void inputNewPass() throws Throwable {
+        String new_pass = Global.config.getString("member.account.new_pass");
+        on(Member_Loginemail_Msite_Page.class).inputPass(new_pass);
     }
 
     @And("^I click login button on Msite")
