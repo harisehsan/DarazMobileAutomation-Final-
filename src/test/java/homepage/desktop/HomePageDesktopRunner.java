@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = {"src/test/java/homepage/desktop/features"},
-        tags = {"@testtag"},
+        tags = {"@buynow"},
         glue = {"homepage.desktop.step_definitions"},
         plugin = {"pretty",
                 "io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm",
@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
                 "json:target/cucumber-reports/json-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun-reports/rerun.txt"
         })
-public class DesktopRunner extends BaseTestRunner {
+public class HomePageDesktopRunner extends BaseTestRunner {
 
     //@Test
     //public void test(){

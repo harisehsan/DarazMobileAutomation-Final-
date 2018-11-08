@@ -1,4 +1,4 @@
-package homepage.PC.step_definitions;
+package homepage.desktop.step_definitions;
 
 
 import cucumber.api.java.en.And;

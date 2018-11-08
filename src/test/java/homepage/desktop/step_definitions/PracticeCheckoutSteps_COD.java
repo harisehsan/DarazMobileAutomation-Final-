@@ -1,81 +1,100 @@
 package homepage.desktop.step_definitions;
 
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import homepage.desktop.pages.HomePage;
-import homepage.desktop.pages.HomePage_Base;
+import global.Global;
+import homepage.desktop.pages.*;
 import base.BaseSteps;
 
-public class CheckoutSteps_COD extends BaseSteps {
+public class PracticeCheckoutSteps_COD extends BaseSteps {
 
 
-    HomePage_Base hp_Base;
-    HomePage hp;
-    @Given("I land in HomePage ")
-    public void landInHomePage() {
-        hp_Base.visit_URL("https://google.com");
-
+    @When("^I go to HomePage")
+    public void landInHomePage() throws Throwable {
+        //hp_Base.visit_URL("https://www.daraz.com.bd/");
+        //Global.browser.goTo("https://www.daraz.com.bd/");
+        visit(HomePage.class);
     }
 
-    @When("I click on log in")
-    public void landLoginPage(){
-        hp.clickToLoginPage();
-
+    @Then("^I click on log in to login page")
+    public void landLoginPage()  {
+        on(HomePage.class).clickToLoginPage();
     }
 
-    @Then("I input username: \"([^\"]*)\"  and pwd: \"([^\"]*)\" ")
-    public void loginWithAccount (String username, String pwd) {
-        hp_Base.process_Login(username,pwd);
+    @Then("^I input username: \"([^\"]*)\"  and pwd: \"([^\"]*)\"$")
+    public void LoginWithAccount (String username, String pwd) {
 
+        on(LoginPage.class).InputLogin(username,pwd);
     }
 
-    @When("I back to HP")
+    @Then("^I input account information")
+    public void LoginWithExistingAccount (){
+        String username = Global.config.getString("homepage.account.mail");
+        String pwd = Global.config.getString("homepage.account.pass");
+        on(LoginPage.class).InputLogin(username,pwd);
+    }
+    @And("^I click on log in button")
+    public void ProcessLogIn ()
+    {
+        on(LoginPage.class).ClickToLogin();
+    }
+    @When("^I back to HomePage")
     public void backToHomePage() {
+        on(HomePage.class).backToHomePage();
 
     }
 
-    @Then("I go to category")
-    public void landInRandomCategory (){
-
-    }
-
-    @And("I Select Product")
-    public void selectRandomProduct (){
-
-    }
-
-    @When("I reach categorypage")
-    public void checkCategory ()  {
-
-    }
-
-    @Then("I select random product have COD")
+    @Then("^I select random product have COD")
     public void selectCodProduct (){
+        //Global.browser.goTo("dsjakdslaj");
+        //hp_Base.visit_URL("https://www.daraz.com.bd/-i100039713-s1013854700.html?");
+        visit(PdpPage.class);
+    }
 
+    @Then("^I click on buy now that product")
+    public void processBuyNow(){
+        on(PdpPage.class).clickToBuyNow();
     }
 
     @Then("I add product to cart successfully")
     public void addProductToCart () {
+        on(PdpPage.class).clickAddToCart();
+        on(PdpPage.class).addToCartSuccess();
+    }
+
+    @Then("^I click place order on shipping page")
+    public void PlaceOrder()
+    {
+        on(CheckoutPage.class).placeOrder();
+    }
+    @Then("^I select COD on payment page")
+    public void SelectCOD () {
+        on(CheckoutPage.class).selectCOD();
 
     }
 
-    @When("I come to cart")
-    public void checkCart() {
-
+    @Then("^I confirm order")
+    public void ConfirmOrder(){
+        on(CheckoutPage.class).confirmOrder();
     }
 
-
-    @Then("I doing checkout step")
-
-    public void checkoutSteps () {
-
-    }
-
-    @And("Order is succefull place")
+    @And("Order is successful place")
 
     public void checkOrder () {
+        on(SuccessPage.class).checkSuccessfull();
+    }
 
+    @Then("^I go to Cart successful")
+
+    public void goToCart(){
+        on(PdpPage.class).goToCart();
+
+    }
+
+    @Then("^I go to Checkout Page")
+
+    public void goToCheckout() {
+        on(cartPage.class).processCheckout();
     }
 }

@@ -16,7 +16,7 @@ import base.BaseTestRunner;
 @CucumberOptions(
 
         features = {"src/test/java/member/features"},
-        tags = {"@addaddresspclzd"},
+        tags = {"@HP"},
         glue = {"member.step_definitions"},
 
         plugin = {"pretty",
