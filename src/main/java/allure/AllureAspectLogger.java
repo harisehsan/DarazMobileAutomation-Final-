@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class AllureAspectLogger {
     @AfterThrowing(
-            pointcut = "execution(* step_definitions..*(..)) ",
+            pointcut = "execution(* base.BaseSteps+.*(..))",
             throwing= "error")
     public void logAfterFailed(JoinPoint joinPoint, Throwable error) {
         AllureAttachment.attachScreenShot("Failed Screenshot");

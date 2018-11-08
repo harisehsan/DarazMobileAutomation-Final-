@@ -3,7 +3,7 @@
 Feature: Member PC Test for Daraz project
 
   @Signupemail @no_lazada_live
-  Scenario: Guest signup new account by email
+  Scenario: Signup by email without slider
     When I go to the sign up page by email
     And I input the email information
     And I input password information
@@ -12,7 +12,7 @@ Feature: Member PC Test for Daraz project
     Then I should see the account page
 
   @Signupemail @no_staging
-  Scenario: Guest signup new account by email
+  Scenario: Guest signup by email with slider
     When I go to the sign up page by email
     And I input the email information
     And I input password information
@@ -22,7 +22,7 @@ Feature: Member PC Test for Daraz project
 
 
   @Signupsmsphone @no_lazada_live
-  Scenario: Guest signup new account by smsphone
+  Scenario: Guest signup by smsphone without slider
     When I go to the sign up page by smsphone
     And I input the phonenumber
     And I click the sendcode button
@@ -34,7 +34,7 @@ Feature: Member PC Test for Daraz project
     Then I should see the account is verified
 
   @Signupsmsphone @no_staging
-  Scenario: Guest signup new account by smsphone
+  Scenario: Guest signup by smsphone with slider
     When I go to the sign up page by smsphone
     And I input the phonenumber
     And I click the slider button
@@ -62,7 +62,7 @@ Feature: Member PC Test for Daraz project
     Then I should see the account page
 
   @EditNameinfo @no_lazada_live
-  Scenario: Guest signup new account by email
+  Scenario: User edit name information
     When I go to the sign up page by email
     And I input the email information
     And I input password information
@@ -75,7 +75,7 @@ Feature: Member PC Test for Daraz project
 
 
   @Logoutonpc
-  Scenario: User login account then logout account on
+  Scenario: User login account then logout account
     When I go to the login page, input the email information
     And I input the password information
     And I click submit button
@@ -85,7 +85,7 @@ Feature: Member PC Test for Daraz project
 
 
   @Changepassword
-  Scenario: Guest signup new account by email
+  Scenario: User change password, login success by new password
     When I go to the sign up page by email
     And I input the email information
     And I input password information
@@ -98,7 +98,7 @@ Feature: Member PC Test for Daraz project
     Then I should see the account page
 
   @NewsletterConfig
-  Scenario: User login account by email
+  Scenario: User config newsletter
     When I go to the login page, input the email information
     And I input the password information
     And I click submit button

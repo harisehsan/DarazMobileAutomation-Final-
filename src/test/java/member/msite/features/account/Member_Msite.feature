@@ -76,3 +76,14 @@ Feature: Member Msite Test
     And I input new password info on Msite
     And I click login button on Msite
     Then I should see account page
+x
+  @MsiteNewsltterConfig
+  Scenario: User login and try to confif newslteter
+    When I go to login by email on Msite
+    And I input email info on Msite
+    And I input password info on Msite
+    And I click login button on Msite
+    And I should see account page
+    And I get result of newsletter config before trigger
+    And I trigger on newsletter config
+    Then I should see the result of current newsletter config changed
