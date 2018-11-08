@@ -76,7 +76,7 @@ Feature: Member Msite Test
     And I input new password info on Msite
     And I click login button on Msite
     Then I should see account page
-x
+
   @MsiteNewsltterConfig
   Scenario: User login and try to confif newslteter
     When I go to login by email on Msite
