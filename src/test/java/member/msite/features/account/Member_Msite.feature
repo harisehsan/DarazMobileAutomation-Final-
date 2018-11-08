@@ -78,7 +78,7 @@ Feature: Member Msite Test
     Then I should see account page
 
   @MsiteNewsltterConfig
-  Scenario: User login and try to confif newslteter
+  Scenario: User login and try to config newslteter
     When I go to login by email on Msite
     And I input email info on Msite
     And I input password info on Msite

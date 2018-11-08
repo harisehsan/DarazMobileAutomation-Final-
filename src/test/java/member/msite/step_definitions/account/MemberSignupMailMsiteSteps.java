@@ -63,7 +63,7 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
     public void hasCurrentNews() throws Throwable {
         String before = (String) Global.map.get("current_newsletter");
         String after = on(Member_Account_Msite_Page.class).getCurrentNewsletter();
-        Assert.assertEquals(before,after);
+        Assert.assertNotEquals(before,after);
     }
 }
 
