@@ -9,7 +9,6 @@ import ngoc_checkout_practice.desktop.pages.*;
 import org.testng.Assert;
 
 public class CheckoutByCODSteps extends BaseSteps {
-
     @When("^I go to a pdp page$")
     public void goToPdpPage() {
         Pdp_Page.setUrl(Global.config.getConfig("checkout").getString("cod_pdp_url"));
@@ -54,7 +53,7 @@ public class CheckoutByCODSteps extends BaseSteps {
 
     @Then("^I should see the product title in the Cart$")
     public void checkProductTitleExistInTheCart() {
-        on(Cart_Page.class).checkProductExistInTheCart();
+        Assert.assertTrue(on(Cart_Page.class).checkProductExistInTheCart());
     }
 
 }

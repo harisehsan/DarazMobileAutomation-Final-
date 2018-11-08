@@ -24,4 +24,3 @@
       And I click Go To Cart button on Cart popup
       Then I should see the product title in the Cart
 
-
