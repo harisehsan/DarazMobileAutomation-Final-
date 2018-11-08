@@ -48,9 +48,8 @@ Feature: Member PC Test for Daraz project
 
   @Loginbyemail
   Scenario: User login account by email
-    When I go to the login page, input the email information
-    And I input the password information
-    And I click submit button
+    When I go to the login by email page
+    And I login account information on login by email page
     Then I should see the account page
 
 
@@ -76,9 +75,8 @@ Feature: Member PC Test for Daraz project
 
   @Logoutonpc
   Scenario: User login account then logout account
-    When I go to the login page, input the email information
-    And I input the password information
-    And I click submit button
+    When I go to the login by email page
+    And I login account information on login by email page
     And I click on my account menu
     And I click on logout account
     Then I logout successful
@@ -99,9 +97,8 @@ Feature: Member PC Test for Daraz project
 
   @NewsletterConfig
   Scenario: User config newsletter
-    When I go to the login page, input the email information
-    And I input the password information
-    And I click submit button
+    When I go to the login by email page
+    And I login account information on login by email page
     And I click on newsletter button to turn on or off config
     Then I go back account without error message
 

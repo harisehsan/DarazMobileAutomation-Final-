@@ -10,9 +10,11 @@ import member.desktop.pages.account.Member_Login_Page;
 
 public class GlobalDesktopSteps extends BaseSteps {
 
-    @And("I login with new password")
-    public void loginNewPass() throws Throwable {
-        String new_pass = Global.config.getString("member.account.new_pass");
-        on(Member_Login_Page.class).loginEmail((String)Global.map.get("email_random"),new_pass);
+    @And("^I login by email on lazada/daraz")
+    public void globalLoginByEmail()throws Throwable {
+        visit(Member_Login_Page.class);
+        String email = Global.config.getString("member.account.mail");
+        String pass = Global.config.getString("member.account.pass");
+        on(Member_Login_Page.class).loginEmailPass(email,pass);
     }
 }
