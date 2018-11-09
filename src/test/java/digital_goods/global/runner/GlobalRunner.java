@@ -1,4 +1,4 @@
-package global.runner;
+package digital_goods.global.runner;
 
 
 import com.codeborne.selenide.WebDriverRunner;

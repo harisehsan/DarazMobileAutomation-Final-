@@ -1,4 +1,4 @@
-package global.steps;
+package digital_goods.global.steps;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

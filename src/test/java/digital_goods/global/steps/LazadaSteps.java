@@ -1,4 +1,4 @@
-package global.steps;
+package digital_goods.global.steps;
 
 import com.codeborne.selenide.*;
 import cucumber.api.java.en.And;
@@ -7,7 +7,7 @@ import cucumber.api.java.en.Then;
 import global.Drivers;
 import global.helpers.AbstractPage;
 import global.helpers.Wait;
-import global.page_object.AllMobilePages;
+import digital_goods.global.page_object.AllMobilePages;
 import member.msite.page_object.LoginMobilePage;
 import digital_goods.mobileTopup.page_object.TopupMobilePage;
 import org.testng.Assert;
