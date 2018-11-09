@@ -11,7 +11,7 @@ public class Member_Loginemail_Msite_Page extends PageObject {
 
     @FindBy(css = ".mod-input-loginName input") private WebElement inputemail;
     @FindBy(css =".mod-input-password input") private WebElement inputpass;
-    @FindBy(className = "login-btn") private WebElement clickloginbutton;
+    @FindBy(css = "#container > div > div > div > div > div.login-btn > button") private WebElement clickloginbutton;
     @FindBy(css = ".login-foot-btn") private WebElement clicksmsbutton;
 
 

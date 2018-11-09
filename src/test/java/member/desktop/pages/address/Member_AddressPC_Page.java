@@ -26,11 +26,21 @@ public class Member_AddressPC_Page extends PageObject {
     @FindBy(css = ".mod-input-detailAddress input") private WebElement detailAddress;
     @FindBy(css= ".next-table-cell") private WebElement editaddress;
     @FindBy(className = "next-table-cell-wrapper") private WebElement hasNewName;
+    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr:nth-child(2) > td.next-table-cell.first > div > button") private WebElement accessDeleteAddress;
+    @FindBy(className = "mod-address-update-hd") private WebElement deleteBtn;
+    @FindBy(css = "#dialog-footer-2 > button.next-btn.next-btn-primary.next-btn-medium") private WebElement deleteConfirm;
+    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody") private List<WebElement> addressLevel;
 
     public void addNewAddress(){
         waitUntilPageReady();
         waitUntilVisible(addNewAddress);
         this.addNewAddress.click();
+    }
+
+    public void accessDeleteAddress(){
+        waitUntilPageReady();
+        waitUntilVisible(accessDeleteAddress);
+        this.accessDeleteAddress.click();
     }
 
     public void inputName(String name){
@@ -56,6 +66,21 @@ public class Member_AddressPC_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(editaddress);
         this.editaddress.click();
+    }
+
+    public void deleteBtn() {
+        waitUntilPageReady();
+        waitUntilVisible(deleteBtn);
+        this.deleteBtn.click();
+        waitUntilClickable(By.cssSelector("#dialog-footer-2 > button.next-btn.next-btn-primary.next-btn-medium"));
+        this.deleteConfirm.click();
+    }
+
+    public boolean hasNoAddress() {
+        if(addressLevel.size() == 1){
+            return true;
+        }
+        return false;
     }
 
     public void clearName(){
@@ -112,6 +137,7 @@ public class Member_AddressPC_Page extends PageObject {
         waitUntilVisible(hasNewName);
         return this.hasNewName.getText().equals(newName);
     }
+
 
     public void setDetailAddress(String da){
         waitUntilVisible(detailAddress);
