@@ -1,4 +1,4 @@
-package member.msite.page_object;
+package digital_goods.mobileTopup.page_object;
 
 import com.codeborne.selenide.SelenideElement;
 import global.helpers.AbstractPage;

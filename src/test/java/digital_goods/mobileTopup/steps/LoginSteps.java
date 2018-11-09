@@ -1,8 +1,8 @@
-package member.msite.steps;
+package digital_goods.mobileTopup.steps;
 
 import cucumber.api.java.en.Given;
 import global.Drivers;
-import member.msite.page_object.LoginMobilePage;
+import digital_goods.mobileTopup.page_object.LoginMobilePage;
 
 import static com.codeborne.selenide.Selenide.page;
 
