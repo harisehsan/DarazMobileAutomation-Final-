@@ -102,9 +102,22 @@ Feature: Member PC Test for Daraz project
     And I click on newsletter button to turn on or off config
     Then I go back account without error message
 
-
-
-
+  @17740305 @member_regression @member_smoke
+  Scenario: User reset password function
+    When I go to the login by email page
+    And I click reset password on login page
+    And I go to forgot password page
+    And I submit email to reset password process
+    And I click Verify through Email button
+    And I process to get smscode on verify by email page
+    And I go to the inbox mail on new tab
+    And I open email to get sms code
+    And I go back the old tab
+    And I input the smscode on verifyemail page from old tab
+    And I click Verify Code button on verifyemail page
+    And I go to reset password page
+    And I process reset password on reset password page
+    Then I should see the account page
 
 
 

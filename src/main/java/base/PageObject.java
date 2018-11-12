@@ -39,7 +39,9 @@ public class PageObject {
         action.moveToElement(ele).build().perform();
     }
 
-
+    protected void switchToFrame(WebElement iframe){
+        driver.switchTo().frame(iframe);
+    }
 
     protected void waitUntilNotVisible(WebElement ele) {
         new WebDriverWait(driver, DEFAULT_TIMEOUT).until(ExpectedConditions.invisibilityOf(ele));
