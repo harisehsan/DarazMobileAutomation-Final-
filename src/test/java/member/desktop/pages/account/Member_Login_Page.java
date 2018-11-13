@@ -14,6 +14,7 @@ public class Member_Login_Page extends PageObject {
     @FindBy(css = "[type='password']") private WebElement password;
     @FindBy(css = ".mod-login-btn button") private WebElement submit;
     @FindBy(className = "mod-login-btn") private WebElement login;
+    @FindBy(className = "mod-login-forgot") private WebElement resetPassBtn;
 
 
     public void loginEmail(String emailInfo){
@@ -38,6 +39,11 @@ public class Member_Login_Page extends PageObject {
 
     public void hasID(){
         waitUntilVisible(login);
+    }
+
+    public void clickResetPassBtn() {
+        waitUntilPageReady();
+        this.resetPassBtn.click();
     }
 
     public void loginEmailPass(String emailinfo, String newpass){

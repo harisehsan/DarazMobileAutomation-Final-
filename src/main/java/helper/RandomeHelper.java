@@ -28,5 +28,17 @@ public interface RandomeHelper {
         return saltStr;
     }
 
+    static String generateResetPass() {
+        String RESETPASSWORD = "012345";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 7) {
+            int index = (int) (rnd.nextFloat() * RESETPASSWORD.length());
+            salt.append(RESETPASSWORD.charAt(index));
+        }
+        String saltStr = String.format("%s",salt);
+        return  saltStr;
+    }
+
 }
 
