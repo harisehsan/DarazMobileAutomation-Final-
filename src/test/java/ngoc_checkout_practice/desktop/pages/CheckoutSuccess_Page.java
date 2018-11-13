@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CheckoutSuccess_Page extends PageObject {
-    @FindBy (css = ".thank-you-heading") WebElement thankyouTitle;
+    @FindBy (css = ".thank-you-heading") private WebElement thankyouTitle;
     @FindBy (css = ".thank-you-order-number") private WebElement orderNumber;
 
     public boolean hasThankyouTitle() {

@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class Cart_Page extends PageObject {
+
     @FindBy(css = ".content") private List<WebElement> productlist;
     @FindBy(css = ".automation-checkout-order-total-button-cartButton") private WebElement goToCart_btn;
     @FindBy(css = ".lazada-ic-MyWishlist") private WebElement wishlistIcon;
