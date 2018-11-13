@@ -1,25 +1,83 @@
-140.205.215.168  www.daraz.pk
-140.205.215.168  www.shop.com.mm
-140.205.215.168  www.daraz.com.bd
-140.205.215.168  www.daraz.lk
-140.205.215.168  www.daraz.com.np
+100.67.21.75 sellercenter-staging.daraz.pk
+100.67.20.109 sellercenter.daraz.pk
+#LK
+100.67.20.107  sellercenter-staging.daraz.lk
+100.67.21.90   sellercenter.daraz.lk
+#BD
+100.67.21.93   sellercenter-staging.daraz.com.bd
+100.67.21.92   sellercenter.daraz.com.bd
+#MM
+100.67.21.88  sellercenter-staging.shop.com.mm
+100.67.21.89  sellercenter.shop.com.mm
+#NP
+100.67.21.91  sellercenter-staging.daraz.com.np
+100.67.20.108 sellercenter.daraz.com.np
 
-100.67.21.111	shop-staging.daraz.bd
+140.205.173.181 api-staging.sellercenter.lazada.sg
+140.205.173.180 sellercenter-staging.lazada.sg
+140.205.173.181 uac-pre.lazada.com
+140.205.173.181 pre-login-openaccount-sg94.taobao.com
 
-100.67.20.87	pre.daraz.pk
-100.67.21.81	pre.shop.com.mm
-100.67.20.88	pre.daraz.com.bd
-100.67.21.82	pre.daraz.lk
-100.67.20.93	pre.daraz.com.np
+47.89.88.108    pre-forest.daraz.pk
+100.67.21.75    sellercenter-staging.daraz.pk
+100.67.21.76    admin-staging.sellercenter.daraz.pk
+100.67.20.110   admin-staging.sellercenter.daraz.lk
 
-100.67.20.153	search.daraz.com.bd
-100.67.20.154	search.daraz.pk
-100.67.20.155	search.shop.com.mm
-100.67.21.126	search.daraz.lk
-100.67.21.127	search.daraz.com.np
 
-47.89.88.108	p.daraz.pk
-47.89.88.108	p.daraz.lk p-p.daraz.lk
-47.89.88.108	p.daraz.com.bd p-p.daraz.com.bd
-47.89.88.108	p.shop.com.mm p-p.shop.com.mm
-47.89.88.108	p.daraz.com.np p-p.daraz.com.np
+100.67.21.98 admin-staging.sellercenter.shop.com.mm
+100.67.20.117 admin-staging.sellercenter.daraz.com.np
+100.67.21.76 admin-staging.sellercenter.daraz.pk
+100.67.20.110 admin-staging.sellercenter.daraz.lk
+100.67.20.112 admin-staging.sellercenter.daraz.com.bd
+
+#https://lzd-pre-pk-admin.alibaba-inc.com/
+
+
+#140.205.215.168 daraz.com.bd www.daraz.com.bd daraz.lk www.daraz.lk
+
+#140.205.215.168 daraz.com.bd www.daraz.com.bd daraz.lk www.daraz.lk
+
+47.89.88.108 p.daraz.pk
+47.89.88.108 member.daraz.pk
+47.89.88.108 member-p.daraz.pk
+47.89.88.108 cart.daraz.pk
+47.89.88.108 checkout.daraz.pk
+47.89.88.108 my.daraz.pk
+47.89.88.108  p.daraz.com.bd member.daraz.com.bd  member-p.daraz.com.bd  cart.daraz.com.bd  checkout.daraz.com.b my.daraz.com.bd
+
+
+
+47.89.75.212  member.lazada.co.th
+47.89.75.212  member.lazada.com.my
+47.89.75.212  member.lazada.com.ph
+47.89.75.212  member.lazada.vn
+47.89.75.212  member.lazada.co.id
+47.89.75.212  member.lazada.sg
+
+47.89.75.212  p.lazada.co.th
+47.89.75.212  p.lazada.com.ph
+47.89.75.212  p.lazada.vn
+47.89.75.212  p.lazada.com.my
+47.89.75.212  p.lazada.co.id
+47.89.75.212  p.lazada.sg p1.lazada.sg p1.lazada.com.my p-p.lazada.com.my
+
+47.89.75.212  cart.lazada.co.th
+47.89.75.212  cart.lazada.com.my
+47.89.75.212  cart.lazada.com.ph
+47.89.75.212  cart.lazada.vn
+47.89.75.212  cart.lazada.co.id
+47.89.75.212  cart.lazada.sg
+
+47.89.75.212  checkout.lazada.co.th
+47.89.75.212  checkout.lazada.com.my
+47.89.75.212  checkout.lazada.com.ph
+47.89.75.212  checkout.lazada.vn
+47.89.75.212  checkout.lazada.co.id
+47.89.75.212  checkout.lazada.sg
+
+47.89.75.212  my.lazada.co.th
+47.89.75.212  my.lazada.com.my
+47.89.75.212  my.lazada.com.ph
+47.89.75.212  my.lazada.vn
+47.89.75.212  my.lazada.co.id
+47.89.75.212  my.lazada.sg
