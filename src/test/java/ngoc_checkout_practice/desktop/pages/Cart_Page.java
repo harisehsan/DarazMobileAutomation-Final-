@@ -16,6 +16,7 @@ public class Cart_Page extends PageObject {
     @FindBy(css = ".next-feedback-content") private WebElement moveToWishListSuccessMessage;
     @FindBy(css = ".lazada-ic-Delete") private WebElement delete_icon;
     @FindBy(css = ".cart-empty-text") private WebElement emptyCart;
+    @FindBy(css = ".automation-checkout-order-total-button-button") private WebElement confirmCart_btn;
 
     public void clickGoToCartButton() {
         waitUntilVisible(goToCart_btn);
@@ -62,6 +63,11 @@ public class Cart_Page extends PageObject {
     public boolean checkEmptyCart(){
         waitUntilVisible(emptyCart);
         return emptyCart.isDisplayed();
+    }
+
+    public void clickConfirmCart(){
+        waitUntilVisible(confirmCart_btn);
+        confirmCart_btn.click();
     }
 
 }

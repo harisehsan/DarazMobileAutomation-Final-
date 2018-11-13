@@ -1,5 +1,6 @@
 package ngoc_checkout_practice.desktop.step_definitions;
 
+import allure.AllureAttachment;
 import base.BaseSteps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -11,7 +12,7 @@ import org.testng.Assert;
 public class CheckoutByCODSteps extends BaseSteps {
     @When("^I go to a pdp page$")
     public void goToPdpPage() {
-        Pdp_Page.setUrl(Global.config.getConfig("checkout").getString("cod_pdp_url"));
+        Pdp_Page.setUrl(Global.config.getString("checkout.cod_pdp_url"));
         visit(Pdp_Page.class);
     }
 
@@ -43,6 +44,7 @@ public class CheckoutByCODSteps extends BaseSteps {
 
     @Then("^I should be on Checkout Success page$")
     public void confirmOnCheckoutSuccess() {
+        //AllureAttachment.attachComment("Order ID", "dajdhsakjhdjkasdsa");
         Assert.assertTrue(on(CheckoutSuccess_Page.class).hasThankyouTitle());
     }
 

@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class CheckoutPaymentMethod_Page extends PageObject {
 
-    @FindBy (css = "img[src='https://laz-img-cdn.alicdn.com/tfs/TB1utb_r8jTBKNjSZFwXXcG4XXa-80-80.png'") private WebElement CODPayment;
+    @FindBy (xpath = "//div[@class='title'][contains(.,'Cash on Delivery')]") private WebElement CODPayment;
     @FindBy (css = ".automation-btn-place-order") private WebElement confirmOrder;
 
     public void selectCOD()

@@ -11,7 +11,7 @@ import cucumber.api.CucumberOptions;
 
 @CucumberOptions(
         features = {"src/test/java/ngoc_checkout_practice/desktop/features"},
-        tags = {"@17740822"},
-        glue = {"ngoc_checkout_practice.desktop.step_definitions","member.desktop.step_definitions"})
+        tags = {"@17757740"},
+        glue = {"ngoc_checkout_practice.desktop.step_definitions"})
 public class DesktopRunner extends TestRunner{}
 

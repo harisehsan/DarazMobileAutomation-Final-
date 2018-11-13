@@ -31,4 +31,9 @@ public class CartSteps extends BaseSteps {
         Assert.assertTrue(on(Cart_Page.class).checkEmptyCart());
     }
 
+    @And("^I click Confirm Cart$")
+    public void clickConfirmCart(){
+        on(Cart_Page.class).clickConfirmCart();
+    }
+
 }
