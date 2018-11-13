@@ -1,53 +1,38 @@
-100.67.21.75 sellercenter-staging.daraz.pk
-100.67.20.109 sellercenter.daraz.pk
-#LK
-100.67.20.107  sellercenter-staging.daraz.lk
-100.67.21.90   sellercenter.daraz.lk
-#BD
-100.67.21.93   sellercenter-staging.daraz.com.bd
-100.67.21.92   sellercenter.daraz.com.bd
-#MM
-100.67.21.88  sellercenter-staging.shop.com.mm
-100.67.21.89  sellercenter.shop.com.mm
-#NP
-100.67.21.91  sellercenter-staging.daraz.com.np
-100.67.20.108 sellercenter.daraz.com.np
+
+140.205.173.180 login-staging.sellercenter.lazada.sg
+140.205.173.181 login-staging.sellercenter.lazada.com.my
+140.205.173.181 login-staging.sellercenter.lazada.com.ph
+140.205.173.181 login-staging.sellercenter.lazada.co.id
+140.205.173.181 login-staging.sellercenter.lazada.co.th
+140.205.173.181 login-staging.sellercenter.lazada.vn
+
+140.205.173.180 admin-staging.sellercenter.lazada.sg
+140.205.173.180 admin-staging.sellercenter.lazada.com.my
+140.205.173.180 admin-staging.sellercenter.lazada.co.id
+140.205.173.180 admin-staging.sellercenter.lazada.co.th
+140.205.173.180 admin-staging.sellercenter.lazada.vn
+140.205.173.180 admin-staging.sellercenter.lazada.com.ph
+
+100.67.21.22 sellercenter-staging.lazada.sg
+47.89.75.212 sellercenter-staging.lazada.sg
+140.205.173.180 sellercenter-staging.lazada.vn
+140.205.173.180 sellercenter-staging.lazada.co.th
+140.205.173.180 sellercenter-staging.lazada.com.ph
+47.89.75.212 sellercenter-staging.lazada.com.my
+140.205.173.180 sellercenter-staging.lazada.co.id
 
 140.205.173.181 api-staging.sellercenter.lazada.sg
-140.205.173.180 sellercenter-staging.lazada.sg
-140.205.173.181 uac-pre.lazada.com
-140.205.173.181 pre-login-openaccount-sg94.taobao.com
-
-47.89.88.108    pre-forest.daraz.pk
-100.67.21.75    sellercenter-staging.daraz.pk
-100.67.21.76    admin-staging.sellercenter.daraz.pk
-100.67.20.110   admin-staging.sellercenter.daraz.lk
-
-
-100.67.21.98 admin-staging.sellercenter.shop.com.mm
-100.67.20.117 admin-staging.sellercenter.daraz.com.np
-100.67.21.76 admin-staging.sellercenter.daraz.pk
-100.67.20.110 admin-staging.sellercenter.daraz.lk
-100.67.20.112 admin-staging.sellercenter.daraz.com.bd
-
-#https://lzd-pre-pk-admin.alibaba-inc.com/
-
-
-#140.205.215.168 daraz.com.bd www.daraz.com.bd daraz.lk www.daraz.lk
-
-#140.205.215.168 daraz.com.bd www.daraz.com.bd daraz.lk www.daraz.lk
-
-47.89.88.108 p.daraz.pk
-47.89.88.108 member.daraz.pk
-47.89.88.108 member-p.daraz.pk
-47.89.88.108 cart.daraz.pk
-47.89.88.108 checkout.daraz.pk
-47.89.88.108 my.daraz.pk
-47.89.88.108  p.daraz.com.bd member.daraz.com.bd  member-p.daraz.com.bd  cart.daraz.com.bd  checkout.daraz.com.b my.daraz.com.bd
-
-
+140.205.173.181 api-staging.sellercenter.lazada.co.id
+140.205.215.168 pre-console.trade.alibaba-inc.com
 
 47.89.75.212  member.lazada.co.th
+47.89.88.108  p.daraz.pk member.daraz.pk  member-p.daraz.pk  cart.daraz.pk  checkout.daraz.pk  my.daraz.pk
+47.89.88.108  p.daraz.com.bd member.daraz.com.bd  member-p.daraz.com.bd  cart.daraz.com.bd  checkout.daraz.com.bd  my.daraz.com.bd
+47.89.88.108  p.shop.com.mm member.shop.com.mm  member-p.shop.com.mm  cart.shop.com.mm  checkout.shop.com.mm  my.shop.com.mm
+47.89.88.108  p.daraz.com.np member.daraz.com.np  member-p.daraz.com.np  cart.daraz.com.np  checkout.daraz.com.np  my.daraz.com.np
+47.89.88.108  p.daraz.lk member.daraz.lk  member-p.daraz.lk  cart.daraz.lk  checkout.daraz.lk  my.daraz.lk
+140.205.215.168 daraz.com.bd www.daraz.com.bd daraz.lk www.daraz.lk
+ 47.89.75.212  member.lazada.co.th
 47.89.75.212  member.lazada.com.my
 47.89.75.212  member.lazada.com.ph
 47.89.75.212  member.lazada.vn
