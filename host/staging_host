@@ -1,3 +1,5 @@
+140.205.173.181 uac-pre.lazada.com
+140.205.173.181 pre-login-openaccount-sg94.taobao.com
 
 140.205.173.180 login-staging.sellercenter.lazada.sg
 140.205.173.181 login-staging.sellercenter.lazada.com.my
@@ -13,7 +15,7 @@
 140.205.173.180 admin-staging.sellercenter.lazada.vn
 140.205.173.180 admin-staging.sellercenter.lazada.com.ph
 
-100.67.21.22 sellercenter-staging.lazada.sg
+#100.67.21.22 sellercenter-staging.lazada.sg
 47.89.75.212 sellercenter-staging.lazada.sg
 140.205.173.180 sellercenter-staging.lazada.vn
 140.205.173.180 sellercenter-staging.lazada.co.th
@@ -26,13 +28,6 @@
 140.205.215.168 pre-console.trade.alibaba-inc.com
 
 47.89.75.212  member.lazada.co.th
-47.89.88.108  p.daraz.pk member.daraz.pk  member-p.daraz.pk  cart.daraz.pk  checkout.daraz.pk  my.daraz.pk
-47.89.88.108  p.daraz.com.bd member.daraz.com.bd  member-p.daraz.com.bd  cart.daraz.com.bd  checkout.daraz.com.bd  my.daraz.com.bd
-47.89.88.108  p.shop.com.mm member.shop.com.mm  member-p.shop.com.mm  cart.shop.com.mm  checkout.shop.com.mm  my.shop.com.mm
-47.89.88.108  p.daraz.com.np member.daraz.com.np  member-p.daraz.com.np  cart.daraz.com.np  checkout.daraz.com.np  my.daraz.com.np
-47.89.88.108  p.daraz.lk member.daraz.lk  member-p.daraz.lk  cart.daraz.lk  checkout.daraz.lk  my.daraz.lk
-140.205.215.168 daraz.com.bd www.daraz.com.bd daraz.lk www.daraz.lk
- 47.89.75.212  member.lazada.co.th
 47.89.75.212  member.lazada.com.my
 47.89.75.212  member.lazada.com.ph
 47.89.75.212  member.lazada.vn
@@ -66,3 +61,49 @@
 47.89.75.212  my.lazada.vn
 47.89.75.212  my.lazada.co.id
 47.89.75.212  my.lazada.sg
+
+# IPAY Cache Card AJAX
+45.113.40.147 iccapi.alipay.com
+
+# IPAY TOPUP PAGE
+45.113.40.147 lazada-sg.alipay.com
+45.113.40.147 a.alipayobjects.com
+45.113.40.147 gw.alipayobjects.com
+45.113.40.147 as.alipayobjects.com
+
+# IPAY Channel IPN
+45.113.40.147 open-sg.alipay.com
+
+140.205.215.168 pre-sg.lazada-test.alibaba-inc.com
+
+47.89.88.108  p.daraz.pk member.daraz.pk  member-p.daraz.pk  cart.daraz.pk  checkout.daraz.pk  my.daraz.pk 
+47.89.88.108  p.daraz.com.bd member.daraz.com.bd  member-p.daraz.com.bd  cart.daraz.com.bd  checkout.daraz.com.bd  my.daraz.com.bd 
+47.89.88.108  p.shop.com.mm member.shop.com.mm  member-p.shop.com.mm  cart.shop.com.mm  checkout.shop.com.mm  my.shop.com.mm 
+47.89.88.108  p.daraz.com.np member.daraz.com.np  member-p.daraz.com.np  cart.daraz.com.np  checkout.daraz.com.np  my.daraz.com.np 
+47.89.88.108  p.daraz.lk member.daraz.lk  member-p.daraz.lk  cart.daraz.lk  checkout.daraz.lk  my.daraz.lk 
+
+47.89.88.108  sellercenter-staging.daraz.com.np
+47.89.88.108  sellercenter-staging.daraz.com.bd
+47.89.88.108  sellercenter-staging.daraz.pk
+47.89.88.108  sellercenter-staging.daraz.lk
+47.89.88.108  sellercenter-staging.shop.com.mm
+
+100.67.21.98 admin-staging.sellercenter.shop.com.mm
+100.67.20.117 admin-staging.sellercenter.daraz.com.np
+100.67.21.76 admin-staging.sellercenter.daraz.pk
+100.67.20.110 admin-staging.sellercenter.daraz.lk
+100.67.20.112 admin-staging.sellercenter.daraz.com.bd
+
+# ASC API: Aserver-pre
+47.89.88.108 api-pre.sellercenter.daraz.pk
+47.89.88.108 api-pre.sellercenter.daraz.com.bd
+47.89.88.108 api-pre.sellercenter.daraz.lk
+47.89.88.108 api-pre.sellercenter.daraz.com.np
+47.89.88.108 api-pre.sellercenter.shop.com.mm
+
+# LAZOP GW pre
+47.89.88.108 api-pre.daraz.pk
+47.89.88.108 api-pre.daraz.com.np
+47.89.88.108 api-pre.daraz.com.bd
+47.89.88.108 api-pre.shop.com.mm
+47.89.88.108 api-pre.daraz.lk
