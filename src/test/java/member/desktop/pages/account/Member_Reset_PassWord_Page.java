@@ -10,11 +10,11 @@ public class Member_Reset_PassWord_Page extends PageObject {
     @FindBy(css = ".mod-input-re-newPassword input") private WebElement reInputNewPass;
     @FindBy(css = ".next-btn-primary") private WebElement submitBtn;
 
-    public void resetPassProcess(String newPass, String reNewPass){
+    public void resetPassword(String newPass){
         waitUntilPageReady();
         waitUntilVisible(inputNewPass);
         this.inputNewPass.sendKeys(newPass);
-        this.reInputNewPass.sendKeys(reNewPass);
+        this.reInputNewPass.sendKeys(newPass);
         this.submitBtn.click();
     }
 

@@ -1,5 +1,6 @@
 package member.desktop.step_definitions.account;
 
+import allure.AllureAttachment;
 import base.BaseSteps;
 import cucumber.api.java.en.*;
 import global.Global;
@@ -74,7 +75,8 @@ public class MemberResetPasswordSteps extends BaseSteps {
     @And("^I process reset password on reset password page")
     public void processResetPass() throws Throwable {
         String randomPassword = "q" + RandomeHelper.generateResetPass();
-        on(Member_Reset_PassWord_Page.class).resetPassProcess(randomPassword,randomPassword);
+        on(Member_Reset_PassWord_Page.class).resetPassword(randomPassword);
+        AllureAttachment.attachComment("reset_password", randomPassword);
         Global.map.put("new_reset_pass",randomPassword);
     }
 
