@@ -6,6 +6,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import global.Global;
+import io.qameta.allure.Allure;
 import ngoc_checkout_practice.desktop.pages.*;
 import org.testng.Assert;
 
@@ -44,8 +45,8 @@ public class CheckoutByCODSteps extends BaseSteps {
 
     @Then("^I should be on Checkout Success page$")
     public void confirmOnCheckoutSuccess() {
-        //AllureAttachment.attachComment("Order ID", "dajdhsakjhdjkasdsa");
-        Assert.assertTrue(on(CheckoutSuccess_Page.class).hasThankyouTitle());
+        Assert.assertTrue(on(CheckoutSuccess_Page.class).currentURL().contains(on(CheckoutSuccess_Page.class).orderNumber()));
+        AllureAttachment.attachComment("Order ID", on(CheckoutSuccess_Page.class).orderNumber());
     }
 
     @And("^I click Go To Cart button on Cart popup$")
