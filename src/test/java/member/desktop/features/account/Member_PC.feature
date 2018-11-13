@@ -115,7 +115,6 @@ Feature: Member PC Test for Daraz project
     And I go back the old tab
     And I input the smscode on verifyemail page from old tab
     And I click Verify Code button on verifyemail page
-    And I go to reset password page
     And I process reset password on reset password page
     Then I should see the account page
 

@@ -1,13 +1,10 @@
 package member.desktop.pages.account;
 
 import base.PageObject;
-import global.Global;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class Member_Reset_PassWord_Page extends PageObject {
-
-    public static String page_url = Global.config.getString("member.url") + "/user/reset-password";
 
     @FindBy(css =".mod-input-newPassword input") private WebElement inputNewPass;
     @FindBy(css = ".mod-input-re-newPassword input") private WebElement reInputNewPass;

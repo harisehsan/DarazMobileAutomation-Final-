@@ -40,9 +40,7 @@ public class MemberResetPasswordSteps extends BaseSteps {
         Global.map.put("current_tab",currentWindowHandleId);
         Global.browser.openNewTab("");
         visit(Member_Mailinator_Page.class);
-
     }
-
 
     @And("^I open email to get sms code")
     public void accessSMSCode() throws Throwable {
