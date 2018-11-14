@@ -21,7 +21,7 @@ Feature: Cart features
     And I delete the product
     Then I should not see the product in Cart
 
-  @17757740 @Checkout_regression @Checkout_Smoke
+  @17757740 @Checkout_Regression @Checkout_Smoke
   Scenario: Confirm Cart button leads user to Checkout Shipping page
     Given I login by email on lazada/daraz
     When I go to a pdp page
