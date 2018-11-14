@@ -12,6 +12,8 @@ public class Pdp_Page extends PageObject {
     @FindBy(css = ".pdp-button_theme_orange") private WebElement add_to_cart_btn;
     @FindBy(id = "myAccountTrigger") private WebElement myAccountmenu;
     @FindBy(css = ".pdp-product-title") private WebElement productTitle;
+    @FindBy(id = "topActionSwitchLang") private WebElement changeLanguageMenu;
+    @FindBy(css = ".lzd-switch-icon-en") private WebElement englishVersion;
 
     public static void setUrl(String url)
     {
@@ -32,6 +34,14 @@ public class Pdp_Page extends PageObject {
         waitUntilPageReady();
         waitUntilInvisibilityOf(By.cssSelector(".pdp-skeleton__variation-list-wrapper"));
         add_to_cart_btn.click();
+    }
+
+    public void switchToEnglish(){
+        waitUntilPageReady();
+        if (changeLanguageMenu.isDisplayed()) {
+            changeLanguageMenu.click();
+            englishVersion.click();
+        }
     }
 
 }

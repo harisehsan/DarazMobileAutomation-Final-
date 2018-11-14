@@ -15,6 +15,7 @@ public class CheckoutByCODSteps extends BaseSteps {
     public void goToPdpPage() {
         Pdp_Page.setUrl(Global.config.getString("checkout.cod_pdp_url"));
         visit(Pdp_Page.class);
+        on(Pdp_Page.class).switchToEnglish();
     }
 
     @When("^I get the product title$")

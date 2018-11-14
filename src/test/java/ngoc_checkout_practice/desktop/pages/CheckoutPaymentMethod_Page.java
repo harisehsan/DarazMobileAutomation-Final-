@@ -1,6 +1,9 @@
 package ngoc_checkout_practice.desktop.pages;
 
 import base.PageObject;
+import com.codeborne.selenide.SelenideElement;
+import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
