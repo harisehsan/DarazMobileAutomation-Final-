@@ -2,6 +2,7 @@ package ngoc_checkout_practice.desktop.pages;
 
 import base.PageObject;
 import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -29,6 +30,7 @@ public class Pdp_Page extends PageObject {
     {
         waitUntilVisible(myAccountmenu);
         waitUntilPageReady();
+        waitUntilInvisibilityOf(By.cssSelector(".pdp-skeleton__variation-list-wrapper"));
         add_to_cart_btn.click();
     }
 
