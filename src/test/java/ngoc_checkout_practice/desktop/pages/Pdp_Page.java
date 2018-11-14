@@ -3,6 +3,7 @@ package ngoc_checkout_practice.desktop.pages;
 import base.PageObject;
 import global.Global;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -38,10 +39,15 @@ public class Pdp_Page extends PageObject {
 
     public void switchToEnglish(){
         waitUntilPageReady();
-        if (changeLanguageMenu.isDisplayed()) {
-            changeLanguageMenu.click();
-            englishVersion.click();
+        try{
+            if (changeLanguageMenu.isDisplayed()) {
+                changeLanguageMenu.click();
+                englishVersion.click();
+            }
+        }catch (NoSuchElementException ex){
+            System.out.println("Switch Language is not available");
         }
+
     }
 
 }
