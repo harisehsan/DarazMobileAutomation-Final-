@@ -1,4 +1,4 @@
-package ngoc_checkout_practice.desktop.pages;
+package checkout.desktop.pages;
 
 import base.PageObject;
 import com.codeborne.selenide.SelenideElement;

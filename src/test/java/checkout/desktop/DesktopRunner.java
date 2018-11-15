@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
  */
 
 @CucumberOptions(
-        features = {"src/test/java/member/features"},
-        tags = {"@TopupPDP"},
-        glue = {"member.step_definitions"})
-public class DesktopRunner extends TestRunner {}
+        features = {"src/test/java/checkout/desktop/features"},
+        tags = {"@17757740"},
+        glue = {"checkout.desktop.step_definitions"})
+public class DesktopRunner extends TestRunner{}

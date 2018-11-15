@@ -1,13 +1,12 @@
-package ngoc_checkout_practice.desktop.step_definitions;
+package checkout.desktop.step_definitions;
 
 import allure.AllureAttachment;
 import base.BaseSteps;
+import checkout.desktop.pages.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import global.Global;
-import io.qameta.allure.Allure;
-import ngoc_checkout_practice.desktop.pages.*;
 import org.testng.Assert;
 
 public class CheckoutByCODSteps extends BaseSteps {

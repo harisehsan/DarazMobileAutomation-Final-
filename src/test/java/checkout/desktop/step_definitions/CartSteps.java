@@ -1,9 +1,9 @@
-package ngoc_checkout_practice.desktop.step_definitions;
+package checkout.desktop.step_definitions;
 
 import base.BaseSteps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-import ngoc_checkout_practice.desktop.pages.Cart_Page;
+import checkout.desktop.pages.Cart_Page;
 import org.testng.Assert;
 
 public class CartSteps extends BaseSteps {

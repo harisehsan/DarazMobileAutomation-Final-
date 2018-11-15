@@ -1,7 +1,7 @@
 @CheckoutWithCOD
   Feature: Checkout with COD method
 
-    @Checkout_COD @Checkout_Regression @Checkout_Smoke
+    @17847772 @Checkout_COD @Checkout_Regression @Checkout_Smoke
     Scenario: User (login by email and password) can checkout with COD successfully
       Given I login by email on lazada/daraz
       When I go to a pdp page
@@ -11,7 +11,7 @@
       And I place order with COD payment method
       Then I should be on Checkout Success page
 
-    @Check_Product_On_Cart @Checkout_Regression @Checkout_Smoke
+    @17847772 @Check_Product_On_Cart @Checkout_Regression @Checkout_Smoke
     Scenario: Product exists on cart after user added successfully.
       Given I login by email on lazada/daraz
       When I go to a pdp page
