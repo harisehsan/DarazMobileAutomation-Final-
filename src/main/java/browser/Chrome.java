@@ -15,7 +15,7 @@ public class Chrome extends Browser {
         System.setProperty("webdriver.chrome.driver", properties.getProperty(OsHelper.getOperatingSystemType() +".chrome.driver.path"));
         ChromeOptions cOptions = new ChromeOptions();
         cOptions.addArguments(options);
-        cOptions.setCapability("chrome.switches", Collections.singletonList("--ignore-certificate-errors"));
+        cOptions.setAcceptInsecureCerts(true);
         driver = new ChromeDriver(cOptions);
         logger.info(String.format("Initiate Browser: Chrome with Options: %s Successfully",Arrays.toString(options)));
     }
