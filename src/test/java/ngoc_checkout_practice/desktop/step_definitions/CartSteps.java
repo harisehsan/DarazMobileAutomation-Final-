@@ -15,8 +15,8 @@ public class CartSteps extends BaseSteps {
 
     @Then("^I should see successful message and the product is not in Cart$")
     public void checkMoveToWishlistSuccessful(){
-        Assert.assertTrue(on(Cart_Page.class).checkMoveToWishlistSuccessMessage());
-        Assert.assertFalse(on(Cart_Page.class).checkProductExistInTheCart());
+        Assert.assertTrue(on(Cart_Page.class).checkMoveToWishlistSuccessMessage(), "Verification failed: No success message displays");
+        Assert.assertFalse(on(Cart_Page.class).checkProductExistInTheCart(), "Verification failed: Product still be on cart");
     }
 
     @And("^I delete the product$")
@@ -27,7 +27,7 @@ public class CartSteps extends BaseSteps {
 
     @Then("^I should not see the product in Cart$")
     public void checkProductNotExistInCart(){
-        Assert.assertTrue(on(Cart_Page.class).checkEmptyCart());
+        Assert.assertTrue(on(Cart_Page.class).checkEmptyCart(), "Verification failed: Cart is not empty");
     }
 
     @And("^I click Confirm Cart$")

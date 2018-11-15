@@ -1,7 +1,6 @@
 package ngoc_checkout_practice.desktop.pages;
 
 import base.PageObject;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

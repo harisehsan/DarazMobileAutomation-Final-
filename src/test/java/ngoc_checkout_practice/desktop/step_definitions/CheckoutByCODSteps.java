@@ -46,7 +46,7 @@ public class CheckoutByCODSteps extends BaseSteps {
 
     @Then("^I should be on Checkout Success page$")
     public void confirmOnCheckoutSuccess() {
-        Assert.assertTrue(on(CheckoutSuccess_Page.class).currentURL().contains(on(CheckoutSuccess_Page.class).orderNumber()));
+        Assert.assertTrue(on(CheckoutSuccess_Page.class).currentURL().contains(on(CheckoutSuccess_Page.class).orderNumber()), "Verification failed: Order is not placed");
         AllureAttachment.attachComment("Order ID", on(CheckoutSuccess_Page.class).orderNumber());
     }
 
@@ -57,7 +57,7 @@ public class CheckoutByCODSteps extends BaseSteps {
 
     @Then("^I should see the product title in the Cart$")
     public void checkProductTitleExistInTheCart() {
-        Assert.assertTrue(on(Cart_Page.class).checkProductExistInTheCart());
+        Assert.assertTrue(on(Cart_Page.class).checkProductExistInTheCart(), "Product is not in Cart");
     }
 
 }

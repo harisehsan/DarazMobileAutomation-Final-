@@ -1,4 +1,4 @@
-@CheckoutwithCOD
+@CheckoutWithCOD
   Feature: Checkout with COD method
 
     @Checkout_COD @Checkout_Regression @Checkout_Smoke
