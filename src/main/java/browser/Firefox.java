@@ -12,6 +12,7 @@ public class Firefox extends Browser {
         System.setProperty("webdriver.gecko.driver", properties.getProperty(OsHelper.getOperatingSystemType() +"firefox.driver.path"));
         FirefoxOptions fOptions = new FirefoxOptions();
         fOptions.addArguments(options);
+        fOptions.setAcceptInsecureCerts(true);
         driver = new FirefoxDriver(fOptions);
         logger.info(String.format("Initiate Browser: Firefox with Options: %s Successfully", Arrays.toString(options)));
     }
