@@ -1,7 +1,7 @@
 @CheckoutWithCOD
   Feature: Checkout with COD method
 
-    @17847772 @Checkout_COD @Checkout_Regression @Checkout_Smoke
+    @17847731 @Checkout_COD @Checkout_Regression @Checkout_Smoke
     Scenario: User (login by email and password) can checkout with COD successfully
       Given I login by email on lazada/daraz
       When I go to a pdp page
