@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import base.*;
 
-public class HomePage extends PageObject {
+public class Home_Page extends PageObject {
 
     public static final String page_url = Global.config.getString("homepage.home_url");
 

@@ -4,7 +4,7 @@ import base.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SuccessPage extends PageObject {
+public class Success_Page extends PageObject {
 
     @FindBy(xpath="//*[@id=\'container\']/div/div[1]/div[1]/div/div[1]") public WebElement thanksText;
 

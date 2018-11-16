@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 
 
-public class PdpPage extends PageObject {
+public class Pdp_Page extends PageObject {
 
     public static final String page_url = Global.config.getString("homepage.pdp_url");
 
