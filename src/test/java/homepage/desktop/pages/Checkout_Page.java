@@ -17,7 +17,7 @@ public class Checkout_Page extends PageObject {
     private WebElement selectCODBtn;
     @FindBy(xpath = "//*[@id='paymentMethodList_10001\']/div[2]/div[2]/button")
     private WebElement confirmOrderBtn;
-    @FindBy(css = "#paymentMethodList_10001") private SelenideElement list_payment_method;
+    //FindBy(css = "#paymentMethodList_10001") private SelenideElement list_payment_method;
     //private SelenideElement list_payment_method = $("#paymentMethodList_10001");
 
     @FindBy(xpath="//*[@id='rightContainer_CR']/div[2]/div[2]/div/div[3]/button") private WebElement placeOrderBtnNormal;
