@@ -8,7 +8,7 @@ import global.Drivers;
 import global.helpers.AbstractPage;
 import global.helpers.Wait;
 import digital_goods.global.page_object.AllMobilePages;
-import member.msite.page_object.LoginMobilePage;
+import digital_goods.mobileTopup.page_object.LoginMobilePage;
 import digital_goods.mobileTopup.page_object.TopupMobilePage;
 import org.testng.Assert;
 

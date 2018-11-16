@@ -53,4 +53,14 @@ public class Browser {
         String[] windHandlesArray = winHandles.toArray(new String[0]);
         driver.switchTo().window(windHandlesArray[windHandlesArray.length-1]);
     }
+
+
+    public void switchToTab(String windowHandleId){
+        driver.switchTo().window(windowHandleId);
+    }
+
+    public String currentWindowHandleId(){
+        return driver.getWindowHandle();
+    }
+
 }
