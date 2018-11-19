@@ -1,9 +1,10 @@
 def build(String Module, String Theme,String Tags,String Venture_Env){
     if (isUnix()) {
-        String venture = Venture_Env.split(".")[0]
-        String env = Venture_Env.split(".")[1]
+        String venture = Venture_Env.split("\\.")[0]
+        String env = Venture_Env.split("\\.")[1]
         String excludedTags = "~@no_${env},~@no_${venture},~no_${venture}_${env}"
-        String cucumberOpt = "\"src/test/java/${Module}/${Theme}/features --tags ${excludedTags}+','+${Tags} --glue ${Module}.${Theme}.step_definitions --glue _base.${Theme}_steps --glue _base.api_steps\""
+        String resultTags = excludedTags +","+Tags
+        String cucumberOpt = "\"src/test/java/${Module}/${Theme}/features --tags ${resultTags} --glue ${Module}.${Theme}.step_definitions --glue _base.${Theme}_steps --glue _base.api_steps\""
         try {
             sh "mvn clean test -Dcucumber.options=${cucumberOpt} -Denv=\"${Venture}\" -Dtheme=\"${Theme}\""
             currentBuild.result = 'SUCCESS'
