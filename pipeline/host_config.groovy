@@ -4,3 +4,5 @@ def setHost(String venture_env){
         sh "echo \"${output}\" >> /etc/hosts"
     }
 }
+
+return this
