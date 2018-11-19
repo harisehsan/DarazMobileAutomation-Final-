@@ -5,8 +5,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 
 import java.lang.*;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by admin.son.ton on 1/23/18.
@@ -62,5 +61,21 @@ public class Browser {
     public String currentWindowHandleId(){
         return driver.getWindowHandle();
     }
+
+    public Map<String,String> getCookiesAsMap(){
+        Map<String,String> cookiesMap = new HashMap<>();
+        Set<Cookie> cks = driver.manage().getCookies();
+        for (Cookie cookie : cks) {
+            cookiesMap.put(cookie.getName(), cookie.getValue());
+        }
+        return cookiesMap;
+    }
+
+    public JavascriptExecutor getJsExecutor(){
+        return ((JavascriptExecutor) driver);
+    }
+
+
+
 
 }

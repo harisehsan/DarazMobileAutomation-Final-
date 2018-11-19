@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
  */
 
 @CucumberOptions(
-        glue = {"_base.msite_steps","_base.desktop_steps"},
+        glue = {"_base.msite_steps","_base.desktop_steps","_base.api_steps"},
         plugin = {"pretty",
                 "io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm",
                 "html:target/cucumber-reports/cucumber-pretty",
