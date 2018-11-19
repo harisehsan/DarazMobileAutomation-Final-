@@ -19,6 +19,7 @@ public class MemberApiSteps extends BaseSteps {
         if(!String.valueOf(response.get("success")).equalsIgnoreCase("true")){
             throw new RuntimeException(String.format("Login with credential %s/%s fail . Response from server: %s",email,pass,String.valueOf(response)));
         }
+        Global.browser.refresh();
     }
 
 }
