@@ -1,10 +1,9 @@
-def build(String Module, String Theme,String MoreTags){
+def build(String Module, String Theme,String Tags,String Venture_Env){
     if (isUnix()) {
-        echo "${Module}"
-        echo "${Theme}";
-        echo "${MoreTags}";
-        echo "this is output from external funtion"
-        String cucumberOpt = "\"src/test/java/${Module}/${Theme}/features --tags ${Tags}+${MoreTags} --glue ${Module}.${Theme}.step_definitions --glue _base.${Theme}_steps\""
+        String venture = Venture_Env.split(".")[0]
+        String env = Venture_Env.split(".")[1]
+        String excludedTags = "~@no_${env},~@no_${venture},~no_${venture}_${env}"
+        String cucumberOpt = "\"src/test/java/${Module}/${Theme}/features --tags ${excludedTags}+','+${Tags} --glue ${Module}.${Theme}.step_definitions --glue _base.${Theme}_steps --glue _base.api_steps\""
         try {
             sh "mvn clean test -Dcucumber.options=${cucumberOpt} -Denv=\"${Venture}\" -Dtheme=\"${Theme}\""
             currentBuild.result = 'SUCCESS'
