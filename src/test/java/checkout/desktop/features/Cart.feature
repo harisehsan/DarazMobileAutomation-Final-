@@ -1,4 +1,4 @@
-@Cart
+@Cart @911
 Feature: Cart features
 
   @17740822 @Checkout_Regression @Checkout_Smoke
