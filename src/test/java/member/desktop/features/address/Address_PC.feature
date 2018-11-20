@@ -17,7 +17,7 @@ Feature: Address on PC
     And I click on save button
     Then I should see the new address on account page
 
-  @addaddresspclzd @no_lzdsg
+  @addaddresspclzd @no_sg
   Scenario: As user add new address on PC
     Given I go to the sign up page by email
     And I input the email information
@@ -33,7 +33,7 @@ Feature: Address on PC
     And I click on save button
     Then I should see the new address on account page
 
-  @EditAddressPCdz
+  @EditAddressPCdz @911
   Scenario: User edit address information
     Given I go to the sign up page by email
     And I input the email information
