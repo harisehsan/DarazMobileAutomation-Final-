@@ -45,9 +45,9 @@ public class MemberApiSteps extends BaseSteps {
         String apiUrl = Global.config.getString("member.url")+"/address/api/createAddress";
         String name=Global.config.getString("member.account.name");
         String phone=Global.config.getString("member.phone_number_login");
-        String locationTreeAddressArray=Global.config.getString("checkout.locationTreeAddressArray");
-        String locationTreeAddressId=Global.config.getString("checkout.locationTreeAddressId");
-        String locationTreeAddressName=Global.config.getString("checkout.locationTreeAddressName");
+        String locationTreeAddressArray=Global.config.getString("member.address.locationTreeAddressArray");
+        String locationTreeAddressId=Global.config.getString("member.address.locationTreeAddressId");
+        String locationTreeAddressName=Global.config.getString("member.address.locationTreeAddressName");
         String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
         String [] args = {apiUrl,name,phone,locationTreeAddressArray,locationTreeAddressId,locationTreeAddressName,csrfToken};
         JsonObject response = XhrHelper.executeXhrRequest("member_create_address.js",args);
