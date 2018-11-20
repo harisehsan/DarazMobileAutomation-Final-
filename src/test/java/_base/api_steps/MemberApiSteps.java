@@ -11,6 +11,7 @@ public class MemberApiSteps extends BaseSteps {
 
     @And("^I login by api with email and password$")
     public void loginByApi(){
+
         String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
         String email = Global.config.getString("member.account.mail");
         String pass = Global.config.getString("member.account.pass");
@@ -35,6 +36,23 @@ public class MemberApiSteps extends BaseSteps {
         JsonObject response = XhrHelper.executeXhrRequest("member_signup.js",args);
         if(!String.valueOf(response.get("success")).equalsIgnoreCase("true")){
             throw new RuntimeException(String.format("Sign up with credential %s/%s fail . Response from server: %s",randomEmail,pass,String.valueOf(response)));
+        }
+        Global.browser.refresh();
+    }
+
+    @And("^I create a new member address by api")
+    public void createAddressByApi(){
+        String apiUrl = Global.config.getString("member.url")+"/address/api/createAddress";
+        String name=Global.config.getString("member.account.name");
+        String phone=Global.config.getString("member.phone_number_login");
+        String locationTreeAddressArray=Global.config.getString("checkout.locationTreeAddressArray");
+        String locationTreeAddressId=Global.config.getString("checkout.locationTreeAddressId");
+        String locationTreeAddressName=Global.config.getString("checkout.locationTreeAddressName");
+        String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
+        String [] args = {apiUrl,name,phone,locationTreeAddressArray,locationTreeAddressId,locationTreeAddressName,csrfToken};
+        JsonObject response = XhrHelper.executeXhrRequest("member_create_address.js",args);
+        if(!String.valueOf(response.get("success")).equalsIgnoreCase("true")){
+            throw new RuntimeException(String.format("Create address fail . Response from server: %s",String.valueOf(response)));
         }
         Global.browser.refresh();
     }
