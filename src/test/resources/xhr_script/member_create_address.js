@@ -27,7 +27,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://member.daraz.com.bd/address/api/createAddress");
+xhr.open("POST", apiUrl);
 xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("x-csrf-token", csrfToken);
 xhr.setRequestHeader("cache-control", "no-cache");
