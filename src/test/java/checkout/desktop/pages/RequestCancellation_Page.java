@@ -1,23 +1,15 @@
-package member.desktop.pages.account;
+package checkout.desktop.pages;
 
 import base.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Member_MyOrder_Page extends PageObject {
+public class RequestCancellation_Page extends PageObject {
 
-    @FindBy (css = ".link.bold") private WebElement cancelOrder;
-    @FindBy (css = ".reason-col") private WebElement cancelReason;
+    @FindBy(css = ".reason-col") private WebElement cancelReason;
     @FindBy (css = ".next-menu-content .next-menu-item:nth-of-type(1)") private WebElement firstReason;
     @FindBy (css = ".check-agreement") private WebElement checkAgreement;
     @FindBy (css = ".next-btn-normal") private WebElement submit;
-    @FindBy (css = ".cancel-success") private WebElement cancelSuccess;
-
-
-    public void clickCancelOrder(){
-        waitUntilVisible(cancelOrder);
-        cancelOrder.click();
-    }
 
     public void chooseCancelReason(){
         waitUntilVisible(cancelReason);
@@ -30,8 +22,4 @@ public class Member_MyOrder_Page extends PageObject {
         submit.click();
     }
 
-    public boolean hasCancelSuccessTitle() {
-        waitUntilVisible(cancelSuccess);
-        return cancelSuccess.isDisplayed();
-    }
 }
