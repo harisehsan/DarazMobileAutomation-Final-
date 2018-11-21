@@ -16,11 +16,9 @@ public class Home_Page extends PageObject {
     public void clickToLoginPage() {
         waitUntilVisible(LoginBtn);
         LoginBtn.click();
-
     }
 
     public void backToHomePage(){
-    waitUntilVisible(userName);
-
+        waitUntilVisible(userName);
     }
 }

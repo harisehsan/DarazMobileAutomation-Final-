@@ -11,7 +11,6 @@ public class Cart_Page extends PageObject {
 
     public void processCheckout(){
         waitUntilPageReady();
-
         processCheckOutBtn.click();
         waitUntilInvisibilityOf(By.id("_x38_0x80-loading-logo"));
     }
