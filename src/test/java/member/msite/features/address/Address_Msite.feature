@@ -2,7 +2,7 @@
 
 Feature: Address Msite test
 
-  @MsiteAddNewAddess
+  @MsiteAddNewAddess @911
   Scenario: User add new address on Msite
     When I go to Msite and open the sign up page by email
     And I input the name on form

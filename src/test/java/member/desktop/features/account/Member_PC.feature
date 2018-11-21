@@ -1,8 +1,8 @@
-@Member_PC
+@Member_PC @911
 
 Feature: Member PC Test for Daraz project
 
-  @Signupemail @no_lazada_live
+  @Signupemail @no_lzd_live
   Scenario: Signup by email without slider
     When I go to the sign up page by email
     And I input the email information

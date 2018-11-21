@@ -11,6 +11,7 @@
         <selenium.version>3.8.1</selenium.version>
         <httpclient.version>4.3.1</httpclient.version>
         <aspectj.version>1.9.1</aspectj.version>
+        <surefire.version>3.0.0-M1</surefire.version>
         <timestamp>${maven.build.timestamp}</timestamp>
         <maven.build.timestamp.format>yyyy-MM-dd.HH:mm:ss</maven.build.timestamp.format>
         <env>lk.live</env>
@@ -74,6 +75,12 @@
             <artifactId>guice</artifactId>
             <version>4.2.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire</artifactId>
+            <version>${surefire.version}</version>
+            <type>pom</type>
+        </dependency>
 
         <!-- selenide -->
 
@@ -82,7 +89,11 @@
             <artifactId>selenide</artifactId>
             <version>4.12.3</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -97,7 +108,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M1</version>
+                <version>${surefire.version}</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
                     <argLine>
