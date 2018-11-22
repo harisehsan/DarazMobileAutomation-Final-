@@ -30,6 +30,7 @@ public class Topup_Page extends PageObject {
         By css = By.cssSelector(".next-menu-content li:nth-child("+ id +")");
         waitUntilPresentOfElementBy(css);
         findDynamicElement(css).click();
+
     }
 
     public void checkOperator(String operatorName) throws Exception{
