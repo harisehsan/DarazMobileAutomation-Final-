@@ -24,12 +24,15 @@ public class Member_AddressPC_Page extends PageObject {
     @FindBy(className = "mod-address-book-default") private WebElement hasAddress;
     @FindBy(css = ".mod-input-detailAddress input") private WebElement detailAddress;
     @FindBy(css= ".next-table-cell") private WebElement editAddress;
-    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr.next-table-row.first > td.next-table-cell.last > div > button") private WebElement editAddLzd;
+    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > able > tbody > tr.next-table-row.first > td.next-table-cell.last > div > button") private WebElement editAddLzd;
+    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr.next-table-row.first > td.next-table-cell.first > div > button") private WebElement editAddDrz;
     @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr.next-table-row.first > td:nth-child(2) > div") private WebElement hasNewNameDrz;
     @FindBy(css="#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr > td.next-table-cell.first > div") private WebElement hasNewNameLzd;
     @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr:nth-child(2) > td.next-table-cell.first > div > button") private WebElement accessDeleteAddDrz;
     @FindBy(css="#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr.next-table-row.last > td.next-table-cell.last > div > button") private WebElement accessDeleteAddLzd;
     @FindBy(className = "mod-address-update-hd") private WebElement deleteBtn;
+    @FindBy(css = "#container > div > div > div > form > div > div.mod-address-form-bd > div.mod-address-form-left > div.mod-input.floating.mod-input-name > div") private WebElement clearName;
+    @FindBy(css = "#container > div > div > div > form > div > div.mod-address-form-bd > div.mod-address-form-left > div.mod-input.floating.mod-input-phone > div") private WebElement clearPhone;
     @FindBy(css = "#dialog-footer-2 > button.next-btn.next-btn-primary.next-btn-medium") private WebElement deleteConfirm;
     @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr.next-table-row") private List<WebElement> addressLevel;
 
@@ -65,13 +68,6 @@ public class Member_AddressPC_Page extends PageObject {
 
     public void setLocationTree1(){
         waitUntilPageReady();
-        waitUntilVisible(locationTree1);
-        this.locationTree1.click();
-
-    }
-
-    public void editAddDrz(){
-        waitUntilPageReady();
         waitUntilVisible(editAddress);
         this.editAddress.click();
     }
@@ -82,6 +78,11 @@ public class Member_AddressPC_Page extends PageObject {
         this.editAddLzd.click();
     }
 
+    public void editAddDrz(){
+        waitUntilPageReady();
+        waitUntilVisible(editAddress);
+        this.editAddress.click();
+    }
     public void deleteBtn() {
         waitUntilPageReady();
         waitUntilVisible(deleteBtn);
@@ -98,15 +99,14 @@ public class Member_AddressPC_Page extends PageObject {
 
     public void clearName(){
         waitUntilPageReady();
-        waitUntilVisible(inputName);
-        this.inputName.clear();
+        waitUntilClickable(By.cssSelector("#container > div > div > div > form > div > div.mod-address-form-bd > div.mod-address-form-left > div.mod-input.floating.mod-input-name > div"));
+        this.clearName.click();
     }
 
     public void clearPhone(){
-        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         waitUntilPageReady();
-        waitUntilVisible(inputPhone);
-        this.inputPhone.clear();
+        waitUntilClickable(By.cssSelector("#container > div > div > div > form > div > div.mod-address-form-bd > div.mod-address-form-left > div.mod-input.floating.mod-input-phone > div"));
+        this.clearPhone.click();
     }
 
 
