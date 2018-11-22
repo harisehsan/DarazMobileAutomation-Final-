@@ -11,12 +11,10 @@ Feature: Member PC Test for Daraz project
     And I click on submit button
     Then I should see the account page
 
-  @Signupemail @no_staging
+  @Signupemail @no_staging @1234343
   Scenario: Guest signup by email with slider
     When I go to the sign up page by email
-    And I input the email information
-    And I input password information
-    And I input the name information
+    And I sign up by api
     And I click and hold on slider button
     Then I should see the account page
 

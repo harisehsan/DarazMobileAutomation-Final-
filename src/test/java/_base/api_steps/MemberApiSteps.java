@@ -26,6 +26,7 @@ public class MemberApiSteps extends BaseSteps {
 
     @And("^I sign up by api")
     public void signUpByApi(){
+        Global.browser.goTo("https://www.lazada.sg/");
         String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
         String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
         Global.map.put("email_random",randomEmail);

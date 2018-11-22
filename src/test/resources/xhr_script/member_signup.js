@@ -10,10 +10,11 @@ var csrfToken=arguments[4];
 
 var data = JSON.stringify({
   "lzdAppVersion": "1.0",
+  "name": name,
   "email": email,
   "password": password,
-  "name": name,
-  "enableNewsletter": true
+  "enableNewsletter": true,
+  "bizScene": "visitCart_cart"
 });
 
 var xhr = new XMLHttpRequest();

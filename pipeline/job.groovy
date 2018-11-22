@@ -13,13 +13,21 @@ def build(String Module, String Theme,String Tags,String Venture_Env){
                 "--tags 'not @no_${venture}_${env}' " +
                 "--tags 'not @no_${site}' " +
                 "--tags 'not @no_${site}_${env}' "
+
         String cucumberOpt = "\"src/test/java/${Module}/${Theme}/features --tags ${Tags} ${excludedTags} --glue ${Module}.${Theme}.step_definitions --glue _base.${Theme}_steps --glue _base.api_steps\""
+
         try {
             sh "mvn clean test -Dcucumber.options=${cucumberOpt} -Denv=\"${Venture_Env}\" -Dtheme=\"${Theme}\""
             currentBuild.result = 'SUCCESS'
         } catch (Exception err) {
-            currentBuild.result = 'FAILURE'
-            echo err.getMessage()
+            try{
+                String cucumberOptRerun = "\"src/test/java/${Module}/${Theme}/features --tags @target/cucumber-reports/rerun-reports/rerun.txt --glue ${Module}.${Theme}.step_definitions --glue _base.${Theme}_steps --glue _base.api_steps\""
+                sh "mvn test -Dcucumber.options=${cucumberOptRerun} -Denv=\"${Venture_Env}\" -Dtheme=\"${Theme}\""
+            }catch (Exception rerunErr){
+                echo rerunErr
+                currentBuild.result = 'FAILURE'
+            }
+            currentBuild.result = 'SUCCESS'
         } finally{
             stage('reports') {
                 script {
