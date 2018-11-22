@@ -59,4 +59,9 @@ public class CheckoutByCODSteps extends BaseSteps {
         Assert.assertTrue(on(Cart_Page.class).checkProductExistInTheCart(), "Product is not in Cart");
     }
 
+    @Then("^I click on track order link$")
+    public void i_click_on_track_order_link() throws Throwable {
+        on(CheckoutSuccess_Page.class).clickTrackOrder();
+    }
+
 }
