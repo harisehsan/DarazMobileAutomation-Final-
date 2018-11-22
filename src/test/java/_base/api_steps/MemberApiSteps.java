@@ -30,7 +30,7 @@ public class MemberApiSteps extends BaseSteps {
 
         String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
         String mobilePhone = Global.config.getString("member.phone_number_login");
-        String pass = Global.config.getString("member.account.pass");
+        String pass = Global.config.getString("member.pass");
         String apiUrl = Global.config.getString("member.url")+"/user/api/login";
         String [] args = {apiUrl,mobilePhone,pass,csrfToken};
         JsonObject response = XhrHelper.executeXhrRequest("member_login.js",args);
