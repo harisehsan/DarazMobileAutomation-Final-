@@ -171,6 +171,8 @@ public class Member_AddressPC_Page extends PageObject {
         waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         this.locationTree1.click();
         selectTree();
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilClickable(By.cssSelector(".mod-select-location-tree-2"));
         this.locationTree2.click();
         waitUntilVisibility(By.cssSelector(".next-menu-content > li"));
         selectTree();
