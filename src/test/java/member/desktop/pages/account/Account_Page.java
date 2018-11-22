@@ -14,7 +14,7 @@ public class Account_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url") + "/user/profile";
 
-    @FindBy(css = "#container") private WebElement mainContainer;
+    @FindBy(css = "body > div.lzd-playground > div > div.lzd-playground-right > div.breadcrumb > a") private WebElement mainContainer;
     @FindBy(id = "lzd_current_logon_user_name") private WebElement nameOfUser;
     @FindBy(id = "myAccountTrigger") private WebElement myAccoutTrigger;
     @FindBy(css = ".account-icon.logout") private WebElement logOut;
@@ -61,9 +61,9 @@ public class Account_Page extends PageObject {
 
     public void logOut() {
         waitUntilPageReady();
-        waitUntilVisible(myAccoutTrigger);
         waitUntilClickable(By.id("myAccountTrigger"));
         this.myAccoutTrigger.click();
+        waitUntilClickable(By.cssSelector(".account-icon.logout"));
         this.logOut.click();
     }
 }

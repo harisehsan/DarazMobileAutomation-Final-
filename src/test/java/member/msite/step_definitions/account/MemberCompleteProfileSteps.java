@@ -28,7 +28,7 @@ public class MemberCompleteProfileSteps extends BaseSteps {
 
     @And("^I will input the password on form")
     public void inputPass() throws Throwable{
-        String pass = Global.config.getString("member.account.pass");
+        String pass = Global.config.getString("member.pass");
         on(Member_Complete_Your_Profile_Page.class).inputPassword(pass);
     }
 

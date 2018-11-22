@@ -22,9 +22,9 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
 
     @And("^I input account information on login by email Msite page")
     public void logInByEmailMsite() throws Throwable {
-        String email = Global.config.getString("member.account.mail");
+        String email = Global.config.getString("member.mail");
         on(Member_Loginemail_Msite_Page.class).inputEmail(email);
-        String pass = Global.config.getString("member.account.pass");
+        String pass = Global.config.getString("member.pass");
         on(Member_Loginemail_Msite_Page.class).inputPass(pass);
     }
 

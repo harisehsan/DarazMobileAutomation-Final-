@@ -23,7 +23,7 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
         Global.map.put("name_of_account",name);
         String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
         Global.map.put("email_random",randomEmail);
-        String passWord = Global.config.getString("member.account.pass");
+        String passWord = Global.config.getString("member.pass");
         on(Member_Signupemail_Msite_Page.class).signUpByEmail(name,randomEmail,passWord);
     }
 

@@ -16,7 +16,7 @@ public class Member_AddressPC_Page extends PageObject {
     @FindBy(css = ".mod-input-name input") private WebElement inputName;
     @FindBy(css = ".mod-input-phone input") private WebElement inputPhone;
     @FindBy(css = ".mod-select-location-tree-1") private WebElement locationTree1;
-    @FindBy(css = ".next-menu-content > li") private List<WebElement> selectTree1;
+    @FindBy(css = ".next-menu-content > li") private List<WebElement> selectTree;
     @FindBy(css = ".mod-select-location-tree-2") private WebElement locationTree2;
     @FindBy(css = ".mod-select-location-tree-3") private WebElement locationTree3;
     @FindBy(css = ".mod-input-detailAddress input") private WebElement inputAddress;
@@ -97,22 +97,23 @@ public class Member_AddressPC_Page extends PageObject {
     }
 
     public void clearName(){
+        waitUntilPageReady();
         waitUntilVisible(inputName);
         this.inputName.clear();
     }
 
     public void clearPhone(){
+        waitUntilPageReady();
         waitUntilVisible(inputPhone);
         this.inputPhone.clear();
     }
 
 
     public void selectTree(){
-        if(selectTree1.size() > 0){
-            WebElement random_element = selectTree1.get(new Random().nextInt(selectTree1.size()));
+        if(selectTree.size() > 0){
+            WebElement random_element = selectTree.get(new Random().nextInt(selectTree.size()));
             waitUntilVisible(random_element);
             random_element.click();
-            waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         }
     }
 
@@ -165,17 +166,26 @@ public class Member_AddressPC_Page extends PageObject {
         waitUntilVisible(inputPhone);
         this.inputPhone.sendKeys(phone);
         waitUntilVisible(locationTree1);
+        waitUntilClickable(By.cssSelector(".mod-select-location-tree-1"));
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         this.locationTree1.click();
-        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         selectTree();
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+//        waitUntilClickable(By.cssSelector(".mod-select-location-tree-2"));
+//        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         this.locationTree2.click();
-        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilVisibility(By.cssSelector(".next-menu-content > li"));
         selectTree();
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilClickable(By.cssSelector(".mod-select-location-tree-3"));
         this.locationTree3.click();
         waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilVisibility(By.cssSelector(".next-menu-content > li"));
         selectTree();
         this.inputAddress.sendKeys(detailAddress);
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         waitUntilClickable(By.cssSelector(".mod-address-form-btn"));
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         this.clickSavebtn.click();
         waitUntilInvisibilityOf(By.cssSelector(".mod-address-form-btn"));
     }

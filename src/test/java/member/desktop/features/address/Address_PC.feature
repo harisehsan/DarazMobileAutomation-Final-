@@ -3,8 +3,8 @@
 Feature: Address on PC
 
   @17807244 @member_regression @member_smoke @no_sg
-  Scenario: As user add new address for daraz on PC
-    Given I go to the sign up page by email
+  Scenario: As user add new address on PC
+    Given I go to the sign up page by smsphone
     And I sign up by api
     And I open add new address page input name info
     And I create new address
@@ -12,7 +12,7 @@ Feature: Address on PC
 
   @17480501 @member_regression @member_smoke @no_lzd
   Scenario: User edit address information for daraz on PC
-    Given I go to the sign up page by email
+    Given I go to the sign up page by smsphone
     And I sign up by api
     And I open add new address page input name info
     And I create new address
@@ -22,7 +22,7 @@ Feature: Address on PC
 
   @17937780 @member_regression @member_smoke @no_drz @no_sg
   Scenario: User edit address information for lzd on PC
-    Given I go to the sign up page by email
+    Given I go to the sign up page by smsphone
     And I sign up by api
     And I open add new address page input name info
     And I create new address
@@ -32,7 +32,7 @@ Feature: Address on PC
 
   @17480513 @member_regression @member_smoke @no_lzd
   Scenario: User delete address on address book for daraz on PC
-    Given I go to the sign up page by email
+    Given I go to the sign up page by smsphone
     And I sign up by api
     And I open add new address page input name info
     And I create new address
@@ -45,7 +45,7 @@ Feature: Address on PC
 
   @17938204 @member_regression @member_smoke @no_drz @no_sg
   Scenario: User delete address on address book for lzd on PC
-    Given I go to the sign up page by email
+    Given I go to the sign up page by smsphone
     And I sign up by api
     And I open add new address page input name info
     And I create new address

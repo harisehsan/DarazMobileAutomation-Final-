@@ -1,6 +1,7 @@
 package member.desktop.pages.account;
 
 import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import base.PageObject;
@@ -36,6 +37,8 @@ public class Member_Login_Page extends PageObject {
         waitUntilVisible(email);
         this.email.sendKeys(emailInfo);
         this.passWord.sendKeys(newPass);
+        waitUntilClickable(By.cssSelector(".mod-login-btn"));
         this.submit.click();
+        waitUntilInvisibilityOf(By.cssSelector(".mod-login-btn"));
     }
 }

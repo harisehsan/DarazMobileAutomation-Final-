@@ -18,15 +18,15 @@ public class MemberLoginSteps extends BaseSteps {
 
     @And("^I login account information on login by email page")
     public void loginByEmail()throws Throwable {
-        String email = Global.config.getString("member.account.mail");
-        String pass = Global.config.getString("member.account.pass");
+        String email = Global.config.getString("member.mail");
+        String pass = Global.config.getString("member.pass");
         on(Member_Login_Page.class).loginEmailPass(email,pass);
     }
 
     @And("^I login account information by mobile phone on login by email page")
     public void loginByPhoneNumber()throws Throwable {
         String mobilephone = Global.config.getString("member.phone_number_login");
-        String pass = Global.config.getString("member.account.pass");
+        String pass = Global.config.getString("member.pass");
         on(Member_Login_Page.class).loginEmailPass(mobilephone,pass);
     }
 

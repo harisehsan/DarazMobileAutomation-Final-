@@ -3,51 +3,39 @@
 Feature: Member PC Test
 
   @17417150 @member_regression @member_smoke @no_lzd
-  Scenario: Signup by email without slider
+  Scenario: Signup by email
     When I go to the sign up page by email
     And I process to signup user by email on signup by email page
     And I click on submit button
     Then I should see the account page
 
   @17417151 @member_regression @member_smoke @no_drz
-  Scenario: Guest signup by email with slider
-    When I go to the sign up page by email
-    And I process to signup user by email on signup by email page
-    And I click and hold on slider button
+  Scenario: Guest signup email by api
+    When I go to the sign up page by smsphone
+    And I sign up by api
     Then I should see the account page
 
-  @17417163 @member_regression @member_smoke @no_lzd @no_drz_live
-  Scenario: Guest signup by smsphone without slider
-    When I go to the sign up page by smsphone
-    And I input the phonenumber
-    And I process to signup user by sms on signup page
-    And On signup by SMS i click submit button
-    Then I should see the account is verified
-
-  @17560786 @member_regression @member_smoke @no_lzd_live @no_drz_live
-  Scenario: Guest signup by smsphone with slider on SG staging only
-    When I go to the sign up page by smsphone
-    And I input the phonenumber
-    And I click the slider button
-    And I process to signup user by sms on signup page
-    And On signup by SMS i click submit button
-    Then I should see the account is verified
-
-  @17417173 @member_regression @member_smoke
+  @17417173 @member_regression @member_smoke @no_lzd
   Scenario: User login account by email on login by email page
     When I go to the login by email page
     And I login account information on login by email page
     Then I should see the logged account page
 
-  @17417183 @member_regression @member_smoke
+  @17560793 @member_regression @member_smoke
+  Scenario: User login account by mobilephone on login by email page
+    When I go to the login by email page
+    And I login by api with mobile phone and password
+    Then I should see the logged account page
+
+  @17417183 @member_regression @member_smoke @no_lzd
   Scenario: User login account by mobilephone on login by email page
     When I go to the login by email page
     And I login account information by mobile phone on login by email page
     Then I should see the logged account page
 
-  @17480509 @member_regression @member_smoke @no_lzd_live
+  @17480509 @member_regression @member_smoke
   Scenario: User edit name information
-    When I go to the sign up page by email
+    When I go to the sign up page by smsphone
     And I sign up by api
     And I go to the account page
     And I go to edit profile page and edit name info
@@ -57,23 +45,23 @@ Feature: Member PC Test
   @17417198 @member_regression @member_smoke
   Scenario: User login account then logout account
     When I go to the login by email page
-    And I login account information on login by email page
+    And I login by api with email and password
     And I click on logout account
     Then I logout successful
 
   @17480530 @member_regression @member_smoke
   Scenario: User change password, login success by new password
-    When I go to the sign up page by email
+    When I go to the sign up page by smsphone
     And I sign up by api
     And I go to change password page
     And I click on logout account
-    And I login with new password
+    And I login by api with email and new_pass
     Then I should see the account page
 
   @17480524 @member_regression @member_smoke
   Scenario: User config newsletter
     When I go to the login by email page
-    And I login account information on login by email page
+    And I login by api with email and password
     And I go to the account page
     And I click on newsletter button to turn on or off config
     Then I should see the texts on configuration Newsletter difference before configuration

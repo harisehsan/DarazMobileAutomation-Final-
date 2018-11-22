@@ -11,13 +11,12 @@ public class MemberSignupSMSSteps extends BaseSteps {
     @Given("^I go to the sign up page by smsphone")
     public void signUpPage() throws Throwable {
         visit(Member_SignUp_SMS_Page.class);
-        Global.browser.refresh();
     }
 
     @And("^I process to signup user by sms on signup page")
     public void signUpBySMSProcess() throws Throwable {
         String smsCode = Global.config.getString("member.account.sms_code");
-        String passWord = Global.config.getString("member.account.pass");
+        String passWord = Global.config.getString("member.pass");
         String name = Global.config.getString("member.account.name");
         String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
         on(Member_SignUp_SMS_Page.class).signUpBySMS(smsCode,passWord,name,randomEmail);
