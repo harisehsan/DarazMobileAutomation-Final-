@@ -1,6 +1,7 @@
 package member.msite.pages.account;
 
 import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import base.PageObject;
@@ -26,11 +27,13 @@ public class Member_Loginemail_Msite_Page extends PageObject {
 
     public void clickLoginButton(){
         waitUntilPageReady();
+        waitUntilClickable(By.cssSelector("#container > div > div > div > div > div.login-btn > button"));
         this.clickLoginBtn.click();
     }
 
     public void clickSMSButton(){
         waitUntilPageReady();
+        waitUntilClickable(By.cssSelector(".login-foot-btn"));
         this.clickSMSBtn.click();
     }
 

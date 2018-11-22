@@ -1,6 +1,7 @@
 package member.msite.pages.account;
 
 import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import base.PageObject;
@@ -13,10 +14,10 @@ public class Member_Account_Msite_Page extends PageObject {
     @FindBy(css ="#container > div > div.account-newsletter > div") private WebElement newsletterConfig;
     @FindBy(css="#address-book > a") private WebElement addressBook;
 
-    public String getAccountTittle() {
+    public void getAccountTittle() {
         waitUntilPageReady();
         waitUntilVisible(accountTittle);
-        return accountTittle.getText();
+        this.accountTittle.isDisplayed();
     }
 
     public boolean hasAccountTittle() {
@@ -27,7 +28,7 @@ public class Member_Account_Msite_Page extends PageObject {
 
     public void setNewsletterTrigger() {
         waitUntilPageReady();
-        waitUntilVisible(newsletterConfig);
+        waitUntilClickable(By.cssSelector("#container > div > div.account-newsletter > div"));
         this.newsletterConfig.click();
     }
 
@@ -37,7 +38,7 @@ public class Member_Account_Msite_Page extends PageObject {
 
     public void clickAddress(){
         waitUntilPageReady();
-        waitUntilVisible(addressBook);
+        waitUntilClickable(By.cssSelector("#address-book > a\""));
         this.addressBook.click();
     }
 }

@@ -17,7 +17,7 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
         on(Member_Signupemail_Msite_Page.class).signUpEmail();
     }
 
-    @And("^I input all information on signup by email page")
+    @And("^I input all information to signup by email page")
     public void signUpByEmail() throws Throwable {
         String name = Global.config.getString("member.account.name");
         Global.map.put("name_of_account",name);
@@ -25,10 +25,6 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
         Global.map.put("email_random",randomEmail);
         String passWord = Global.config.getString("member.pass");
         on(Member_Signupemail_Msite_Page.class).signUpByEmail(name,randomEmail,passWord);
-    }
-
-    @And("^I click submit on form")
-    public void submitButton() throws Throwable {
         on(Member_Signupemail_Msite_Page.class).signUpButton();
     }
 
@@ -45,9 +41,7 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
 
     @Then("^I should see the name of user in account title")
     public void hasTitleAccount() throws Throwable {
-        String nameOFAccount = "Hello, " + (String) Global.map.get("name_of_account");
-        String getAccountTittle = on(Member_Account_Msite_Page.class).getAccountTittle();
-        Assert.assertEquals(getAccountTittle,nameOFAccount, "Checking account tittle on my account page should be same the name of account");
+        Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking account tittle on my account page should be displayed");
     }
 
     @Then("^I should see the result of current newsletter config changed")

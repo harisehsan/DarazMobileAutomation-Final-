@@ -2,6 +2,7 @@ package member.msite.pages.account;
 
 import base.PageObject;
 import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -24,12 +25,12 @@ public class Member_ChangePass_Msite_Page extends PageObject {
 
     public void saveButton(){
         waitUntilPageReady();
-        waitUntilVisible(saveBtn);
+        waitUntilClickable(By.cssSelector(".mod-button"));
         this.saveBtn.click();
     }
 
     public void gotItButton(){
-        waitUntilVisible(gotItBtn);
+        waitUntilClickable(By.cssSelector("body > div.ReactModalPortal > div > div > div.mod-dialog-ft > button"));
         this.gotItBtn.click();
     }
 }

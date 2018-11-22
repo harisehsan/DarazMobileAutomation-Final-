@@ -2,6 +2,7 @@ package member.msite.pages.account;
 
 import base.PageObject;
 import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -34,7 +35,7 @@ public class Member_Complete_Your_Profile_Page extends PageObject {
 
     public void completeButton() {
         waitUntilPageReady();
-        waitUntilVisible(completeBtn);
+        waitUntilClickable(By.className("complete-profile-btn"));
         this.completeBtn.click();
     }
 }
