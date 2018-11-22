@@ -43,9 +43,10 @@ Feature: Member PC Test
     Then I go back account page with new name
 
   @17417198 @member_regression @member_smoke
-  Scenario: User login account then logout account
-    When I go to the login by email page
-    And I login by api with email and password
+  Scenario: User signup account then logout account
+    When I go to the sign up page by smsphone
+    And I sign up by api
+    And I go to the account page
     And I click on logout account
     Then I logout successful
 
@@ -60,8 +61,8 @@ Feature: Member PC Test
 
   @17480524 @member_regression @member_smoke
   Scenario: User config newsletter
-    When I go to the login by email page
-    And I login by api with email and password
+    When I go to the sign up page by smsphone
+    And I sign up by api
     And I go to the account page
     And I click on newsletter button to turn on or off config
     Then I should see the texts on configuration Newsletter difference before configuration
