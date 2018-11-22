@@ -14,12 +14,12 @@ public class Member_ChangePass_Msite_Page extends PageObject {
     @FindBy(css = ".mod-button") private  WebElement saveBtn;
     @FindBy(css = "body > div.ReactModalPortal > div > div > div.mod-dialog-ft > button") private WebElement gotItBtn;
 
-    public void setNewPassWord(String oldPassWord, String newPassWord, String reNewPassWord){
+    public void setNewPassWord(String oldPassWord, String newPassWord){
         waitUntilPageReady();
         waitUntilVisible(oldPass);
         this.oldPass.sendKeys(oldPassWord);
         this.newPass.sendKeys(newPassWord);
-        this.reNewPass.sendKeys(reNewPassWord);
+        this.reNewPass.sendKeys(newPassWord);
     }
 
     public void saveButton(){

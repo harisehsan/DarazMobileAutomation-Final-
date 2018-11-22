@@ -26,5 +26,4 @@ public class Member_VerifyEmail_PC_Page extends PageObject {
     public void clickVerifyCodeBtn() {
         this.verifyBtn.click();
     }
-
 }

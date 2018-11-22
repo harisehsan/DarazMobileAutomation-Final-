@@ -14,7 +14,6 @@ public class Member_AccountSetting_Msite_Page extends PageObject {
     @FindBy(className = "cancel") private WebElement cancelbutton;
     @FindBy(css = "#container > div > ul > li:nth-child(1) > a") private WebElement changePassWord;
 
-
     public void logOut(){
         waitUntilPageReady();
         this.logout.click();
@@ -31,4 +30,3 @@ public class Member_AccountSetting_Msite_Page extends PageObject {
         this.changePassWord.click();
     }
 }
-

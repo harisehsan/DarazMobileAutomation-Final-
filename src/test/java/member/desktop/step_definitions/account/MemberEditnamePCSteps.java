@@ -6,6 +6,7 @@ import cucumber.api.java.en.Then;
 import global.Global;
 import member.desktop.pages.account.Account_Page;
 import member.desktop.pages.account.Member_AccEdit_PC_Page;
+import org.testng.Assert;
 
 public class MemberEditnamePCSteps extends BaseSteps {
 
@@ -17,16 +18,16 @@ public class MemberEditnamePCSteps extends BaseSteps {
         on(Member_AccEdit_PC_Page.class).editName(name_edit);
     }
 
-    @And("^I click on savechanges button")
+    @And("^I click on save changes button")
     public void saveChanges() throws Throwable{
         on(Member_AccEdit_PC_Page.class).saveChangesBtn();
     }
 
-
     @Then("^I go back account page with new name")
     public void hasName() throws Throwable {
         visit(Account_Page.class);
-        on(Account_Page.class).hasName((String) Global.map.get("email_random"));
+        String currentName = on(Account_Page.class).hasName();
+        String expectName = Global.config.getString("member.account.name_edit");
+        Assert.assertEquals(currentName,expectName,"Checking the edited name should be updated after editing name");
     }
-
 }

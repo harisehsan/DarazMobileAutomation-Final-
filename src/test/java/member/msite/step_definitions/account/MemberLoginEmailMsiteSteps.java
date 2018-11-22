@@ -1,12 +1,12 @@
 package member.msite.step_definitions.account;
 
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import cucumber.api.java.en.*;
 import global.Global;
 import member.msite.pages.account.Member_AccountSetting_Msite_Page;
+import member.msite.pages.account.Member_Account_Msite_Page;
 import member.msite.pages.account.Member_Loginemail_Msite_Page;
 import base.BaseSteps;
+import org.testng.Assert;
 
 public class MemberLoginEmailMsiteSteps extends BaseSteps {
 
@@ -15,23 +15,17 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
         visit(Member_Loginemail_Msite_Page.class);
     }
 
-    @And("^I input email info on Msite")
-    public void inputEmail() throws Throwable {
-        String email = Global.config.getString("member.account.mail");
-        on(Member_Loginemail_Msite_Page.class).inputEmail(email);
-
-    }
-
     @And("^I input email just signned up on Msite")
     public void inputEmailSignUp() throws Throwable {
         on(Member_Loginemail_Msite_Page.class).inputEmail((String) Global.map.get("email_random"));
     }
 
-    @And("^I input password info on Msite")
-    public void inputPass() throws Throwable {
+    @And("^I input account information on login by email Msite page")
+    public void logInByEmailMsite() throws Throwable {
+        String email = Global.config.getString("member.account.mail");
+        on(Member_Loginemail_Msite_Page.class).inputEmail(email);
         String pass = Global.config.getString("member.account.pass");
         on(Member_Loginemail_Msite_Page.class).inputPass(pass);
-
     }
 
     @And("^I input new password info on Msite")
@@ -43,26 +37,26 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
     @And("^I click login button on Msite")
     public void clickLoginButton() throws Throwable {
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
-
     }
-
 
     @And("^I go to setting page")
     public void settingOpen() throws Throwable {
         visit(Member_AccountSetting_Msite_Page.class);
     }
 
-    @And("I click Logout button and choose OK button")
+    @And("I progress logout account on account setting page")
     public void logOutAction() throws Throwable {
         on(Member_AccountSetting_Msite_Page.class).logOut();
         on(Member_AccountSetting_Msite_Page.class).setOkButton();
     }
 
+    @Then("^I should stayed in account page")
+    public void hasStayOnAccountPage(){
+        Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking user should be stayed in account page after logging in success");
+    }
 
     @Then("^I should logout success")
     public void waitUntilVisible() throws Throwable {
-        on(Member_Loginemail_Msite_Page.class).waitUnstillVisible();
+        Assert.assertTrue(on(Member_Loginemail_Msite_Page.class).hasLoginForm(),"Checking user should not be stayed in account page after logging out success");
     }
-
-
 }

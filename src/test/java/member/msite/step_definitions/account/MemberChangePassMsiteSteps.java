@@ -13,7 +13,6 @@ public class MemberChangePassMsiteSteps extends BaseSteps {
         on(Member_AccountSetting_Msite_Page.class).changePassWord();
     }
 
-
     @And("^I go to change pass page on Msite")
     public void accessChangePass() throws Throwable {
         visit(Member_ChangePass_Msite_Page.class);
@@ -23,9 +22,8 @@ public class MemberChangePassMsiteSteps extends BaseSteps {
     public void changePassProcess() throws Throwable {
         String old_pass = Global.config.getString("member.account.pass");
         String new_pass = Global.config.getString("member.account.new_pass");
-        on(Member_ChangePass_Msite_Page.class).setNewPassWord(old_pass,new_pass,new_pass);
+        on(Member_ChangePass_Msite_Page.class).setNewPassWord(old_pass,new_pass);
     }
-
 
     @And("^I click save password button")
     public void clickSaveBtn() throws Throwable {

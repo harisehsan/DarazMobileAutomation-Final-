@@ -19,7 +19,6 @@ public class MemberCompleteProfileSteps extends BaseSteps {
         on(Member_Complete_Your_Profile_Page.class).inputName(name_msite);
     }
 
-
     @And("^I will input the email on form")
     public void inputEmail() throws Throwable {
         String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
@@ -27,13 +26,11 @@ public class MemberCompleteProfileSteps extends BaseSteps {
         on(Member_Complete_Your_Profile_Page.class).inputEmail((String) Global.map.get("email_random"));
     }
 
-
     @And("^I will input the password on form")
     public void inputPass() throws Throwable{
         String pass = Global.config.getString("member.account.pass");
         on(Member_Complete_Your_Profile_Page.class).inputPassword(pass);
     }
-
 
     @And("^I will click submit on form")
     public void  submitButton() throws Throwable{
