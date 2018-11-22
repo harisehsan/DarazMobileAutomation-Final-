@@ -40,7 +40,7 @@ public class MemberApiSteps extends BaseSteps {
         Global.browser.refresh();
     }
 
-    @And("^I login by api with email and (.*?)$")
+    @And("^I login by api with old email and (.*?)$")
     public void loginByApiNewPass(String pass){
 
         String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");

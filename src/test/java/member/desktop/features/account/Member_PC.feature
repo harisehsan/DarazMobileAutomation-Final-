@@ -55,7 +55,7 @@ Feature: Member PC Test
     And I sign up by api
     And I go to change password page
     And I click on logout account
-    And I login by api with email and new_pass
+    And I login by api with old email and new_pass
     Then I should see the account page
 
   @17480524 @member_regression @member_smoke
