@@ -15,7 +15,7 @@ def build(String Module, String Theme,String Tags,String Venture_Env){
                 "--tags 'not @no_${site}_${env}' "
         String cucumberOpt = "\"src/test/java/${Module}/${Theme}/features --tags ${Tags} ${excludedTags} --glue ${Module}.${Theme}.step_definitions --glue _base.${Theme}_steps --glue _base.api_steps\""
         try {
-            sh "mvn clean test -Dcucumber.options=${cucumberOpt} -Denv=\"${Venture_Env}\" -Dtheme=\"${Theme}\""
+            sh "mvn clean -Dsurefire.rerunFailingTestsCount=2 test -Dcucumber.options=${cucumberOpt} -Denv=\"${Venture_Env}\" -Dtheme=\"${Theme}\""
             currentBuild.result = 'SUCCESS'
         } catch (Exception err) {
             currentBuild.result = 'FAILURE'
