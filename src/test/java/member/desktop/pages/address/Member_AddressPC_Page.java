@@ -24,8 +24,7 @@ public class Member_AddressPC_Page extends PageObject {
     @FindBy(className = "mod-address-book-default") private WebElement hasAddress;
     @FindBy(css = ".mod-input-detailAddress input") private WebElement detailAddress;
     @FindBy(css= ".next-table-cell") private WebElement editAddress;
-    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > able > tbody > tr.next-table-row.first > td.next-table-cell.last > div > button") private WebElement editAddLzd;
-    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr.next-table-row.first > td.next-table-cell.first > div > button") private WebElement editAddDrz;
+    @FindBy(xpath = "//*[@id=\"container\"]/div/div/div/div[2]/div/div[2]/table/tbody/tr[1]/td[6]/div/button") private WebElement editAddLzd;
     @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr.next-table-row.first > td:nth-child(2) > div") private WebElement hasNewNameDrz;
     @FindBy(css="#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr > td.next-table-cell.first > div") private WebElement hasNewNameLzd;
     @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr:nth-child(2) > td.next-table-cell.first > div > button") private WebElement accessDeleteAddDrz;
@@ -74,7 +73,7 @@ public class Member_AddressPC_Page extends PageObject {
 
     public void editAddLzd(){
         waitUntilPageReady();
-        waitUntilVisible(editAddLzd);
+        waitUntilClickable(By.xpath("//*[@id=\"container\"]/div/div/div/div[2]/div/div[2]/table/tbody/tr[1]/td[6]/div/button"));
         this.editAddLzd.click();
     }
 
@@ -114,6 +113,7 @@ public class Member_AddressPC_Page extends PageObject {
         if(selectTree.size() > 0){
             WebElement random_element = selectTree.get(new Random().nextInt(selectTree.size()));
             waitUntilVisible(random_element);
+            waitUntilClickable(By.cssSelector(".next-menu-content > li"));
             random_element.click();
         }
     }

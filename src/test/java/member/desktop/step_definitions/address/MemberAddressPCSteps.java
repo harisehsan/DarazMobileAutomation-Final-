@@ -105,9 +105,12 @@ public class MemberAddressPCSteps extends BaseSteps {
     @And("^I edit name, phone number information")
     public void editNamePhone() throws Throwable {
         String name_edit = Global.config.getString("member.account.name_edit");
+        String mobile = Global.config.getString("member.phone_number_login");
         on(Member_AddressPC_Page.class).clearName();
         on(Member_AddressPC_Page.class).inputName(name_edit);
         Global.map.put("new_name_address", name_edit);
+        on(Member_AddressPC_Page.class).clearPhone();
+        on(Member_AddressPC_Page.class).inputPhone(mobile);
         on(Member_AddressPC_Page.class).clickSaveBtn();
     }
     @And("^I click delete button")
