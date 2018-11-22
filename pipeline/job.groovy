@@ -21,7 +21,7 @@ def build(String Module, String Theme,String Tags,String Venture_Env){
             currentBuild.result = 'SUCCESS'
         } catch (Exception err) {
             try{
-                String cucumberOptRerun = "\"src/test/java/${Module}/${Theme}/features --tags @target/cucumber-reports/rerun-reports/rerun.txt --glue ${Module}.${Theme}.step_definitions --glue _base.${Theme}_steps --glue _base.api_steps\""
+                String cucumberOptRerun = "\"@target/cucumber-reports/rerun-reports/rerun.txt --tags ${Tags} ${excludedTags} --glue ${Module}.${Theme}.step_definitions --glue _base.${Theme}_steps --glue _base.api_steps\""
                 sh "mvn test -Dcucumber.options=${cucumberOptRerun} -Denv=\"${Venture_Env}\" -Dtheme=\"${Theme}\""
             }catch (Exception rerunErr){
                 echo rerunErr
