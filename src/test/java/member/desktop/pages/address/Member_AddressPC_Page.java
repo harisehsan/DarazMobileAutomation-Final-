@@ -103,6 +103,7 @@ public class Member_AddressPC_Page extends PageObject {
     }
 
     public void clearPhone(){
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         waitUntilPageReady();
         waitUntilVisible(inputPhone);
         this.inputPhone.clear();
@@ -170,9 +171,6 @@ public class Member_AddressPC_Page extends PageObject {
         waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         this.locationTree1.click();
         selectTree();
-        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
-//        waitUntilClickable(By.cssSelector(".mod-select-location-tree-2"));
-//        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         this.locationTree2.click();
         waitUntilVisibility(By.cssSelector(".next-menu-content > li"));
         selectTree();

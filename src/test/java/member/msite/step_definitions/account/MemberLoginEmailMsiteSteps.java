@@ -32,17 +32,6 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
     }
 
-//    @And("^I input new password info on Msite")
-//    public void inputNewPass() throws Throwable {
-//        String new_pass = Global.config.getString("member.account.new_pass");
-//        on(Member_Loginemail_Msite_Page.class).inputPass(new_pass);
-//    }
-
-//    @And("^I click login button on Msite")
-//    public void clickLoginButton() throws Throwable {
-//        on(Member_Loginemail_Msite_Page.class).clickLoginButton();
-//    }
-
     @And("^I go to setting page")
     public void settingOpen() throws Throwable {
         visit(Member_AccountSetting_Msite_Page.class);
