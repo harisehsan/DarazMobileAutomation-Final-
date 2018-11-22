@@ -59,9 +59,8 @@ public class MemberSignupSteps extends BaseSteps {
     @Then("^I should see the email for reset on account page$")
     public void hasEmailReset() {
         on(Account_Page.class).untilLoaded();
-        on(Account_Page.class).waitUntilResetSmsInvisible();
         String currentEmail = on(Account_Page.class).hasEmail();
-        String expectEmail = (String) Global.config.getString("member.mail_for_reset");
+        String expectEmail = Global.config.getString("member.mail_for_reset");
         Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
     }
 
