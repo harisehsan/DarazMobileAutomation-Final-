@@ -59,9 +59,15 @@ public class Account_Page extends PageObject {
         return newsLetter.getText();
     }
 
+    public void waitUntilResetSmsInvisible(){
+        waitUntilPageReady();
+        waitUntilInvisibilityOf(By.cssSelector("body > div:nth-child(10) > div > div > div.next-feedback-content"));
+    }
+
     public void logOut() {
         waitUntilPageReady();
         waitUntilVisible(myAccoutTrigger);
+        waitUntilClickable(By.id("myAccountTrigger"));
         this.myAccoutTrigger.click();
         this.logOut.click();
     }
