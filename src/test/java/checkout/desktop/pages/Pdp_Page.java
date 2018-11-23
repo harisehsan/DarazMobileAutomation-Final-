@@ -15,6 +15,11 @@ public class Pdp_Page extends PageObject {
     @FindBy(css = ".pdp-product-title") private WebElement productTitle;
     @FindBy(id = "topActionSwitchLang") private WebElement changeLanguageMenu;
     @FindBy(css = ".lzd-switch-icon-en") private WebElement englishVersion;
+    @FindBy(css = ".pdp-mod-wishlist") private WebElement wishlist_icon;
+    @FindBy(css = ".wishlist-icon") private WebElement wishlistActived_icon;
+    @FindBy(css = ".wishlist") private WebElement myWishlist_menu;
+    @FindBy(css = ".sfo") private WebElement shippingFromOversea_popup;
+    @FindBy(css = ".sfo__close") private WebElement shippingFromOverseaClose_btn;
 
     public static void setUrl(String url)
     {
@@ -48,6 +53,30 @@ public class Pdp_Page extends PageObject {
             System.out.println("Switch Language is not available");
         }
 
+    }
+
+    public void addToWishlist(){
+        waitUntilVisible(wishlist_icon);
+        wishlist_icon.click();
+    }
+
+    public String wishlistIconClicked(){
+         return wishlistActived_icon.getCssValue("color");
+    }
+
+    public void clickMyWishlistMenu(){
+        myAccountmenu.click();
+        myWishlist_menu.click();
+    }
+
+    public void closeShippingFromOverseaPopup(){
+        try{
+            if (shippingFromOversea_popup.isDisplayed()){
+                shippingFromOverseaClose_btn.click();
+            }
+        }catch (NoSuchElementException ex) {
+            System.out.println("There is no ShippingFromOversea popup");
+        }
     }
 
 }
