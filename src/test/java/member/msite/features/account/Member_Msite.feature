@@ -46,7 +46,7 @@ Feature: Member Msite Test
     And I trigger on newsletter config
     Then I should see the result of current newsletter config changed
 
-  @17740312 @member_regression @member_smoke @no_lzd
+  @17740312 @member_regression @member_smoke
   Scenario: User go to reset password on Msite
     Given I go to login by email on Msite
     When I access to reset password on Msite
