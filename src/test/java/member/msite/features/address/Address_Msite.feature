@@ -2,14 +2,12 @@
 
 Feature: Address Msite test
 
-  @MsiteAddNewAddess @911
+  @17480551 @member_regression @member_smoke @no_lzd
   Scenario: User add new address on Msite
-    When I go to Msite and open the sign up page by email
-    And I input the name on form
-    And I input the email on form
-    And I input the password on form
-    And I click submit on form
-    And I should see account page
+    When I go to the sign up on Msite page by email
+    And I input all information to signup by email page
+    And I should stayed in account page
+    And I should see the name of user in account title
     And I access to address page
     And I input address information
     And I click save address button

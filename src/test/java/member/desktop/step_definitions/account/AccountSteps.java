@@ -1,18 +1,18 @@
 package member.desktop.step_definitions.account;
-import java.lang.String;
 
+import java.lang.String;
 import cucumber.api.java.en.*;
 import global.Global;
 import member.desktop.pages.account.Account_Page;
 import member.desktop.pages.account.Login_Page;
 import member.desktop.pages.account.Member_Login_Page;
 import base.BaseSteps;
+import org.testng.Assert;
 
 /**
  * Created by admin.son.ton on 1/25/18.
  */
 public class AccountSteps extends BaseSteps{
-
 
     @Given("^I login from Account Page by account: \"([^\"]*)\", password: \"([^\"]*)\"")
     public void loginFromAccPage(String user, String pass) throws Throwable {
@@ -30,11 +30,6 @@ public class AccountSteps extends BaseSteps{
         on(Account_Page.class).untilLoaded();
     }
 
-    @And("^I click on my account menu")
-    public void myAccountTrigger() throws Throwable {
-        visit(Account_Page.class);
-        on(Account_Page.class).setMyAccount_trigger();
-    }
     @And("^I click on logout account")
     public void logOut() throws Throwable {
         on(Account_Page.class).logOut();
@@ -42,8 +37,6 @@ public class AccountSteps extends BaseSteps{
 
     @Then("^I logout successful")
     public void hasID() throws Throwable {
-        on(Account_Page.class);
-        on(Member_Login_Page.class).hasID();
+        Assert.assertTrue(on(Member_Login_Page.class).hasID(),"Checking user should be stay in login page");
     }
-
 }

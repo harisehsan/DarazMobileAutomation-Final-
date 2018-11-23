@@ -4,6 +4,7 @@ import cucumber.api.java.en.*;
 import global.Global;
 import member.desktop.pages.address.Member_AddressPC_Page;
 import base.BaseSteps;
+import org.testng.Assert;
 
 public class MemberAddressPCSteps extends BaseSteps {
 
@@ -13,15 +14,12 @@ public class MemberAddressPCSteps extends BaseSteps {
         visit(Member_AddressPC_Page.class);
         on(Member_AddressPC_Page.class).addNewAddress();
         on(Member_AddressPC_Page.class).inputName(name);
-
     }
-
 
     @And("^I input the mobile phone number")
     public void inputPhone() throws Throwable {
         String mobile = Global.config.getString("member.phone_number_login");
         on(Member_AddressPC_Page.class).inputPhone(mobile);
-
     }
 
     @And("^I select the location 1")
@@ -41,14 +39,12 @@ public class MemberAddressPCSteps extends BaseSteps {
     public void selectLocation3() throws Throwable {
         on(Member_AddressPC_Page.class).setLocationTree3();
         on(Member_AddressPC_Page.class).selectTree();
-
     }
 
     @And("^I input address detail")
     public void inputAddress() throws Throwable {
         String address_detail = Global.config.getString("member.account.address_detail");
         on(Member_AddressPC_Page.class).inputAddress(address_detail);
-
     }
 
     @And("^I create new address")
@@ -56,7 +52,6 @@ public class MemberAddressPCSteps extends BaseSteps {
         String mobile = Global.config.getString("member.phone_number_login");
         String address_detail = Global.config.getString("member.account.address_detail");
         on(Member_AddressPC_Page.class).createFastNewAddress(mobile, address_detail);
-
     }
 
     @And("^I create an address to delete")
@@ -64,15 +59,26 @@ public class MemberAddressPCSteps extends BaseSteps {
         String mobile = Global.config.getString("member.phone_number_login");
         String address_delete = Global.config.getString("member.account.address_delete");
         on(Member_AddressPC_Page.class).createFastNewAddress(mobile, address_delete);
-        Global.map.put("no_name_delete", address_delete);
-
+        int beforeDeleting = on(Member_AddressPC_Page.class).getAddressListSize();
+        Global.map.put("before_delete",beforeDeleting);
     }
 
-    @And("^I access edit page to delete address")
-    public void accessDeleteAddress() throws Throwable {
-        on(Member_AddressPC_Page.class).accessDeleteAddress();
+    @And("^I go back the address book page")
+    public void goToAddressPage(){
+        visit(Member_AddressPC_Page.class);
+        int afterDeleting = on(Member_AddressPC_Page.class).getAddressListSize();
+        Global.map.put("after_delete",afterDeleting);
     }
 
+    @And("^I access edit page on Daraz to delete address")
+    public void accessDeleteAddressDrz() throws Throwable {
+        on(Member_AddressPC_Page.class).accessDeleteAddressDrz();
+    }
+
+    @And("^I access edit page on Lazada to delete address")
+    public void accessDeleteAddressLzd() throws Throwable {
+        on(Member_AddressPC_Page.class).accessDeleteAddressLzd();
+    }
 
     @And("^I click on save button")
     public void clickSave() throws Throwable {
@@ -86,9 +92,14 @@ public class MemberAddressPCSteps extends BaseSteps {
     }
 
 
-    @And("^I click edit button on any address")
+    @And("^I click first edit button on any address")
+    public void editFiButton() throws Throwable {
+        on(Member_AddressPC_Page.class).editAddDrz();
+    }
+
+    @And("^I click last edit button on any address")
     public void editButton() throws Throwable {
-        on(Member_AddressPC_Page.class).setEditaddress();
+        on(Member_AddressPC_Page.class).editAddLzd();
     }
 
     @And("^I edit name, phone number information")
@@ -102,25 +113,35 @@ public class MemberAddressPCSteps extends BaseSteps {
         on(Member_AddressPC_Page.class).inputPhone(mobile);
         on(Member_AddressPC_Page.class).clickSaveBtn();
     }
-
     @And("^I click delete button")
     public void deleteAddress() throws Throwable {
         on(Member_AddressPC_Page.class).deleteBtn();
-
     }
 
-    @Then("^I should see the new editing name of address")
-    public void hasNewName() throws Throwable {
-        on(Member_AddressPC_Page.class).hasNewName((String) Global.map.get("new_name_address"));
+    @Then("^I should see on Daraz the new editing name of address")
+    public void hasNewNameDrz() throws Throwable {
+        String editingName = (String) Global.map.get("new_name_address");
+        String nameOnAddress = on(Member_AddressPC_Page.class).hasNewNameDrz();
+        Assert.assertEquals(editingName,nameOnAddress,"Checking the edited name of address should be updated after editing name");
+    }
+
+    @Then("^I should see on Lazada the new editing name of address")
+    public void hasNewNameLzd() throws Throwable {
+        String editingName = (String) Global.map.get("new_name_address");
+        String nameOnAddress = on(Member_AddressPC_Page.class).hasNewNameLzd();
+        Assert.assertEquals(editingName,nameOnAddress,"Checking the edited name of address should be updated after editing name");
     }
 
     @Then("^I should see the new address on account page")
     public void hasAddressName() throws Throwable {
-        on(Member_AddressPC_Page.class).hasAddress();
+        Assert.assertTrue(on(Member_AddressPC_Page.class).hasAddress(),"Checking user has no address on address book, after adding new address should be display on address book page");
     }
 
     @Then("^I should not see address has deleted on page")
     public void hasnoNameDelete() throws Throwable {
-        on(Member_AddressPC_Page.class).hasNoAddress();
+        int before = (int) Global.map.get("before_delete");
+        int after = (int) Global.map.get("after_delete");
+        Assert.assertEquals(before-after,1,"Checking user has 2 addresses on address book, after deleting an address, the address book should display only one address ");
     }
+
 }

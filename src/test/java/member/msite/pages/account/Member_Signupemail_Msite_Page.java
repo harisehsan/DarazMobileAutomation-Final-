@@ -1,44 +1,53 @@
 package member.msite.pages.account;
 
 import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import base.PageObject;
 
 public class Member_Signupemail_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url1") + "/user/register";
+    public static String page_url = Global.config.getString("member.url") + "/user/register";
 
-    @FindBy(css = ".signup-by-mobile-foot-btn") private WebElement signupemail;
-    @FindBy(css = ".mod-input-name input") private WebElement inputname;
-    @FindBy(css = ".mod-input-email input") private WebElement inputemail;
-    @FindBy(css = ".mod-input-password input") private WebElement inputpassword;
-    @FindBy(className = "signup-by-email-btn") private WebElement signupbutton;
+    @FindBy(css = "#container > div > div > div > div > div.signup-by-mobile-foot > div > button") private WebElement signUpEmail;
+    @FindBy(css = ".mod-input-name input") private WebElement inputName;
+    @FindBy(css = ".mod-input-email input") private WebElement inputEmail;
+    @FindBy(css = ".mod-input-password input") private WebElement inputPassWord;
+    @FindBy(className = "signup-by-email-btn") private WebElement signupBtn;
 
-
-    public void signUpEmail(){
+    public void signUpEmail() {
         waitUntilPageReady();
-        this.signupemail.click();
+        waitUntilClickable(By.cssSelector("#container > div > div > div > div > div.signup-by-mobile-foot > div > button"));
+        this.signUpEmail.click();
     }
 
-    public void inputName(String name){
+    public void inputName(String name) {
         waitUntilPageReady();
-        this.inputname.sendKeys(name);
+        this.inputName.sendKeys(name);
     }
 
     public void inputEmail(String email) {
         waitUntilPageReady();
-        this.inputemail.sendKeys(email);
+        this.inputEmail.sendKeys(email);
     }
 
-    public void inputPassword(String pass){
+    public void inputPassword(String pass) {
         waitUntilPageReady();
-        this.inputpassword.sendKeys(pass);
+        this.inputPassWord.sendKeys(pass);
     }
 
     public void signUpButton() {
         waitUntilPageReady();
-        this.signupbutton.click();
+        waitUntilClickable(By.className("signup-by-email-btn"));
+        this.signupBtn.click();
     }
 
+    public void signUpByEmail(String name, String email, String pass) {
+        waitUntilPageReady();
+        waitUntilVisible(inputEmail);
+        this.inputName.sendKeys(name);
+        this.inputEmail.sendKeys(email);
+        this.inputPassWord.sendKeys(pass);
+    }
 }
