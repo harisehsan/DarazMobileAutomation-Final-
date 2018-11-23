@@ -5,29 +5,27 @@ import member.desktop.pages.account.Account_Page;
 import member.desktop.pages.account.Member_SignUp_SMS_Page;
 import base.BaseSteps;
 import helper.RandomeHelper;
+import org.testng.Assert;
 
 public class MemberSignupSMSSteps extends BaseSteps {
     @Given("^I go to the sign up page by smsphone")
     public void signUpPage() throws Throwable {
         visit(Member_SignUp_SMS_Page.class);
-        Global.browser.refresh();
+    }
 
+    @And("^I process to signup user by sms on signup page")
+    public void signUpBySMSProcess() throws Throwable {
+        String smsCode = Global.config.getString("member.account.sms_code");
+        String passWord = Global.config.getString("member.pass");
+        String name = Global.config.getString("member.account.name");
+        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
+        on(Member_SignUp_SMS_Page.class).signUpBySMS(smsCode,passWord,name,randomEmail);
     }
 
     @And("^I input the phonenumber")
     public void inputPhone() throws Throwable {
         String mobilephone = Global.config.getString("member.phone_number_signup");
-        on(Member_SignUp_SMS_Page.class).inputPhone(mobilephone + RandomeHelper.generatePhoneNumber());
-    }
-    @And("^I input password information on signup by sms")
-    public void inputPass() throws Throwable {
-        String pass = Global.config.getString("member.account.pass");
-        on(Member_SignUp_SMS_Page.class).inputPassword(pass);
-    }
-
-    @And("^I click the sendcode button")
-    public void sendCode() throws Throwable {
-        on(Member_SignUp_SMS_Page.class).sendCode();
+        on(Member_SignUp_SMS_Page.class).inputPhoneNumber(mobilephone + RandomeHelper.generatePhoneNumber());
     }
 
     @And("^I click the slider button")
@@ -35,11 +33,6 @@ public class MemberSignupSMSSteps extends BaseSteps {
         on(Member_SignUp_SMS_Page.class).setSliderbtn();
     }
 
-    @And("^I input the SMS code information")
-    public void inputSMSCode() throws Throwable {
-        String smscode = Global.config.getString("member.account.sms_code");
-        on(Member_SignUp_SMS_Page.class).inputSMSCode(smscode);
-    }
 
     @And("^On signup by SMS i click submit button")
     public void clickSubmit() throws Throwable {
@@ -48,7 +41,6 @@ public class MemberSignupSMSSteps extends BaseSteps {
 
     @And("^I should see the account is verified")
     public void isVerified() throws Throwable {
-        on(Account_Page.class).isVerified();
+        Assert.assertTrue(on(Account_Page.class).isVerified(),"Checking is verified icon should be display if user has updated mobile phone");
     }
-
 }
