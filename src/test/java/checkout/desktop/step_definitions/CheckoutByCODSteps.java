@@ -18,11 +18,6 @@ public class CheckoutByCODSteps extends BaseSteps {
         on(Pdp_Page.class).switchToEnglish();
     }
 
-    @When("^I get the product title$")
-    public void getProductTitle(){
-        on(Pdp_Page.class).setProductTitle(on(Pdp_Page.class).getProductTitle());
-    }
-
     @And("^I click on Add to cart button$")
     public void clickAddToCart() {
         on(Pdp_Page.class).clickAddToCartButton();
