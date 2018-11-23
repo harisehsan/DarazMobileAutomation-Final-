@@ -11,7 +11,7 @@ public class AddressMsiteSteps extends BaseSteps {
 
     @And("^I access to address page")
     public void accessAdress() throws Throwable {
-        on(Member_Account_Msite_Page.class).clickAddress();
+        visit(Address_Msite_Page.class);
     }
 
     @And("^I input address information")
