@@ -8,6 +8,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import global.Global;
 import org.testng.Assert;
+import pdp.desktop.pages.Pdp_Page;
 
 public class CheckoutByCODSteps extends BaseSteps {
     @When("^I go to a pdp page$")

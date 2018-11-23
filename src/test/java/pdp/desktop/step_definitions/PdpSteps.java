@@ -1,8 +1,8 @@
-package checkout.desktop.step_definitions;
+package pdp.desktop.step_definitions;
 
 import base.BaseSteps;
-import checkout.desktop.pages.MyWishlist_Page;
-import checkout.desktop.pages.Pdp_Page;
+import pdp.desktop.pages.MyWishlist_Page;
+import pdp.desktop.pages.Pdp_Page;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;

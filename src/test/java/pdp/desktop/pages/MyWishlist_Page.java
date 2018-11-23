@@ -1,4 +1,4 @@
-package checkout.desktop.pages;
+package pdp.desktop.pages;
 
 import base.PageObject;
 import global.Global;
