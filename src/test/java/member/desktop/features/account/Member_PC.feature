@@ -21,7 +21,7 @@ Feature: Member PC Test
     And I login account information on login by email page
     Then I should see the logged account page
 
-  @17560793 @member_regression @member_smoke
+  @17560793 @member_regression @member_smoke @no_id
   Scenario: User login account by mobilephone on login by email page
     When I go to the login by email page
     And I login by api with mobile phone and password
@@ -50,7 +50,7 @@ Feature: Member PC Test
     And I click on logout account
     Then I logout successful
 
-  @17480530 @member_regression @member_smoke
+  @17480530 @member_regression @member_smoke @no_id
   Scenario: User change password, login success by new password
     When I go to the sign up page by smsphone
     And I sign up by api
