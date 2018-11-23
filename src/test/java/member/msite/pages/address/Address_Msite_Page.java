@@ -20,9 +20,9 @@ public class Address_Msite_Page extends PageObject {
     @FindBy(css = ".mod-select-location-tree-1") private WebElement locationTree1;
     @FindBy(css = "#container > div > div > div > div.mod-address-form-inputs > div.mod-select.mod-select-location-tree-2") private WebElement locationTree2;
     @FindBy(css = "#container > div > div > div > div.mod-address-form-inputs > div.mod-select.mod-select-location-tree-3") private WebElement locationTree3;
-    @FindBy(css = "#container > div > div > div > div.mod-address-form-inputs > div.mod-select.focus.mod-select-location-tree-1 > select > option") private List<WebElement> selectLocation1;
-    @FindBy(css = "#container > div > div > div > div.mod-address-form-inputs > div.mod-select.focus.mod-select-location-tree-2 > select > option") private List<WebElement> selectLocation2;
-    @FindBy(css = "#container > div > div > div > div.mod-address-form-inputs > div.mod-select.focus.mod-select-location-tree-3 > select > option") private List<WebElement> selectLocation3;
+    @FindBy(xpath = "//*[@id=\"container\"]/div/div/div/div[1]/div[3]/select/option[2]") private List<WebElement> selectLocation1;
+    @FindBy(xpath = "//*[@id=\"container\"]/div/div/div/div[1]/div[4]/select/option[2]") private List<WebElement> selectLocation2;
+    @FindBy(xpath = "//*[@id=\"container\"]/div/div/div/div[1]/div[5]/select/option[2]") private List<WebElement> selectLocation3;
     @FindBy(css = ".mod-input-detailAddress input") private WebElement addDetail;
     @FindBy(className = "mod-radio") private WebElement shippingDefault;
     @FindBy(css = ".mod-address-form-yatra-btn") private WebElement saveAddressBtn;
@@ -35,9 +35,8 @@ public class Address_Msite_Page extends PageObject {
     }
 
     public void selectTree(List<WebElement> selectTree) {
-        if(selectTree.size() > 0 ) {
+        if(selectTree.size() >= 1 ) {
             WebElement select_random  = selectTree.get(new Random().nextInt(selectTree.size()));
-            waitUntilVisible(select_random);
             select_random.click();
         }
     }
@@ -49,13 +48,14 @@ public class Address_Msite_Page extends PageObject {
         this.inputPhone.sendKeys(addPhone);
         waitUntilClickable(By.cssSelector(".mod-select-location-tree-1"));
         this.locationTree1.click();
-        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         selectTree(selectLocation1);
-        waitUntilClickable(By.cssSelector("#container > div > div > div > div.mod-address-form-inputs > div.mod-select.mod-select-location-tree-2"));
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         this.locationTree2.click();
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         selectTree(selectLocation2);
         waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         this.locationTree3.click();
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         selectTree(selectLocation3);
         waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         this.addDetail.sendKeys(addressDetail);
