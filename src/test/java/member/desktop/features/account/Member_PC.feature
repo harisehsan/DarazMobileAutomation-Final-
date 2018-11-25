@@ -21,7 +21,7 @@ Feature: Member PC Test
     And I login account information on login by email page
     Then I should see the logged account page
 
-  @17560793 @member_regression @member_smoke @no_id
+  @17560793 @member_regression @member_smoke @no_id @911
   Scenario: User login account by mobilephone on login by email page
     When I go to the login by email page
     And I login by api with mobile phone and password
