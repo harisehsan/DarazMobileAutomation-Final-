@@ -16,7 +16,7 @@ def build(String Module, String Theme,String Tags,String Venture_Env){
         String gluedSteps = "--glue checkout.${theme}.step_definitions " +
                             "--glue member.${theme}.step_definitions "
 
-        sh "mkdir -p './regression/features' && find . -path \"*/desktop/*.feature\" -exec cp -prv '{}' './regression/features' ';'"
+        sh "mkdir -p '/regression/features' && find . -path \"*/desktop/*.feature\" -exec cp -prv '{}' '/regression/features' ';'"
 
         String cucumberOpt = "\"src/test/java/regression/features --tags ${Tags} ${excludedTags} ${gluedSteps} --glue _base.${Theme}_steps --glue _base.api_steps\""
 
