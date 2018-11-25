@@ -2,7 +2,7 @@
 
 Feature: Member PC Test
 
-  @17417150 @member_regression @member_smoke @no_lzd
+  @17417150 @member_regression @member_smoke @no_lzd @911
   Scenario: Signup by email
     When I go to the sign up page by email
     And I login by api with email and password
