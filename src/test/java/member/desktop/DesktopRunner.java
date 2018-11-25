@@ -10,6 +10,6 @@ import cucumber.api.CucumberOptions;
 
 @CucumberOptions(
         features = {"src/test/java/member/desktop/features"},
-        tags = {"@17480501"},
+        tags = {"@17417150"},
         glue = {"member.desktop.step_definitions"})
 public class DesktopRunner extends TestRunner {}

@@ -5,16 +5,16 @@ var email=arguments[1];
 var password=arguments[2];
 var name=arguments[3];
 var csrfToken=arguments[4];
+//var csrfToken=document.getElementById("X-CSRF-TOKEN").getAttribute("content");
+//var csrfToken=document.cookie.match(new RegExp('(^| )_tb_token_=([^;]+)'))[2]
 
 
 
 var data = JSON.stringify({
   "lzdAppVersion": "1.0",
-  "name": name,
   "email": email,
   "password": password,
-  "enableNewsletter": true,
-  "bizScene": "visitCart_cart"
+  "name": name
 });
 
 var xhr = new XMLHttpRequest();
@@ -30,5 +30,6 @@ xhr.open("POST", apiUrl);
 xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("x-csrf-token", csrfToken);
 xhr.setRequestHeader("cache-control", "no-cache");
+xhr.setRequestHeader("x-umidtoken", umidTokenFromHeader);
 
 xhr.send(data);
