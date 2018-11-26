@@ -18,7 +18,8 @@ public class OverViewSteps extends BaseSteps {
     }
 
     @Then("^I click on log in to login page")
-    public void landLoginPage()  {
+    public void landLoginPage()
+    {
         on(Home_Page.class).clickToLoginPage();
     }
 
