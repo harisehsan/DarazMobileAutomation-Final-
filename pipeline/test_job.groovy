@@ -1,16 +1,18 @@
 def run(String Module, String Theme,String Tags,String Venture_Env){
     String cucumberOpt = createCucumberOpts(Module,Theme,Tags,Venture_Env)
-    build(Theme,Venture_Env,cucumberOpt)
+    String shCommand =  "mvn clean test -Dcucumber.options=${cucumberOpt} -Denv=\"${Venture_Env}\" -Dtheme=\"${Theme}\""
+    build(shCommand)
 }
 
 def run(String Theme,String Tags,String Venture_Env){
     String cucumberOpt = createCucumberOpts(Theme,Tags,Venture_Env)
-    build(Theme,Venture_Env,cucumberOpt)
+    String shCommand =  "mvn clean test -Dcucumber.options=${cucumberOpt} -Denv=\"${Venture_Env}\" -Dtheme=\"${Theme}\""
+    build(shCommand)
 }
 
-private def build(String Theme,String Venture_Env,String cucumberOpt){
+private def build(String shCommand){
     try {
-        sh "mvn clean test -Dcucumber.options=${cucumberOpt} -Denv=\"${Venture_Env}\" -Dtheme=\"${Theme}\""
+        sh "${shCommand}"
         currentBuild.result = 'SUCCESS'
     } catch (Exception err) {
         currentBuild.result = 'FAILURE'
@@ -30,14 +32,14 @@ private def createCucumberOpts(String Theme,String Tags,String Venture_Env){
     sh "mkdir -p './src/test/java/regression/features' && find . -path \"*/${theme}/*.feature\" -exec cp -prv '{}' './src/test/java/regression/features' ';'"
     String featureFolder = "/src/test/java/regression/features"
 
-    String cucumberOpt = "${featureFolder} --tags ${Tags} ${excludedTags} ${gluedSteps} --glue _base.${Theme}_steps --glue _base.api_steps\""
+    String cucumberOpt = "\"${featureFolder} --tags ${Tags} ${excludedTags} ${gluedSteps} --glue _base.${Theme}_steps --glue _base.api_steps\""
     return cucumberOpt
 }
 
 private def createCucumberOpts(String Module,String Theme,String Tags,String Venture_Env){
     String excludedTags = createExcludedTag(Venture_Env)
     String gluedSteps = " --glue ${Module}.${Theme}.step_definitions "
-    String cucumberOpt = "${featureFolder} --tags ${Tags} ${excludedTags} ${gluedSteps} --glue _base.${Theme}_steps --glue _base.api_steps\""
+    String cucumberOpt = "\"${featureFolder} --tags ${Tags} ${excludedTags} ${gluedSteps} --glue _base.${Theme}_steps --glue _base.api_steps\""
     return cucumberOpt
 }
 
