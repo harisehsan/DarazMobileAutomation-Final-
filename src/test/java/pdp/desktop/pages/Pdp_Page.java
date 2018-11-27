@@ -28,7 +28,7 @@ public class Pdp_Page extends PageObject {
     @FindBy(css = ".next-feedback-content") private WebElement errorMessageForInvalidQuestion_lbl;
     @FindBy(css = ".seller-im-wrapper") private WebElement chatNow_link;
     @FindBy(css = ".message-view") private WebElement messageView_popup;
-    @FindBy(css = ".seller-link") private WebElement sellerShop_link;
+    @FindBy(xpath = "//*[@id='module_seller_warranty']/div/div[1]") private WebElement returnAndWaranty_lbl;
     @FindBy(css = ".delivery-option-item") private WebElement deliveryOptionItem_lbl;
     @FindBy(css = ".delivery-option-item__shipping-fee") private WebElement shippingFeeItem_lbl;
     @FindBy(css = ".next-dialog-close") private WebElement closeLoginForm_btn;
@@ -38,7 +38,6 @@ public class Pdp_Page extends PageObject {
     @FindBy(css = ".next-number-picker-handler-up") private WebElement plus_icon;
     @FindBy(css = ".next-number-picker-handler-down") private WebElement minus_icon;
     @FindBy(css = ".next-number-picker-input input") private WebElement itemQuantity_lbl;
-
 
     public static void setUrl(String url)
     {
@@ -126,7 +125,7 @@ public class Pdp_Page extends PageObject {
     public void chatNow(){
         try {
             if (chatNow_link.isDisplayed()) {
-                scrollToView(sellerShop_link);
+                scrollToView(returnAndWaranty_lbl);
                 chatNow_link.click();
             }
         }
