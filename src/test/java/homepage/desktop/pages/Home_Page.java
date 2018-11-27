@@ -24,6 +24,8 @@ public class Home_Page extends PageObject {
     private WebElement PromotionTxt;
     @FindBy(css = ".app-google")
     private WebElement GoogleQR;
+    @FindBy(css = ".app-apple")
+    private WebElement AppStoreIcon;
 
     private By PopUpApp_by = By.cssSelector("#top-popup-content lzd-download-content");
 
@@ -77,6 +79,19 @@ public class Home_Page extends PageObject {
             Global.map.put("whichSite", "lazada");
         }
         GoogleQR.click();
+    }
+
+    public void clickOnAppStoreIcon() {
+        waitUntilPageReady();
+        if (isItDarazSite()) {
+            if (currentUrl().contains("daraz"))
+                Global.map.put("whichSite", "daraz");
+            else
+                Global.map.put("whichSite", "shop");
+        } else {
+            Global.map.put("whichSite", "lazada");
+        }
+        AppStoreIcon.click();
     }
 }
 

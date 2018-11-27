@@ -35,4 +35,24 @@ public class Landing_Page extends PageObject {
             Assert.assertTrue(result, "Fail cannot reach Shop Google Play Store Landing Page");
         }
     }
+
+    public void verifyAppStoreLandingPage() {
+        String url = currentUrl();
+        String site=Global.map.get("whichSite").toString();
+        if(site.contains(Global.config.getString("homepage.lazada_name")))
+        {
+            result = url.contains(Global.config.getString("homepage.lazada_id"));
+            Assert.assertTrue(result, "Fail cannot reach Lazada App Store Landing Page");
+        }
+        else if (site.contains(Global.config.getString("homepage.daraz_name")))
+        {
+            result = url.contains(Global.config.getString("homepage.daraz_id"));
+            Assert.assertTrue(result, "Fail cannot reach Daraz App Store Landing Page");
+        }
+        else
+        {
+            result = url.contains(Global.config.getString("homepage.shop_id"));
+            Assert.assertTrue(result, "Fail cannot reach Shop App Store Landing Page");
+        }
+    }
 }
