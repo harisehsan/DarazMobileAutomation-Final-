@@ -66,9 +66,16 @@ public class Home_Page extends PageObject {
     }
 
 
-    public void clickOnPlayQRCode()
-    {
+    public void clickOnPlayQRCode() {
         waitUntilPageReady();
+        if (isItDarazSite()) {
+            if (currentUrl().contains("daraz"))
+                Global.map.put("whichSite", "daraz");
+            else
+                Global.map.put("whichSite", "shop");
+        } else {
+            Global.map.put("whichSite", "lazada");
+        }
         GoogleQR.click();
     }
 }
