@@ -52,12 +52,21 @@ public class Home_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(AppPopupBtn);
         AppPopupBtn.click();
-        waitUntilVisible(AppLPTxt);
+        if(isItDarazSite())
+        {
+            waitUntilPageReady();
+        }
+            else
+        {
+            waitUntilVisible(AppLPTxt);
+        }
     }
 
     public boolean verifyAppPopUp() {
-
-        if (PromotionTxt.isDisplayed()) {
+        if(isItDarazSite()) {
+            return true;
+        }
+        else if (PromotionTxt.isDisplayed()) {
             return true;
         } else
             return false;
