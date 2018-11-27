@@ -12,7 +12,7 @@ def run(String Theme,String Tags,String Venture_Env){
 
 private def build(String shCommand){
     try {
-        sh "${shCommand}"
+        sh shCommand
         currentBuild.result = 'SUCCESS'
     } catch (Exception err) {
         currentBuild.result = 'FAILURE'
