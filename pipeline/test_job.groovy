@@ -29,7 +29,6 @@ private def createCucumberOpts(String Theme,String Tags,String Venture_Env){
             "--glue member.${theme}.step_definitions " +
             "--glue homepage.${theme}.step_definitions" +
             "--glue pdp.${theme}.step_definitions"
-    //Make a new dir and copy all the feature file inside
     sh "mkdir -p './src/test/java/regression/features' && find . -path \"*/${theme}/*.feature\" -exec cp -prv '{}' './src/test/java/regression/features' ';'"
     String featureFolder = "/src/test/java/regression/features"
 
@@ -48,11 +47,8 @@ private def createExcludedTag(String Venture_Env){
     String venture = Venture_Env.split("\\.")[0]
     String env = Venture_Env.split("\\.")[1]
     String site=""
-    if(["bd","lk","pk","mm","np"].contains(venture)){
-        site = "drz"
-    }else if(["sg","th","ph","my","vn","id"].contains(venture)){
-        site = "lzd"
-    }
+    if(["bd","lk","pk","mm","np"].contains(venture)){site = "drz"}
+    else if(["sg","th","ph","my","vn","id"].contains(venture)){site = "lzd"}
     String excludedTags = "--tags 'not @no_${env}' " +
             "--tags 'not @no_${venture}' " +
             "--tags 'not @no_${venture}_${env}' " +

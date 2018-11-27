@@ -1,7 +1,6 @@
 import com.google.inject.Module
 
-node("jenkins_slave")
-        {
+node("jenkins_slave") {
             script {
                 currentBuild.displayName = "${Tags}_${Venture}_${BUILD_NUMBER}"
                 currentBuild.description = "Running on Branch ${BRANCH} on ${Venture} env with tags ${Tags} theme ${Theme}"
@@ -24,10 +23,10 @@ node("jenkins_slave")
             }
             stage('Build') {
                 def jenkins_job = load pwd() + "/pipeline/test_job.groovy"
-                if(Module == null){
-                    jenkins_job.run(Module, Theme, Tags, Venture)
-                }else{
+                if(Module == null || Module.toString() == ""){
                     jenkins_job.run(Theme, Tags, Venture)
+                }else{
+                    jenkins_job.run(Module,Theme, Tags, Venture)
                 }
 
             }

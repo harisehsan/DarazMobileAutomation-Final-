@@ -25,8 +25,10 @@ node("jenkins_slave")
             stage('Build') {
                 def jenkins_job = load pwd() + "/pipeline/test_job.groovy"
                 if(Module == null){
+                    echo "Running module"
                     jenkins_job.run(Module, Theme, Tags, Venture)
                 }else{
+                    echo "Running without module"
                     jenkins_job.run(Theme, Tags, Venture)
                 }
 
