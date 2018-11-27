@@ -39,7 +39,7 @@ private def createCucumberOpts(String Theme,String Tags,String Venture_Env){
 private def createCucumberOpts(String Module,String Theme,String Tags,String Venture_Env){
     String excludedTags = createExcludedTag(Venture_Env)
     String gluedSteps = " --glue ${Module}.${Theme}.step_definitions "
-    String cucumberOpt = "\"${featureFolder} --tags ${Tags} ${excludedTags} ${gluedSteps} --glue _base.${Theme}_steps --glue _base.api_steps\""
+    String cucumberOpt = "\"src/test/java/${Module}/${Theme}/features --tags ${Tags} ${excludedTags} ${gluedSteps} --glue _base.${Theme}_steps --glue _base.api_steps\""
     return cucumberOpt
 }
 
