@@ -9,16 +9,21 @@ def build(String Module, String Theme,String Tags,String Venture_Env){
             site = "lzd"
         }
         String excludedTags = "--tags 'not @no_${env}' " +
-                "--tags 'not @no_${venture}' " +
-                "--tags 'not @no_${venture}_${env}' " +
-                "--tags 'not @no_${site}' " +
-                "--tags 'not @no_${site}_${env}' "
+                              "--tags 'not @no_${venture}' " +
+                              "--tags 'not @no_${venture}_${env}' " +
+                              "--tags 'not @no_${site}' " +
+                              "--tags 'not @no_${site}_${env}' "
+
         String gluedSteps = "--glue checkout.${theme}.step_definitions " +
-                            "--glue member.${theme}.step_definitions "
+                            "--glue member.${theme}.step_definitions " +
+                            "--glue homepage.${theme}.step_definitions" +
+                            "--glue pdp.${theme}.step_definitions"
 
-        sh "mkdir -p './src/test/java/regression/features' && find . -path \"*/desktop/*.feature\" -exec cp -prv '{}' './src/test/java/regression/features' ';'"
+        sh "mkdir -p './src/test/java/regression/features' && find . -path \"*/${theme}/*.feature\" -exec cp -prv '{}' './src/test/java/regression/features' ';'"
 
-        String cucumberOpt = "\"src/test/java/regression/features --tags ${Tags} ${excludedTags} ${gluedSteps} --glue _base.${Theme}_steps --glue _base.api_steps\""
+        String featureFolder = "/src/test/java/regression/features"
+
+        String cucumberOpt = "${featureFolder} --tags ${Tags} ${excludedTags} ${gluedSteps} --glue _base.${Theme}_steps --glue _base.api_steps\""
 
         try {
             sh "mvn clean test -Dcucumber.options=${cucumberOpt} -Denv=\"${Venture_Env}\" -Dtheme=\"${Theme}\""
@@ -43,6 +48,10 @@ def build(String Module, String Theme,String Tags,String Venture_Env){
     } else {
         bat(/ "${mvnHome}\bin\mvn" - Dmaven.test.failure.ignore clean package/)
     }
+}
+
+def createCucumberOpts(String Module,String Theme,String Tags,String Venture_Env){
+
 }
 
 return this

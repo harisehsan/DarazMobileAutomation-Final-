@@ -27,7 +27,7 @@ def build(String Site) {
                 MY: {
                     stage('MY')
                             {
-                                build job: 'MY', parameters: parameters
+                                build jobma: 'MY', parameters: parameters
                             }
                 },
                 PH: {
