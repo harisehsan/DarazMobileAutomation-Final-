@@ -1,5 +1,3 @@
-import com.google.inject.Module
-
 node("jenkins_slave") {
             script {
                 currentBuild.displayName = "${Tags}_${Venture}_${BUILD_NUMBER}"
