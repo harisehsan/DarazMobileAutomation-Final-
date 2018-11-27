@@ -13,4 +13,10 @@ public class Landing_Page extends PageObject {
         result = url.contains("app");
         Assert.assertTrue(result,"Fail cannot reach App Landing Page");
     }
+
+    public void verifyGoogleLandingPage() {
+        String url = currentUrl();
+        result = url.contains("lazada");
+        Assert.assertTrue(result,"Fail cannot reach Google Play Landing Page");
+    }
 }

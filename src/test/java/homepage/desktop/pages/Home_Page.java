@@ -5,8 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import base.*;
-import org.testng.Assert;
-import homepage.desktop.pages.BaseHP_Steps;
 
 public class Home_Page extends PageObject {
 
@@ -24,6 +22,8 @@ public class Home_Page extends PageObject {
     private WebElement AppLPTxt;
     @FindBy(css = ".promotion-text")
     private WebElement PromotionTxt;
+    @FindBy(css = ".app-google")
+    private WebElement GoogleQR;
 
     private By PopUpApp_by = By.cssSelector("#top-popup-content lzd-download-content");
 
@@ -68,6 +68,12 @@ public class Home_Page extends PageObject {
             return true;
         } else
             return false;
+    }
+
+    public void clickOnPlayQRCode()
+    {
+        waitUntilPageReady();
+        GoogleQR.click();
     }
 
 

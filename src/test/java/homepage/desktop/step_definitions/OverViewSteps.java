@@ -7,6 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import homepage.desktop.pages.Home_Page;
 import homepage.desktop.pages.Landing_Page;
+import org.aspectj.apache.bcel.util.Play;
 import org.testng.Assert;
 
 public class OverViewSteps extends BaseSteps {
@@ -40,7 +41,18 @@ public class OverViewSteps extends BaseSteps {
     }
 
     @Then("^I should land on App Page")
-    public void vrifyAppLandingPage()  {
+    public void verifyAppLandingPage()  {
         on(Landing_Page.class).verifyAppLandingPage();
+    }
+
+    @And("^I click on Google Play icon")
+    public void clickOnGooglePlayIcon()
+    {
+        on(Home_Page.class).clickOnPlayQRCode();
+    }
+
+    @Then("^I should land on Google Play Page")
+    public void verifyGoogleLandingPage()  {
+        on(Landing_Page.class).verifyGoogleLandingPage();
     }
 }
