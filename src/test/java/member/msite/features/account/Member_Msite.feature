@@ -2,88 +2,59 @@
 
 Feature: Member Msite Test
 
-  @MsiteSignupemail
+  @17417211 @member_regression @member_smoke @no_lzd
   Scenario: Guest signup new account by email
-    When I go to Msite and open the sign up page by email
-    And I input the name on form
-    And I input the email on form
-    And I input the password on form
-    And I click submit on form
-    Then I should see account page
+    When I go to the sign up on Msite page by email
+    And I input all information to signup by email page
+    Then I should see the name of user in account title
 
-  @MsiteSignupsms
-  Scenario: Guest signup new account by sms
-    When I go to signup by sms page on Msite
-    And I input the phone number on Msite
-    And I click sendcode button on Msite
-    And I input the smscode on Msite
-    And I click continue button
-    And I jumps to email info page
-    And I will input the name on form
-    And I will input the email on form
-    And I will input the password on form
-    And I will click submit on form
-    Then I should see account page
-
-  @MsiteLoginEmail
+  @17417223 @member_regression @member_smoke @no_lzd
   Scenario: User login account by email
     When I go to login by email on Msite
-    And I input email info on Msite
-    And I input password info on Msite
-    And I click login button on Msite
-    Then I should see account page
+    And I input account information to login by email Msite page
+    Then I should stayed in account page
 
-  @MsiteLoginSMS
-  Scenario: User login account by SMS
-    When I go to login by SMS on Msite
-    And I input phonenumber info on Msite
-    And I click the info sendcode button on Msite
-    And I input code info on Msite
-    And I click on loginbutton on Msite
-    Then I should see account page
-
-
-  @MsiteLogout
+  @17417234 @member_regression @member_smoke @no_lzd
   Scenario: User Logout account on Msite
     When I go to login by email on Msite
-    And I input email info on Msite
-    And I input password info on Msite
-    And I click login button on Msite
-    And I should see account page
+    And I input account information to login by email Msite page
+    And I should stayed in account page
     And I go to setting page
-    And I click Logout button and choose OK button
+    And I progress logout account on account setting page
     Then I should logout success
 
-  @MsiteChangePassword
+  @17480573 @member_regression @member_smoke @no_lzd
   Scenario: User change password and login again with new password on Msite
-    When I go to Msite and open the sign up page by email
-    And I input the name on form
-    And I input the email on form
-    And I input the password on form
-    And I click submit on form
-    And I should see account page
+    When I go to the sign up on Msite page by email
+    And I input all information to signup by email page
+    And I should see the name of user in account title
     And I go to setting page
     And I click to change password button
-    And I go to change pass page on Msite
     And I input all information to change pass
-    And I click save password button
-    And I click got it button on popup
     And I go to setting page
-    And I click Logout button and choose OK button
+    And I progress logout account on account setting page
     And I should logout success
-    And I go to login by email on Msite
     And I input email just signned up on Msite
-    And I input new password info on Msite
-    And I click login button on Msite
-    Then I should see account page
+    Then I should stayed in setting account page
 
-  @MsiteNewsltterConfig
-  Scenario: User login and try to config newslteter
+  @17480565 @member_regression @member_smoke @no_lzd
+  Scenario: User login and try to config newsletter
     When I go to login by email on Msite
-    And I input email info on Msite
-    And I input password info on Msite
-    And I click login button on Msite
-    And I should see account page
+    And I input account information to login by email Msite page
+    And I should stayed in account page
     And I get result of newsletter config before trigger
     And I trigger on newsletter config
     Then I should see the result of current newsletter config changed
+
+  @17740312 @member_regression @member_smoke
+  Scenario: User go to reset password on Msite
+    Given I go to login by email on Msite
+    When I access to reset password on Msite
+    And I progress to forgot password
+    And I choose Verify through Email button
+    And I go to the inbox mail in Msite on new tab
+    And I open email on Msite to get sms code
+    And I on Msite go back the old tab
+    And I input the smsCode to reset password on msite
+    And I input the new password for reset
+    Then I should see the success reset password on reset page

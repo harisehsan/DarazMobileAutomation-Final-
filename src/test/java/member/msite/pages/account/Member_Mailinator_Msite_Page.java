@@ -1,12 +1,13 @@
-package member.desktop.pages.account;
+package member.msite.pages.account;
 
 import base.PageObject;
 import global.Global;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 import java.util.List;
 
-public class Member_Mailinator_Page extends PageObject {
+public class Member_Mailinator_Msite_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.account.mailinator_mail");
 

@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import base.PageObject;
-
 import java.util.List;
 import java.util.Random;
 
@@ -17,19 +16,24 @@ public class Member_AddressPC_Page extends PageObject {
     @FindBy(css = ".mod-input-name input") private WebElement inputName;
     @FindBy(css = ".mod-input-phone input") private WebElement inputPhone;
     @FindBy(css = ".mod-select-location-tree-1") private WebElement locationTree1;
-    @FindBy(css = ".next-menu-content > li") private List<WebElement> selectTree1;
+    @FindBy(css = ".next-menu-content > li") private List<WebElement> selectTree;
     @FindBy(css = ".mod-select-location-tree-2") private WebElement locationTree2;
     @FindBy(css = ".mod-select-location-tree-3") private WebElement locationTree3;
     @FindBy(css = ".mod-input-detailAddress input") private WebElement inputAddress;
     @FindBy(css =".mod-address-form-btn") private WebElement clickSavebtn;
     @FindBy(className = "mod-address-book-default") private WebElement hasAddress;
     @FindBy(css = ".mod-input-detailAddress input") private WebElement detailAddress;
-    @FindBy(css= ".next-table-cell") private WebElement editaddress;
-    @FindBy(className = "next-table-cell-wrapper") private WebElement hasNewName;
-    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr:nth-child(2) > td.next-table-cell.first > div > button") private WebElement accessDeleteAddress;
+    @FindBy(css= ".next-table-cell") private WebElement editAddress;
+    @FindBy(xpath = "//*[@id=\"container\"]/div/div/div/div[2]/div/div[2]/table/tbody/tr[1]/td[6]/div/button") private WebElement editAddLzd;
+    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr.next-table-row.first > td:nth-child(2) > div") private WebElement hasNewNameDrz;
+    @FindBy(css="#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr > td.next-table-cell.first > div") private WebElement hasNewNameLzd;
+    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr:nth-child(2) > td.next-table-cell.first > div > button") private WebElement accessDeleteAddDrz;
+    @FindBy(css="#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr.next-table-row.last > td.next-table-cell.last > div > button") private WebElement accessDeleteAddLzd;
     @FindBy(className = "mod-address-update-hd") private WebElement deleteBtn;
+    @FindBy(css = "#container > div > div > div > form > div > div.mod-address-form-bd > div.mod-address-form-left > div.mod-input.floating.mod-input-name > div") private WebElement clearName;
+    @FindBy(css = "#container > div > div > div > form > div > div.mod-address-form-bd > div.mod-address-form-left > div.mod-input.floating.mod-input-phone > div") private WebElement clearPhone;
     @FindBy(css = "#dialog-footer-2 > button.next-btn.next-btn-primary.next-btn-medium") private WebElement deleteConfirm;
-    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody") private List<WebElement> addressLevel;
+    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr.next-table-row") private List<WebElement> addressLevel;
 
     public void addNewAddress(){
         waitUntilPageReady();
@@ -37,10 +41,16 @@ public class Member_AddressPC_Page extends PageObject {
         this.addNewAddress.click();
     }
 
-    public void accessDeleteAddress(){
+    public void accessDeleteAddressDrz(){
         waitUntilPageReady();
-        waitUntilVisible(accessDeleteAddress);
-        this.accessDeleteAddress.click();
+        waitUntilVisible(accessDeleteAddDrz);
+        this.accessDeleteAddDrz.click();
+    }
+
+    public void accessDeleteAddressLzd(){
+        waitUntilPageReady();
+        waitUntilVisible(accessDeleteAddLzd);
+        this.accessDeleteAddLzd.click();
     }
 
     public void inputName(String name){
@@ -57,52 +67,56 @@ public class Member_AddressPC_Page extends PageObject {
 
     public void setLocationTree1(){
         waitUntilPageReady();
-        waitUntilVisible(locationTree1);
-        this.locationTree1.click();
-
+        waitUntilVisible(editAddress);
+        this.editAddress.click();
     }
 
-    public void setEditaddress(){
+    public void editAddLzd(){
         waitUntilPageReady();
-        waitUntilVisible(editaddress);
-        this.editaddress.click();
+        waitUntilClickable(By.xpath("//*[@id=\"container\"]/div/div/div/div[2]/div/div[2]/table/tbody/tr[1]/td[6]/div/button"));
+        this.editAddLzd.click();
     }
 
+    public void editAddDrz(){
+        waitUntilPageReady();
+        waitUntilVisible(editAddress);
+        this.editAddress.click();
+    }
     public void deleteBtn() {
         waitUntilPageReady();
         waitUntilVisible(deleteBtn);
         this.deleteBtn.click();
         waitUntilClickable(By.cssSelector("#dialog-footer-2 > button.next-btn.next-btn-primary.next-btn-medium"));
         this.deleteConfirm.click();
+        waitUntilInvisibilityOf(By.className("mod-address-update-hd"));
     }
 
-    public boolean hasNoAddress() {
-        if(addressLevel.size() == 1){
-            return true;
-        }
-        return false;
+    public int getAddressListSize() {
+        waitUntilPageReady();
+        return addressLevel.size();
     }
 
     public void clearName(){
-        waitUntilVisible(inputName);
-        this.inputName.clear();
+        waitUntilPageReady();
+        waitUntilClickable(By.cssSelector("#container > div > div > div > form > div > div.mod-address-form-bd > div.mod-address-form-left > div.mod-input.floating.mod-input-name > div"));
+        this.clearName.click();
     }
 
     public void clearPhone(){
-        waitUntilVisible(inputPhone);
-        this.inputPhone.clear();
+        waitUntilPageReady();
+        waitUntilClickable(By.cssSelector("#container > div > div > div > form > div > div.mod-address-form-bd > div.mod-address-form-left > div.mod-input.floating.mod-input-phone > div"));
+        this.clearPhone.click();
     }
 
 
     public void selectTree(){
-        if(selectTree1.size() > 0){
-            WebElement random_element = selectTree1.get(new Random().nextInt(selectTree1.size()));
+        if(selectTree.size() > 0){
+            WebElement random_element = selectTree.get(new Random().nextInt(selectTree.size()));
             waitUntilVisible(random_element);
+            waitUntilClickable(By.cssSelector(".next-menu-content > li"));
             random_element.click();
-            waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         }
     }
-
 
     public void setLocationTree2(){
         waitUntilPageReady();
@@ -126,6 +140,7 @@ public class Member_AddressPC_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(clickSavebtn);
         this.clickSavebtn.click();
+        waitUntilInvisibilityOf(By.cssSelector(".mod-address-form-btn"));
     }
 
     public boolean hasAddress() {
@@ -133,11 +148,15 @@ public class Member_AddressPC_Page extends PageObject {
         return this.hasAddress.isDisplayed();
     }
 
-    public boolean hasNewName(String newName) {
-        waitUntilVisible(hasNewName);
-        return this.hasNewName.getText().equals(newName);
+    public String hasNewNameDrz() {
+        waitUntilVisible(hasNewNameDrz);
+        return hasNewNameDrz.getText();
     }
 
+    public String hasNewNameLzd() {
+        waitUntilVisible(hasNewNameLzd);
+        return hasNewNameLzd.getText();
+    }
 
     public void setDetailAddress(String da){
         waitUntilVisible(detailAddress);
@@ -148,14 +167,26 @@ public class Member_AddressPC_Page extends PageObject {
         waitUntilVisible(inputPhone);
         this.inputPhone.sendKeys(phone);
         waitUntilVisible(locationTree1);
+        waitUntilClickable(By.cssSelector(".mod-select-location-tree-1"));
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         this.locationTree1.click();
         selectTree();
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilClickable(By.cssSelector(".mod-select-location-tree-2"));
         this.locationTree2.click();
+        waitUntilVisibility(By.cssSelector(".next-menu-content > li"));
         selectTree();
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilClickable(By.cssSelector(".mod-select-location-tree-3"));
         this.locationTree3.click();
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilVisibility(By.cssSelector(".next-menu-content > li"));
         selectTree();
         this.inputAddress.sendKeys(detailAddress);
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilClickable(By.cssSelector(".mod-address-form-btn"));
+        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
         this.clickSavebtn.click();
+        waitUntilInvisibilityOf(By.cssSelector(".mod-address-form-btn"));
     }
-
 }

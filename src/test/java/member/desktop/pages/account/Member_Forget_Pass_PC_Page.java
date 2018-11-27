@@ -16,12 +16,6 @@ public class Member_Forget_Pass_PC_Page extends PageObject {
     @FindBy(className = "primary") private WebElement verifyBtn;
     @FindBy(className = "mod-sendcode-btn") private WebElement sendCodeBtn;
 
-    public void processVerifyEmailBtn() {
-        waitUntilPageReady();
-        waitUntilVisible(sendCodeBtn);
-        this.sendCodeBtn.click();
-    }
-
     public void inputEmail(String email) {
         waitUntilPageReady();
         waitUntilVisible(inputEmail);
@@ -34,6 +28,4 @@ public class Member_Forget_Pass_PC_Page extends PageObject {
         waitUntilVisible(verifyEmailBtn);
         this.verifyEmailBtn.click();
     }
-
-
 }
