@@ -1,18 +1,16 @@
 def run(String Module, String Theme,String Tags,String Venture_Env){
     String cucumberOpt = createCucumberOpts(Module,Theme,Tags,Venture_Env)
-    String shCommand =  "mvn clean test -Dcucumber.options=${cucumberOpt} -Denv=\"${Venture_Env}\" -Dtheme=\"${Theme}\""
-    build(shCommand)
+    build(Theme,Venture_Env,cucumberOpt)
 }
 
 def run(String Theme,String Tags,String Venture_Env){
     String cucumberOpt = createCucumberOpts(Theme,Tags,Venture_Env)
-    String shCommand =  "mvn clean test -Dcucumber.options=${cucumberOpt} -Denv=\"${Venture_Env}\" -Dtheme=\"${Theme}\""
-    build(shCommand)
+    build(Theme,Venture_Env,cucumberOpt)
 }
 
-private def build(String shCommand){
+private def build(String Theme,String Venture_Env,String cucumberOpt){
     try {
-        eval "${shCommand}"
+        sh "mvn clean test -Dcucumber.options=${cucumberOpt} -Denv=\"${Venture_Env}\" -Dtheme=\"${Theme}\""
         currentBuild.result = 'SUCCESS'
     } catch (Exception err) {
         currentBuild.result = 'FAILURE'
