@@ -37,36 +37,22 @@ public class Home_Page extends PageObject {
     }
 
     public void clickToAppLandingPage() {
-        if (isItDarazSite()) {
-            waitUntilPageReady();
-        } else {
-            waitUntilPageReady();
-            //waitUntilClickable(PopUpApp_by);
-            AppLPTxt.click();
-            waitUntilPageReady();
-        }
-
+        waitUntilPageReady();
+        //waitUntilClickable(PopUpApp_by);
+        AppLPTxt.click();
+        waitUntilPageReady();
     }
 
     public void clickToAppPopupBtn() {
         waitUntilPageReady();
         waitUntilVisible(AppPopupBtn);
         AppPopupBtn.click();
-        if(isItDarazSite())
-        {
-            waitUntilPageReady();
-        }
-            else
-        {
-            waitUntilVisible(AppLPTxt);
-        }
+        waitUntilVisible(AppLPTxt);
+
     }
 
     public boolean verifyAppPopUp() {
-        if(isItDarazSite()) {
-            return true;
-        }
-        else if (PromotionTxt.isDisplayed()) {
+        if (PromotionTxt.isDisplayed()) {
             return true;
         } else
             return false;
@@ -78,7 +64,5 @@ public class Home_Page extends PageObject {
         } else
             return false;
     }
-
-
 }
 
