@@ -45,11 +45,11 @@ public class AddressMsiteSteps extends BaseSteps {
     public void hasNewAddressName() throws Throwable {
         String expectAddressName = (String) Global.map.get("edit_address_name");
         String actualAddressName = (on(Address_Msite_Page.class).hasNewAddressName());
-        Assert.assertNotEquals(actualAddressName,expectAddressName, "Checking the current address name after should be same with address name edited");
+        Assert.assertEquals(actualAddressName, expectAddressName, "Checking the current address name after should be same with address name edited");
     }
 
     @Then("^I should see the address on address page")
     public void existAddress() throws Throwable {
-        Assert.assertEquals(on(Address_Msite_Page.class).hasAddress(), "Checking the address book should have at least address");
+        Assert.assertTrue(on(Address_Msite_Page.class).hasAddress(), "Checking the address book should have at least address");
     }
 }
