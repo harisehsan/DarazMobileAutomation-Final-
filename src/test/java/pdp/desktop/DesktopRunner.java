@@ -1,4 +1,4 @@
-package checkout.desktop;
+package pdp.desktop;
 
 import _base.TestRunner;
 import cucumber.api.CucumberOptions;
@@ -10,7 +10,7 @@ import cucumber.api.CucumberOptions;
  */
 
 @CucumberOptions(
-        features = {"src/test/java/checkout/desktop/features"},
-        tags = {"@17958367"},
-        glue = {"checkout.desktop.step_definitions"})
+        features = {"src/test/java/pdp/desktop/features"},
+        tags = {"@ngoc"},
+        glue = {"pdp.desktop.step_definitions"})
 public class DesktopRunner extends TestRunner{}
