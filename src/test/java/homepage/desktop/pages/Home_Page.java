@@ -37,15 +37,10 @@ public class Home_Page extends PageObject {
     }
 
     public void clickToAppLandingPage() {
-        if (isItDarazSite()) {
-            waitUntilPageReady();
-        } else {
-            waitUntilPageReady();
-            //waitUntilClickable(PopUpApp_by);
-            AppLPTxt.click();
-            waitUntilPageReady();
-        }
-
+        waitUntilPageReady();
+        //waitUntilClickable(PopUpApp_by);
+        AppLPTxt.click();
+        waitUntilPageReady();
     }
 
     public void clickToAppPopupBtn() {
@@ -53,10 +48,10 @@ public class Home_Page extends PageObject {
         waitUntilVisible(AppPopupBtn);
         AppPopupBtn.click();
         waitUntilVisible(AppLPTxt);
+
     }
 
     public boolean verifyAppPopUp() {
-
         if (PromotionTxt.isDisplayed()) {
             return true;
         } else
@@ -70,12 +65,11 @@ public class Home_Page extends PageObject {
             return false;
     }
 
+
     public void clickOnPlayQRCode()
     {
         waitUntilPageReady();
         GoogleQR.click();
     }
-
-
 }
 

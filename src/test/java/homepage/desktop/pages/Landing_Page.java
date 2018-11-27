@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 public class Landing_Page extends PageObject {
 
     boolean result;
-
     public void verifyAppLandingPage() {
         String url = currentUrl();
         result = Pattern.compile(Pattern.quote("app"),Pattern.CASE_INSENSITIVE).matcher(url).find();
