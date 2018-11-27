@@ -45,7 +45,7 @@ public class Pdp_Page extends PageObject {
         page_url = url;
     }
 
-    public String getproductTitle(){
+    public String getProductTitle(){
         return productTitle_lbl.getText();
     }
 
