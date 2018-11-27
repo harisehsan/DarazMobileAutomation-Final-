@@ -51,6 +51,7 @@ public class MemberLoginSteps extends BaseSteps {
 
     @Then("^I should see the texts on configuration Newsletter difference before configuration")
     public void hasNewsLetter() throws Throwable {
+        Global.browser.refresh();
         String beforeConfigNewsletter = (String) Global.map.get("before_config");
         String afterConfigNewsletter = (String) Global.map.get("after_config");
         Assert.assertNotEquals(beforeConfigNewsletter,afterConfigNewsletter, "Comparing the texts Subscribe/Unsubscribe to our Newsletter before and after configuration should be different");

@@ -45,3 +45,16 @@ Feature: Member Msite Test
     And I get result of newsletter config before trigger
     And I trigger on newsletter config
     Then I should see the result of current newsletter config changed
+
+  @17740312 @member_regression @member_smoke
+  Scenario: User go to reset password on Msite
+    Given I go to login by email on Msite
+    When I access to reset password on Msite
+    And I progress to forgot password
+    And I choose Verify through Email button
+    And I go to the inbox mail in Msite on new tab
+    And I open email on Msite to get sms code
+    And I on Msite go back the old tab
+    And I input the smsCode to reset password on msite
+    And I input the new password for reset
+    Then I should see the success reset password on reset page
