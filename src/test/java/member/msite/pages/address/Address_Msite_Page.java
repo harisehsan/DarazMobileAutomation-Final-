@@ -93,6 +93,7 @@ public class Address_Msite_Page extends PageObject {
 
     public boolean hasAddress() {
         waitUntilPageReady();
+        waitUntilVisible(editAddress_btn);
         return this.address_list.size() >= 1;
     }
 
