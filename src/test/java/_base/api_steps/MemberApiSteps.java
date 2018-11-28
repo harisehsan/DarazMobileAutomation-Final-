@@ -92,7 +92,7 @@ public class MemberApiSteps extends BaseSteps {
     public void createAddressByApi(){
         String apiUrl = Global.config.getString("member.url")+"/address/api/createAddress";
         String name=Global.config.getString("member.account.name");
-        String phone=Global.config.getString("member.account.phone_number_login");
+        String phone=Global.config.getString("member.phone_number_login");
         String locationTreeAddressArray=Global.config.getString("member.address.locationTreeAddressArray");
         String locationTreeAddressId=Global.config.getString("member.address.locationTreeAddressId");
         String locationTreeAddressName=Global.config.getString("member.address.locationTreeAddressName");
