@@ -5,7 +5,7 @@ var phone=arguments[2];
 var locationTreeAddressArray=arguments[3];
 var locationTreeAddressId=arguments[4];
 var locationTreeAddressName=arguments[5];
-var csrfToken=document.getElementById("X-CSRF-TOKEN").getAttribute("content");
+var csrfToken=arguments[6];
 
 
 

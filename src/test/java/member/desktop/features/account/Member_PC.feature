@@ -2,10 +2,10 @@
 
 Feature: Member PC Test
 
-  @17417150 @member_regression @member_smoke @no_lzd @911
+  @17417150 @member_regression @member_smoke @no_lzd
   Scenario: Signup by email
     When I go to the sign up page by email
-    And I login by api with email and password
+    And I process to signup user by email on signup by email page
     And I click on submit button
     Then I should see the account page
 
@@ -21,7 +21,7 @@ Feature: Member PC Test
     And I login account information on login by email page
     Then I should see the logged account page
 
-  @17560793 @member_regression @member_smoke @no_id @911
+  @17560793 @member_regression @member_smoke @no_id
   Scenario: User login account by mobilephone on login by email page
     When I go to the login by email page
     And I login by api with mobile phone and password

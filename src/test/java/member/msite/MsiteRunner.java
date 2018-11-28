@@ -10,6 +10,6 @@ import cucumber.api.CucumberOptions;
 
 @CucumberOptions(
         features = {"src/test/java/member/msite/features"},
-        tags = {"@Test12312321"},
+        tags = {"@Member_Msite"},
         glue = {"member.msite.step_definitions"})
 public class MsiteRunner extends _base.TestRunner {}
