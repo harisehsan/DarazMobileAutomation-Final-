@@ -109,5 +109,4 @@ public class Address_Msite_Page extends PageObject {
         waitUntilClickable(By.cssSelector("div > button.ok"));
         this.deleteAddressOk_btn.click();
     }
-
 }
