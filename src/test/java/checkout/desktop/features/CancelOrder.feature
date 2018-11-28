@@ -2,7 +2,7 @@
 
 Feature: My Order PC Test for Daraz project
 
-  @17916529
+  @17916529 @911
   Scenario: User cancel order
     When I go to a pdp page
     And I login by api with email and password
