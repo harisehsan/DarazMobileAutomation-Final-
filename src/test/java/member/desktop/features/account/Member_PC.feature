@@ -2,32 +2,32 @@
 
 Feature: Member PC Test
 
-  @17417150 @member_regression @member_smoke @no_lzd
+  @17417150 @member_regression @member_smoke @signup @no_lzd
   Scenario: Signup by email
     When I go to the sign up page by email
     And I process to signup user by email on signup by email page
     And I click on submit button
     Then I should see the account page
 
-  @17417151 @member_regression @member_smoke @no_drz
+  @17417151 @member_regression @member_smoke @signup @no_drz
   Scenario: Guest signup email by api
     When I go to the sign up page by smsphone
     And I sign up by api
     Then I should see the account page
 
-  @17417173 @member_regression @member_smoke @no_lzd
+  @17417173 @member_regression @member_smoke @login @no_lzd
   Scenario: User login account by email on login by email page
     When I go to the login by email page
     And I login account information on login by email page
     Then I should see the logged account page
 
-  @17560793 @member_regression @member_smoke
+  @17560793 @member_regression @member_smoke @login
   Scenario: User login account by mobilephone on login by email page
     When I go to the login by email page
     And I login by api with mobile phone and password
     Then I should see the logged account page
 
-  @17417183 @member_regression @member_smoke @no_lzd
+  @17417183 @member_regression @member_smoke @login @no_lzd
   Scenario: User login account by mobilephone on login by email page
     When I go to the login by email page
     And I login account information by mobile phone on login by email page
