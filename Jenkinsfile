@@ -12,12 +12,6 @@ node("jenkins_slave") {
                 git branch: "${BRANCH}",
                         credentialsId: '1c2e3307-4c7b-47c2-aa19-51e6cfa0036c',
                         url: 'git@gitlab.alibaba-inc.com:chison.ton/UI_Automation.git'
-                if ("${Venture}".contains(".staging")) {
-                    def output = readFile(pwd() + "/host/staging_host").trim()
-                    sh "echo \"${output}\" >> /etc/hosts"
-                    def old = readFile("/etc/hosts").trim()
-                    echo old
-                }
             }
             stage('Build') {
                 def jenkins_job = load pwd() + "/pipeline/test_job.groovy"
