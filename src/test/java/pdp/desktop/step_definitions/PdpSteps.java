@@ -1,6 +1,7 @@
 package pdp.desktop.step_definitions;
 
 import base.BaseSteps;
+import checkout.desktop.pages.Cart_PopUp;
 import checkout.desktop.pages.CheckoutShipping_Page;
 import cucumber.api.java.en.And;
 import pdp.desktop.pages.MyWishlist_Page;
@@ -82,6 +83,11 @@ public class PdpSteps extends BaseSteps {
     }
 
     @And("^I click on Add to cart button$")
+    public void clickAddToCart() {
+        on(Pdp_Page.class).clickAddToCartButton();
+    }
+
+    @And("^I click on Add to cart button - user not login$")
     public void addToCartBeforeLogin() {
         on(Pdp_Page.class).clickAddToCartButtonBeforeLogin();
     }
@@ -128,9 +134,7 @@ public class PdpSteps extends BaseSteps {
 
     @Then("^I should see product quantity is (.*?)$")
     public void checkItemQuantity(String quantity) {
-
         Assert.assertEquals(quantity, on(Pdp_Page.class).itemQuantity());
-
     }
 
     @And("^I get maximum available number of product$")
@@ -154,5 +158,12 @@ public class PdpSteps extends BaseSteps {
     public void checkItemQuantityIsMaxNumber() {
         Assert.assertEquals(Global.map.get("Max Available Quantity").toString(), on(Pdp_Page.class).itemQuantity());
     }
+
+    @Then("^I should see product quantity in Cart is 2$")
+    public void checkProductQuantityInCart(){
+        Assert.assertEquals(2, on(Cart_PopUp.class).checkItemQuantity(), "Incorrect quantity of product added to cart");
+    }
+
+
 
 }

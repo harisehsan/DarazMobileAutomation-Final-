@@ -17,7 +17,7 @@ Feature: Pdp features
     When I ask a valid_question
     Then I should see valid_question on the question list
 
-  @18008857 @checkout_regression @checkout_smoke
+  @bug @bug2 @18008857 @checkout_regression @checkout_smoke
   Scenario: Ask invalid questions
     Given I go to a normal pdp page
     And I sign up by api
@@ -42,7 +42,7 @@ Feature: Pdp features
   @18009106 @checkout_regression @checkout_smoke
   Scenario: Check Buy Now/Add To Cart buttons work with user not login
     When I go to a normal pdp page
-    And I click on Add to cart button
+    And I click on Add to cart button - user not login
     Then I should see Login form
     When I close Login form
     And I click on Buy Now button
@@ -62,10 +62,14 @@ Feature: Pdp features
   @18009289 @checkout_regression @checkout_smoke
   Scenario: Change item quantity by +/- icon
     Given I go to a normal pdp page
+    And I sign up by api
     And I click plus icon to increase quantity
     Then I should see product quantity is 2
     And I click minus icon to decrease quantity
     Then I should see product quantity is 1
+    And I click plus icon to increase quantity
+    And I click on Add to cart button
+    Then I should see product quantity in Cart is 2
 
   @18009359 @checkout_regression @checkout_smoke
   Scenario: User is able to input a number <= Max available number of product (maximum 5)
