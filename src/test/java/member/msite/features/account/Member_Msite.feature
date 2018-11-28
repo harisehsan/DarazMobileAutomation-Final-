@@ -2,13 +2,13 @@
 
 Feature: Member Msite Test
 
-  @17417211 @member_regression @member_smoke @no_lzd
+  @17417211 @member_regression @member_smoke @signup @no_lzd
   Scenario: Guest signup new account by email
     When I go to the sign up on Msite page by email
     And I input all information to signup by email page
     Then I should see the name of user in account title
 
-  @17417223 @member_regression @member_smoke @no_lzd
+  @17417223 @member_regression @member_smoke @login @no_lzd
   Scenario: User login account by email
     When I go to login by email on Msite
     And I input account information to login by email Msite page
