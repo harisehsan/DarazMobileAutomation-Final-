@@ -24,10 +24,14 @@ public class Address_Msite_Page extends PageObject {
     @FindBy(css = ".mod-input-detailAddress input") private WebElement addressDetail_txtField;
     @FindBy(css = ".mod-address-form-yatra-btn") private WebElement saveAddress_btn;
     @FindBy(css = ".address-list-body > div") private List<WebElement> address_list;
+    @FindBy(css = "div > i.address-list-item-del")
+    private WebElement deleteAddress_btn;
     @FindBy(css = "div > i.address-list-item-edit") private WebElement editAddress_btn;
     @FindBy(css = "div.mod-input-name > div") private WebElement removeAddressName_btn;
     @FindBy(css = "div.mod-input-phone > div") private WebElement removeAddressPhone_btn;
     @FindBy(css = "div.mod-address-item-user") private WebElement addressNameUser_lbl;
+    @FindBy(css = "div > button.ok")
+    private WebElement deleteAddressOk_btn;
 
     public void clickNewAddress() {
         waitUntilPageReady();
@@ -70,6 +74,7 @@ public class Address_Msite_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(saveAddress_btn);
         this.saveAddress_btn.click();
+        waitUntilInvisibilityOf(By.cssSelector(".mod-address-form-yatra-btn"));
     }
 
     public void editAddressInformation(String name, String phone) {
@@ -94,7 +99,15 @@ public class Address_Msite_Page extends PageObject {
     public boolean hasAddress() {
         waitUntilPageReady();
         waitUntilVisible(editAddress_btn);
-        return this.address_list.size() >= 1;
+        return this.address_list.size() == 1;
+    }
+
+    public void deleteAddressProgress() {
+        waitUntilPageReady();
+        waitUntilClickable(By.cssSelector("div > i.address-list-item-del"));
+        this.deleteAddress_btn.click();
+        waitUntilClickable(By.cssSelector("div > button.ok"));
+        this.deleteAddressOk_btn.click();
     }
 
 }

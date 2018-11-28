@@ -41,6 +41,12 @@ public class AddressMsiteSteps extends BaseSteps {
         Global.map.put("edit_address_name",new_name);
     }
 
+    @And("^I delete address on address book")
+    public void deleteAddress() throws Throwable {
+        on(Address_Msite_Page.class).deleteAddressProgress();
+        Global.browser.refresh();
+    }
+
     @Then("^I should see the new address name on Msite")
     public void hasNewAddressName() throws Throwable {
         String expectAddressName = (String) Global.map.get("edit_address_name");
@@ -48,7 +54,7 @@ public class AddressMsiteSteps extends BaseSteps {
         Assert.assertEquals(actualAddressName, expectAddressName, "Checking the current address name after should be same with address name edited");
     }
 
-    @Then("^I should see the address on address page")
+    @Then("^I should see one address on address page$")
     public void existAddress() throws Throwable {
         Assert.assertTrue(on(Address_Msite_Page.class).hasAddress(), "Checking the address book should have at least address");
     }
