@@ -56,6 +56,6 @@ public class AddressMsiteSteps extends BaseSteps {
 
     @Then("^I should see one address on address page$")
     public void existAddress() throws Throwable {
-        Assert.assertTrue(on(Address_Msite_Page.class).hasAddress(), "Checking the address book should have at least address");
+        Assert.assertTrue(on(Address_Msite_Page.class).hasAddress(), "Checking the address book should have at least one address");
     }
 }
