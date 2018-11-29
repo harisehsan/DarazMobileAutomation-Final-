@@ -55,9 +55,9 @@ public class MemberSignupSteps extends BaseSteps {
         String expectEmail = (String) Global.map.get("email_random");
         String password = (String) Global.map.get("pass_word");
         Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
-        AllureAttachment.attachComment("email_random", currentEmail);
-        AllureAttachment.attachComment("pass_word", password);
-        AllureAttachment.attachComment("get_url", Account_Page.page_url);
+        AllureAttachment.attachComment("Email", currentEmail);
+        AllureAttachment.attachComment("Password", password);
+        AllureAttachment.attachComment("Url", Account_Page.page_url);
     }
 
     @Then("^I should see the email for reset on account page$")
@@ -65,15 +65,6 @@ public class MemberSignupSteps extends BaseSteps {
         on(Account_Page.class).untilLoaded();
         String currentEmail = on(Account_Page.class).hasEmail();
         String expectEmail = Global.config.getString("member.mail_for_reset");
-        Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
-    }
-
-    @Then("^I should see the logged account page")
-    public void hasEmailLogged() {
-        on(Account_Page.class).untilLoaded();
-        Global.browser.refresh();
-        String currentEmail = on(Account_Page.class).hasEmail();
-        String expectEmail = Global.config.getString("member.mail");
         Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
     }
 }
