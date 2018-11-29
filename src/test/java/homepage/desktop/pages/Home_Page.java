@@ -5,8 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import base.*;
-import org.testng.Assert;
-import homepage.desktop.pages.BaseHP_Steps;
 
 public class Home_Page extends PageObject {
 
