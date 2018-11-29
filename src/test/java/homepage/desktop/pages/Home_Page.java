@@ -45,7 +45,7 @@ public class Home_Page extends PageObject {
         } else
             return false;
     }
-    
+
     public void clickOnPlayQRCode() {
         waitUntilPageReady();
         if (isItDarazSite()) {
