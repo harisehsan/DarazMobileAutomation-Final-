@@ -66,4 +66,17 @@ public class MemberSignupSteps extends BaseSteps {
         String expectEmail = Global.config.getString("member.mail_for_reset");
         Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
     }
+
+    @Then("^I should login success with new password")
+    public void hasEmail() {
+        on(Account_Page.class).untilLoaded();
+        Global.browser.refresh();
+        String currentEmail = on(Account_Page.class).hasEmail();
+        String passWord = Global.config.getString("member.account.new_pass");
+        String expectEmail = (String) Global.map.get("email_random");
+        Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
+        AllureAttachment.attachComment("Email", currentEmail);
+        AllureAttachment.attachComment("Password", passWord);
+        AllureAttachment.attachComment("Url", Account_Page.page_url);
+    }
 }
