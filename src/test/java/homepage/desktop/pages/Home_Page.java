@@ -43,7 +43,6 @@ public class Home_Page extends PageObject {
             return false;
     }
 
-
     public void clickOnPlayQRCode() {
         waitUntilPageReady();
         if (isItDarazSite()) {
