@@ -1,6 +1,7 @@
 package member.msite.pages.account;
 
 import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import base.PageObject;
@@ -21,6 +22,7 @@ public class Member_SIgnupsms_Msite_Page extends PageObject {
 
     public void clickSend() {
         waitUntilPageReady();
+        waitUntilClickable(By.className("mod-sendcode-btn"));
         this.clicksend.click();
     }
 
@@ -31,6 +33,7 @@ public class Member_SIgnupsms_Msite_Page extends PageObject {
 
     public void clickContinue() {
         waitUntilPageReady();
+        waitUntilClickable(By.className("signup-by-mobile-btn"));
         this.clickcontinue.click();
     }
 }

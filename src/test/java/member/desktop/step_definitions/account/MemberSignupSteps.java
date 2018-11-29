@@ -9,6 +9,7 @@ import helper.RandomeHelper;
 import member.desktop.pages.account.Account_Page;
 import member.desktop.pages.account.Member_Change_Pass_Page;
 import member.desktop.pages.account.SignUp_Page;
+import org.testng.Assert;
 
 public class MemberSignupSteps extends BaseSteps {
 
@@ -19,23 +20,14 @@ public class MemberSignupSteps extends BaseSteps {
         on(SignUp_Page.class).signEmail();
     }
 
-    @Given("^I input the email information")
-    public void inputEmail() throws Throwable {
+    @And("^I process to signup user by email on signup by email page")
+    public void signUpByEmailProcess() throws Throwable {
         String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
         Global.map.put("email_random",randomEmail);
-        on(SignUp_Page.class).emailTextField((String) Global.map.get("email_random"));
-    }
-
-    @And("^I input password information")
-    public void passWordField() throws Throwable {
-        String pass = Global.config.getString("member.account.pass");
-        on(SignUp_Page.class).passWordField(pass);
-    }
-
-    @And("^I input the name information")
-    public void nameField() throws Throwable {
+        String pass = Global.config.getString("member.pass");
         String name = Global.config.getString("member.account.name");
-        on(SignUp_Page.class).nameField(name);
+        on(SignUp_Page.class).signUpByEmail(randomEmail,pass,name);
+
     }
 
     @And("^I click on submit button")
@@ -48,18 +40,36 @@ public class MemberSignupSteps extends BaseSteps {
         on(SignUp_Page.class).setSliderbtn();
     }
 
-
     @And("^I go to change password page")
     public void changePass() throws Throwable {
         visit(Member_Change_Pass_Page.class);
-        String current_pass = Global.config.getString("member.account.pass");
+        String current_pass = Global.config.getString("member.pass");
         String new_pass = Global.config.getString("member.account.new_pass");
-        on(Member_Change_Pass_Page.class).resetPass(current_pass,new_pass,new_pass);
+        on(Member_Change_Pass_Page.class).resetPass(current_pass,new_pass);
     }
 
     @Then("^I should see the account page$")
-    public void hasName() {
+    public void hasEmailOnAccountPage() {
         on(Account_Page.class).untilLoaded();
-        on(Account_Page.class).hasName((String) Global.map.get("email_random"));
+        String currentEmail = on(Account_Page.class).hasEmail();
+        String expectEmail = (String) Global.map.get("email_random");
+        Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
+    }
+
+    @Then("^I should see the email for reset on account page$")
+    public void hasEmailReset() {
+        on(Account_Page.class).untilLoaded();
+        String currentEmail = on(Account_Page.class).hasEmail();
+        String expectEmail = Global.config.getString("member.mail_for_reset");
+        Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
+    }
+
+    @Then("^I should see the logged account page")
+    public void hasEmailLogged() {
+        on(Account_Page.class).untilLoaded();
+        Global.browser.refresh();
+        String currentEmail = on(Account_Page.class).hasEmail();
+        String expectEmail = Global.config.getString("member.mail");
+        Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
     }
 }

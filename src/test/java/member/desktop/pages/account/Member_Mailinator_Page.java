@@ -36,4 +36,3 @@ public class Member_Mailinator_Page extends PageObject {
     }
 
 }
-

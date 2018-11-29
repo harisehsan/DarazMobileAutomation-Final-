@@ -10,13 +10,13 @@ public class Member_AccEdit_PC_Page extends PageObject {
     public static String page_url = Global.config.getString("member.url") + "/user/profile#/profile/edit";
 
     @FindBy(css = ".mod-input-name input") private WebElement editName;
-    @FindBy(className = "mod-input-close-icon") private WebElement clearOldname;
-    @FindBy(css = ".next-btn-large") private WebElement saveChangesbtn;
+    @FindBy(className = "mod-input-close-icon") private WebElement clearOldName;
+    @FindBy(css = ".next-btn-large") private WebElement saveChangesBtn;
 
     public void clearOldName(){
         waitUntilPageReady();
-        waitUntilVisible(clearOldname);
-        this.clearOldname.click();
+        waitUntilVisible(clearOldName);
+        this.clearOldName.click();
     }
 
     public void editName(String newName) {
@@ -27,9 +27,7 @@ public class Member_AccEdit_PC_Page extends PageObject {
 
     public void saveChangesBtn() {
         waitUntilPageReady();
-        waitUntilVisible(saveChangesbtn);
-        this.saveChangesbtn.click();
+        waitUntilVisible(saveChangesBtn);
+        this.saveChangesBtn.click();
     }
-
-
 }

@@ -31,7 +31,6 @@ public class OverViewSteps extends BaseSteps {
     @Then("^I see pop up is display")
     public void popUpIsDisplay()  {
         Assert.assertTrue(on(Home_Page.class).verifyAppPopUp(),"Pop up can't display");
-
     }
 
     @And ("I click on App benefit text")
@@ -40,7 +39,30 @@ public class OverViewSteps extends BaseSteps {
     }
 
     @Then("^I should land on App Page")
-    public void vrifyAppLandingPage()  {
+    public void verifyAppLandingPage()  {
         on(Landing_Page.class).verifyAppLandingPage();
     }
+
+    @And("^I click on Google Play icon")
+    public void clickOnGooglePlayIcon()
+    {
+        on(Home_Page.class).clickOnPlayQRCode();
+    }
+
+    @Then("^I should land on Google Play Page")
+    public void verifyGoogleLandingPage()  {
+        on(Landing_Page.class).verifyGoogleLandingPage();
+    }
+
+    @And("^I click on App Store icon")
+    public void clickOnAppStoreIcon()
+    {
+        on(Home_Page.class).clickOnAppStoreIcon();
+    }
+
+    @Then("^I should land on App Store Page")
+    public void verifyAppStoreLandingPage()  {
+        on(Landing_Page.class).verifyAppStoreLandingPage();
+    }
+
 }

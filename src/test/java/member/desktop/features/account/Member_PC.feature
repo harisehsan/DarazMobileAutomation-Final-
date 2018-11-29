@@ -1,106 +1,71 @@
-@Member_PC @911
+@Member_PC
 
-Feature: Member PC Test for Daraz project
+Feature: Member PC Test
 
-  @Signupemail @no_lzd_live
-  Scenario: Signup by email without slider
+  @17417150 @member_regression @member_smoke @signup @no_lzd
+  Scenario: Signup by email
     When I go to the sign up page by email
-    And I input the email information
-    And I input password information
-    And I input the name information
+    And I process to signup user by email on signup by email page
     And I click on submit button
     Then I should see the account page
 
-  @Signupemail @no_staging
-  Scenario: Guest signup by email with slider
-    When I go to the sign up page by email
-    And I input the email information
-    And I input password information
-    And I input the name information
-    And I click and hold on slider button
+  @17417151 @member_regression @member_smoke @signup @no_drz
+  Scenario: Guest signup email by api
+    When I go to the sign up page by smsphone
+    And I sign up by api
     Then I should see the account page
 
-
-  @Signupsmsphone @no_lazada_live
-  Scenario: Guest signup by smsphone without slider
-    When I go to the sign up page by smsphone
-    And I input the phonenumber
-    And I click the sendcode button
-    And I input the SMS code information
-    And I input password information on signup by sms
-    And I input the name information
-    And I input the email information
-    And On signup by SMS i click submit button
-    Then I should see the account is verified
-
-  @Signupsmsphone @no_staging
-  Scenario: Guest signup by smsphone with slider
-    When I go to the sign up page by smsphone
-    And I input the phonenumber
-    And I click the slider button
-    And I input the SMS code information
-    And I input password information on signup by sms
-    And I input the name information
-    And I input the email information
-    And On signup by SMS i click submit button
-    Then I should see the account is verified
-
-
-  @Loginbyemail
-  Scenario: User login account by email
+  @17417173 @member_regression @member_smoke @login @no_lzd
+  Scenario: User login account by email on login by email page
     When I go to the login by email page
     And I login account information on login by email page
-    Then I should see the account page
+    Then I should see the logged account page
 
+  @17560793 @member_regression @member_smoke @login
+  Scenario: User login account by mobilephone on login by email page
+    When I go to the login by email page
+    And I login by api with mobile phone and password
+    Then I should see the logged account page
 
-  @Loginbymobilephone @no_lazada_live
-  Scenario: User login account by mobilephone
-    When I go to the login page, input the mobilephone information
-    And I input the password information
-    And I click submit button
-    Then I should see the account page
+  @17417183 @member_regression @member_smoke @login @no_lzd
+  Scenario: User login account by mobilephone on login by email page
+    When I go to the login by email page
+    And I login account information by mobile phone on login by email page
+    Then I should see the logged account page
 
-  @EditNameinfo @no_lazada_live
+  @17480509 @member_regression @member_smoke
   Scenario: User edit name information
-    When I go to the sign up page by email
-    And I input the email information
-    And I input password information
-    And I input the name information
-    And I click on submit button
-    And I should see the account page
+    When I go to the sign up page by smsphone
+    And I sign up by api
+    And I go to the account page
     And I go to edit profile page and edit name info
-    And I click on savechanges button
+    And I click on save changes button
     Then I go back account page with new name
 
-
-  @Logoutonpc
-  Scenario: User login account then logout account
-    When I go to the login by email page
-    And I login account information on login by email page
-    And I click on my account menu
+  @17417198 @member_regression @member_smoke
+  Scenario: User signup account then logout account
+    When I go to the sign up page by smsphone
+    And I sign up by api
+    And I go to the account page
     And I click on logout account
     Then I logout successful
 
-
-  @Changepassword
+  @17480530 @member_regression @member_smoke
   Scenario: User change password, login success by new password
-    When I go to the sign up page by email
-    And I input the email information
-    And I input password information
-    And I input the name information
-    And I click on submit button
+    When I go to the sign up page by smsphone
+    And I sign up by api
     And I go to change password page
-    And I click on my account menu
     And I click on logout account
-    And I login with new password
+    And I login by api with old email and new_pass
     Then I should see the account page
 
-  @NewsletterConfig
+  @17480524 @member_regression @member_smoke
   Scenario: User config newsletter
-    When I go to the login by email page
-    And I login account information on login by email page
+    When I go to the sign up page by smsphone
+    And I sign up by api
+    And I go to the account page
     And I click on newsletter button to turn on or off config
-    Then I go back account without error message
+    Then I should see the texts on configuration Newsletter difference before configuration
 
   @17740305 @member_regression @member_smoke
   Scenario: User reset password function
@@ -116,10 +81,4 @@ Feature: Member PC Test for Daraz project
     And I input the smscode on verifyemail page from old tab
     And I click Verify Code button on verifyemail page
     And I process reset password on reset password page
-    Then I should see the account page
-
-
-
-
-
-
+    Then I should see the email for reset on account page

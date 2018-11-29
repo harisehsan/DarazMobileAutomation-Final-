@@ -1,10 +1,10 @@
 @homepage
 Feature: homepage Test
 
-  @P0Case 
-  Scenario: Guest users come to HomePage and visit to App page
+  @P0Case
+  Scenario: Guest users come to HomePage and visit to App Store page
     When  I go to HomePage
     And I click on Save More on App button
     Then I see pop up is display
-    And I click on App benefit text
-    Then I should land on App Page
+    And I click on App Store icon
+    Then I should land on App Store Page

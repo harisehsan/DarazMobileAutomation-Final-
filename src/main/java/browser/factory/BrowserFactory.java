@@ -13,6 +13,7 @@ public class BrowserFactory {
     private static final String BROWSER_SETTING_PROP_PATH = "src/test/resources/browser.properties";
     private static final String BROWSER_PACKAGE = "browser.";
     private Properties browserInitializeInfo;
+    private static final String OPTIONS_DELIMETER = "\\|";
 
     private BrowserFactory() {
         browserInitializeInfo = PropHelper.loadPropertiesByFilePath(BROWSER_SETTING_PROP_PATH);
@@ -47,6 +48,6 @@ public class BrowserFactory {
         if(optionStringFromConfig==null && optionStringFromSystem==null) return new String[0];
         optionStringFromSystem = optionStringFromSystem == null ? "" : optionStringFromSystem;
         String optionString = String.format("%s,%s",optionStringFromConfig,optionStringFromSystem);
-        return optionString.split(",");
+        return optionString.split(OPTIONS_DELIMETER);
     }
 }

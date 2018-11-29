@@ -85,5 +85,4 @@ public class MemberResetPasswordSteps extends BaseSteps {
         String emailForReset = Global.config.getString("member.mail_for_reset");
         on(Member_Login_Page.class).loginEmailPass(emailForReset,(String)Global.map.get("new_reset_pass"));
     }
-
 }

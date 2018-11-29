@@ -8,57 +8,43 @@ import org.openqa.selenium.support.FindBy;
 import base.PageObject;
 
 public class Member_SignUp_SMS_Page extends PageObject {
+
     public static String page_url = Global.config.getString("member.url") + "/user/register";
 
-    @FindBy(css = ".mod-input-phone input") private WebElement inputphone;
-    @FindBy(className = "mod-sendcode") private WebElement sendcode;
-    @FindBy(css = "[type='number']") private WebElement inputsmscode;
-    @FindBy(css = ".mod-input-password input") private WebElement inputpassword;
-    @FindBy(css = "[type='text']") private WebElement inputemail;
-    @FindBy(className = "mod-login-btn") private WebElement submitbutton;
-    @FindBy(css = ".btn_slide") private WebElement sliderbtn;
+    @FindBy(css = ".mod-input-phone input") private WebElement inputPhone;
+    @FindBy(className = "mod-sendcode") private WebElement sendCode;
+    @FindBy(css = "[type='number']") private WebElement inputSMSCode;
+    @FindBy(css = ".mod-input-password input") private WebElement inputPassWord;
+    @FindBy(css = ".mod-input-email input") private WebElement inputEmail;
+    @FindBy(className = "mod-login-btn") private WebElement submitBtn;
+    @FindBy(css = ".btn_slide") private WebElement sliderBtn;
+    @FindBy(css = ".mod-input-name input") private WebElement nameInfo;
 
-    public void inputPhone(String phone) {
+    public void signUpBySMS(String smsCode, String passWord, String name, String email){
         waitUntilPageReady();
-        waitUntilVisible(inputphone);
-        this.inputphone.sendKeys(phone);
+        waitUntilVisible(sendCode);
+        this.sendCode.click();
+        this.inputSMSCode.sendKeys(smsCode);
+        this.inputPassWord.sendKeys(passWord);
+        this.nameInfo.sendKeys(name);
+        this.inputEmail.sendKeys(email);
     }
 
-    public void sendCode(){
+    public void inputPhoneNumber(String phone) {
         waitUntilPageReady();
-        waitUntilVisible(sendcode);
-        this.sendcode.click();
-    }
-
-    public void inputSMSCode(String smsCode){
-        waitUntilPageReady();
-        waitUntilVisible(inputsmscode);
-        this.inputsmscode.sendKeys(smsCode);
-    }
-
-    public void inputPassword(String passWord){
-        waitUntilPageReady();
-        waitUntilVisible(inputpassword);
-        this.inputpassword.sendKeys(passWord);
-
-    }
-
-    public void inputEmail(String email){
-        waitUntilPageReady();
-        waitUntilVisible(inputemail);
-        this.inputemail.sendKeys(email);
+        waitUntilVisible(inputPhone);
+        this.inputPhone.sendKeys(phone);
     }
 
     public void submitButton(){
         waitUntilPageReady();
-        waitUntilVisible(submitbutton);
-        this.submitbutton.click();
+        waitUntilVisible(submitBtn);
+        this.submitBtn.click();
     }
 
     public void setSliderbtn(){
         Actions move = new Actions(Global.browser.getWebDriver());
-        Action actions = move.clickAndHold(sliderbtn).moveByOffset(500,0).release().build();
+        Action actions = move.clickAndHold(sliderBtn).moveByOffset(500,0).release().build();
         actions.perform();
     }
-
 }
