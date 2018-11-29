@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import base.*;
 
 public class Home_Page extends PageObject {
-
     public static final String page_url = Global.config.getString("homepage.home_url");
     @FindBy(css = "#anonLogin") private WebElement login_btn;
     @FindBy(css = "#topActionDownload") private WebElement appPopup_btn;
