@@ -17,7 +17,7 @@ Feature: Pdp features
     When I ask a valid_question
     Then I should see valid_question on the question list
 
-  @bug @bug2 @18008857 @checkout_regression @checkout_smoke
+  @18008857 @checkout_regression @checkout_smoke @wip
   Scenario: Ask invalid questions
     Given I go to a normal pdp page
     And I sign up by api
@@ -28,7 +28,7 @@ Feature: Pdp features
     And I ask a question_include_externalWebLink
     Then I should see error message that question_should_not_contain_externalWebLink
 
-  @18008960 @checkout_regression @checkout_smoke @no_mm
+  @18008960 @checkout_regression @checkout_smoke @no_mm @wip
   Scenario: Chat with shop
     Given I go to a normal pdp page
     And I click Chat Now

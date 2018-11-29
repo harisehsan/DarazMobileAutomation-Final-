@@ -164,6 +164,4 @@ public class PdpSteps extends BaseSteps {
         Assert.assertEquals(2, on(Cart_PopUp.class).checkItemQuantity(), "Incorrect quantity of product added to cart");
     }
 
-
-
 }
