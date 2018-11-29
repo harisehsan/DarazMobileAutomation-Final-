@@ -41,17 +41,17 @@ public class Landing_Page extends PageObject {
         String site=Global.map.get("whichSite").toString();
         if(site.contains(Global.config.getString("homepage.lazada_name")))
         {
-            result = url.contains(Global.config.getString("homepage.lazada_id"));
+            result = url.contains(Global.config.getString("homepage.lazada_appstore_id"));
             Assert.assertTrue(result, "Fail cannot reach Lazada App Store Landing Page");
         }
         else if (site.contains(Global.config.getString("homepage.daraz_name")))
         {
-            result = url.contains(Global.config.getString("homepage.daraz_id"));
+            result = url.contains(Global.config.getString("homepage.daraz_appstore_id"));
             Assert.assertTrue(result, "Fail cannot reach Daraz App Store Landing Page");
         }
         else
         {
-            result = url.contains(Global.config.getString("homepage.shop_id"));
+            result = url.contains(Global.config.getString("homepage.shop_appstore_id"));
             Assert.assertTrue(result, "Fail cannot reach Shop App Store Landing Page");
         }
     }

@@ -9,45 +9,34 @@ import base.*;
 public class Home_Page extends PageObject {
 
     public static final String page_url = Global.config.getString("homepage.home_url");
-
-    @FindBy(css = "#anonLogin") private WebElement LoginBtn;
-    @FindBy(css = "#myAccountTrigger") private WebElement userName;
-    @FindBy(css = "#topActionDownload") private WebElement AppPopupBtn;
-    @FindBy(css = ".get-the-app-download-text") private WebElement AppLPTxt;
-    @FindBy(css = ".promotion-text") private WebElement PromotionTxt;
-    @FindBy(css = ".app-google") private WebElement GoogleQR;
-    @FindBy(css = ".app-apple") private WebElement AppStoreIcon;
+    @FindBy(css = "#anonLogin") private WebElement login_btn;
+    @FindBy(css = "#topActionDownload") private WebElement appPopup_btn;
+    @FindBy(css = ".get-the-app-download-text") private WebElement appLP_txtArea;
+    @FindBy(css = ".promotion-text") private WebElement promotion_txtArea;
+    @FindBy(css = ".app-google") private WebElement playStore_icon;
+    @FindBy(css = ".app-apple") private WebElement appStore_icon;
     private By PopUpApp_by = By.cssSelector("#top-popup-content lzd-download-content");
 
     public void clickToLoginPage() {
-        waitUntilVisible(LoginBtn);
-        LoginBtn.click();
-    }
-
-    public void backToHomePage() {
-        waitUntilVisible(userName);
+        waitUntilVisible(login_btn);
+        login_btn.click();
     }
 
     public void clickToAppLandingPage() {
         waitUntilPageReady();
-        //waitUntilClickable(PopUpApp_by);
-        AppLPTxt.click();
+        appLP_txtArea.click();
         waitUntilPageReady();
     }
 
     public void clickToAppPopupBtn() {
         waitUntilPageReady();
-        waitUntilVisible(AppPopupBtn);
-        AppPopupBtn.click();
-        waitUntilVisible(AppLPTxt);
-
+        waitUntilVisible(appPopup_btn);
+        appPopup_btn.click();
+        waitUntilVisible(appLP_txtArea);
     }
 
     public boolean verifyAppPopUp() {
-        if (PromotionTxt.isDisplayed()) {
-            return true;
-        } else
-            return false;
+        return promotion_txtArea.isDisplayed();
     }
 
     public boolean isItDarazSite() {
@@ -68,7 +57,7 @@ public class Home_Page extends PageObject {
         } else {
             Global.map.put("whichSite", "lazada");
         }
-        GoogleQR.click();
+        playStore_icon.click();
     }
 
     public void clickOnAppStoreIcon() {
@@ -81,7 +70,7 @@ public class Home_Page extends PageObject {
         } else {
             Global.map.put("whichSite", "lazada");
         }
-        AppStoreIcon.click();
+        appStore_icon.click();
     }
 }
 

@@ -31,7 +31,6 @@ public class OverViewSteps extends BaseSteps {
     @Then("^I see pop up is display")
     public void popUpIsDisplay()  {
         Assert.assertTrue(on(Home_Page.class).verifyAppPopUp(),"Pop up can't display");
-
     }
 
     @And ("I click on App benefit text")
