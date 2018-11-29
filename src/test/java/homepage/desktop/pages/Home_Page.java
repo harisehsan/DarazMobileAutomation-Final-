@@ -10,21 +10,12 @@ public class Home_Page extends PageObject {
 
     public static final String page_url = Global.config.getString("homepage.home_url");
 
-    @FindBy(css = "")
-    public WebElement SupportPopUp;
-    @FindBy(css = "#anonLogin")
-    private WebElement LoginBtn;
-    @FindBy(css = "#myAccountTrigger")
-    private WebElement userName;
-    @FindBy(css = "#topActionDownload")
-    private WebElement AppPopupBtn;
-    @FindBy(css = ".get-the-app-download-text")
-    private WebElement AppLPTxt;
-    @FindBy(css = ".promotion-text")
-    private WebElement PromotionTxt;
-    @FindBy(css = ".app-google")
-    private WebElement GoogleQR;
-
+    @FindBy(css = "#anonLogin") private WebElement LoginBtn;
+    @FindBy(css = "#myAccountTrigger") private WebElement userName;
+    @FindBy(css = "#topActionDownload") private WebElement AppPopupBtn;
+    @FindBy(css = ".get-the-app-download-text") private WebElement AppLPTxt;
+    @FindBy(css = ".promotion-text") private WebElement PromotionTxt;
+    @FindBy(css = ".app-google") private WebElement GoogleQR;
     private By PopUpApp_by = By.cssSelector("#top-popup-content lzd-download-content");
 
     public void clickToLoginPage() {
