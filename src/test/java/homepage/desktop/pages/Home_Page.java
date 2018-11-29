@@ -7,12 +7,14 @@ import org.openqa.selenium.support.FindBy;
 import base.*;
 
 public class Home_Page extends PageObject {
+
     public static final String page_url = Global.config.getString("homepage.home_url");
     @FindBy(css = "#anonLogin") private WebElement login_btn;
     @FindBy(css = "#topActionDownload") private WebElement appPopup_btn;
     @FindBy(css = ".get-the-app-download-text") private WebElement appLP_lbl;
     @FindBy(css = ".promotion-text") private WebElement promotion_lbl;
     @FindBy(css = ".app-google") private WebElement playStore_icon;
+    @FindBy(css = ".app-apple") private WebElement appStore_icon;
 
     public void clickToLoginPage() {
         waitUntilVisible(login_btn);
@@ -37,10 +39,7 @@ public class Home_Page extends PageObject {
     }
 
     public boolean isItDarazSite() {
-        if (currentUrl().contains("daraz") || currentUrl().contains("shop")) {
-            return true;
-        } else
-            return false;
+        return currentUrl().contains("daraz") || currentUrl().contains("shop");
     }
 
     public void clickOnPlayQRCode() {
@@ -54,6 +53,19 @@ public class Home_Page extends PageObject {
             Global.map.put("whichSite", "lazada");
         }
         playStore_icon.click();
+    }
+
+    public void clickOnAppStoreIcon() {
+        waitUntilPageReady();
+        if (isItDarazSite()) {
+            if (currentUrl().contains("daraz"))
+                Global.map.put("whichSite", "daraz");
+            else
+                Global.map.put("whichSite", "shop");
+        } else {
+            Global.map.put("whichSite", "lazada");
+        }
+        appStore_icon.click();
     }
 }
 

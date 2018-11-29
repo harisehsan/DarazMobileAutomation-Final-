@@ -7,7 +7,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import homepage.desktop.pages.Home_Page;
 import homepage.desktop.pages.Landing_Page;
-import org.aspectj.apache.bcel.util.Play;
 import org.testng.Assert;
 
 public class OverViewSteps extends BaseSteps {
@@ -54,4 +53,16 @@ public class OverViewSteps extends BaseSteps {
     public void verifyGoogleLandingPage()  {
         on(Landing_Page.class).verifyGoogleLandingPage();
     }
+
+    @And("^I click on App Store icon")
+    public void clickOnAppStoreIcon()
+    {
+        on(Home_Page.class).clickOnAppStoreIcon();
+    }
+
+    @Then("^I should land on App Store Page")
+    public void verifyAppStoreLandingPage()  {
+        on(Landing_Page.class).verifyAppStoreLandingPage();
+    }
+
 }
