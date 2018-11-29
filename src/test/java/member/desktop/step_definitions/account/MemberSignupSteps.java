@@ -1,9 +1,8 @@
 package member.desktop.step_definitions.account;
 
+import allure.AllureAttachment;
 import base.BaseSteps;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import cucumber.api.java.en.*;
 import global.Global;
 import helper.RandomeHelper;
 import member.desktop.pages.account.Account_Page;
@@ -25,6 +24,7 @@ public class MemberSignupSteps extends BaseSteps {
         String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
         Global.map.put("email_random",randomEmail);
         String pass = Global.config.getString("member.pass");
+        Global.map.put("pass_word", pass);
         String name = Global.config.getString("member.account.name");
         on(SignUp_Page.class).signUpByEmail(randomEmail,pass,name);
 
@@ -53,7 +53,11 @@ public class MemberSignupSteps extends BaseSteps {
         on(Account_Page.class).untilLoaded();
         String currentEmail = on(Account_Page.class).hasEmail();
         String expectEmail = (String) Global.map.get("email_random");
+        String password = (String) Global.map.get("pass_word");
         Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
+        AllureAttachment.attachComment("email_random", currentEmail);
+        AllureAttachment.attachComment("pass_word", password);
+        AllureAttachment.attachComment("get_url", Account_Page.page_url);
     }
 
     @Then("^I should see the email for reset on account page$")
