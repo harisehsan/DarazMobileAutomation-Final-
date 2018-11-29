@@ -1,5 +1,6 @@
 package member.msite.step_definitions.account;
 
+import allure.AllureAttachment;
 import global.Global;
 import helper.RandomeHelper;
 import member.msite.pages.account.Member_Account_Msite_Page;
@@ -24,6 +25,7 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
         String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
         Global.map.put("email_random",randomEmail);
         String passWord = Global.config.getString("member.pass");
+        Global.map.put("password", passWord);
         on(Member_Signupemail_Msite_Page.class).signUpByEmail(name,randomEmail,passWord);
         on(Member_Signupemail_Msite_Page.class).signUpButton();
     }
@@ -42,6 +44,11 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
     @Then("^I should see the name of user in account title")
     public void hasTitleAccount() throws Throwable {
         Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking account tittle on my account page should be displayed");
+        String email = (String) Global.map.get("email_random");
+        String password = (String) Global.map.get("password");
+        AllureAttachment.attachComment("Email", email);
+        AllureAttachment.attachComment("Password", password);
+        AllureAttachment.attachComment("Url", Member_Account_Msite_Page.page_url);
     }
 
     @Then("^I should see the result of current newsletter config changed")

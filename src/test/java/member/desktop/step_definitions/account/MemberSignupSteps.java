@@ -1,9 +1,8 @@
 package member.desktop.step_definitions.account;
 
+import allure.AllureAttachment;
 import base.BaseSteps;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import cucumber.api.java.en.*;
 import global.Global;
 import helper.RandomeHelper;
 import member.desktop.pages.account.Account_Page;
@@ -53,7 +52,11 @@ public class MemberSignupSteps extends BaseSteps {
         on(Account_Page.class).untilLoaded();
         String currentEmail = on(Account_Page.class).hasEmail();
         String expectEmail = (String) Global.map.get("email_random");
+        String pass = Global.config.getString("member.pass");
         Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
+        AllureAttachment.attachComment("Email", currentEmail);
+        AllureAttachment.attachComment("Password", pass);
+        AllureAttachment.attachComment("Url", Account_Page.page_url);
     }
 
     @Then("^I should see the email for reset on account page$")
@@ -64,12 +67,16 @@ public class MemberSignupSteps extends BaseSteps {
         Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
     }
 
-    @Then("^I should see the logged account page")
-    public void hasEmailLogged() {
+    @Then("^I should login success with new password")
+    public void hasEmail() {
         on(Account_Page.class).untilLoaded();
         Global.browser.refresh();
         String currentEmail = on(Account_Page.class).hasEmail();
-        String expectEmail = Global.config.getString("member.mail");
-        Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
+        String passWord = Global.config.getString("member.account.new_pass");
+        String expectEmail = (String) Global.map.get("email_random");
+        Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
+        AllureAttachment.attachComment("Email", currentEmail);
+        AllureAttachment.attachComment("Password", passWord);
+        AllureAttachment.attachComment("Url", Account_Page.page_url);
     }
 }

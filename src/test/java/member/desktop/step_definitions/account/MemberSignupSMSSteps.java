@@ -1,4 +1,6 @@
 package member.desktop.step_definitions.account;
+
+import allure.AllureAttachment;
 import cucumber.api.java.en.*;
 import global.Global;
 import member.desktop.pages.account.Account_Page;
@@ -25,6 +27,7 @@ public class MemberSignupSMSSteps extends BaseSteps {
     @And("^I input the phonenumber")
     public void inputPhone() throws Throwable {
         String mobilephone = Global.config.getString("member.phone_number_signup");
+        Global.map.put("mobile_phone_number", mobilephone);
         on(Member_SignUp_SMS_Page.class).inputPhoneNumber(mobilephone + RandomeHelper.generatePhoneNumber());
     }
 
@@ -42,5 +45,20 @@ public class MemberSignupSMSSteps extends BaseSteps {
     @And("^I should see the account is verified")
     public void isVerified() throws Throwable {
         Assert.assertTrue(on(Account_Page.class).isVerified(),"Checking is verified icon should be display if user has updated mobile phone");
+    }
+
+    @Then("^I should see the logged account page")
+    public void hasEmailLogged() {
+        on(Account_Page.class).untilLoaded();
+        Global.browser.refresh();
+        String mobilephone = Global.config.getString("member.phone_number_login");
+        String currentEmail = on(Account_Page.class).hasEmail();
+        String passWord = Global.config.getString("member.pass");
+        String expectEmail = Global.config.getString("member.mail");
+        Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
+        AllureAttachment.attachComment("Email", currentEmail);
+        AllureAttachment.attachComment("PhoneNumber", mobilephone);
+        AllureAttachment.attachComment("Password", passWord);
+        AllureAttachment.attachComment("Url", Account_Page.page_url);
     }
 }

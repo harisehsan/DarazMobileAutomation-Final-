@@ -7,6 +7,7 @@ import global.Global;
 import helper.RandomeHelper;
 import helper.XhrHelper;
 import com.typesafe.config.Config;
+import io.qameta.allure.Allure;
 
 public class MemberApiSteps extends BaseSteps {
 
@@ -34,6 +35,7 @@ public class MemberApiSteps extends BaseSteps {
         String apiUrl = Global.config.getString("member.url")+"/user/api/login";
         String [] args = {apiUrl,mobilePhone,pass,csrfToken};
         JsonObject response = XhrHelper.executeXhrRequest("member_login.js",args);
+        Allure.addAttachment("Json Response", String.valueOf(response));
         if(!String.valueOf(response.get("success")).equalsIgnoreCase("true")){
             throw new RuntimeException(String.format("Login with credential %s/%s fail . Response from server: %s",mobilePhone,pass,String.valueOf(response)));
         }
@@ -82,6 +84,7 @@ public class MemberApiSteps extends BaseSteps {
         String apiUrl = Global.config.getString("member.url")+"/user/api/register";
         String [] args = {apiUrl,mobilePhone,pass,name,csrfToken};
         JsonObject response = XhrHelper.executeXhrRequest("member_signup.js",args);
+        Allure.addAttachment("Json Response", String.valueOf(response));
         if(!String.valueOf(response.get("success")).equalsIgnoreCase("true")){
             throw new RuntimeException(String.format("Sign up with credential %s/%s fail . Response from server: %s",mobilePhone,pass,String.valueOf(response)));
         }
