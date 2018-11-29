@@ -24,7 +24,6 @@ public class MemberSignupSteps extends BaseSteps {
         String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
         Global.map.put("email_random",randomEmail);
         String pass = Global.config.getString("member.pass");
-        Global.map.put("pass_word", pass);
         String name = Global.config.getString("member.account.name");
         on(SignUp_Page.class).signUpByEmail(randomEmail,pass,name);
 
@@ -53,10 +52,10 @@ public class MemberSignupSteps extends BaseSteps {
         on(Account_Page.class).untilLoaded();
         String currentEmail = on(Account_Page.class).hasEmail();
         String expectEmail = (String) Global.map.get("email_random");
-        String passwordSignup = (String) Global.map.get("pass_word");
+        String pass = Global.config.getString("member.pass");
         Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
         AllureAttachment.attachComment("Email", currentEmail);
-        AllureAttachment.attachComment("Password", passwordSignup);
+        AllureAttachment.attachComment("Password", pass);
         AllureAttachment.attachComment("Url", Account_Page.page_url);
     }
 
