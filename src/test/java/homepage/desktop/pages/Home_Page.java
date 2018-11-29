@@ -11,40 +11,32 @@ import homepage.desktop.pages.BaseHP_Steps;
 public class Home_Page extends PageObject {
 
     public static final String page_url = Global.config.getString("homepage.home_url");
-
-    @FindBy(css = "#anonLogin") private WebElement LoginBtn;
-    @FindBy(css = "#myAccountTrigger") private WebElement userName;
-    @FindBy(css = "#topActionDownload") private WebElement AppPopupBtn;
-    @FindBy(css = ".get-the-app-download-text") private WebElement AppLPTxt;
-    @FindBy(css = ".promotion-text") private WebElement PromotionTxt;
-    private By PopUpApp_by = By.cssSelector("#top-popup-content lzd-download-content");
+    @FindBy(css = "#anonLogin") private WebElement login_btn;
+    @FindBy(css = "#topActionDownload") private WebElement appPopup_btn;
+    @FindBy(css = ".get-the-app-download-text") private WebElement appLP_txtArea;
+    @FindBy(css = ".promotion-text") private WebElement promotion_txtArea;
 
     public void clickToLoginPage() {
-        waitUntilVisible(LoginBtn);
-        LoginBtn.click();
-    }
-
-    public void backToHomePage() {
-        waitUntilVisible(userName);
+        waitUntilVisible(login_btn);
+        login_btn.click();
     }
 
     public void clickToAppLandingPage() {
         waitUntilPageReady();
-        //waitUntilClickable(PopUpApp_by);
-        AppLPTxt.click();
+        appLP_txtArea.click();
         waitUntilPageReady();
     }
 
     public void clickToAppPopupBtn() {
         waitUntilPageReady();
-        waitUntilVisible(AppPopupBtn);
-        AppPopupBtn.click();
-        waitUntilVisible(AppLPTxt);
+        waitUntilVisible(appPopup_btn);
+        appPopup_btn.click();
+        waitUntilVisible(appLP_txtArea);
 
     }
 
     public boolean verifyAppPopUp() {
-        if (PromotionTxt.isDisplayed()) {
+        if (promotion_txtArea.isDisplayed()) {
             return true;
         } else
             return false;
