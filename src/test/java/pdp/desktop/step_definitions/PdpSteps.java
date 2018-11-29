@@ -28,7 +28,7 @@ public class PdpSteps extends BaseSteps {
 
     @Then("^I should see wishlist icon turns to orange$")
     public void wishlistIconClicked() {
-        Assert.assertEquals(on(Pdp_Page.class).wishlistIconClicked(), "rgba(245, 114, 36, 1)");
+        Assert.assertEquals(on(Pdp_Page.class).wishlistIconClicked(), Global.config.getString("pdp.wishlist_clicked_icon_color"));
     }
 
     @Then("^I should see the product on My wishlist page$")
