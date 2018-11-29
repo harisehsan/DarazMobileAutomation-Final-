@@ -13,8 +13,8 @@ public class Home_Page extends PageObject {
     public static final String page_url = Global.config.getString("homepage.home_url");
     @FindBy(css = "#anonLogin") private WebElement login_btn;
     @FindBy(css = "#topActionDownload") private WebElement appPopup_btn;
-    @FindBy(css = ".get-the-app-download-text") private WebElement appLP_txtArea;
-    @FindBy(css = ".promotion-text") private WebElement promotion_txtArea;
+    @FindBy(css = ".get-the-app-download-text") private WebElement appLP_lbl;
+    @FindBy(css = ".promotion-text") private WebElement promotion_lbl;
 
     public void clickToLoginPage() {
         waitUntilVisible(login_btn);
@@ -23,7 +23,7 @@ public class Home_Page extends PageObject {
 
     public void clickToAppLandingPage() {
         waitUntilPageReady();
-        appLP_txtArea.click();
+        appLP_lbl.click();
         waitUntilPageReady();
     }
 
@@ -31,12 +31,12 @@ public class Home_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(appPopup_btn);
         appPopup_btn.click();
-        waitUntilVisible(appLP_txtArea);
+        waitUntilVisible(appLP_lbl);
 
     }
 
     public boolean verifyAppPopUp() {
-        if (promotion_txtArea.isDisplayed()) {
+        if (promotion_lbl.isDisplayed()) {
             return true;
         } else
             return false;
