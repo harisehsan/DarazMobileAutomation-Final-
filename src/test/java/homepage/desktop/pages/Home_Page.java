@@ -11,8 +11,8 @@ public class Home_Page extends PageObject {
     public static final String page_url = Global.config.getString("homepage.home_url");
     @FindBy(css = "#anonLogin") private WebElement login_btn;
     @FindBy(css = "#topActionDownload") private WebElement appPopup_btn;
-    @FindBy(css = ".get-the-app-download-text") private WebElement appLP_txtArea;
-    @FindBy(css = ".promotion-text") private WebElement promotion_txtArea;
+    @FindBy(css = ".get-the-app-download-text") private WebElement appLP_lbl;
+    @FindBy(css = ".promotion-text") private WebElement promotion_lbl;
     @FindBy(css = ".app-google") private WebElement playStore_icon;
     @FindBy(css = ".app-apple") private WebElement appStore_icon;
     private By PopUpApp_by = By.cssSelector("#top-popup-content lzd-download-content");
@@ -24,7 +24,7 @@ public class Home_Page extends PageObject {
 
     public void clickToAppLandingPage() {
         waitUntilPageReady();
-        appLP_txtArea.click();
+        appLP_lbl.click();
         waitUntilPageReady();
     }
 
@@ -32,11 +32,11 @@ public class Home_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(appPopup_btn);
         appPopup_btn.click();
-        waitUntilVisible(appLP_txtArea);
+        waitUntilVisible(appLP_lbl);
     }
 
     public boolean verifyAppPopUp() {
-        return promotion_txtArea.isDisplayed();
+        return promotion_lbl.isDisplayed();
     }
 
     public boolean isItDarazSite() {
@@ -45,8 +45,7 @@ public class Home_Page extends PageObject {
         } else
             return false;
     }
-
-
+    
     public void clickOnPlayQRCode() {
         waitUntilPageReady();
         if (isItDarazSite()) {
