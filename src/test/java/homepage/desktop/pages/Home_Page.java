@@ -38,7 +38,7 @@ public class Home_Page extends PageObject {
         return promotion_lbl.isDisplayed();
     }
 
-    public boolean isItDarazSite() {
+    private boolean isItDarazSite() {
         return currentUrl().contains("daraz") || currentUrl().contains("shop");
     }
 
