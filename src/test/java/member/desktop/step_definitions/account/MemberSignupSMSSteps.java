@@ -19,6 +19,7 @@ public class MemberSignupSMSSteps extends BaseSteps {
     public void signUpBySMSProcess() throws Throwable {
         String smsCode = Global.config.getString("member.account.sms_code");
         String passWord = Global.config.getString("member.pass");
+        Global.map.put("password", passWord);
         String name = Global.config.getString("member.account.name");
         String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
         on(Member_SignUp_SMS_Page.class).signUpBySMS(smsCode,passWord,name,randomEmail);
@@ -53,12 +54,12 @@ public class MemberSignupSMSSteps extends BaseSteps {
         Global.browser.refresh();
         String mobilePhone = (String) Global.map.get("mobile_phone_number");
         String currentEmail = on(Account_Page.class).hasEmail();
-        String password = (String) Global.map.get("pass_word");
+        String passwordLG = (String) Global.map.get("password");
         String expectEmail = Global.config.getString("member.mail");
         Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
         AllureAttachment.attachComment("Email", currentEmail);
         AllureAttachment.attachComment("PhoneNumber", mobilePhone);
-        AllureAttachment.attachComment("Password", password);
+        AllureAttachment.attachComment("Password", passwordLG);
         AllureAttachment.attachComment("Url", Account_Page.page_url);
     }
 }

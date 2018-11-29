@@ -53,10 +53,10 @@ public class MemberSignupSteps extends BaseSteps {
         on(Account_Page.class).untilLoaded();
         String currentEmail = on(Account_Page.class).hasEmail();
         String expectEmail = (String) Global.map.get("email_random");
-        String password = (String) Global.map.get("pass_word");
+        String passwordSignup = (String) Global.map.get("pass_word");
         Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
         AllureAttachment.attachComment("Email", currentEmail);
-        AllureAttachment.attachComment("Password", password);
+        AllureAttachment.attachComment("Password", passwordSignup);
         AllureAttachment.attachComment("Url", Account_Page.page_url);
     }
 
