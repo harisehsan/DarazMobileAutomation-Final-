@@ -51,13 +51,13 @@ public class MemberSignupSMSSteps extends BaseSteps {
     public void hasEmailLogged() {
         on(Account_Page.class).untilLoaded();
         Global.browser.refresh();
-        String mobilePhone = (String) Global.map.get("mobile_phone_number");
+        String mobilephone = Global.config.getString("member.phone_number_login");
         String currentEmail = on(Account_Page.class).hasEmail();
         String passWord = Global.config.getString("member.pass");
         String expectEmail = Global.config.getString("member.mail");
         Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
         AllureAttachment.attachComment("Email", currentEmail);
-        AllureAttachment.attachComment("PhoneNumber", mobilePhone);
+        AllureAttachment.attachComment("PhoneNumber", mobilephone);
         AllureAttachment.attachComment("Password", passWord);
         AllureAttachment.attachComment("Url", Account_Page.page_url);
     }
