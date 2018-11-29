@@ -54,7 +54,8 @@ private def createExcludedTag(String Venture_Env){
             "--tags 'not @no_${venture}' " +
             "--tags 'not @no_${venture}_${env}' " +
             "--tags 'not @no_${site}' " +
-            "--tags 'not @no_${site}_${env}' "
+            "--tags 'not @no_${site}_${env}' " +
+            "--tags 'not @wip' "
     return excludedTags
 }
 
