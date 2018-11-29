@@ -58,7 +58,6 @@ public class MemberSignupSMSSteps extends BaseSteps {
         Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
         AllureAttachment.attachComment("Email", currentEmail);
         AllureAttachment.attachComment("PhoneNumber", mobilephone);
-        AllureAttachment.attachComment("Password", passWord);
         AllureAttachment.attachComment("Url", Account_Page.page_url);
     }
 }

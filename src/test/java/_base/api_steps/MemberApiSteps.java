@@ -13,7 +13,6 @@ public class MemberApiSteps extends BaseSteps {
 
     @And("^I login by api with email and password$")
     public void loginByApi(){
-
         String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
         String email = Global.config.getString("member.mail");
         String pass = Global.config.getString("member.pass");
@@ -28,7 +27,6 @@ public class MemberApiSteps extends BaseSteps {
 
     @And("^I login by api with mobile phone and password$")
     public void loginByMobilePhoneApi(){
-
         String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
         String mobilePhone = Global.config.getString("member.phone_number_login");
         String pass = Global.config.getString("member.pass");
