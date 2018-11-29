@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import base.*;
 
 public class Home_Page extends PageObject {
+
     public static final String page_url = Global.config.getString("homepage.home_url");
     @FindBy(css = "#anonLogin") private WebElement login_btn;
     @FindBy(css = "#topActionDownload") private WebElement appPopup_btn;
@@ -14,7 +15,6 @@ public class Home_Page extends PageObject {
     @FindBy(css = ".promotion-text") private WebElement promotion_lbl;
     @FindBy(css = ".app-google") private WebElement playStore_icon;
     @FindBy(css = ".app-apple") private WebElement appStore_icon;
-    private By PopUpApp_by = By.cssSelector("#top-popup-content lzd-download-content");
 
     public void clickToLoginPage() {
         waitUntilVisible(login_btn);
@@ -39,10 +39,7 @@ public class Home_Page extends PageObject {
     }
 
     public boolean isItDarazSite() {
-        if (currentUrl().contains("daraz") || currentUrl().contains("shop")) {
-            return true;
-        } else
-            return false;
+        return currentUrl().contains("daraz") || currentUrl().contains("shop");
     }
 
     public void clickOnPlayQRCode() {
