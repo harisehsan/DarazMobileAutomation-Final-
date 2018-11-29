@@ -28,7 +28,7 @@ Feature: Member PC Test
     Then I should see the logged account page
 
   @18053135 @member_regression @member_smoke @login
-  Scenario: User login account by mobilephone on login by email page
+  Scenario: User login account by email on login by email page
     When I go to the login by email page
     And I login by api with email and password
     Then I should see the logged account page
