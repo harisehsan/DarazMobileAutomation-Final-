@@ -3,6 +3,7 @@ package pdp.desktop.pages;
 import base.PageObject;
 import global.Global;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -107,7 +108,8 @@ public class Pdp_Page extends PageObject {
         waitUntilVisible(openAskQuestion_btn);
         waitUntilInvisibilityOf(By.cssSelector(".next-feedback-content"));
         openAskQuestion_btn.click();
-        askQuestion_txtArea.clear();
+        //askQuestion_txtArea.clear();
+        askQuestion_txtArea.sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
         askQuestion_txtArea.sendKeys(question);
         askQuestion_btn.click();
     }
