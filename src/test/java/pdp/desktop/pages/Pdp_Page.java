@@ -90,7 +90,9 @@ public class Pdp_Page extends PageObject {
     }
 
     public void clickMyWishlistMenu(){
+        waitUntilVisible(myAccount_list);
         myAccount_list.click();
+        waitUntilVisible(myWishlist_listItem);
         myWishlist_listItem.click();
     }
 
