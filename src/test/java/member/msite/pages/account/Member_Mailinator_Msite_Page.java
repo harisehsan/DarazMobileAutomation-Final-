@@ -27,7 +27,7 @@ public class Member_Mailinator_Msite_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(mail_txtField);
         this.mail_txtField.sendKeys(mail);
-        this.msgBody_btn.click();
+        this.go_btn.click();
     }
 
     public void clickGoMailDetail(){
