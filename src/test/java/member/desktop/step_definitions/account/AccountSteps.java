@@ -21,8 +21,8 @@ public class AccountSteps extends BaseSteps{
 
     @Given("^I login from Account Page")
     public void loginFromAccPageWithConfigAccount() throws Throwable {
-        String user = Global.config.getString("member.account.mail");
-        String pass = Global.config.getString("member.account.pass");
+        String user = Global.config.getString("member.account.mail_test");
+        String pass = Global.config.getString("member.pass");
         visit(Login_Page.class);
         on(Login_Page.class).logIn(user, pass);
         on(Account_Page.class).untilLoaded();
@@ -74,9 +74,6 @@ public class AccountSteps extends BaseSteps{
         String expectEmail = (String) Global.map.get("email_random");
         Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
         on(Account_Page.class).allureMailUrlPass(passWord);
-//  AllureAttachment.attachComment("Email", currentEmail);
-//        AllureAttachment.attachComment("Password", passWord);
-//        AllureAttachment.attachComment("Url", Account_Page.page_url);
     }
 
     @And("^I should see the account is verified")
@@ -90,13 +87,10 @@ public class AccountSteps extends BaseSteps{
         Global.browser.refresh();
         String mobilephone = Global.config.getString("member.phone_number_login");
         String currentEmail = on(Account_Page.class).hasEmail();
-        String passWord = Global.config.getString("member.pass");
-        String expectEmail = Global.config.getString("member.mail");
+        String passWord = (String) Global.map.get("new_reset_pass");
+        String expectEmail = Global.config.getString("member.account.mail_test");
         Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
         on(Account_Page.class).allureMailUrlPass(passWord);
         on(Account_Page.class).allureMobilePhone(mobilephone);
-        //        AllureAttachment.attachComment("Email", currentEmail);
-//        AllureAttachment.attachComment("PhoneNumber", mobilephone);
-//        AllureAttachment.attachComment("Url", Account_Page.page_url);
     }
 }
