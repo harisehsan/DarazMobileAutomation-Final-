@@ -19,8 +19,8 @@ Feature: Pdp features
 
   @18008857 @checkout_regression @checkout_smoke @wip
   Scenario: Ask invalid questions
+    And I login by api with email and password
     Given I go to a normal pdp page
-    And I sign up by api
     And I ask a question_include_email
     Then I should see error message that question_should_not_contain_email
     And I ask a question_include_phonenumber

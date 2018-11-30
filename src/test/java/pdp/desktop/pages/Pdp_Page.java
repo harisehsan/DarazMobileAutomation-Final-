@@ -108,8 +108,8 @@ public class Pdp_Page extends PageObject {
         waitUntilVisible(openAskQuestion_btn);
         waitUntilInvisibilityOf(By.cssSelector(".next-feedback-content"));
         openAskQuestion_btn.click();
-        //askQuestion_txtArea.clear();
-        askQuestion_txtArea.sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
+        System.out.println("dsadhjgasjdjksahdjkasjhk*******"+askQuestion_txtArea.getAttribute("value"));
+        askQuestion_txtArea.clear();
         askQuestion_txtArea.sendKeys(question);
         askQuestion_btn.click();
     }
