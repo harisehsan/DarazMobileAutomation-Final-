@@ -36,8 +36,7 @@ Feature: Member PC Test
   @17417183 @member_regression @member_smoke @login @no_lzd
   Scenario: Normal login by phone
     When I go to the login by email page
-    And I login account information by mobile phone on login by email page
-    Then I should see the logged account page
+    And I should see the account is verified
 
   @17480509 @member_regression @member_smoke @no_lzd
   Scenario: User can edit name information
