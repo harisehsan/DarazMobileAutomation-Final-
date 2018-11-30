@@ -28,7 +28,7 @@ Feature: Pdp features
     And I ask a question_include_externalWebLink
     Then I should see error message that question_should_not_contain_externalWebLink
 
-  @18008960 @checkout_regression @checkout_smoke @no_mm @wip
+  @18008960 @checkout_regression @checkout_smoke @no_drz @no_th @wip
   Scenario: Chat with shop
     Given I go to a normal pdp page
     And I click Chat Now
