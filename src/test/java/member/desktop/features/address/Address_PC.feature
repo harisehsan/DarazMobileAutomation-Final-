@@ -15,7 +15,7 @@ Feature: Address on PC
     And I go back the address book page
     Then I should delete address successfully
 
-  @17807244 @member_regression @member_smoke @no_lzd
+  @17807244 @member_regression @member_smoke @no_drz @no_lzd
   Scenario: User can add new address
     Given I go to the sign up page by smsphone
     And I sign up by api
@@ -23,7 +23,7 @@ Feature: Address on PC
     And I create new address
     Then I should see the new address on account page
 
-  @18062654 @member_regression @member_smoke @sg @no_lzd @no_drz
+  @18062654 @member_regression @member_smoke @no_drz @no_id @no_th @no_vn @no_my @no_ph
   Scenario: User can add new address and delete address- SG
     Given I go to the sign up page by smsphone
     And I login by api with email and password
