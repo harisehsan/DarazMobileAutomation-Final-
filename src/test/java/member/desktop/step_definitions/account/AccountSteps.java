@@ -60,9 +60,9 @@ public class AccountSteps extends BaseSteps{
         on(Account_Page.class).untilLoaded();
         String currentEmail = on(Account_Page.class).hasEmail();
         String expectEmail = Global.config.getString("member.mail_for_reset");
-        String pass = Global.config.getString("member.pass");
+        String passWord = (String) Global.map.get("new_reset_pass");
         Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
-        on(Account_Page.class).allureMailUrlPass(pass);
+        on(Account_Page.class).allureMailUrlPass(passWord);
     }
 
     @Then("^I should login success with new password")
@@ -79,6 +79,10 @@ public class AccountSteps extends BaseSteps{
     @And("^I should see the account is verified")
     public void isVerified() throws Throwable {
         Assert.assertTrue(on(Account_Page.class).isVerified(), "Checking is verified icon should be display if user has updated mobile phone");
+        String mobilephone = Global.config.getString("member.phone_number_login");
+        String passWord = (String) Global.map.get("new_reset_pass");
+        on(Account_Page.class).allureMailUrlPass(passWord);
+        on(Account_Page.class).allureMobilePhone(mobilephone);
     }
 
     @Then("^I should see the logged account page")
@@ -87,10 +91,10 @@ public class AccountSteps extends BaseSteps{
         Global.browser.refresh();
         String mobilephone = Global.config.getString("member.phone_number_login");
         String currentEmail = on(Account_Page.class).hasEmail();
-        String passWord = (String) Global.map.get("new_reset_pass");
+        String pass = Global.config.getString("member.pass");
         String expectEmail = Global.config.getString("member.account.mail_test");
         Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
-        on(Account_Page.class).allureMailUrlPass(passWord);
+        on(Account_Page.class).allureMailUrlPass(pass);
         on(Account_Page.class).allureMobilePhone(mobilephone);
     }
 }

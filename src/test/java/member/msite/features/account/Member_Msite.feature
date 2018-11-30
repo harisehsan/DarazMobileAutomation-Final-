@@ -14,7 +14,7 @@ Feature: Member Msite Test
     And I input account information to login by email Msite page
     Then I should stayed in account page
 
-  @17417234 @member_regression @member_smoke @no_lzd
+  @17417234 @member_regression @member_smoke
   Scenario: User can logout successfully
     When I go to login by email on Msite
     And I input account information to login by email Msite page
@@ -37,7 +37,7 @@ Feature: Member Msite Test
     And I input email just signned up on Msite
     Then I should stayed in setting account page
 
-  @17480565 @member_regression @member_smoke @no_lzd
+  @17480565 @member_regression @member_smoke
   Scenario: User can config newsletter
     When I go to login by email on Msite
     And I input account information to login by email Msite page

@@ -17,7 +17,7 @@ public class MemberLoginSteps extends BaseSteps {
 
     @And("^I login account information on login by email page")
     public void loginByEmail()throws Throwable {
-        String email = Global.config.getString("member.mail");
+        String email = Global.config.getString("member.account.mail_test");
         String pass = Global.config.getString("member.pass");
         on(Member_Login_Page.class).loginEmailPass(email,pass);
     }

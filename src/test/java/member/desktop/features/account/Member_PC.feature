@@ -9,11 +9,11 @@ Feature: Member PC Test
     And I click on submit button
     Then I should see the account page
 
-#  @17417151 @member_regression @member_smoke @signup @no_drz
-#  Scenario: Guest signup email by api
-#    When I go to the sign up page by smsphone
-#    And I sign up by api
-#    Then I should see the account page
+  @17417151 @member_regression @member_smoke @signup @no_drz @no_lzd
+  Scenario: Signup by email
+    When I go to the sign up page by smsphone
+    And I sign up by api
+    Then I should see the account page
 
   @17417173 @member_regression @member_smoke @login @no_lzd
   Scenario: Normal login by email
@@ -25,7 +25,7 @@ Feature: Member PC Test
   Scenario: Login by phone
     When I go to the login by email page
     And I login by api with mobile phone and password
-    Then I should see the logged account page
+    Then I should see the account is verified
 
   @18053135 @member_regression @member_smoke @login
   Scenario: Login by email
@@ -39,10 +39,10 @@ Feature: Member PC Test
     And I login account information by mobile phone on login by email page
     Then I should see the logged account page
 
-  @17480509 @member_regression @member_smoke
+  @17480509 @member_regression @member_smoke @no_lzd
   Scenario: User can edit name information
-    When I go to the sign up page by smsphone
-    And I sign up by api
+    When I go to the login by email page
+    And I login by api with email and password
     And I go to the account page
     And I go to edit profile page and edit name info
     And I click on save changes button
@@ -50,13 +50,13 @@ Feature: Member PC Test
 
   @17417198 @member_regression @member_smoke
   Scenario: User can logout successfully
-    When I go to the sign up page by smsphone
-    And I sign up by api
+    When I go to the login by email page
+    And I login by api with email and password
     And I go to the account page
     And I click on logout account
     Then I logout successful
 
-  @17480530 @member_regression @member_smoke
+  @17480530 @member_regression @member_smoke @no_lzd
   Scenario: User can change password successfully
     When I go to the sign up page by smsphone
     And I sign up by api
@@ -67,8 +67,8 @@ Feature: Member PC Test
 
   @17480524 @member_regression @member_smoke
   Scenario: User can config newsletter
-    When I go to the sign up page by smsphone
-    And I sign up by api
+    When I go to the login by email page
+    And I login by api with email and password
     And I go to the account page
     And I click on newsletter button to turn on or off config
     Then I should see the texts on configuration Newsletter difference before configuration
