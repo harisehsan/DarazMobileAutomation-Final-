@@ -19,6 +19,7 @@ public class PdpSteps extends BaseSteps {
         Pdp_Page.setUrl(Global.config.getString("pdp.normal_pdp_url"));
         visit(Pdp_Page.class);
         on(Pdp_Page.class).closeShippingFromOverseaPopup();
+        on(Pdp_Page.class).switchToEnglish();
     }
 
     @When("^I click wishlist icon$")
