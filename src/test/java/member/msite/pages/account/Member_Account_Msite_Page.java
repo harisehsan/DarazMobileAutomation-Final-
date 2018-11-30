@@ -10,8 +10,12 @@ public class Member_Account_Msite_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url1") + "/user/account";
 
-    @FindBy(css = "#container > div > div.mod-minlogin.member > div") private WebElement accountTittle;
-    @FindBy(css ="#container > div > div.account-newsletter > div") private WebElement newsletterConfig;
+    //    @FindBy(css = "#container > div > div.mod-minlogin.member > div") private WebElement accountTittle;
+    @FindBy(css = "div.mod-minlogin.member > div")
+    private WebElement accountTittle;
+    //    @FindBy(css ="#container > div > div.account-newsletter > div") private WebElement newsletterConfig;
+    @FindBy(css = "div.account-newsletter > div")
+    private WebElement newsletterConfig;
     @FindBy(css="#address-book > a") private WebElement addressBook;
 
     public void getAccountTittle() {
@@ -28,7 +32,7 @@ public class Member_Account_Msite_Page extends PageObject {
 
     public void setNewsletterTrigger() {
         waitUntilPageReady();
-        waitUntilClickable(By.cssSelector("#container > div > div.account-newsletter > div"));
+        waitUntilClickable(By.cssSelector("div.account-newsletter > div"));
         this.newsletterConfig.click();
     }
 

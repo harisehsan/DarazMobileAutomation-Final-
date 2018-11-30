@@ -25,15 +25,23 @@ public class Member_AddressPC_Page extends PageObject {
     @FindBy(css = ".mod-input-detailAddress input") private WebElement detailAddress;
     @FindBy(css= ".next-table-cell") private WebElement editAddress;
     @FindBy(xpath = "//*[@id=\"container\"]/div/div/div/div[2]/div/div[2]/table/tbody/tr[1]/td[6]/div/button") private WebElement editAddLzd;
-    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr.next-table-row.first > td:nth-child(2) > div") private WebElement hasNewNameDrz;
-    @FindBy(css="#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr > td.next-table-cell.first > div") private WebElement hasNewNameLzd;
-    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr:nth-child(2) > td.next-table-cell.first > div > button") private WebElement accessDeleteAddDrz;
-    @FindBy(css="#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr.next-table-row.last > td.next-table-cell.last > div > button") private WebElement accessDeleteAddLzd;
+    @FindBy(css = "tr > td:nth-child(2) > div")
+    private WebElement hasNewNameDrz;
+    @FindBy(css = "tr > td.next-table-cell.first > div")
+    private WebElement hasNewNameLzd;
+    @FindBy(css = "tbody > tr:nth-child(2) > td > div > button")
+    private WebElement accessDeleteAddDrz;
+    @FindBy(css = "td.next-table-cell.last > div > button")
+    private WebElement accessDeleteAddLzd;
     @FindBy(className = "mod-address-update-hd") private WebElement deleteBtn;
-    @FindBy(css = "#container > div > div > div > form > div > div.mod-address-form-bd > div.mod-address-form-left > div.mod-input.floating.mod-input-name > div") private WebElement clearName;
-    @FindBy(css = "#container > div > div > div > form > div > div.mod-address-form-bd > div.mod-address-form-left > div.mod-input.floating.mod-input-phone > div") private WebElement clearPhone;
-    @FindBy(css = "#dialog-footer-2 > button.next-btn.next-btn-primary.next-btn-medium") private WebElement deleteConfirm;
-    @FindBy(css = "#container > div > div > div > div.next-table.only-bottom-border > div > div.next-table-body > table > tbody > tr.next-table-row") private List<WebElement> addressLevel;
+    @FindBy(css = "div.mod-input-name > div")
+    private WebElement clearName;
+    @FindBy(css = "div.mod-input-phone > div")
+    private WebElement clearPhone;
+    @FindBy(css = "#dialog-footer-2 > button.next-btn-medium")
+    private WebElement deleteConfirm;
+    @FindBy(css = "tbody > tr.next-table-row")
+    private List<WebElement> addressLevel;
 
     public void addNewAddress(){
         waitUntilPageReady();
@@ -86,7 +94,7 @@ public class Member_AddressPC_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(deleteBtn);
         this.deleteBtn.click();
-        waitUntilClickable(By.cssSelector("#dialog-footer-2 > button.next-btn.next-btn-primary.next-btn-medium"));
+        waitUntilClickable(By.cssSelector("#dialog-footer-2 > button.next-btn-medium"));
         this.deleteConfirm.click();
         waitUntilInvisibilityOf(By.className("mod-address-update-hd"));
     }
@@ -98,13 +106,13 @@ public class Member_AddressPC_Page extends PageObject {
 
     public void clearName(){
         waitUntilPageReady();
-        waitUntilClickable(By.cssSelector("#container > div > div > div > form > div > div.mod-address-form-bd > div.mod-address-form-left > div.mod-input.floating.mod-input-name > div"));
+        waitUntilClickable(By.cssSelector("div.mod-input-name > div"));
         this.clearName.click();
     }
 
     public void clearPhone(){
         waitUntilPageReady();
-        waitUntilClickable(By.cssSelector("#container > div > div > div > form > div > div.mod-address-form-bd > div.mod-address-form-left > div.mod-input.floating.mod-input-phone > div"));
+        waitUntilClickable(By.cssSelector("div.mod-input-phone > div"));
         this.clearPhone.click();
     }
 

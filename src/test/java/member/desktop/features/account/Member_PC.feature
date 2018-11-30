@@ -9,11 +9,11 @@ Feature: Member PC Test
     And I click on submit button
     Then I should see the account page
 
-  @17417151 @member_regression @member_smoke @signup @no_drz
-  Scenario: Guest signup email by api
-    When I go to the sign up page by smsphone
-    And I sign up by api
-    Then I should see the account page
+#  @17417151 @member_regression @member_smoke @signup @no_drz
+#  Scenario: Guest signup email by api
+#    When I go to the sign up page by smsphone
+#    And I sign up by api
+#    Then I should see the account page
 
   @17417173 @member_regression @member_smoke @login @no_lzd
   Scenario: User login account by email on login by email page

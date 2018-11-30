@@ -12,8 +12,13 @@ public class Member_Loginemail_Msite_Page extends PageObject {
 
     @FindBy(css = ".mod-input-loginName input") private WebElement inputEmail;
     @FindBy(css =".mod-input-password input") private WebElement inputPass;
-    @FindBy(css = "#container > div > div > div > div > div.login-btn > button") private WebElement clickLoginBtn;
+    //    @FindBy(css = "#container > div > div > div > div > div.login-btn > button") private WebElement clickLoginBtn;
+    @FindBy(css = "div.login-btn > button")
+    private WebElement clickLoginBtn;
     @FindBy(css = ".login-foot-btn") private WebElement clickSMSBtn;
+    //    @FindBy(css = "#container > div > div > div > div > div.login-main > div > div.login-forgot > a") private WebElement forgotPassBtn;
+    @FindBy(css = "div.login-forgot > a")
+    private WebElement forgotPassBtn;
 
     public void inputEmail(String email) {
         waitUntilPageReady();
@@ -27,7 +32,7 @@ public class Member_Loginemail_Msite_Page extends PageObject {
 
     public void clickLoginButton(){
         waitUntilPageReady();
-        waitUntilClickable(By.cssSelector("#container > div > div > div > div > div.login-btn > button"));
+        waitUntilClickable(By.cssSelector("div.login-btn > button"));
         this.clickLoginBtn.click();
     }
 

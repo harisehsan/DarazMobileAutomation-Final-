@@ -13,7 +13,9 @@ public class Member_Mailinator_Page extends PageObject {
     @FindBy(css = "#inboxfield") private WebElement inputMail;
     @FindBy(css = ".btn-dark") private WebElement goBtn;
     @FindBy(css = "#inboxpane > div > div > div > table > tbody > tr") private List<WebElement> emailList;
-    @FindBy(css = "body > table > tbody > tr > td > center > table > tbody > tr > td > div > div.verify-code-container > span") private WebElement smsCodeDetail;
+    //    @FindBy(css = "body > table > tbody > tr > td > center > table > tbody > tr > td > div > div.verify-code-container > span") private WebElement smsCodeDetail;
+    @FindBy(css = "div.verify-code-container > span")
+    private WebElement smsCodeDetail;
     @FindBy(id = "msg_body") private WebElement msgBody;
 
     public void inputMail(String mail){

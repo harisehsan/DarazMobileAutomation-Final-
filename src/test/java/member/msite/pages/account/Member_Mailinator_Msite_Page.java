@@ -13,7 +13,8 @@ public class Member_Mailinator_Msite_Page extends PageObject {
 
     @FindBy(css = "#inboxfield") private WebElement inputMail;
     @FindBy(css = ".btn-dark") private WebElement goBtn;
-    @FindBy(css = "#inboxpane > div > div > div > table > tbody > tr") private List<WebElement> emailList;
+    @FindBy(css = "#inboxpane > div > div > div")
+    private WebElement emailList;
     @FindBy(css = "body > table > tbody > tr > td > center > table > tbody > tr > td > div > div.verify-code-container > span") private WebElement smsCodeDetail;
     @FindBy(id = "msg_body") private WebElement msgBody;
 
@@ -26,7 +27,7 @@ public class Member_Mailinator_Msite_Page extends PageObject {
 
     public void clickGoMailDetail(){
         waitUntilPageReady();
-        this.emailList.get(0).click();
+        this.emailList.click();
     }
 
     public String getSMSCodeDetail() {

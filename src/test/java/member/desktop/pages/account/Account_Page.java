@@ -1,5 +1,6 @@
 package member.desktop.pages.account;
 
+import allure.AllureAttachment;
 import global.Global;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -14,14 +15,21 @@ public class Account_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url") + "/user/profile";
 
-    @FindBy(css = "body > div.lzd-playground > div > div.lzd-playground-right > div.breadcrumb > a") private WebElement mainContainer;
+    //    @FindBy(css = "body > div.lzd-playground > div > div.lzd-playground-right > div.breadcrumb > a") private WebElement mainContainer;
+    @FindBy(css = "div.breadcrumb > a")
+    private WebElement mainContainer;
+
     @FindBy(id = "lzd_current_logon_user_name") private WebElement nameOfUser;
     @FindBy(id = "myAccountTrigger") private WebElement myAccoutTrigger;
     @FindBy(css = ".account-icon.logout") private WebElement logOut;
     @FindBy(id = "lzd_current_logon_user_isVerified") private WebElement isVerified;
-    @FindBy(css = "#container > div > div.dashboard-profile > div.dashboard-info > div.dashboard-info-item.last > a") private WebElement newsLetter;
+    //    @FindBy(css = "#container > div > div.dashboard-profile > div.dashboard-info > div.dashboard-info-item.last > a") private WebElement newsLetter;
+    @FindBy(css = "div.dashboard-info-item.last > a")
+    private WebElement newsLetter;
     @FindBy(css = ".next-btn-primary") private WebElement okBtn;
-    @FindBy(css= "#container > div > div.dashboard-profile > div.dashboard-info > div:nth-child(2)") private WebElement emailInformation;
+    //    @FindBy(css= "#container > div > div.dashboard-profile > div.dashboard-info > div:nth-child(2)") private WebElement emailInformation;
+    @FindBy(css = "div.dashboard-info > div:nth-child(2)")
+    private WebElement emailInformation;
 
     public void untilLoaded(){
         waitUntilVisible(mainContainer);
@@ -46,7 +54,8 @@ public class Account_Page extends PageObject {
 
     public void setNewsLetter(){
         waitUntilPageReady();
-        waitUntilClickable(By.cssSelector("#container > div > div.dashboard-profile > div.dashboard-info > div.dashboard-info-item.last > a"));
+//        waitUntilClickable(By.cssSelector("#container > div > div.dashboard-profile > div.dashboard-info > div.dashboard-info-item.last > a"));
+        waitUntilClickable(By.cssSelector("div.dashboard-info-item.last > a"));
         this.newsLetter.click();
         waitUntilClickable(By.cssSelector(".next-btn-primary"));
         this.okBtn.click();
@@ -65,5 +74,15 @@ public class Account_Page extends PageObject {
         this.myAccoutTrigger.click();
         waitUntilClickable(By.cssSelector(".account-icon.logout"));
         this.logOut.click();
+    }
+
+    public void allureMailUrlPass(String pass) {
+        AllureAttachment.attachURL(page_url);
+        AllureAttachment.attachComment("Email", emailInformation.getText());
+        AllureAttachment.attachComment("Password", pass);
+    }
+
+    public void allureMobilePhone(String mobile) {
+        AllureAttachment.attachComment("Mobile phone", mobile);
     }
 }

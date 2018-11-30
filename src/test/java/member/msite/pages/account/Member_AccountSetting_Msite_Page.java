@@ -13,7 +13,9 @@ public class Member_AccountSetting_Msite_Page extends PageObject {
     @FindBy(className = "logout") private WebElement logout;
     @FindBy(className = "ok") private WebElement okbutton;
     @FindBy(className = "cancel") private WebElement cancelbutton;
-    @FindBy(css = "#container > div > ul > li:nth-child(1) > a") private WebElement changePassWord;
+    //    @FindBy(css = "#container > div > ul > li:nth-child(1) > a") private WebElement changePassWord;
+    @FindBy(css = "li:nth-child(1) > a")
+    private WebElement changePassWord;
     @FindBy(css = "#page-title") private WebElement hasSettingTitle;
 
     public void logOut(){
@@ -36,7 +38,7 @@ public class Member_AccountSetting_Msite_Page extends PageObject {
 
     public void changePassWord() {
         waitUntilPageReady();
-        waitUntilClickable(By.cssSelector("#container > div > ul > li:nth-child(1) > a"));
+        waitUntilClickable(By.cssSelector("li:nth-child(1) > a"));
         this.changePassWord.click();
     }
 }

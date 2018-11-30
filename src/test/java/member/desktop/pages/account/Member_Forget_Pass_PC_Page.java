@@ -9,7 +9,9 @@ public class Member_Forget_Pass_PC_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url") + "/user/forget-password";
 
-    @FindBy(css = "#container > div > div > div > div > div.forgot-form > div > input[type=\"text\"]") private WebElement inputEmail;
+    //    @FindBy(css = "#container > div > div > div > div > div.forgot-form > div > input[type=\"text\"]") private WebElement inputEmail;
+    @FindBy(css = "div > input[type='text']")
+    private WebElement inputEmail;
     @FindBy(css = ".next-btn-large") private WebElement clickSubmitBtn;
     @FindBy(className = "buttons") private WebElement verifyEmailBtn;
     @FindBy(css = ".mod-input-sms") private WebElement inputSMSCode;

@@ -5,8 +5,7 @@ import java.lang.String;
 import base.BaseSteps;
 import cucumber.api.java.en.*;
 import global.Global;
-import member.desktop.pages.account.Account_Page;
-import member.desktop.pages.account.Member_Login_Page;
+import member.desktop.pages.account.*;
 import org.testng.Assert;
 
 public class MemberLoginSteps extends BaseSteps {
@@ -42,11 +41,10 @@ public class MemberLoginSteps extends BaseSteps {
         Global.map.put("before_config",beforeConfig);
     }
 
-    @And("^I click on newsletter button to turn on or off config")
-    public void setNewsLetter() throws Throwable {
-        on(Account_Page.class).setNewsLetter();
-        String afterConfig = on(Account_Page.class).hasNewsLetter();
-        Global.map.put("after_config",afterConfig);
+    @And("^I login email with new password after reset")
+    public void loginWithResetPass() throws Throwable {
+        String emailForReset = Global.config.getString("member.mail_for_reset");
+        on(Member_Login_Page.class).loginEmailPass(emailForReset, (String) Global.map.get("new_reset_pass"));
     }
 
     @Then("^I should see the texts on configuration Newsletter difference before configuration")
