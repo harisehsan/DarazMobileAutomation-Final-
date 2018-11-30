@@ -111,19 +111,6 @@ public class Pdp_Page extends PageObject {
         CharSequence questionChar = question;
         System.out.println("dsadhjgasjdjksahdjkasjhk*******"+askQuestion_txtArea.getAttribute("value"));
         waitUntilVisible(askQuestion_txtArea);
-
-//        Global.browser.getJsExecutor().executeScript("arguments[0].value = '';", askQuestion_txtArea);
-        waitUntilVisible(askQuestion_txtArea);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        askQuestion_txtArea.clear();
-//        Global.browser.getJsExecutor().executeScript("arguments[0].value = '" + questionChar + "';", askQuestion_txtArea);
-//        Global.browser.getJsExecutor().executeScript("arguments[0].click();", askQuestion_btn);
-//        Global.browser.getJsExecutor().executeScript("arguments[0].value = 'arguments[1]';", askQuestion_txtArea,question);
-//        askQuestion_txtArea.sendKeys(question);
         askQuestion_txtArea.sendKeys(Keys.chord(Keys.CONTROL, "a"), question);
         askQuestion_btn.click();
     }
