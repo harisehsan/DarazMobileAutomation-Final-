@@ -80,8 +80,8 @@ public class AccountSteps extends BaseSteps{
     public void isVerified() throws Throwable {
         Assert.assertTrue(on(Account_Page.class).isVerified(), "Checking is verified icon should be display if user has updated mobile phone");
         String mobilephone = Global.config.getString("member.phone_number_login");
-        String passWord = (String) Global.map.get("new_reset_pass");
-        on(Account_Page.class).allureMailUrlPass(passWord);
+        String pass = Global.config.getString("member.pass");
+        on(Account_Page.class).allureMailUrlPass(pass);
         on(Account_Page.class).allureMobilePhone(mobilephone);
     }
 
