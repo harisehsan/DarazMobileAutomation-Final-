@@ -123,7 +123,8 @@ public class Pdp_Page extends PageObject {
 //        Global.browser.getJsExecutor().executeScript("arguments[0].value = '" + questionChar + "';", askQuestion_txtArea);
 //        Global.browser.getJsExecutor().executeScript("arguments[0].click();", askQuestion_btn);
 //        Global.browser.getJsExecutor().executeScript("arguments[0].value = 'arguments[1]';", askQuestion_txtArea,question);
-        askQuestion_txtArea.sendKeys(question);
+//        askQuestion_txtArea.sendKeys(question);
+        askQuestion_txtArea.sendKeys(Keys.chord(Keys.CONTROL, "a"), question);
         askQuestion_btn.click();
     }
 
@@ -131,7 +132,6 @@ public class Pdp_Page extends PageObject {
         waitUntilVisible(firstQuestion_lbl);
         return firstQuestion_lbl.getText();
     }
-
     public String errorMessageForInvalidQuestion(){
         waitUntilVisible(errorMessageForInvalidQuestion_lbl);
         return errorMessageForInvalidQuestion_lbl.getText() ;
