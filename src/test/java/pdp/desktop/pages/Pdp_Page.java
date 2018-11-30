@@ -111,6 +111,7 @@ public class Pdp_Page extends PageObject {
         System.out.println("dsadhjgasjdjksahdjkasjhk*******"+askQuestion_txtArea.getAttribute("value"));
         waitUntilVisible(askQuestion_txtArea);
         askQuestion_txtArea.clear();
+        Global.browser.getJsExecutor().executeScript("arguments[0].value = '';", askQuestion_txtArea);
         waitUntilVisible(askQuestion_txtArea);
         askQuestion_txtArea.sendKeys(question);
         askQuestion_btn.click();
