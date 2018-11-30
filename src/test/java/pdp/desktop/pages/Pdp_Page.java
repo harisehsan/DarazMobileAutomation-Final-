@@ -109,6 +109,7 @@ public class Pdp_Page extends PageObject {
         waitUntilInvisibilityOf(By.cssSelector(".next-feedback-content"));
         openAskQuestion_btn.click();
         System.out.println("dsadhjgasjdjksahdjkasjhk*******"+askQuestion_txtArea.getAttribute("value"));
+        waitUntilVisible(askQuestion_txtArea);
         askQuestion_txtArea.clear();
         askQuestion_txtArea.sendKeys(question);
         askQuestion_btn.click();
