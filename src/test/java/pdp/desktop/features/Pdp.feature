@@ -1,7 +1,7 @@
 @pdp @911
 Feature: Pdp features
 
-  @17958367 @checkout_regression @checkout_smoke
+  @17958367 @checkout_regression @checkout_smoke @no_lzd
   Scenario: User can add the product to wishlist
     Given I go to a normal pdp page
     And I get the product title
@@ -12,15 +12,15 @@ Feature: Pdp features
 
   @18008755 @checkout_regression @checkout_smoke @no_lzd_live @no_drz_live
   Scenario: Ask valid question for shop
-    Given I go to a normal pdp page
-    And I sign up by api
+    Given I login by api with email and password
+    And I go to a normal pdp page
     When I ask a valid_question
     Then I should see valid_question on the question list
 
-  @18008857 @checkout_regression @checkout_smoke @wip
+  @18008857 @checkout_regression @checkout_smoke @no_id
   Scenario: Ask invalid questions
-    And I login by api with email and password
-    Given I go to a normal pdp page
+    Given I login by api with email and password
+    And I go to a normal pdp page
     And I ask a question_include_email
     Then I should see error message that question_should_not_contain_email
     And I ask a question_include_phonenumber
@@ -48,7 +48,7 @@ Feature: Pdp features
     And I click on Buy Now button
     Then I should see Login form
 
-  @18009198 @checkout_regression @checkout_smoke @no_vn_staging @no_vn_live
+  @18009198 @checkout_regression @checkout_smoke @no_lzd
   Scenario: Check Buy Now/Add To Cart buttons work with user already login
     Given I go to a normal pdp page
     And I sign up by api
@@ -59,7 +59,7 @@ Feature: Pdp features
     And I click on Buy Now button
     Then I should be on Checkout Shipping page
 
-  @18009289 @checkout_regression @checkout_smoke
+  @18009289 @checkout_regression @checkout_smoke @no_lzd
   Scenario: Change item quantity by +/- icon
     Given I go to a normal pdp page
     And I sign up by api
