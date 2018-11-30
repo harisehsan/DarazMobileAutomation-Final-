@@ -26,7 +26,7 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
 
     @And("^I input account information to login by email Msite page")
     public void logInByEmailMsite() throws Throwable {
-        String email = Global.config.getString("member.mail");
+        String email = Global.config.getString("member.account.mail_test");
         Global.map.put("email_login", email);
         on(Member_Loginemail_Msite_Page.class).inputEmail(email);
         String pass = Global.config.getString("member.pass");
@@ -51,9 +51,7 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
         Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking user should be stayed in account page after logging in success");
         String email = (String) Global.map.get("email_login");
         String password = (String) Global.map.get("password_login");
-        AllureAttachment.attachComment("Email", email);
-        AllureAttachment.attachComment("Password", password);
-        AllureAttachment.attachComment("Url", Member_Account_Msite_Page.page_url);
+        on(Member_Account_Msite_Page.class).allureMailUrlPass(email, password);
     }
 
     @Then("^I should stayed in setting account page")

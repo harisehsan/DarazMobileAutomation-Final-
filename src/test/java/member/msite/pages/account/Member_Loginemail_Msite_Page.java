@@ -10,48 +10,49 @@ public class Member_Loginemail_Msite_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url1") + "/user/login";
 
-    @FindBy(css = ".mod-input-loginName input") private WebElement inputEmail;
-    @FindBy(css =".mod-input-password input") private WebElement inputPass;
-    //    @FindBy(css = "#container > div > div > div > div > div.login-btn > button") private WebElement clickLoginBtn;
+    @FindBy(css = ".mod-input-loginName input")
+    private WebElement email_txtField;
+    @FindBy(css = ".mod-input-password input")
+    private WebElement password_txtField;
     @FindBy(css = "div.login-btn > button")
-    private WebElement clickLoginBtn;
-    @FindBy(css = ".login-foot-btn") private WebElement clickSMSBtn;
-    //    @FindBy(css = "#container > div > div > div > div > div.login-main > div > div.login-forgot > a") private WebElement forgotPassBtn;
+    private WebElement login_btn;
+    @FindBy(css = ".login-foot-btn")
+    private WebElement smsLogin_btn;
     @FindBy(css = "div.login-forgot > a")
-    private WebElement forgotPassBtn;
+    private WebElement forgotPassword_btn;
 
     public void inputEmail(String email) {
         waitUntilPageReady();
-        this.inputEmail.sendKeys(email);
+        this.email_txtField.sendKeys(email);
     }
 
     public void inputPass(String pass) {
         waitUntilPageReady();
-        this.inputPass.sendKeys(pass);
+        this.password_txtField.sendKeys(pass);
     }
 
     public void clickLoginButton(){
         waitUntilPageReady();
         waitUntilClickable(By.cssSelector("div.login-btn > button"));
-        this.clickLoginBtn.click();
+        this.login_btn.click();
     }
 
     public void clickSMSButton(){
         waitUntilPageReady();
         waitUntilClickable(By.cssSelector(".login-foot-btn"));
-        this.clickSMSBtn.click();
+        this.smsLogin_btn.click();
     }
 
     public void logInByEmail(String emailAddress,String passWord) {
         waitUntilPageReady();
-        waitUntilVisible(inputEmail);
-        this.inputEmail.sendKeys(emailAddress);
-        this.inputPass.sendKeys(passWord);
+        waitUntilVisible(email_txtField);
+        this.email_txtField.sendKeys(emailAddress);
+        this.password_txtField.sendKeys(passWord);
     }
 
     public boolean hasLoginForm() {
         waitUntilPageReady();
-        waitUntilVisible(inputEmail);
-        return inputEmail.isDisplayed();
+        waitUntilVisible(email_txtField);
+        return email_txtField.isDisplayed();
     }
 }

@@ -3,19 +3,19 @@
 Feature: Member Msite Test
 
   @17417211 @member_regression @member_smoke @signup @no_lzd
-  Scenario: Guest signup new account by email
+  Scenario: Normal signup by email
     When I go to the sign up on Msite page by email
     And I input all information to signup by email page
     Then I should see the name of user in account title
 
-  @17417223 @member_regression @member_smoke @login @no_lzd
-  Scenario: User login account by email
+  @17417223 @member_regression @member_smoke @login
+  Scenario: Normal login by email
     When I go to login by email on Msite
     And I input account information to login by email Msite page
     Then I should stayed in account page
 
   @17417234 @member_regression @member_smoke @no_lzd
-  Scenario: User Logout account on Msite
+  Scenario: User can logout successfully
     When I go to login by email on Msite
     And I input account information to login by email Msite page
     And I should stayed in account page
@@ -24,7 +24,7 @@ Feature: Member Msite Test
     Then I should logout success
 
   @17480573 @member_regression @member_smoke @no_lzd
-  Scenario: User change password and login again with new password on Msite
+  Scenario: User can change password successfully
     When I go to the sign up on Msite page by email
     And I input all information to signup by email page
     And I should see the name of user in account title
@@ -38,7 +38,7 @@ Feature: Member Msite Test
     Then I should stayed in setting account page
 
   @17480565 @member_regression @member_smoke @no_lzd
-  Scenario: User login and try to config newsletter
+  Scenario: User can config newsletter
     When I go to login by email on Msite
     And I input account information to login by email Msite page
     And I should stayed in account page
@@ -47,7 +47,7 @@ Feature: Member Msite Test
     Then I should see the result of current newsletter config changed
 
   @17740312 @member_regression @member_smoke
-  Scenario: User go to reset password on Msite
+  Scenario: User can reset password successfully
     Given I go to login by email on Msite
     When I access to reset password on Msite
     And I progress to forgot password

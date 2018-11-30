@@ -77,6 +77,7 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I access edit page on Lazada to delete address")
     public void accessDeleteAddressLzd() throws Throwable {
+        Global.browser.refresh();
         on(Member_AddressPC_Page.class).accessDeleteAddressLzd();
     }
 
@@ -118,6 +119,14 @@ public class MemberAddressPCSteps extends BaseSteps {
         on(Member_AddressPC_Page.class).deleteBtn();
     }
 
+    @And("^I create a new address for SG")
+    public void createAddressSg() throws Throwable {
+        String mobile = Global.config.getString("member.phone_number_login");
+        String postCode = Global.config.getString("member.post_code");
+        String addressDetail = Global.config.getString("member.account.address_detail");
+        on(Member_AddressPC_Page.class).createAddressSg(mobile, postCode, addressDetail);
+    }
+
     @Then("^I should see on Daraz the new editing name of address")
     public void hasNewNameDrz() throws Throwable {
         String editingName = (String) Global.map.get("new_name_address");
@@ -143,5 +152,11 @@ public class MemberAddressPCSteps extends BaseSteps {
         int after = (int) Global.map.get("after_delete");
         Assert.assertEquals(before-after,1,"Checking user has 2 addresses on address book, after deleting an address, the address book should display only one address ");
     }
+
+    @Then("^I should delete address successfully")
+    public void hasNoAddressDeleted() throws Throwable {
+        Assert.assertTrue(on(Member_AddressPC_Page.class).hasNoAddressDeleted(), "Checking after deleted address the list address will be back 1 address on address book ");
+    }
+
 
 }

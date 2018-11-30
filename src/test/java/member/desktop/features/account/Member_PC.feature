@@ -3,7 +3,7 @@
 Feature: Member PC Test
 
   @17417150 @member_regression @member_smoke @signup @no_lzd
-  Scenario: Signup by email
+  Scenario: Normal signup by email
     When I go to the sign up page by email
     And I process to signup user by email on signup by email page
     And I click on submit button
@@ -16,43 +16,31 @@ Feature: Member PC Test
 #    Then I should see the account page
 
   @17417173 @member_regression @member_smoke @login @no_lzd
-  Scenario: User login account by email on login by email page
+  Scenario: Normal login by email
     When I go to the login by email page
     And I login account information on login by email page
     Then I should see the logged account page
 
-  @17560793 @member_regression @member_smoke
-  Scenario: User login account by mobilephone on login by email page
+  @17560793 @member_regression @member_smoke @login
+  Scenario: Login by phone
     When I go to the login by email page
     And I login by api with mobile phone and password
     Then I should see the logged account page
 
-  @18053135 @member_regression @member_smoke
-  Scenario: User login account by email on login by email page
-    When I go to the login by email page
-    And I login by api with email and password
-    Then I should see the logged account page
-
-  @login
-  Scenario: Login by mobile
-    When I go to the login by email page
-    And I login by api with mobile phone and password
-    Then I should see the logged account page
-
-  @login
+  @18053135 @member_regression @member_smoke @login
   Scenario: Login by email
     When I go to the login by email page
     And I login by api with email and password
     Then I should see the logged account page
 
   @17417183 @member_regression @member_smoke @login @no_lzd
-  Scenario: User login account by mobilephone on login by email page
+  Scenario: Normal login by phone
     When I go to the login by email page
     And I login account information by mobile phone on login by email page
     Then I should see the logged account page
 
   @17480509 @member_regression @member_smoke
-  Scenario: User edit name information
+  Scenario: User can edit name information
     When I go to the sign up page by smsphone
     And I sign up by api
     And I go to the account page
@@ -61,7 +49,7 @@ Feature: Member PC Test
     Then I go back account page with new name
 
   @17417198 @member_regression @member_smoke
-  Scenario: User signup account then logout account
+  Scenario: User can logout successfully
     When I go to the sign up page by smsphone
     And I sign up by api
     And I go to the account page
@@ -69,7 +57,7 @@ Feature: Member PC Test
     Then I logout successful
 
   @17480530 @member_regression @member_smoke
-  Scenario: User change password, login success by new password
+  Scenario: User can change password successfully
     When I go to the sign up page by smsphone
     And I sign up by api
     And I go to change password page
@@ -78,7 +66,7 @@ Feature: Member PC Test
     Then I should login success with new password
 
   @17480524 @member_regression @member_smoke
-  Scenario: User config newsletter
+  Scenario: User can config newsletter
     When I go to the sign up page by smsphone
     And I sign up by api
     And I go to the account page
@@ -86,7 +74,7 @@ Feature: Member PC Test
     Then I should see the texts on configuration Newsletter difference before configuration
 
   @17740305 @member_regression @member_smoke
-  Scenario: User reset password function
+  Scenario: User can reset password successfully
     When I go to the login by email page
     And I click reset password on login page
     And I go to forgot password page

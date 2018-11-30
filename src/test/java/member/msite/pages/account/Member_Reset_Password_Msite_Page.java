@@ -9,70 +9,64 @@ import org.openqa.selenium.support.FindBy;
 public class Member_Reset_Password_Msite_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url") + "/user/forget-password";
-    //
-//    @FindBy(css = "#container > div > div > div.forgot-form > div > input[type=\"text\"]") private WebElement inputMail_field;
-//    @FindBy(css = "#container > div > div > div.forgot-action > button") private WebElement resetPassBtn;
-//    @FindBy(xpath = "/html/body/div[2]/div/div/div[1]/span[2]") private WebElement verifyByEmailBtn;
-//    @FindBy(xpath = "/html/body/div[2]/div/div/div[2]/div[2]/div/div/div/span") private WebElement sendCodeBtn;
-//    @FindBy(xpath = "/html/body/div[2]/div/div/div[2]/div[2]/div/div[1]/div/input") private WebElement inputCodeField;
-//    @FindBy(xpath = "/html/body/div[2]/div/div/div[3]/div/span") private WebElement verifyCodeBtn;
-//    @FindBy(css = "#container > div > div > div.reset-form > div.mod-input.mod-input-password.mod-input-newPassword > input[type=\"password\"]") private WebElement inputNewPassField;
-//    @FindBy(css = "#container > div > div > div.reset-form > div.mod-input.mod-input-password.mod-input-re-newPassword > input[type=\"password\"]") private WebElement inputReNewPassField;
-//    @FindBy(css = "#container > div > div > div.reset-foot > div > button") private WebElement submitNewPassBtn;
-//    @FindBy(css = "#container > div > div > div.reset-popup > div.reset-status > p") private WebElement getSuccessMessgage;
+
     @FindBy(css = "div > input[type='text']")
-    private WebElement inputMail_field;
+    private WebElement mail_txtField;
     @FindBy(css = "div.forgot-action > button")
-    private WebElement resetPassBtn;
-    @FindBy(xpath = "/html/body/div[2]/div/div/div[1]/span[2]") private WebElement verifyByEmailBtn;
-    @FindBy(xpath = "/html/body/div[2]/div/div/div[2]/div[2]/div/div/div/span") private WebElement sendCodeBtn;
-    @FindBy(xpath = "/html/body/div[2]/div/div/div[2]/div[2]/div/div[1]/div/input") private WebElement inputCodeField;
-    @FindBy(xpath = "/html/body/div[2]/div/div/div[3]/div/span") private WebElement verifyCodeBtn;
+    private WebElement resetPass_btn;
+    @FindBy(xpath = "/html/body/div[2]/div/div/div[1]/span[2]")
+    private WebElement verifyByEmail_btn;
+    @FindBy(xpath = "/html/body/div[2]/div/div/div[2]/div[2]/div/div/div/span")
+    private WebElement sendCode_btn;
+    @FindBy(xpath = "/html/body/div[2]/div/div/div[2]/div[2]/div/div[1]/div/input")
+    private WebElement code_txtField;
+    @FindBy(xpath = "/html/body/div[2]/div/div/div[3]/div/span")
+    private WebElement verifyCode_btn;
     @FindBy(css = "div.mod-input-newPassword > input[type='password']")
-    private WebElement inputNewPassField;
+    private WebElement newPass_txtField;
     @FindBy(css = "div.mod-input-re-newPassword > input[type='password']")
-    private WebElement inputReNewPassField;
+    private WebElement reNewPass_txtField;
     @FindBy(css = "div > button")
-    private WebElement submitNewPassBtn;
+    private WebElement submit_btn;
     @FindBy(css = "div.reset-status > p")
-    private WebElement getSuccessMessgage;
+    private WebElement getSuccessMessgage_lbl;
     //    waitUntilInvisibilityOf(By.id("__react_loading_show__"));
 
     public void resetPasswordStep(String mail) {
         waitUntilPageReady();
-        waitUntilVisible(inputMail_field);
-        this.inputMail_field.sendKeys(mail);
+        waitUntilVisible(mail_txtField);
+        this.mail_txtField.sendKeys(mail);
         waitUntilClickable(By.cssSelector("#container > div > div > div.forgot-action > button"));
-        this.resetPassBtn.click();
+        this.resetPass_btn.click();
     }
 
     public void verifyByMail() {
         waitUntilPageReady();
         waitUntilClickable(By.xpath("/html/body/div[2]/div/div/div[1]/span[2]"));
-        this.verifyByEmailBtn.click();
-        this.sendCodeBtn.click();
+        this.verifyByEmail_btn.click();
+        this.sendCode_btn.click();
     }
 
     public void inputCode(String smsCode){
-        waitUntilVisible(inputCodeField);
-        this.inputCodeField.sendKeys(smsCode);
+        waitUntilVisible(code_txtField);
+        this.code_txtField.sendKeys(smsCode);
         waitUntilClickable(By.xpath("/html/body/div[2]/div/div/div[3]/div/span"));
-        this.verifyCodeBtn.click();
+        this.verifyCode_btn.click();
     }
 
     public void progressNewPass(String newPassWord) {
         waitUntilPageReady();
-        waitUntilVisible(inputNewPassField);
-        this.inputNewPassField.sendKeys(newPassWord);
-        this.inputReNewPassField.sendKeys(newPassWord);
+        waitUntilVisible(newPass_txtField);
+        this.newPass_txtField.sendKeys(newPassWord);
+        this.reNewPass_txtField.sendKeys(newPassWord);
         waitUntilClickable(By.cssSelector("#container > div > div > div.reset-foot > div > button"));
-        this.submitNewPassBtn.click();
+        this.submit_btn.click();
     }
 
     public boolean hasSuccessResetMessage(){
         waitUntilPageReady();
-        waitUntilVisible(getSuccessMessgage);
-        return getSuccessMessgage.isDisplayed();
+        waitUntilVisible(getSuccessMessgage_lbl);
+        return getSuccessMessgage_lbl.isDisplayed();
     }
 
 }

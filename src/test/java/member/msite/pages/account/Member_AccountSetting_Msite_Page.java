@@ -10,35 +10,38 @@ public class Member_AccountSetting_Msite_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url1") + "/user/setting";
 
-    @FindBy(className = "logout") private WebElement logout;
-    @FindBy(className = "ok") private WebElement okbutton;
-    @FindBy(className = "cancel") private WebElement cancelbutton;
-    //    @FindBy(css = "#container > div > ul > li:nth-child(1) > a") private WebElement changePassWord;
+    @FindBy(className = "logout")
+    private WebElement logout_btn;
+    @FindBy(className = "ok")
+    private WebElement ok_btn;
+    @FindBy(className = "cancel")
+    private WebElement cancel_btn;
     @FindBy(css = "li:nth-child(1) > a")
-    private WebElement changePassWord;
-    @FindBy(css = "#page-title") private WebElement hasSettingTitle;
+    private WebElement changePassWord_btn;
+    @FindBy(css = "#page-title")
+    private WebElement hasSettingTitle_lbl;
 
     public void logOut(){
         waitUntilPageReady();
         waitUntilClickable(By.className("logout"));
-        this.logout.click();
+        this.logout_btn.click();
     }
 
     public void setOkButton(){
         waitUntilPageReady();
         waitUntilClickable(By.className("ok"));
-        this.okbutton.click();
+        this.ok_btn.click();
     }
 
     public boolean hasSettingPage(){
         waitUntilPageReady();
-        waitUntilVisible(hasSettingTitle);
-        return hasSettingTitle.isDisplayed();
+        waitUntilVisible(hasSettingTitle_lbl);
+        return hasSettingTitle_lbl.isDisplayed();
     }
 
     public void changePassWord() {
         waitUntilPageReady();
         waitUntilClickable(By.cssSelector("li:nth-child(1) > a"));
-        this.changePassWord.click();
+        this.changePassWord_btn.click();
     }
 }
