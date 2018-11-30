@@ -17,7 +17,7 @@ Feature: Pdp features
     When I ask a valid_question
     Then I should see valid_question on the question list
 
-  @18008857 @checkout_regression @checkout_smoke @no_id
+  @18008857 @checkout_regression @checkout_smoke @no_id @no_th
   Scenario: Ask invalid questions
     Given I login by api with email and password
     And I go to a normal pdp page
