@@ -59,16 +59,20 @@ public class Landing_Page extends PageObject {
     public boolean verifySellOnLazadaLandingPage() {
         waitUntilPageReady();
         String countryCode = Global.map.get("currentCountry").toString();
-        if(isDarazSite()) {
-            if(currentUrl().contains("shop")) {
+        if (isDarazSite()) {
+            if (countryCode.contains("mm")) {
                 return (currentUrl().contains(countryCode) && currentUrl().contains(Global.config.getString("homepage.sellOn_shop_text")));
-            }
-            else {
+            } else if (countryCode.contains("lk")) {
+                return (currentUrl().contains(countryCode) && currentUrl().contains("Sell"));
+            } else {
                 return (currentUrl().contains(countryCode) && currentUrl().contains(Global.config.getString("homepage.sellOn_daraz_text")));
             }
-        }
-        else {
-            return (currentUrl().contains(countryCode) && currentUrl().contains(Global.config.getString("homepage.sellOn_lazada_text")));
+        } else {
+            if (countryCode.contains("ph")) {
+                return (currentUrl().contains(countryCode) && currentUrl().contains("PHCampaign"));
+            } else {
+                return (currentUrl().contains(countryCode) && currentUrl().contains(Global.config.getString("homepage.sellOn_lazada_text")));
+            }
         }
     }
 
