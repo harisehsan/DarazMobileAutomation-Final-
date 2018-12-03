@@ -14,7 +14,7 @@ public class Cart_PopUp extends PageObject {
         checkout_btn.click();
     }
 
-    public int checkItemQuantity(){
+    public int getItemQuantity(){
         waitUntilVisible(itemQuantity_lbl);
         return Integer.valueOf(itemQuantity_lbl.getText());
     }

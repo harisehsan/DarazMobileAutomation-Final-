@@ -28,42 +28,51 @@ public class PdpSteps extends BaseSteps {
     }
 
     @Then("^I should see wishlist icon turns to orange$")
-    public void wishlistIconClicked() {
+    public void isWishlistIconChangedColor() {
         Assert.assertEquals(on(Pdp_Page.class).currentWishlistIconColor(), Global.config.getString("pdp.wishlist_clicked_icon_color"));
     }
 
     @Then("^I should see the product on My wishlist page$")
-    public void productMovedToMyWishlist() {
+    public void isProductMovedToMyWishlist() {
         on(Pdp_Page.class).openWishlistPage();
-        on(MyWishlist_Page.class).checkProductExistInMyWishlist();
+        Assert.assertTrue(on(MyWishlist_Page.class).isProductDisplayedInMyWishlist(), "Product is not displayed in My wishlist page");
     }
 
     @When("^I ask a (.*?)$")
-    public void askQuestion(String question) {
-        if (question.equals("valid_question")) {
-            on(Pdp_Page.class).askQuestion(Global.config.getString("pdp.ask_valid_question"));
-        } else if (question.equals("question_include_email")) {
-            on(Pdp_Page.class).askQuestion(Global.config.getString("pdp.question_include_email"));
-        } else if (question.equals("question_include_phonenumber")) {
-            on(Pdp_Page.class).askQuestion(Global.config.getString("pdp.question_include_phonenumber"));
-        } else if (question.equals("question_include_externalWebLink")) {
-            on(Pdp_Page.class).askQuestion(Global.config.getString("pdp.question_include_externalWebLink"));
+    public void askQuestion(String questionType) {
+        switch (questionType) {
+            case "valid_question":
+                on(Pdp_Page.class).askQuestion(Global.config.getString("pdp.ask_valid_question"));
+                break;
+            case "question_contain_email":
+                on(Pdp_Page.class).askQuestion(Global.config.getString("pdp.question_contain_email"));
+                break;
+            case "question_contain_phonenumber":
+                on(Pdp_Page.class).askQuestion(Global.config.getString("pdp.question_contain_phonenumber"));
+                break;
+            case "question_contain_externalWebLink":
+                on(Pdp_Page.class).askQuestion(Global.config.getString("pdp.question_contain_externalWebLink"));
+                break;
         }
     }
 
     @Then("^I should see valid_question on the question list$")
-    public void firstQuestion() {
+    public void getFirstQuestion() {
         Assert.assertEquals(on(Pdp_Page.class).getFirstQuestion(), Global.config.getString("pdp.ask_valid_question"), "Verification failed: Valid question is not found");
     }
 
     @Then("^I should see error message that (.*?)$")
     public void errorMessageForInvalidQuestion(String errorMessage) {
-        if (errorMessage.equals("question_should_not_contain_email")) {
-            Assert.assertEquals(on(Pdp_Page.class).errorMessageForInvalidQuestion(), "Your question should not contain email.", "Verification failed: No error message for invalid question");
-        } else if (errorMessage.equals("question_should_not_contain_phonenumber")) {
-            Assert.assertEquals(on(Pdp_Page.class).errorMessageForInvalidQuestion(), "Your question should not contain phone number.", "Verification failed: No error message for invalid question");
-        } else if (errorMessage.equals("question_should_not_contain_externalWebLink")) {
-            Assert.assertEquals(on(Pdp_Page.class).errorMessageForInvalidQuestion(), "Your question should not contain external url(s)", "Verification failed: No error message for invalid question");
+        switch (errorMessage) {
+            case "question_should_not_contain_email":
+                Assert.assertEquals(on(Pdp_Page.class).errorMessageForInvalidQuestion(), Global.config.getString("pdp.error_message_for_question_contain_email"), "Verification failed: No error message for invalid question");
+                break;
+            case "question_should_not_contain_phonenumber":
+                Assert.assertEquals(on(Pdp_Page.class).errorMessageForInvalidQuestion(), Global.config.getString("pdp.error_message_for_question_contain_phonenumber"), "Verification failed: No error message for invalid question");
+                break;
+            case "question_should_not_contain_externalWebLink":
+                Assert.assertEquals(on(Pdp_Page.class).errorMessageForInvalidQuestion(), Global.config.getString("pdp.error_message_for_question_contain_externalWeblink"), "Verification failed: No error message for invalid question");
+                break;
         }
 
     }
@@ -74,12 +83,12 @@ public class PdpSteps extends BaseSteps {
     }
 
     @Then("^I should see Chat Now screen popup$")
-    public void checkMessagePopup() {
+    public void isMessagePopupDisplayed() {
         Assert.assertTrue(on(Pdp_Page.class).isMessageViewOpened(),"No message view is open");
     }
 
     @Then("^I should see lead time section$")
-    public void checkLeadTime() {
+    public void checkLeadTimeInfo() {
         Assert.assertTrue(on(Pdp_Page.class).isLeadtimeInfoDisplayed());
     }
 
@@ -88,14 +97,14 @@ public class PdpSteps extends BaseSteps {
         on(Pdp_Page.class).clickAddToCartButton();
     }
 
-    @And("^I click on Add to cart button - user not login$")
+    @And("^I click on Add to cart button as a guest$")
     public void addToCartBeforeLogin() {
         on(Pdp_Page.class).clickAddToCartButtonBeforeLogin();
     }
 
     @Then("^I should see Login form$")
-    public void loginFormExist() {
-        Assert.assertTrue(on(Pdp_Page.class).loginFormExist());
+    public void isLoginFormDisplayed() {
+        Assert.assertTrue(on(Pdp_Page.class).isLoginFormDisplayed());
     }
 
     @When("^I close Login form$")
@@ -120,7 +129,7 @@ public class PdpSteps extends BaseSteps {
 
     @Then("^I should be on Checkout Shipping page$")
     public void onCheckoutShipping() {
-        on(CheckoutShipping_Page.class).onCheckoutShipping();
+        Assert.assertTrue(on(CheckoutShipping_Page.class).isOnCheckoutShipping(), "User is not directed to Checkout Shipping page");
     }
 
     @And("^I click plus icon to increase quantity$")
@@ -134,34 +143,26 @@ public class PdpSteps extends BaseSteps {
     }
 
     @Then("^I should see product quantity is (.*?)$")
-    public void checkItemQuantity(String quantity) {
-        Assert.assertEquals(quantity, on(Pdp_Page.class).itemQuantity());
+    public void checkItemQuantity(int quantity) {
+        Assert.assertEquals(quantity, on(Pdp_Page.class).getItemQuantity(), "Product quantity is not correct");
     }
 
-    @And("^I get maximum available number of product$")
-    public void getMaxAvailableQuantity() {
-        Global.map.put("Max Available Quantity", on(Pdp_Page.class).maxAvailableQuantity());
+    @And("^I enter a number that equals to maximum available quantity$")
+    public void enterQuantity() {
+        Global.map.put("Max_Available_Quantity", on(Pdp_Page.class).getMaxAvailableQuantity());
+        int number = (int) Global.map.get("Max_Available_Quantity");
+
+        on(Pdp_Page.class).enterProductQuantity(number);
     }
 
-    @And("^I enter a number that (.*?) maximum number$")
-    public void enterQuantity(String condition) {
-        int number = (int) Global.map.get("Max Available Quantity");
-        if (condition.equals("equal to")) {
-            on(Pdp_Page.class).enterQuantity(number);
-        } else if (condition.equals("greater than")) {
-            on(Pdp_Page.class).enterQuantity(number + 2);
-            System.out.println("aa");
-        }
+    @Then("^I should see that quantity number cannot exceed more than maximum available quantity$")
+    public void checkItemQuantityCanBeInputed() {
+        Assert.assertEquals(Global.map.get("Max_Available_Quantity"), on(Pdp_Page.class).getItemQuantity(), "Maximum Quantity that can be inputted is not correct");
     }
 
-    @Then("^I should see that quantity number is maximum number$")
-    public void checkItemQuantityIsMaxNumber() {
-        Assert.assertEquals(Global.map.get("Max Available Quantity").toString(), on(Pdp_Page.class).itemQuantity());
-    }
-
-    @Then("^I should see product quantity in Cart is 2$")
-    public void checkProductQuantityInCart(){
-        Assert.assertEquals(2, on(Cart_PopUp.class).checkItemQuantity(), "Incorrect quantity of product added to cart");
+    @Then("^I should see product quantity on Cart same to quantity on pdp$")
+    public void isProductQuantityInCartSameToItemQuantityOnPdp() {
+        Assert.assertEquals(on(Pdp_Page.class).getItemQuantity(), on(Cart_PopUp.class).getItemQuantity(), "Incorrect quantity of product added to cart");
     }
 
 }

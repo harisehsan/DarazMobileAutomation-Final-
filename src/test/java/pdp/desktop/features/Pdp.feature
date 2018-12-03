@@ -10,25 +10,25 @@ Feature: Pdp features
     Then I should see wishlist icon turns to orange
     And I should see the product on My wishlist page
 
-  @18008755 @checkout_regression @checkout_smoke @no_lzd_live @no_drz_live
+  @fail @18008755 @checkout_regression @checkout_smoke @no_lzd_live @no_drz_live
   Scenario: Ask valid question for shop
     Given I login by api with email and password
     And I go to a normal pdp page
     When I ask a valid_question
     Then I should see valid_question on the question list
 
-  @18008857 @checkout_regression @checkout_smoke @no_id
+  @fail @18008857 @checkout_regression @checkout_smoke
   Scenario: Ask invalid questions
     Given I login by api with email and password
     And I go to a normal pdp page
-    And I ask a question_include_email
+    And I ask a question_contain_email
     Then I should see error message that question_should_not_contain_email
-    And I ask a question_include_phonenumber
+    And I ask a question_contain_phonenumber
     Then I should see error message that question_should_not_contain_phonenumber
-    And I ask a question_include_externalWebLink
+    And I ask a question_contain_externalWebLink
     Then I should see error message that question_should_not_contain_externalWebLink
 
-  @18008960 @checkout_regression @checkout_smoke @no_drz
+  @fail1 @18008960 @checkout_regression @checkout_smoke @no_drz
   Scenario: Chat with shop
     Given I go to a normal pdp page
     And I click Chat Now
@@ -40,9 +40,9 @@ Feature: Pdp features
     Then I should see lead time section
 
   @18009106 @checkout_regression @checkout_smoke
-  Scenario: Check Buy Now/Add To Cart buttons work with user not login
+  Scenario: Check Buy Now/Add To Cart buttons work with a guest user
     When I go to a normal pdp page
-    And I click on Add to cart button - user not login
+    And I click on Add to cart button as a guest
     Then I should see Login form
     When I close Login form
     And I click on Buy Now button
@@ -69,16 +69,14 @@ Feature: Pdp features
     Then I should see product quantity is 1
     And I click plus icon to increase quantity
     And I click on Add to cart button
-    Then I should see product quantity in Cart is 2
+    Then I should see product quantity on Cart same to quantity on pdp
 
-  @18009359 @checkout_regression @checkout_smoke
-  Scenario: User is able to input a number <= Max available number of product (maximum 5)
+  @fail @18009359 @checkout_regression @checkout_smoke
+  Scenario: User cannot input a item quantity exceed than Max available number of product (maximum 5)
     Given I go to a normal pdp page
-    And I get maximum available number of product
-    And I enter a number that equal to maximum number
-    Then I should see that quantity number is maximum number
-    And I enter a number that greater than maximum number
-    Then I should see that quantity number is maximum number
+    And I enter a number that equals to maximum available quantity
+    Then I should see that quantity number cannot exceed more than maximum available quantity
+
 
 
 

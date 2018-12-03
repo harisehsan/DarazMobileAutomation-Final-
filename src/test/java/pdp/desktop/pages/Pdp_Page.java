@@ -45,13 +45,9 @@ public class Pdp_Page extends PageObject {
         page_url = url;
     }
 
-    public String getProductTitle(){
+    public String getProductTitle() {
         return productTitle_lbl.getText();
     }
-
-//    public void setProductTitle(String title){
-//        Global.map.put("currentProductTitle", title);
-//    }
 
     public void clickAddToCartButton() {
         waitUntilVisible(myAccount_list);
@@ -72,29 +68,29 @@ public class Pdp_Page extends PageObject {
                 changeLanguage_list.click();
                 englishVersion_listItem.click();
             }
-        }catch (NoSuchElementException ex){
+        }catch (NoSuchElementException ex) {
             System.out.println("Switch Language is not available");
         }
 
     }
 
-    public void addToWishlist(){
+    public void addToWishlist() {
         waitUntilVisible(wishlist_icon);
         wishlist_icon.click();
     }
 
-    public String currentWishlistIconColor(){
+    public String currentWishlistIconColor() {
          return wishlistActived_icon.getCssValue("color");
     }
 
-    public void openWishlistPage(){
+    public void openWishlistPage() {
         waitUntilVisible(myAccount_list);
         myAccount_list.click();
         waitUntilVisible(myWishlist_listItem);
         myWishlist_listItem.click();
     }
 
-    public void closeShippingFromOverseaPopup(){
+    public void closeShippingFromOverseaPopup() {
         try{
             if (shippingFromOversea_popup.isDisplayed()){
                 shippingFromOverseaClose_btn.click();
@@ -104,7 +100,7 @@ public class Pdp_Page extends PageObject {
         }
     }
 
-    public void askQuestion(String question){
+    public void askQuestion(String question) {
         waitUntilVisible(openQuestionTextArea_btn);
         waitUntilInvisibilityOf(By.cssSelector(".next-feedback-content"));
         openQuestionTextArea_btn.click();
@@ -113,12 +109,12 @@ public class Pdp_Page extends PageObject {
         askQuestion_btn.click();
     }
 
-    public String getFirstQuestion(){
+    public String getFirstQuestion() {
         waitUntilVisible(firstQuestion_lbl);
         return firstQuestion_lbl.getText();
     }
 
-    public String errorMessageForInvalidQuestion(){
+    public String errorMessageForInvalidQuestion() {
         waitUntilVisible(errorMessageForInvalidQuestion_lbl);
         return errorMessageForInvalidQuestion_lbl.getText() ;
     }
@@ -136,24 +132,24 @@ public class Pdp_Page extends PageObject {
 
     }
 
-    public boolean isMessageViewOpened(){
+    public boolean isMessageViewOpened() {
         return messageView_popup.isDisplayed();
     }
 
-    public boolean isLeadtimeInfoDisplayed(){
+    public boolean isLeadtimeInfoDisplayed() {
         return (deliveryOptionItem_lbl.isDisplayed() && shippingFeeItem_lbl.isDisplayed());
     }
 
-    public boolean loginFormExist(){
+    public boolean isLoginFormDisplayed() {
         waitUntilVisible(closeLoginForm_btn);
         return closeLoginForm_btn.isDisplayed();
     }
 
-    public void closeLoginForm(){
+    public void closeLoginForm() {
         closeLoginForm_btn.click();
     }
 
-    public void clickBuyNow(){
+    public void clickBuyNow() {
         waitUntilInvisibilityOf(By.cssSelector(".next-overlay-backdrop"));
         buyNow_btn.click();
     }
@@ -173,21 +169,21 @@ public class Pdp_Page extends PageObject {
         plus_icon.click();
     }
 
-    public void decreaseProductQuantity(){
+    public void decreaseProductQuantity() {
         waitUntilVisible(minus_icon);
         minus_icon.click();
     }
 
 
-    public String itemQuantity(){
-        return itemQuantity_lbl.getAttribute("value");
+    public int getItemQuantity() {
+        return Integer.valueOf(itemQuantity_lbl.getAttribute("value"));
     }
 
-    public int maxAvailableQuantity(){
+    public int getMaxAvailableQuantity() {
         return Integer.valueOf(itemQuantity_lbl.getAttribute("max"));
     }
 
-    public void enterQuantity(int itemNumber){
+    public void enterProductQuantity(int itemNumber) {
         itemQuantity_lbl.sendKeys(String.valueOf(itemNumber));
     }
 
