@@ -6,24 +6,27 @@ import org.openqa.selenium.support.FindBy;
 
 public class Member_VerifyEmail_PC_Page extends PageObject {
 
-    @FindBy(css = ".mod-input-sms input") private WebElement inputSMSCode;
-    @FindBy(className = "primary") private WebElement verifyBtn;
-    @FindBy(className = "mod-sendcode-btn") private WebElement sendCodeBtn;
+    @FindBy(css = ".mod-input-sms input")
+    private WebElement smsCode_txtField;
+    @FindBy(className = "primary")
+    private WebElement verify_btn;
+    @FindBy(className = "mod-sendcode-btn")
+    private WebElement sendCode_btn;
 
     public void processVerifyEmailBtn() {
         waitUntilPageReady();
-        waitUntilVisible(sendCodeBtn);
-        this.sendCodeBtn.click();
+        waitUntilVisible(sendCode_btn);
+        this.sendCode_btn.click();
     }
 
     public void inputSMSCode(String smsCode) {
         waitUntilPageReady();
-        waitUntilVisible(inputSMSCode);
-        this.inputSMSCode.click();
-        this.inputSMSCode.sendKeys(smsCode);
+        waitUntilVisible(smsCode_txtField);
+        this.smsCode_txtField.click();
+        this.smsCode_txtField.sendKeys(smsCode);
     }
 
     public void clickVerifyCodeBtn() {
-        this.verifyBtn.click();
+        this.verify_btn.click();
     }
 }

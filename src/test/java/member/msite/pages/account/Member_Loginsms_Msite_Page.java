@@ -9,28 +9,32 @@ public class Member_Loginsms_Msite_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url1") + "/user/login";
 
-    @FindBy(css = ".mod-input-phone input") private WebElement inputphone;
-    @FindBy(className = "mod-sendcode") private WebElement clicksendcode;
-    @FindBy(css =".mod-input-sms input") private WebElement inputsmscode;
-    @FindBy(className = "login-btn") private WebElement clickloginbtn;
+    @FindBy(css = ".mod-input-phone input")
+    private WebElement phone_txtField;
+    @FindBy(className = "mod-sendcode")
+    private WebElement sendCode_btn;
+    @FindBy(css = ".mod-input-sms input")
+    private WebElement smsCode_txtField;
+    @FindBy(className = "login-btn")
+    private WebElement login_btn;
 
     public void inputPhone(String phone){
         waitUntilPageReady();
-        this.inputphone.sendKeys(phone);
+        this.phone_txtField.sendKeys(phone);
     }
 
     public void clickSendCode() {
         waitUntilPageReady();
-        this.clicksendcode.click();
+        this.sendCode_btn.click();
     }
 
     public void inputSMSCode(String code){
         waitUntilPageReady();
-        this.inputsmscode.sendKeys(code);
+        this.smsCode_txtField.sendKeys(code);
     }
 
     public void clickLoginBtn(){
         waitUntilPageReady();
-        this.clickloginbtn.click();
+        this.login_btn.click();
     }
 }

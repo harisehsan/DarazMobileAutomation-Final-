@@ -79,10 +79,4 @@ public class MemberResetPasswordSteps extends BaseSteps {
         AllureAttachment.attachComment("reset_password", randomPassword);
         Global.map.put("new_reset_pass",randomPassword);
     }
-
-    @And("^I login email with new password after reset")
-    public void loginWithResetPass() throws Throwable {
-        String emailForReset = Global.config.getString("member.mail_for_reset");
-        on(Member_Login_Page.class).loginEmailPass(emailForReset,(String)Global.map.get("new_reset_pass"));
-    }
 }
