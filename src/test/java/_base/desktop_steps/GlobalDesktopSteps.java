@@ -22,6 +22,7 @@ public class GlobalDesktopSteps extends BaseSteps {
 
     @When("^I get the product title$")
     public void getProductTitle(){
-        on(Pdp_Page.class).setProductTitle(on(Pdp_Page.class).getProductTitle());
+        String currentProductTitle = on(Pdp_Page.class).getProductTitle();
+        Global.map.put("currentProductTitle", currentProductTitle);
     }
 }

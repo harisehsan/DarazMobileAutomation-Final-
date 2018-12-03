@@ -29,12 +29,12 @@ public class PdpSteps extends BaseSteps {
 
     @Then("^I should see wishlist icon turns to orange$")
     public void wishlistIconClicked() {
-        Assert.assertEquals(on(Pdp_Page.class).wishlistIconClicked(), Global.config.getString("pdp.wishlist_clicked_icon_color"));
+        Assert.assertEquals(on(Pdp_Page.class).currentWishlistIconColor(), Global.config.getString("pdp.wishlist_clicked_icon_color"));
     }
 
     @Then("^I should see the product on My wishlist page$")
     public void productMovedToMyWishlist() {
-        on(Pdp_Page.class).clickMyWishlistMenu();
+        on(Pdp_Page.class).openWishlistPage();
         on(MyWishlist_Page.class).checkProductExistInMyWishlist();
     }
 
@@ -75,12 +75,12 @@ public class PdpSteps extends BaseSteps {
 
     @Then("^I should see Chat Now screen popup$")
     public void checkMessagePopup() {
-        on(Pdp_Page.class).checkMessageViewPopup();
+        Assert.assertTrue(on(Pdp_Page.class).isMessageViewOpened(),"No message view is open");
     }
 
     @Then("^I should see lead time section$")
     public void checkLeadTime() {
-        Assert.assertTrue(on(Pdp_Page.class).checkLeadTimeExist());
+        Assert.assertTrue(on(Pdp_Page.class).isLeadtimeInfoDisplayed());
     }
 
     @And("^I click on Add to cart button$")
@@ -125,12 +125,12 @@ public class PdpSteps extends BaseSteps {
 
     @And("^I click plus icon to increase quantity$")
     public void increaseQuantity() {
-        on(Pdp_Page.class).increaseQuantity();
+        on(Pdp_Page.class).increaseProductQuantity();
     }
 
     @And("^I click minus icon to decrease quantity$")
     public void decreaseQuantity() {
-        on(Pdp_Page.class).decreaseQuantity();
+        on(Pdp_Page.class).decreaseProductQuantity();
     }
 
     @Then("^I should see product quantity is (.*?)$")
@@ -146,7 +146,6 @@ public class PdpSteps extends BaseSteps {
     @And("^I enter a number that (.*?) maximum number$")
     public void enterQuantity(String condition) {
         int number = (int) Global.map.get("Max Available Quantity");
-
         if (condition.equals("equal to")) {
             on(Pdp_Page.class).enterQuantity(number);
         } else if (condition.equals("greater than")) {

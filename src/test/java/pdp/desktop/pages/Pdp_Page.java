@@ -21,7 +21,7 @@ public class Pdp_Page extends PageObject {
     @FindBy(css = ".wishlist") private WebElement myWishlist_listItem;
     @FindBy(css = ".sfo") private WebElement shippingFromOversea_popup;
     @FindBy(css = ".sfo__close") private WebElement shippingFromOverseaClose_btn;
-    @FindBy(css = ".qna-ask-input") private WebElement openAskQuestion_btn;
+    @FindBy(css = ".qna-ask-input") private WebElement openQuestionTextArea_btn;
     @FindBy(css = ".qna-ask-input textarea") private WebElement askQuestion_txtArea;
     @FindBy(css = ".qna-ask-btn") private WebElement askQuestion_btn;
     @FindBy(css = ".qna-ask-box-tips") private WebElement askQuestionTip_lbl;
@@ -49,27 +49,25 @@ public class Pdp_Page extends PageObject {
         return productTitle_lbl.getText();
     }
 
-    public void setProductTitle(String title){
-        Global.map.put("currentProductTitle", title);
-    }
+//    public void setProductTitle(String title){
+//        Global.map.put("currentProductTitle", title);
+//    }
 
-    public void clickAddToCartButton()
-    {
+    public void clickAddToCartButton() {
         waitUntilVisible(myAccount_list);
         waitUntilPageReady();
         waitUntilInvisibilityOf(By.cssSelector(".pdp-skeleton__variation-list-wrapper"));
         addToCart_btn.click();
     }
 
-    public void clickAddToCartButtonBeforeLogin()
-    {
+    public void clickAddToCartButtonBeforeLogin() {
         waitUntilVisible(addToCart_btn);
         addToCart_btn.click();
     }
 
-    public void switchToEnglish(){
+    public void switchToEnglish() {
         waitUntilPageReady();
-        try{
+        try {
             if (changeLanguage_list.isDisplayed()) {
                 changeLanguage_list.click();
                 englishVersion_listItem.click();
@@ -85,11 +83,11 @@ public class Pdp_Page extends PageObject {
         wishlist_icon.click();
     }
 
-    public String wishlistIconClicked(){
+    public String currentWishlistIconColor(){
          return wishlistActived_icon.getCssValue("color");
     }
 
-    public void clickMyWishlistMenu(){
+    public void openWishlistPage(){
         waitUntilVisible(myAccount_list);
         myAccount_list.click();
         waitUntilVisible(myWishlist_listItem);
@@ -107,9 +105,9 @@ public class Pdp_Page extends PageObject {
     }
 
     public void askQuestion(String question){
-        waitUntilVisible(openAskQuestion_btn);
+        waitUntilVisible(openQuestionTextArea_btn);
         waitUntilInvisibilityOf(By.cssSelector(".next-feedback-content"));
-        openAskQuestion_btn.click();
+        openQuestionTextArea_btn.click();
         waitUntilVisible(askQuestion_txtArea);
         askQuestion_txtArea.sendKeys(Keys.chord(Keys.CONTROL, "a"), question);
         askQuestion_btn.click();
@@ -138,11 +136,11 @@ public class Pdp_Page extends PageObject {
 
     }
 
-    public boolean checkMessageViewPopup(){
+    public boolean isMessageViewOpened(){
         return messageView_popup.isDisplayed();
     }
 
-    public boolean checkLeadTimeExist(){
+    public boolean isLeadtimeInfoDisplayed(){
         return (deliveryOptionItem_lbl.isDisplayed() && shippingFeeItem_lbl.isDisplayed());
     }
 
@@ -160,26 +158,26 @@ public class Pdp_Page extends PageObject {
         buyNow_btn.click();
     }
 
-    public boolean addToCartSuccessMessage(){
+    public boolean addToCartSuccessMessage() {
         waitUntilVisible(cartMessageText_lbl);
         return cartMessageText_lbl.isDisplayed();
     }
 
-    public void closeCartPopup()
-    {
+    public void closeCartPopup() {
         waitUntilVisible(closeCartPopup_btn);
         closeCartPopup_btn.click();
     }
 
-    public void increaseQuantity(){
+    public void increaseProductQuantity() {
         waitUntilVisible(plus_icon);
         plus_icon.click();
     }
 
-    public void decreaseQuantity(){
+    public void decreaseProductQuantity(){
         waitUntilVisible(minus_icon);
         minus_icon.click();
     }
+
 
     public String itemQuantity(){
         return itemQuantity_lbl.getAttribute("value");
