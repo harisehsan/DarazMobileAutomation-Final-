@@ -1,15 +1,10 @@
 package member.desktop.step_definitions.account;
 
 import base.BaseSteps;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import cucumber.api.java.en.*;
 import global.Global;
 import helper.RandomeHelper;
-import member.desktop.pages.account.Account_Page;
-import member.desktop.pages.account.Member_Change_Pass_Page;
-import member.desktop.pages.account.SignUp_Page;
-import org.testng.Assert;
+import member.desktop.pages.account.*;
 
 public class MemberSignupSteps extends BaseSteps {
 
@@ -27,7 +22,6 @@ public class MemberSignupSteps extends BaseSteps {
         String pass = Global.config.getString("member.pass");
         String name = Global.config.getString("member.account.name");
         on(SignUp_Page.class).signUpByEmail(randomEmail,pass,name);
-
     }
 
     @And("^I click on submit button")
@@ -46,30 +40,5 @@ public class MemberSignupSteps extends BaseSteps {
         String current_pass = Global.config.getString("member.pass");
         String new_pass = Global.config.getString("member.account.new_pass");
         on(Member_Change_Pass_Page.class).resetPass(current_pass,new_pass);
-    }
-
-    @Then("^I should see the account page$")
-    public void hasEmailOnAccountPage() {
-        on(Account_Page.class).untilLoaded();
-        String currentEmail = on(Account_Page.class).hasEmail();
-        String expectEmail = (String) Global.map.get("email_random");
-        Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
-    }
-
-    @Then("^I should see the email for reset on account page$")
-    public void hasEmailReset() {
-        on(Account_Page.class).untilLoaded();
-        String currentEmail = on(Account_Page.class).hasEmail();
-        String expectEmail = Global.config.getString("member.mail_for_reset");
-        Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
-    }
-
-    @Then("^I should see the logged account page")
-    public void hasEmailLogged() {
-        on(Account_Page.class).untilLoaded();
-        Global.browser.refresh();
-        String currentEmail = on(Account_Page.class).hasEmail();
-        String expectEmail = Global.config.getString("member.mail");
-        Assert.assertEquals(currentEmail,expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
     }
 }

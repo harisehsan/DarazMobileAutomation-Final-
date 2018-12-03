@@ -16,6 +16,8 @@ public class Browser {
     protected Properties properties;
     protected Logger logger = Logger.getLogger(Browser.class);
 
+    protected static final String USER_AGENT_OPTS_PREFIX = "user-agent=";
+
     protected Browser(){
         properties = PropHelper.loadPropertiesByFilePath("src/test/resources/browser.properties");
     }

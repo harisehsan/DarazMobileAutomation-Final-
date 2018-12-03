@@ -1,11 +1,10 @@
 package member.desktop.step_definitions.account;
+
 import cucumber.api.java.en.*;
 import global.Global;
-import member.desktop.pages.account.Account_Page;
-import member.desktop.pages.account.Member_SignUp_SMS_Page;
+import member.desktop.pages.account.*;
 import base.BaseSteps;
 import helper.RandomeHelper;
-import org.testng.Assert;
 
 public class MemberSignupSMSSteps extends BaseSteps {
     @Given("^I go to the sign up page by smsphone")
@@ -25,6 +24,7 @@ public class MemberSignupSMSSteps extends BaseSteps {
     @And("^I input the phonenumber")
     public void inputPhone() throws Throwable {
         String mobilephone = Global.config.getString("member.phone_number_signup");
+        Global.map.put("mobile_phone_number", mobilephone);
         on(Member_SignUp_SMS_Page.class).inputPhoneNumber(mobilephone + RandomeHelper.generatePhoneNumber());
     }
 
@@ -33,14 +33,8 @@ public class MemberSignupSMSSteps extends BaseSteps {
         on(Member_SignUp_SMS_Page.class).setSliderbtn();
     }
 
-
     @And("^On signup by SMS i click submit button")
     public void clickSubmit() throws Throwable {
         on(Member_SignUp_SMS_Page.class).submitButton();
-    }
-
-    @And("^I should see the account is verified")
-    public void isVerified() throws Throwable {
-        Assert.assertTrue(on(Account_Page.class).isVerified(),"Checking is verified icon should be display if user has updated mobile phone");
     }
 }

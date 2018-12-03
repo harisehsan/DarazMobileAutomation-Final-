@@ -10,32 +10,36 @@ public class Member_Complete_Your_Profile_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url1") + "/user/complete-profile";
 
-    @FindBy(css = ".mod-input-name input") private WebElement inputName;
-    @FindBy(css = ".mod-input-email input") private WebElement inputEmail;
-    @FindBy(css = ".mod-input-password input") private WebElement inputPassWord;
-    @FindBy(className = "complete-profile-btn") private WebElement completeBtn;
+    @FindBy(css = ".mod-input-name input")
+    private WebElement name_txtField;
+    @FindBy(css = ".mod-input-email input")
+    private WebElement email_txtField;
+    @FindBy(css = ".mod-input-password input")
+    private WebElement password_txtField;
+    @FindBy(className = "complete-profile-btn")
+    private WebElement complete_btn;
 
     public void inputName(String name){
         waitUntilPageReady();
-        waitUntilVisible(inputName);
-        this.inputName.sendKeys(name);
+        waitUntilVisible(name_txtField);
+        this.name_txtField.sendKeys(name);
     }
 
     public void inputEmail(String email) {
         waitUntilPageReady();
-        waitUntilVisible(inputEmail);
-        this.inputEmail.sendKeys(email);
+        waitUntilVisible(email_txtField);
+        this.email_txtField.sendKeys(email);
     }
 
     public void inputPassword(String pass){
         waitUntilPageReady();
-        waitUntilVisible(inputPassWord);
-        this.inputPassWord.sendKeys(pass);
+        waitUntilVisible(password_txtField);
+        this.password_txtField.sendKeys(pass);
     }
 
     public void completeButton() {
         waitUntilPageReady();
         waitUntilClickable(By.className("complete-profile-btn"));
-        this.completeBtn.click();
+        this.complete_btn.click();
     }
 }

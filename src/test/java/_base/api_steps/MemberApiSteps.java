@@ -8,6 +8,7 @@ import helper.RandomeHelper;
 import helper.XhrHelper;
 import com.typesafe.config.Config;
 import member.desktop.pages.account.Login_Page;
+import io.qameta.allure.Allure;
 
 public class MemberApiSteps extends BaseSteps {
 
@@ -15,7 +16,7 @@ public class MemberApiSteps extends BaseSteps {
     public void loginByApi(){
         visit(Login_Page.class);
         String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
-        String email = Global.config.getString("member.mail");
+        String email = Global.config.getString("member.account.mail_test");
         String pass = Global.config.getString("member.pass");
         String apiUrl = Global.config.getString("member.url")+"/user/api/login";
         String [] args = {apiUrl,email,pass,csrfToken};
@@ -34,6 +35,7 @@ public class MemberApiSteps extends BaseSteps {
         String apiUrl = Global.config.getString("member.url")+"/user/api/login";
         String [] args = {apiUrl,mobilePhone,pass,csrfToken};
         JsonObject response = XhrHelper.executeXhrRequest("member_login.js",args);
+        Allure.addAttachment("Json Response", String.valueOf(response));
         if(!String.valueOf(response.get("success")).equalsIgnoreCase("true")){
             throw new RuntimeException(String.format("Login with credential %s/%s fail . Response from server: %s",mobilePhone,pass,String.valueOf(response)));
         }
@@ -82,6 +84,7 @@ public class MemberApiSteps extends BaseSteps {
         String apiUrl = Global.config.getString("member.url")+"/user/api/register";
         String [] args = {apiUrl,mobilePhone,pass,name,csrfToken};
         JsonObject response = XhrHelper.executeXhrRequest("member_signup.js",args);
+        Allure.addAttachment("Json Response", String.valueOf(response));
         if(!String.valueOf(response.get("success")).equalsIgnoreCase("true")){
             throw new RuntimeException(String.format("Sign up with credential %s/%s fail . Response from server: %s",mobilePhone,pass,String.valueOf(response)));
         }

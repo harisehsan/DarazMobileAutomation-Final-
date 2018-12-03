@@ -1,5 +1,6 @@
 package member.msite.step_definitions.account;
 
+import allure.AllureAttachment;
 import cucumber.api.java.en.*;
 import global.Global;
 import member.msite.pages.account.Member_AccountSetting_Msite_Page;
@@ -25,9 +26,11 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
 
     @And("^I input account information to login by email Msite page")
     public void logInByEmailMsite() throws Throwable {
-        String email = Global.config.getString("member.mail");
+        String email = Global.config.getString("member.account.mail_test");
+        Global.map.put("email_login", email);
         on(Member_Loginemail_Msite_Page.class).inputEmail(email);
         String pass = Global.config.getString("member.pass");
+        Global.map.put("password_login", pass);
         on(Member_Loginemail_Msite_Page.class).inputPass(pass);
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
     }
@@ -46,6 +49,9 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
     @Then("^I should stayed in account page")
     public void hasStayOnAccountPage(){
         Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking user should be stayed in account page after logging in success");
+        String email = (String) Global.map.get("email_login");
+        String password = (String) Global.map.get("password_login");
+        on(Member_Account_Msite_Page.class).allureMailUrlPass(email, password);
     }
 
     @Then("^I should stayed in setting account page")

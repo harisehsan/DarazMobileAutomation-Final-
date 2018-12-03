@@ -10,35 +10,40 @@ public class Member_Login_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url")+"/user/login";
 
-    @FindBy(css = ".mod-input-loginName input") private WebElement email;
-    @FindBy(css = "[type='password']") private WebElement passWord;
-    @FindBy(css = ".mod-login-btn") private WebElement submit;
-    @FindBy(className = "mod-login-btn") private WebElement login;
-    @FindBy(className = "mod-login-forgot") private WebElement resetPassBtn;
+    @FindBy(css = ".mod-input-loginName input")
+    private WebElement email_txtField;
+    @FindBy(css = "[type='password']")
+    private WebElement passWord_txtField;
+    @FindBy(css = ".mod-login-btn")
+    private WebElement submit_btn;
+    @FindBy(className = "mod-login-btn")
+    private WebElement login_btn;
+    @FindBy(className = "mod-login-forgot")
+    private WebElement resetPass_btn;
 
     public void submitButton() {
-        waitUntilVisible(submit);
+        waitUntilVisible(submit_btn);
         waitUntilPageReady();
-        submit.click();
+        submit_btn.click();
     }
 
     public boolean hasID() {
-        waitUntilVisible(login);
-        return this.login.isEnabled();
+        waitUntilVisible(login_btn);
+        return this.login_btn.isEnabled();
     }
 
     public void clickResetPassBtn() {
         waitUntilPageReady();
-        this.resetPassBtn.click();
+        this.resetPass_btn.click();
     }
 
     public void loginEmailPass(String emailInfo, String newPass) {
         waitUntilPageReady();
-        waitUntilVisible(email);
-        this.email.sendKeys(emailInfo);
-        this.passWord.sendKeys(newPass);
+        waitUntilVisible(email_txtField);
+        this.email_txtField.sendKeys(emailInfo);
+        this.passWord_txtField.sendKeys(newPass);
         waitUntilClickable(By.cssSelector(".mod-login-btn"));
-        this.submit.click();
+        this.submit_btn.click();
         waitUntilInvisibilityOf(By.cssSelector(".mod-login-btn"));
     }
 }
