@@ -10,14 +10,14 @@ Feature: Pdp features
     Then I should see wishlist icon turns to orange
     And I should see the product on My wishlist page
 
-  @fail @18008755 @checkout_regression @checkout_smoke @no_lzd_live @no_drz_live
+  @18008755 @checkout_regression @checkout_smoke @no_lzd_live @no_drz_live
   Scenario: Ask valid question for shop
     Given I login by api with email and password
     And I go to a normal pdp page
     When I ask a valid_question
     Then I should see valid_question on the question list
 
-  @fail @18008857 @checkout_regression @checkout_smoke
+  @18008857 @checkout_regression @checkout_smoke
   Scenario: Ask invalid questions
     Given I login by api with email and password
     And I go to a normal pdp page
@@ -28,7 +28,7 @@ Feature: Pdp features
     And I ask a question_contain_externalWebLink
     Then I should see error message that question_should_not_contain_externalWebLink
 
-  @fail1 @18008960 @checkout_regression @checkout_smoke @no_drz
+  @18008960 @checkout_regression @checkout_smoke @no_drz
   Scenario: Chat with shop
     Given I go to a normal pdp page
     And I click Chat Now
@@ -71,7 +71,7 @@ Feature: Pdp features
     And I click on Add to cart button
     Then I should see product quantity on Cart same to quantity on pdp
 
-  @fail @18009359 @checkout_regression @checkout_smoke
+  @18009359 @checkout_regression @checkout_smoke
   Scenario: User cannot input a item quantity exceed than Max available number of product (maximum 5)
     Given I go to a normal pdp page
     And I enter a number that equals to maximum available quantity
