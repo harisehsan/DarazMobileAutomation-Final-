@@ -65,4 +65,13 @@ public class OverViewSteps extends BaseSteps {
         on(Landing_Page.class).verifyAppStoreLandingPage();
     }
 
+    @And("^I click on Sell On Lazada label")
+    public void clickOnSellOnLazada() {
+        on(Home_Page.class).clickOnSellOnLazada();
+    }
+
+    @Then ("^I should land on Sell On Lazada Page")
+    public void verifySellOnLazadaLandingPage() {
+        Assert.assertTrue(on(Landing_Page.class).verifySellOnLazadaLandingPage(),"Can't land on Sell On Page");
+    }
 }

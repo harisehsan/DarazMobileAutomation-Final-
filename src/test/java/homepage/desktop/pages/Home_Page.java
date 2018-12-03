@@ -1,10 +1,12 @@
 package homepage.desktop.pages;
 
+import base.PageObject;
 import global.Global;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import base.*;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Home_Page extends PageObject {
 
@@ -15,6 +17,8 @@ public class Home_Page extends PageObject {
     @FindBy(css = ".promotion-text") private WebElement promotion_lbl;
     @FindBy(css = ".app-google") private WebElement playStore_icon;
     @FindBy(css = ".app-apple") private WebElement appStore_icon;
+    @FindBy(css = ".cyan") private WebElement sellOnLazada_lbl;
+    @FindBy(css = "#topActionSell") private WebElement sellOnDaraz_lbl;
 
     public void clickToLoginPage() {
         waitUntilVisible(login_btn);
@@ -38,13 +42,13 @@ public class Home_Page extends PageObject {
         return promotion_lbl.isDisplayed();
     }
 
-    private boolean isItDarazSite() {
+    private boolean isDarazSite() {
         return currentUrl().contains("daraz") || currentUrl().contains("shop");
     }
 
     public void clickOnPlayQRCode() {
         waitUntilPageReady();
-        if (isItDarazSite()) {
+        if (isDarazSite()) {
             if (currentUrl().contains("daraz"))
                 Global.map.put("whichSite", "daraz");
             else
@@ -57,7 +61,7 @@ public class Home_Page extends PageObject {
 
     public void clickOnAppStoreIcon() {
         waitUntilPageReady();
-        if (isItDarazSite()) {
+        if (isDarazSite()) {
             if (currentUrl().contains("daraz"))
                 Global.map.put("whichSite", "daraz");
             else
@@ -66,6 +70,25 @@ public class Home_Page extends PageObject {
             Global.map.put("whichSite", "lazada");
         }
         appStore_icon.click();
+    }
+
+    public void clickOnSellOnLazada() {
+        waitUntilPageReady();
+        getCountryCode();
+        if(isDarazSite()) {
+            sellOnDaraz_lbl.click();
+        }
+        else {
+            sellOnLazada_lbl.click();
+        }
+    }
+
+    private void getCountryCode() {
+        Pattern pattern = Pattern.compile("\\.([a-z]{2,3})/?$");
+        Matcher matcher = pattern.matcher(currentUrl().toString());
+        if (matcher.find()) {
+            Global.map.put("currentCountry", matcher.group());
+        }
     }
 }
 

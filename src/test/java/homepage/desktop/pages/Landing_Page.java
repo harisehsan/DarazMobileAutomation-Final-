@@ -55,4 +55,24 @@ public class Landing_Page extends PageObject {
             Assert.assertTrue(result, "Fail cannot reach Shop App Store Landing Page");
         }
     }
+
+    public boolean verifySellOnLazadaLandingPage() {
+        waitUntilPageReady();
+        String countryCode = Global.map.get("currentCountry").toString();
+        if(isDarazSite()) {
+            if(currentUrl().contains("shop")) {
+                return (currentUrl().contains(countryCode) && currentUrl().contains(Global.config.getString("homepage.sellOn_shop_text")));
+            }
+            else {
+                return (currentUrl().contains(countryCode) && currentUrl().contains(Global.config.getString("homepage.sellOn_daraz_text")));
+            }
+        }
+        else {
+            return (currentUrl().contains(countryCode) && currentUrl().contains(Global.config.getString("homepage.sellOn_lazada_text")));
+        }
+    }
+
+    private boolean isDarazSite() {
+        return currentUrl().contains("daraz") || currentUrl().contains("shop");
+    }
 }
