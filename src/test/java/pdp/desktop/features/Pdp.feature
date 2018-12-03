@@ -32,7 +32,7 @@ Feature: Pdp features
   Scenario: Chat with shop
     Given I go to a normal pdp page
     And I click Chat Now
-    Then I should see Chat Now screen popup
+    Then I should see Message popup opening
 
   @18009022 @checkout_regression @checkout_smoke
   Scenario: Check LeadTime section exist on pdp
@@ -40,7 +40,7 @@ Feature: Pdp features
     Then I should see lead time section
 
   @18009106 @checkout_regression @checkout_smoke
-  Scenario: Check Buy Now/Add To Cart buttons work with a guest user
+  Scenario: Check Buy Now/Add To Cart buttons work with guest user
     When I go to a normal pdp page
     And I click on Add to cart button as a guest
     Then I should see Login form
@@ -49,7 +49,7 @@ Feature: Pdp features
     Then I should see Login form
 
   @18009198 @checkout_regression @checkout_smoke @no_lzd
-  Scenario: Check Buy Now/Add To Cart buttons work with user already login
+  Scenario: Check Buy Now/Add To Cart buttons work with login user
     Given I go to a normal pdp page
     And I sign up by api
     And I create a new member address by api

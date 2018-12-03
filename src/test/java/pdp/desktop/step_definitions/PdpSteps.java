@@ -82,9 +82,9 @@ public class PdpSteps extends BaseSteps {
         on(Pdp_Page.class).chatNow();
     }
 
-    @Then("^I should see Chat Now screen popup$")
+    @Then("^I should see Message popup opening$")
     public void isMessagePopupDisplayed() {
-        Assert.assertTrue(on(Pdp_Page.class).isMessageViewOpened(),"No message view is open");
+        Assert.assertTrue(on(Pdp_Page.class).isMessageViewOpened(),"No message popup is open");
     }
 
     @Then("^I should see lead time section$")
