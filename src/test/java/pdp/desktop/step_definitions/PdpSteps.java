@@ -104,7 +104,7 @@ public class PdpSteps extends BaseSteps {
 
     @Then("^I should see Login form$")
     public void isLoginFormDisplayed() {
-        Assert.assertTrue(on(Pdp_Page.class).isLoginFormDisplayed());
+        Assert.assertTrue(on(Pdp_Page.class).isLoginFormDisplayed(), "Login form is not displayed");
     }
 
     @When("^I close Login form$")
@@ -119,7 +119,7 @@ public class PdpSteps extends BaseSteps {
 
     @Then("^I should see Cart popup with product added to Cart$")
     public void addToCartSuccess() {
-        Assert.assertTrue(on(Pdp_Page.class).addToCartSuccessMessage());
+        Assert.assertTrue(on(Pdp_Page.class).addToCartSuccessMessage(), "No success message on Cart popup");
     }
 
     @When("^I close Cart popup$")
