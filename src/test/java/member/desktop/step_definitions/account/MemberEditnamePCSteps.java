@@ -28,5 +28,6 @@ public class MemberEditnamePCSteps extends BaseSteps {
         String currentName = on(Account_Page.class).hasName();
         String expectName = Global.config.getString("member.account.name_edit");
         Assert.assertEquals(currentName,expectName,"Checking the edited name should be updated after editing name");
+        on(Account_Page.class).allureNameAfterChanging(Global.config.getString("member.account.name"),currentName);
     }
 }

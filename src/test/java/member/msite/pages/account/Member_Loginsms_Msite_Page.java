@@ -7,18 +7,14 @@ import base.PageObject;
 
 public class Member_Loginsms_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url1") + "/user/login";
+    public static String page_url = Global.config.getString("member.msite_url") + "/user/login";
 
-    @FindBy(css = ".mod-input-phone input")
-    private WebElement phone_txtField;
-    @FindBy(className = "mod-sendcode")
-    private WebElement sendCode_btn;
-    @FindBy(css = ".mod-input-sms input")
-    private WebElement smsCode_txtField;
-    @FindBy(className = "login-btn")
-    private WebElement login_btn;
+    @FindBy(css = ".mod-input-phone input") private WebElement phone_txtField;
+    @FindBy(className = "mod-sendcode") private WebElement sendCode_btn;
+    @FindBy(css = ".mod-input-sms input") private WebElement smsCode_txtField;
+    @FindBy(className = "login-btn") private WebElement login_btn;
 
-    public void inputPhone(String phone){
+    public void inputPhone(String phone) {
         waitUntilPageReady();
         this.phone_txtField.sendKeys(phone);
     }
@@ -28,12 +24,12 @@ public class Member_Loginsms_Msite_Page extends PageObject {
         this.sendCode_btn.click();
     }
 
-    public void inputSMSCode(String code){
+    public void inputSMSCode(String code ) {
         waitUntilPageReady();
         this.smsCode_txtField.sendKeys(code);
     }
 
-    public void clickLoginBtn(){
+    public void clickLoginBtn() {
         waitUntilPageReady();
         this.login_btn.click();
     }

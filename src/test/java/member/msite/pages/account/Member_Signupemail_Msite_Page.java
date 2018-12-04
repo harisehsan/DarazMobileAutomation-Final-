@@ -10,16 +10,13 @@ public class Member_Signupemail_Msite_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url") + "/user/register";
 
-    @FindBy(css = "div.signup-by-mobile-foot > div > button")
-    private WebElement signupMail_btn;
-    @FindBy(css = ".mod-input-name input")
-    private WebElement name_txtField;
-    @FindBy(css = ".mod-input-email input")
-    private WebElement email_txtField;
-    @FindBy(css = ".mod-input-password input")
-    private WebElement password_txtField;
-    @FindBy(className = "signup-by-email-btn")
-    private WebElement signup_btn;
+    @FindBy(css = "div.signup-by-mobile-foot > div > button") private WebElement signupMail_btn;
+    @FindBy(css = ".mod-input-name input") private WebElement name_txtField;
+    @FindBy(css = ".mod-input-email input") private WebElement email_txtField;
+    @FindBy(css = ".mod-input-password input") private WebElement password_txtField;
+    @FindBy(className = "signup-by-email-btn") private WebElement signup_btn;
+
+    private By signup_btn_by = By.className("signup-by-email-btn");
 
     public void signUpEmail() {
         waitUntilPageReady();
@@ -44,7 +41,7 @@ public class Member_Signupemail_Msite_Page extends PageObject {
 
     public void signUpButton() {
         waitUntilPageReady();
-        waitUntilClickable(By.className("signup-by-email-btn"));
+        waitUntilClickable(signup_btn_by);
         this.signup_btn.click();
     }
 

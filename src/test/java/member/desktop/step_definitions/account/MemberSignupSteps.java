@@ -17,9 +17,9 @@ public class MemberSignupSteps extends BaseSteps {
 
     @And("^I process to signup user by email on signup by email page")
     public void signUpByEmailProcess() throws Throwable {
-        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
+        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@mailinator.com";
         Global.map.put("email_random",randomEmail);
-        String pass = Global.config.getString("member.pass");
+        String pass = Global.config.getString("member.account.pass");
         String name = Global.config.getString("member.account.name");
         on(SignUp_Page.class).signUpByEmail(randomEmail,pass,name);
     }
@@ -37,8 +37,8 @@ public class MemberSignupSteps extends BaseSteps {
     @And("^I go to change password page")
     public void changePass() throws Throwable {
         visit(Member_Change_Pass_Page.class);
-        String current_pass = Global.config.getString("member.pass");
-        String new_pass = Global.config.getString("member.account.new_pass");
-        on(Member_Change_Pass_Page.class).resetPass(current_pass,new_pass);
+        String current_pass = Global.config.getString("member.account.pass");
+        String changed_pass = Global.config.getString("member.account.changed_pass");
+        on(Member_Change_Pass_Page.class).resetPass(current_pass,changed_pass);
     }
 }

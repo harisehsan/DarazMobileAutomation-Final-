@@ -10,16 +10,13 @@ public class Member_Login_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url")+"/user/login";
 
-    @FindBy(css = ".mod-input-loginName input")
-    private WebElement email_txtField;
-    @FindBy(css = "[type='password']")
-    private WebElement passWord_txtField;
-    @FindBy(css = ".mod-login-btn")
-    private WebElement submit_btn;
-    @FindBy(className = "mod-login-btn")
-    private WebElement login_btn;
-    @FindBy(className = "mod-login-forgot")
-    private WebElement resetPass_btn;
+    @FindBy(css = ".mod-input-loginName input") private WebElement email_txtField;
+    @FindBy(css = "[type='password']") private WebElement passWord_txtField;
+    @FindBy(css = ".mod-login-btn") private WebElement submit_btn;
+    @FindBy(className = "mod-login-btn") private WebElement login_btn;
+    @FindBy(className = "mod-login-forgot") private WebElement resetPass_btn;
+
+    private By submit_btn_by = By.cssSelector(".mod-login-btn");
 
     public void submitButton() {
         waitUntilVisible(submit_btn);
@@ -42,8 +39,8 @@ public class Member_Login_Page extends PageObject {
         waitUntilVisible(email_txtField);
         this.email_txtField.sendKeys(emailInfo);
         this.passWord_txtField.sendKeys(newPass);
-        waitUntilClickable(By.cssSelector(".mod-login-btn"));
+        waitUntilClickable(submit_btn_by);
         this.submit_btn.click();
-        waitUntilInvisibilityOf(By.cssSelector(".mod-login-btn"));
+        waitUntilInvisibilityOf(submit_btn_by);
     }
 }

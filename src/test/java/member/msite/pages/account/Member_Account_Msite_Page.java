@@ -9,14 +9,14 @@ import base.PageObject;
 
 public class Member_Account_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url1") + "/user/account";
+    public static String page_url = Global.config.getString("member.msite_url") + "/user/account";
 
-    @FindBy(css = "div.mod-minlogin.member > div")
-    private WebElement accountTittle_lbl;
-    @FindBy(css = "div.account-newsletter > div")
-    private WebElement newsletterConfig_btn;
-    @FindBy(css = "#address-book > a")
-    private WebElement addressBook_btn;
+    @FindBy(css = "div.mod-minlogin.member > div") private WebElement accountTittle_lbl;
+    @FindBy(css = "div.account-newsletter > div") private WebElement newsletterConfig_btn;
+    @FindBy(css = "#address-book > a") private WebElement addressBook_btn;
+
+    private By newsletterConfig_btn_by = By.cssSelector("div.account-newsletter > div");
+    private By addressBook_btn_by = By.cssSelector("#address-book > a");
 
     public boolean hasAccountTittle() {
         waitUntilPageReady();
@@ -26,7 +26,7 @@ public class Member_Account_Msite_Page extends PageObject {
 
     public void setNewsletterTrigger() {
         waitUntilPageReady();
-        waitUntilClickable(By.cssSelector("div.account-newsletter > div"));
+        waitUntilClickable(newsletterConfig_btn_by);
         this.newsletterConfig_btn.click();
     }
 
@@ -34,9 +34,9 @@ public class Member_Account_Msite_Page extends PageObject {
         return newsletterConfig_btn.getAttribute("class");
     }
 
-    public void clickAddress(){
+    public void clickAddress() {
         waitUntilPageReady();
-        waitUntilClickable(By.cssSelector("#address-book > a\""));
+        waitUntilClickable(addressBook_btn_by);
         this.addressBook_btn.click();
     }
 
@@ -48,5 +48,14 @@ public class Member_Account_Msite_Page extends PageObject {
 
     public void allureMobilePhone(String mobile) {
         AllureAttachment.attachComment("Mobile phone", mobile);
+    }
+
+    public void allureCurrentUrl() {
+        AllureAttachment.attachURL(page_url);
+    }
+
+    public void allureConfigNewsletter(String beforeConfigure, String afterConfigure) {
+        AllureAttachment.attachComment("Before configure Newsletter", beforeConfigure);
+        AllureAttachment.attachComment("After configure Newsletter", afterConfigure);
     }
 }
