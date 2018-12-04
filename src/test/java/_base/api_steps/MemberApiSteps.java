@@ -7,12 +7,14 @@ import global.Global;
 import helper.RandomeHelper;
 import helper.XhrHelper;
 import com.typesafe.config.Config;
+import member.desktop.pages.account.Login_Page;
 import io.qameta.allure.Allure;
 
 public class MemberApiSteps extends BaseSteps {
 
     @And("^I login by api with email and password$")
     public void loginByApi(){
+        visit(Login_Page.class);
         String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
         String email = Global.config.getString("member.account.mail_test");
         String pass = Global.config.getString("member.pass");
@@ -93,7 +95,7 @@ public class MemberApiSteps extends BaseSteps {
     public void createAddressByApi(){
         String apiUrl = Global.config.getString("member.url")+"/address/api/createAddress";
         String name=Global.config.getString("member.account.name");
-        String phone=Global.config.getString("member.account.phone_number_login");
+        String phone=Global.config.getString("member.phone_number_login");
         String locationTreeAddressArray=Global.config.getString("member.address.locationTreeAddressArray");
         String locationTreeAddressId=Global.config.getString("member.address.locationTreeAddressId");
         String locationTreeAddressName=Global.config.getString("member.address.locationTreeAddressName");
