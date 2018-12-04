@@ -40,11 +40,7 @@ public class Home_Page extends PageObject {
     public boolean verifyAppPopUp() {
         return promotion_lbl.isDisplayed();
     }
-
-    private boolean isDarazSite() {
-        return currentUrl().contains("daraz") || currentUrl().contains("shop");
-    }
-
+    
     public void clickOnPlayQRCode() {
         waitUntilPageReady();
         playStore_icon.click();
