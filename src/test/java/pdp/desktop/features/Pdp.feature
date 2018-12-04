@@ -34,10 +34,12 @@ Feature: Pdp features
     And I click Chat Now
     Then I should see Message popup opening
 
-  @18009022 @checkout_regression @checkout_smoke
-  Scenario: Check LeadTime section exist on pdp
+  @18009022 @checkout_regression @checkout_smoke @no_my @no_th @no_sg
+  Scenario: Check LeadTime function on pdp
     When I go to a normal pdp page
     Then I should see lead time section
+    When I change a new address for Leadtime
+    Then I should see Leadtime with new address
 
   @18009106 @checkout_regression @checkout_smoke
   Scenario: Check Buy Now/Add To Cart buttons work with guest user

@@ -165,4 +165,15 @@ public class PdpSteps extends BaseSteps {
         Assert.assertEquals(on(Pdp_Page.class).getItemQuantity(), on(Cart_PopUp.class).getItemQuantity(), "Incorrect quantity of product added to cart");
     }
 
+    @And("^I change a new address for Leadtime$")
+    public void changeAddressInLeadtime() {
+        on(Pdp_Page.class).clickChangeLink();
+        on(Pdp_Page.class).selectRandomAddress();
+    }
+
+    @Then("^I should see Leadtime with new address$")
+    public void isNewAddressSelected() {
+        Assert.assertEquals(on(Pdp_Page.class).getCurrentAddress(), on(Pdp_Page.class).randomAddress, "Random address is not selected");
+    }
+
 }

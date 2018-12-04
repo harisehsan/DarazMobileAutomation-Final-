@@ -8,6 +8,9 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+import java.util.Random;
+
 public class Pdp_Page extends PageObject {
 
     public static String page_url = "";
@@ -39,11 +42,16 @@ public class Pdp_Page extends PageObject {
     @FindBy(css = ".next-number-picker-handler-up") private WebElement plus_icon;
     @FindBy(css = ".next-number-picker-handler-down") private WebElement minus_icon;
     @FindBy(css = ".next-number-picker-input input") private WebElement itemQuantity_lbl;
+    @FindBy(css = ".location__link-change") private WebElement changeLeadtime_link;
+    @FindBy(css = ".automation-location-list-item") private List<WebElement> locationListItems;
+    @FindBy(css = ".location__address") private WebElement leadtimeAddress_lbl;
 
     public static void setUrl(String url)
     {
         page_url = url;
     }
+    public String randomAddress = "";
+
 
     public String getProductTitle() {
         return productTitle_lbl.getText();
@@ -174,7 +182,6 @@ public class Pdp_Page extends PageObject {
         minus_icon.click();
     }
 
-
     public int getItemQuantity() {
         return Integer.valueOf(itemQuantity_lbl.getAttribute("value"));
     }
@@ -185,6 +192,37 @@ public class Pdp_Page extends PageObject {
 
     public void enterProductQuantity(int itemNumber) {
         itemQuantity_lbl.sendKeys(String.valueOf(itemNumber));
+    }
+
+    public void clickChangeLink() {
+        waitUntilVisible(changeLeadtime_link);
+        changeLeadtime_link.click();
+    }
+
+    public void selectRandomAddress() {
+        selectRandomLocationListItem();
+
+        randomAddress = randomAddress + ", ";
+        selectRandomLocationListItem();
+
+        randomAddress = randomAddress + ", ";
+        selectRandomLocationListItem();
+    }
+
+    private void selectRandomLocationListItem() {
+        waitUntilInvisibilityOf(By.cssSelector(".location-level__loader"));
+        if (locationListItems.size() > 0) {
+            WebElement random_element = locationListItems.get(new Random().nextInt(locationListItems.size()));
+            randomAddress = randomAddress + random_element.getText();
+            waitUntilVisible(random_element);
+            random_element.click();
+        }
+    }
+
+    public String getCurrentAddress() {
+        waitUntilInvisibilityOf(By.cssSelector(".location-level__loader"));
+        waitUntilInvisibilityOf(By.cssSelector(".location-overlay"));
+        return leadtimeAddress_lbl.getText();
     }
 
 }
