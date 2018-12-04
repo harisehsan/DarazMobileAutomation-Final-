@@ -12,7 +12,7 @@ import java.util.List;
 public class MyWishlist_Page extends PageObject {
     @FindBy(css = ".wishlist-mod") private List<WebElement> productlist;
 
-    public boolean isProductDisplayedInMyWishlist() {
+    public boolean isProductDisplayed() {
         waitUntilPageReady();
         boolean productExist = false;
         for (WebElement element : productlist) {

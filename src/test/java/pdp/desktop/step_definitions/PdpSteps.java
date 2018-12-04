@@ -35,7 +35,7 @@ public class PdpSteps extends BaseSteps {
     @Then("^I should see the product on My wishlist page$")
     public void isProductMovedToMyWishlist() {
         on(Pdp_Page.class).openWishlistPage();
-        Assert.assertTrue(on(MyWishlist_Page.class).isProductDisplayedInMyWishlist(), "Product is not displayed in My wishlist page");
+        Assert.assertTrue(on(MyWishlist_Page.class).isProductDisplayed(), "Product is not displayed in My wishlist page");
     }
 
     @When("^I ask a (.*?)$")
