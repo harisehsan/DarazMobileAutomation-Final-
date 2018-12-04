@@ -18,6 +18,9 @@ public class Home_Page extends PageObject {
     @FindBy(css = "#topActionSell") private WebElement sellOnSite_lbl;
     @FindBy(css = ".care-item-anchor") private WebElement customerCareItems_lbl;
     @FindBy(xpath = "//*[@id='topActionCustomCare']/div/div/ul/li[1]/a") private WebElement helpCenter_lbl;
+    @FindBy(css = ".lzd-switch-item.currentSelected") private WebElement currentLanguage_lbl;
+    @FindBy(css = "#topActionSwitchLang") private WebElement switchLanguage_lbl;
+    @FindBy(css = "[data-lang=en]") private WebElement switchToEnglishLanguage_lbl;
 
     public void clickToLoginPage() {
         waitUntilVisible(login_btn);
@@ -42,10 +45,34 @@ public class Home_Page extends PageObject {
     }
 
     public boolean isCustomerCarePopUpDisplayed() {
-        waitUntilVisible(helpCenter_lbl);
-        return (customerCareItems_lbl.isDisplayed() && helpCenter_lbl.getText().equals(Global.config.getString("homepage.help_center_text")) );
+        waitUntilPageReady();
+            return (customerCareItems_lbl.isDisplayed() && helpCenter_lbl.getText().equals(Global.config.getString("homepage.help_center_text")));
     }
 
+    public boolean switchLanguage() {
+        if (switchLanguage_lbl.isDisplayed()) {
+            if (currentLanguage_lbl.getAttribute("data-lang").equals("vi") || currentLanguage_lbl.getAttribute("data-lang").equals("th") ) {
+                switchLanguage_lbl.click();
+                waitUntilVisible(switchToEnglishLanguage_lbl);
+                switchToEnglishLanguage_lbl.click();
+                waitUntilPageReady();
+                return checkPageSwitchSuccessful();
+            }
+            else {
+                return true;
+            }
+        }
+        else return true;
+    }
+
+    public boolean checkPageSwitchSuccessful() {
+        if (currentLanguage_lbl.getAttribute("data-lang").equals("vi") || currentLanguage_lbl.getAttribute("data-lang").equals("th") ) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 
     public void clickOnPlayQRCode() {
         waitUntilPageReady();
@@ -60,6 +87,7 @@ public class Home_Page extends PageObject {
     public void clickOnCustomerCareLabel() {
         waitUntilPageReady();
         customerCare_lbl.click();
+        waitUntilPageReady();
     }
 
     public void clickOnSellOnLazada() {

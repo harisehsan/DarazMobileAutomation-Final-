@@ -15,6 +15,7 @@ public class OverViewSteps extends BaseSteps {
     public void landInHomePage() throws Throwable
     {
                 visit(Home_Page.class);
+        Assert.assertTrue(on(Home_Page.class).switchLanguage(),"Can't change language");
     }
 
     @Then("^I click on log in to login page")
