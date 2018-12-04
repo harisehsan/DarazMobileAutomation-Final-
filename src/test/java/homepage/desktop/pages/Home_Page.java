@@ -15,6 +15,7 @@ public class Home_Page extends PageObject {
     @FindBy(css = ".promotion-text") private WebElement promotion_lbl;
     @FindBy(css = ".app-google") private WebElement playStore_icon;
     @FindBy(css = ".app-apple") private WebElement appStore_icon;
+    @FindBy(css = "#topActionCustomCare") private WebElement custimerCare_lbl;
 
     public void clickToLoginPage() {
         waitUntilVisible(login_btn);
@@ -36,6 +37,10 @@ public class Home_Page extends PageObject {
 
     public boolean verifyAppPopUp() {
         return promotion_lbl.isDisplayed();
+    }
+
+    public boolean customerCarePopUpIsDisplayed() {
+        return
     }
 
     private boolean isItDarazSite() {
@@ -66,6 +71,10 @@ public class Home_Page extends PageObject {
             Global.map.put("whichSite", "lazada");
         }
         appStore_icon.click();
+    }
+    public void clickOnCustomerCareLabel() {
+        waitUntilPageReady();
+        custimerCare_lbl.click();
     }
 }
 

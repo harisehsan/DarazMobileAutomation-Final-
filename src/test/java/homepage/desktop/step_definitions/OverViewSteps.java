@@ -33,6 +33,11 @@ public class OverViewSteps extends BaseSteps {
         Assert.assertTrue(on(Home_Page.class).verifyAppPopUp(),"Pop up can't display");
     }
 
+    @Then("^I see Customer Care pop up is display")
+    public void customerCarePopUpIsDisplayed()  {
+        Assert.assertTrue(on(Home_Page.class).customerCarePopUpIsDisplayed(),"Customer Care Pop up can't display");
+    }
+
     @And ("I click on App benefit text")
     public void clickAppBenefitTxt () {
         on(Home_Page.class).clickToAppLandingPage();
@@ -65,4 +70,8 @@ public class OverViewSteps extends BaseSteps {
         on(Landing_Page.class).verifyAppStoreLandingPage();
     }
 
+    @And("^I click on Customer Care label")
+    public void clickOnCustomerCareLabel() {
+        on(Home_Page.class).clickOnCustomerCareLabel();
+    }
 }
