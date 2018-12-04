@@ -167,12 +167,15 @@ public class PdpSteps extends BaseSteps {
 
     @And("^I change a new address for Leadtime$")
     public void changeAddressInLeadtime() {
+        String beforeChangedAddress = on(Pdp_Page.class).getCurrentAddress();
+        Global.map.put("beforeChangedAddress",beforeChangedAddress);
         on(Pdp_Page.class).clickChangeLink();
         on(Pdp_Page.class).selectRandomAddress();
     }
 
     @Then("^I should see Leadtime with new address$")
     public void isNewAddressSelected() {
+        on(Pdp_Page.class).waitUntilAddressChanged((String) Global.map.get("beforeChangedAddress"));
         Assert.assertEquals(on(Pdp_Page.class).getCurrentAddress(), on(Pdp_Page.class).randomAddress, "Random address is not selected");
     }
 

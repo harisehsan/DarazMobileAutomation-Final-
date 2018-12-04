@@ -46,10 +46,13 @@ public class Pdp_Page extends PageObject {
     @FindBy(css = ".automation-location-list-item") private List<WebElement> locationListItems;
     @FindBy(css = ".location__address") private WebElement leadtimeAddress_lbl;
 
-    public static void setUrl(String url)
-    {
+    private By location_loading_icon_by = By.cssSelector(".location-level__loader");
+    private By location_overlay_by = By.cssSelector(".location-overlay");
+
+    public static void setUrl(String url) {
         page_url = url;
     }
+
     public String randomAddress = "";
 
 
@@ -210,18 +213,24 @@ public class Pdp_Page extends PageObject {
     }
 
     private void selectRandomLocationListItem() {
-        waitUntilInvisibilityOf(By.cssSelector(".location-level__loader"));
+        waitUntilInvisibilityOf(location_loading_icon_by);
         if (locationListItems.size() > 0) {
-            WebElement random_element = locationListItems.get(new Random().nextInt(locationListItems.size()));
+            int randomIndex = new Random().nextInt(locationListItems.size());
+            WebElement random_element = locationListItems.get(randomIndex);
             randomAddress = randomAddress + random_element.getText();
             waitUntilVisible(random_element);
             random_element.click();
         }
     }
 
+
+    public void waitUntilAddressChanged(String beforeChangedAddress){
+        waitUntilInvisibilityOf(By.xpath(String.format("//div[text()[contains(.,'%s')]]",leadtimeAddress_lbl.getText())));
+    }
+
     public String getCurrentAddress() {
-        waitUntilInvisibilityOf(By.cssSelector(".location-level__loader"));
-        waitUntilInvisibilityOf(By.cssSelector(".location-overlay"));
+        waitUntilInvisibilityOf(location_loading_icon_by);
+        waitUntilInvisibilityOf(location_overlay_by);
         return leadtimeAddress_lbl.getText();
     }
 
