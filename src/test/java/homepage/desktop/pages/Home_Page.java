@@ -48,27 +48,11 @@ public class Home_Page extends PageObject {
 
     public void clickOnPlayQRCode() {
         waitUntilPageReady();
-        if (isDarazSite()) {
-            if (currentUrl().contains("daraz"))
-                Global.map.put("whichSite", "daraz");
-            else
-                Global.map.put("whichSite", "shop");
-        } else {
-            Global.map.put("whichSite", "lazada");
-        }
         playStore_icon.click();
     }
 
     public void clickOnAppStoreIcon() {
         waitUntilPageReady();
-        if (isDarazSite()) {
-            if (currentUrl().contains("daraz"))
-                Global.map.put("whichSite", "daraz");
-            else
-                Global.map.put("whichSite", "shop");
-        } else {
-            Global.map.put("whichSite", "lazada");
-        }
         appStore_icon.click();
     }
 

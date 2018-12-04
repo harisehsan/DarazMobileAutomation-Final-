@@ -51,7 +51,7 @@ public class OverViewSteps extends BaseSteps {
 
     @Then("^I should land on Google Play Page")
     public void verifyGoogleLandingPage()  {
-        on(Landing_Page.class).verifyGoogleLandingPage();
+        Assert.assertTrue(on(Landing_Page.class).isPlayStoreLandingPage(), "Fail cannot reach Play Store Landing Page");
     }
 
     @And("^I click on App Store icon")
@@ -62,7 +62,8 @@ public class OverViewSteps extends BaseSteps {
 
     @Then("^I should land on App Store Page")
     public void verifyAppStoreLandingPage()  {
-        on(Landing_Page.class).verifyAppStoreLandingPage();
+        Assert.assertTrue(on(Landing_Page.class).isAppStoreLandingPage(), "Fail cannot reach App Store Landing Page");
+
     }
 
     @And("^I click on Sell On Lazada label")
@@ -72,6 +73,6 @@ public class OverViewSteps extends BaseSteps {
 
     @Then ("^I should land on Sell On Lazada Page")
     public void verifySellOnLazadaLandingPage() {
-        Assert.assertTrue(on(Landing_Page.class).verifySellOnLazadaLandingPage(),"Can't land on Sell On Page");
+        Assert.assertTrue(on(Landing_Page.class).isSellOnLazadaLandingPage(),"Can't land on Sell On Lazada/Daraz Landing Page");
     }
 }
