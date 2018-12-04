@@ -17,8 +17,7 @@ public class Home_Page extends PageObject {
     @FindBy(css = ".promotion-text") private WebElement promotion_lbl;
     @FindBy(css = ".app-google") private WebElement playStore_icon;
     @FindBy(css = ".app-apple") private WebElement appStore_icon;
-    @FindBy(css = ".cyan") private WebElement sellOnLazada_lbl;
-    @FindBy(css = "#topActionSell") private WebElement sellOnDaraz_lbl;
+    @FindBy(css = "#topActionSell") private WebElement sellOnSite_lbl;
 
     public void clickToLoginPage() {
         waitUntilVisible(login_btn);
@@ -58,21 +57,7 @@ public class Home_Page extends PageObject {
 
     public void clickOnSellOnLazada() {
         waitUntilPageReady();
-        getCountryCode();
-        if(isDarazSite()) {
-            sellOnDaraz_lbl.click();
-        }
-        else {
-            sellOnLazada_lbl.click();
-        }
-    }
-
-    private void getCountryCode() {
-        Pattern pattern = Pattern.compile("\\.([a-z]{2,3})/?$");
-        Matcher matcher = pattern.matcher(currentUrl().toString());
-        if (matcher.find()) {
-            Global.map.put("currentCountry", matcher.group());
-        }
+        sellOnSite_lbl.click();
     }
 }
 

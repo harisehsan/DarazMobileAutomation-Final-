@@ -9,11 +9,9 @@ import java.util.regex.Pattern;
 
 public class Landing_Page extends PageObject {
 
-    boolean result;
-    public void verifyAppLandingPage() {
+    public boolean isAppLandingPage() {
         String url = currentUrl();
-        result = Pattern.compile(Pattern.quote("app"),Pattern.CASE_INSENSITIVE).matcher(url).find();
-        Assert.assertTrue(result,"Fail cannot reach App Landing Page");
+        return Pattern.compile(Pattern.quote("app"),Pattern.CASE_INSENSITIVE).matcher(url).find();
     }
 
     public boolean isPlayStoreLandingPage() {

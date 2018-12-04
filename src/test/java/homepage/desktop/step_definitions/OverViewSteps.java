@@ -40,7 +40,7 @@ public class OverViewSteps extends BaseSteps {
 
     @Then("^I should land on App Page")
     public void verifyAppLandingPage()  {
-        on(Landing_Page.class).verifyAppLandingPage();
+        Assert.assertTrue( on(Landing_Page.class).isAppLandingPage(),"Fail cannot reach App Landing Page");
     }
 
     @And("^I click on Google Play icon")
