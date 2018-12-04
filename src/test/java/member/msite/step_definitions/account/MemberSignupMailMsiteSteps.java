@@ -46,9 +46,7 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
         Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking account tittle on my account page should be displayed");
         String email = (String) Global.map.get("email_random");
         String password = (String) Global.map.get("password");
-        AllureAttachment.attachComment("Email", email);
-        AllureAttachment.attachComment("Password", password);
-        AllureAttachment.attachComment("Url", Member_Account_Msite_Page.page_url);
+        on(Member_Account_Msite_Page.class).allureMailUrlPass(email, password);
     }
 
     @Then("^I should see the result of current newsletter config changed")

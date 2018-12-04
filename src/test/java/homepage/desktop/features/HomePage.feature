@@ -24,9 +24,10 @@ Feature: homepage Test
     Then I see pop up is display
     And I click on App benefit text
     Then I should land on App Page
-
+    
   @18009284
   Scenario: Guest users come to HomePage and visit to Sell On Lazada page
     When  I go to HomePage
     And I click on Sell On Lazada label
     Then I should land on Sell On Lazada Page
+

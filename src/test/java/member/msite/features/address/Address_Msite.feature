@@ -3,7 +3,7 @@
 Feature: Address Msite test
 
   @17480551 @member_regression @member_smoke @no_lzd
-  Scenario: User add new address on Msite
+  Scenario: User can add new address
     When I go to the sign up on Msite page by email
     And I input all information to signup by email page
     And I should stayed in account page
@@ -13,7 +13,7 @@ Feature: Address Msite test
     Then I should see one address on address page
 
   @17480541 @member_regression @member_smoke @no_lzd
-  Scenario: User edit address on Msite
+  Scenario: User can edit address information - Drz
     Given I go to the sign up on Msite page by email
     When I input all information to signup by email page
     And I should stayed in account page
@@ -24,7 +24,7 @@ Feature: Address Msite test
     Then I should see the new address name on Msite
 
   @17480537 @member_regression @member_smoke @no_lzd
-  Scenario: User added 2 address then delete 1 address on address book
+  Scenario: User can delete address successfully - Drz
     Given I go to the sign up on Msite page by email
     When I input all information to signup by email page
     And I should stayed in account page
@@ -35,4 +35,3 @@ Feature: Address Msite test
     And I click save address button
     And I delete address on address book
     Then I should see one address on address page
-

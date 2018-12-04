@@ -9,28 +9,33 @@ import org.openqa.selenium.support.FindBy;
 public class Member_ChangePass_Msite_Page extends PageObject {
     public static String page_url = Global.config.getString("member.url1") + "/user/change-password";
 
-    @FindBy(css = ".mod-input-password input") private WebElement oldPass;
-    @FindBy(css = ".mod-input-newPassword input") private WebElement newPass;
-    @FindBy(css = ".mod-input-re-newPassword input") private WebElement reNewPass;
-    @FindBy(css = ".mod-button") private  WebElement saveBtn;
-    @FindBy(css = "body > div.ReactModalPortal > div > div > div.mod-dialog-ft > button") private WebElement gotItBtn;
+    @FindBy(css = ".mod-input-password input")
+    private WebElement oldPass_txtField;
+    @FindBy(css = ".mod-input-newPassword input")
+    private WebElement newPass_txtField;
+    @FindBy(css = ".mod-input-re-newPassword input")
+    private WebElement reNewPass_txtField;
+    @FindBy(css = ".mod-button")
+    private WebElement save_btn;
+    @FindBy(css = "div.mod-dialog-ft > button")
+    private WebElement gotIt_btn;
 
     public void setNewPassWord(String oldPassWord, String newPassWord){
         waitUntilPageReady();
-        waitUntilVisible(oldPass);
-        this.oldPass.sendKeys(oldPassWord);
-        this.newPass.sendKeys(newPassWord);
-        this.reNewPass.sendKeys(newPassWord);
+        waitUntilVisible(oldPass_txtField);
+        this.oldPass_txtField.sendKeys(oldPassWord);
+        this.newPass_txtField.sendKeys(newPassWord);
+        this.reNewPass_txtField.sendKeys(newPassWord);
     }
 
     public void saveButton(){
         waitUntilPageReady();
         waitUntilClickable(By.cssSelector(".mod-button"));
-        this.saveBtn.click();
+        this.save_btn.click();
     }
 
     public void gotItButton(){
-        waitUntilClickable(By.cssSelector("body > div.ReactModalPortal > div > div > div.mod-dialog-ft > button"));
-        this.gotItBtn.click();
+        waitUntilClickable(By.cssSelector("div.mod-dialog-ft > button"));
+        this.gotIt_btn.click();
     }
 }
