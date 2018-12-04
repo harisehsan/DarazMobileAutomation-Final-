@@ -16,7 +16,7 @@ public class MemberApiSteps extends BaseSteps {
     public void loginByApi(){
         visit(Login_Page.class);
         String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
-        String email = Global.config.getString("member.account.mail_test");
+        String email = Global.config.getString("member.account.mail");
         String pass = Global.config.getString("member.account.pass");
         String apiUrl = Global.config.getString("member.url")+"/user/api/login";
         String [] args = {apiUrl,email,pass,csrfToken};
