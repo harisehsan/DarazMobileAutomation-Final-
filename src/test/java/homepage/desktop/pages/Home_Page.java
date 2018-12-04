@@ -1,10 +1,9 @@
 package homepage.desktop.pages;
 
+import base.PageObject;
 import global.Global;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import base.*;
 
 public class Home_Page extends PageObject {
 
@@ -15,7 +14,10 @@ public class Home_Page extends PageObject {
     @FindBy(css = ".promotion-text") private WebElement promotion_lbl;
     @FindBy(css = ".app-google") private WebElement playStore_icon;
     @FindBy(css = ".app-apple") private WebElement appStore_icon;
-    @FindBy(css = "#topActionCustomCare") private WebElement custimerCare_lbl;
+    @FindBy(css = "#topActionCustomCare") private WebElement customerCare_lbl;
+    @FindBy(css = "#topActionSell") private WebElement sellOnSite_lbl;
+    @FindBy(css = ".care-item-anchor") private WebElement customerCareItems_lbl;
+    @FindBy(xpath = "//*[@id='topActionCustomCare']/div/div/ul/li[1]/a") private WebElement helpCenter_lbl;
 
     public void clickToLoginPage() {
         waitUntilVisible(login_btn);
@@ -39,42 +41,36 @@ public class Home_Page extends PageObject {
         return promotion_lbl.isDisplayed();
     }
 
-    public boolean customerCarePopUpIsDisplayed() {
-        return
+    public boolean isCustomerCarePopUpDisplayed() {
+        waitUntilVisible(helpCenter_lbl);
+        return (customerCareItems_lbl.isDisplayed() && helpCenter_lbl.getText().equals(Global.config.getString("homepage.help_center_text")) );
     }
 
-    private boolean isItDarazSite() {
-        return currentUrl().contains("daraz") || currentUrl().contains("shop");
-    }
 
     public void clickOnPlayQRCode() {
         waitUntilPageReady();
-        if (isItDarazSite()) {
-            if (currentUrl().contains("daraz"))
-                Global.map.put("whichSite", "daraz");
-            else
-                Global.map.put("whichSite", "shop");
-        } else {
-            Global.map.put("whichSite", "lazada");
-        }
         playStore_icon.click();
     }
 
     public void clickOnAppStoreIcon() {
         waitUntilPageReady();
-        if (isItDarazSite()) {
-            if (currentUrl().contains("daraz"))
-                Global.map.put("whichSite", "daraz");
-            else
-                Global.map.put("whichSite", "shop");
-        } else {
-            Global.map.put("whichSite", "lazada");
-        }
         appStore_icon.click();
     }
+
     public void clickOnCustomerCareLabel() {
         waitUntilPageReady();
-        custimerCare_lbl.click();
+        customerCare_lbl.click();
+    }
+
+    public void clickOnSellOnLazada() {
+        waitUntilPageReady();
+        sellOnSite_lbl.click();
+        waitUntilPageReady();
+    }
+
+    public void clickOnHelpCenterLabel() {
+        waitUntilPageReady();
+        helpCenter_lbl.click();
     }
 }
 

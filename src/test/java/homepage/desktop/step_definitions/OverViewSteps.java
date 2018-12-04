@@ -35,7 +35,7 @@ public class OverViewSteps extends BaseSteps {
 
     @Then("^I see Customer Care pop up is display")
     public void customerCarePopUpIsDisplayed()  {
-        Assert.assertTrue(on(Home_Page.class).customerCarePopUpIsDisplayed(),"Customer Care Pop up can't display");
+        Assert.assertTrue(on(Home_Page.class).isCustomerCarePopUpDisplayed(),"Customer Care Pop up can't display");
     }
 
     @And ("I click on App benefit text")
@@ -45,7 +45,7 @@ public class OverViewSteps extends BaseSteps {
 
     @Then("^I should land on App Page")
     public void verifyAppLandingPage()  {
-        on(Landing_Page.class).verifyAppLandingPage();
+        Assert.assertTrue( on(Landing_Page.class).isAppLandingPage(),"Fail cannot reach App Landing Page");
     }
 
     @And("^I click on Google Play icon")
@@ -56,7 +56,7 @@ public class OverViewSteps extends BaseSteps {
 
     @Then("^I should land on Google Play Page")
     public void verifyGoogleLandingPage()  {
-        on(Landing_Page.class).verifyGoogleLandingPage();
+        Assert.assertTrue(on(Landing_Page.class).isPlayStoreLandingPage(), "Fail cannot reach Play Store Landing Page");
     }
 
     @And("^I click on App Store icon")
@@ -67,11 +67,31 @@ public class OverViewSteps extends BaseSteps {
 
     @Then("^I should land on App Store Page")
     public void verifyAppStoreLandingPage()  {
-        on(Landing_Page.class).verifyAppStoreLandingPage();
+        Assert.assertTrue(on(Landing_Page.class).isAppStoreLandingPage(), "Fail cannot reach App Store Landing Page");
+    }
+
+    @And("^I click on Sell On Lazada label")
+    public void clickOnSellOnLazada() {
+        on(Home_Page.class).clickOnSellOnLazada();
     }
 
     @And("^I click on Customer Care label")
     public void clickOnCustomerCareLabel() {
         on(Home_Page.class).clickOnCustomerCareLabel();
+    }
+
+    @Then ("^I should land on Sell On Lazada Page")
+    public void verifySellOnLazadaLandingPage() {
+        Assert.assertTrue(on(Landing_Page.class).isSellOnLazadaLandingPage(),"Can't land on Sell On Lazada/Daraz Landing Page");
+    }
+
+    @And ("^I click on Help Center label")
+    public void clickOnHelpCenterLabel() {
+        on(Home_Page.class).clickOnHelpCenterLabel();
+    }
+
+    @Then ("^I should land on Help Center Page")
+    public void isHelpCenterLandingPage() {
+        Assert.assertTrue(on(Landing_Page.class).isHelpCenterLandingPage(),"Can't land on Help Center Landing Page");
     }
 }
