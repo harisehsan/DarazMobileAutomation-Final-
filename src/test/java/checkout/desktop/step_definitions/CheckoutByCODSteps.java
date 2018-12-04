@@ -8,6 +8,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import global.Global;
 import org.testng.Assert;
+import pdp.desktop.pages.Pdp_Page;
 
 public class CheckoutByCODSteps extends BaseSteps {
     @When("^I go to a pdp page$")
@@ -15,11 +16,6 @@ public class CheckoutByCODSteps extends BaseSteps {
         Pdp_Page.setUrl(Global.config.getString("checkout.cod_pdp_url"));
         visit(Pdp_Page.class);
         on(Pdp_Page.class).switchToEnglish();
-    }
-
-    @When("^I get the product title$")
-    public void getProductTitle(){
-        on(Pdp_Page.class).setProductTitle(on(Pdp_Page.class).getProductTitle());
     }
 
     @And("^I click on Add to cart button$")

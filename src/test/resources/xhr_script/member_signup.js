@@ -29,6 +29,5 @@ xhr.open("POST", apiUrl);
 xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("x-csrf-token", csrfToken);
 xhr.setRequestHeader("cache-control", "no-cache");
-xhr.setRequestHeader("x-umidtoken", umidTokenFromHeader);
 
 xhr.send(data);
