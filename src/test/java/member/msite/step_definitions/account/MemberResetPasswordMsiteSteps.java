@@ -40,7 +40,7 @@ public class MemberResetPasswordMsiteSteps extends BaseSteps {
         String emailReset = Global.config.getString("member.mail_for_reset");
         Global.map.put("email is reset",emailReset);
         on(Member_Mailinator_Msite_Page.class).inputMail(emailReset);
-        on(Member_Mailinator_Msite_Page.class).clickGoMailDetail();
+        on(Member_Mailinator_Msite_Page.class).goToMailDetail();
         String smsCode = on(Member_Mailinator_Msite_Page.class).getSMSCodeDetail();
         Global.map.put("sms_code",smsCode);
     }

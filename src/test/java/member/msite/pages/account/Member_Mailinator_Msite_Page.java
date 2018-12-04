@@ -24,7 +24,7 @@ public class Member_Mailinator_Msite_Page extends PageObject {
         this.go_btn.click();
     }
 
-    public void clickGoMailDetail() {
+    public void goToMailDetail() {
         waitUntilPageReady();
         this.email_list.click();
     }

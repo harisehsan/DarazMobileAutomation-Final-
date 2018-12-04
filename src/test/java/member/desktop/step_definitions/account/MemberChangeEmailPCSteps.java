@@ -36,7 +36,7 @@ public class MemberChangeEmailPCSteps extends BaseSteps {
         Config emailConfig = Global.config.getConfig("member.account");
         String currentEmail = emailConfig.getString(email);
         on(Member_Mailinator_Page.class).inputMail(currentEmail);
-        on(Member_Mailinator_Page.class).clickGoMailDetail();
+        on(Member_Mailinator_Page.class).goToMailDetail();
         Global.map.put("sms_code", on(Member_Mailinator_Page.class).getSMSCodeDetail());
     }
 

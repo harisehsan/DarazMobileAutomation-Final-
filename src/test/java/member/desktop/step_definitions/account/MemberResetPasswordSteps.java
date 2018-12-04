@@ -47,7 +47,7 @@ public class MemberResetPasswordSteps extends BaseSteps {
     public void accessSMSCode() throws Throwable {
         String emailReset = Global.config.getString("member.mail_for_reset");
         on(Member_Mailinator_Page.class).inputMail(emailReset);
-        on(Member_Mailinator_Page.class).clickGoMailDetail();
+        on(Member_Mailinator_Page.class).goToMailDetail();
         String smsCode = on(Member_Mailinator_Page.class).getSMSCodeDetail();
         Global.map.put("sms_code",smsCode);
     }

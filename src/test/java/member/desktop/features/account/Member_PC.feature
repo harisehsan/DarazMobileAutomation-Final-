@@ -42,7 +42,7 @@ Feature: Member PC Test
   @17480509 @member_regression @member_smoke @no_lzd
   Scenario: User can edit name information
     When I go to the login by email page
-    And I login by api with email and password
+    And I sign up by api
     And I go to the account page
     And I go to edit profile page and edit name info
     And I click on save changes button
@@ -62,7 +62,7 @@ Feature: Member PC Test
     And I sign up by api
     And I go to change password page
     And I click on logout account
-    And I login by api with old email and new_pass
+    And I login by api with old email and changed_pass
     Then I should login success with new password
 
   @17480524 @member_regression @member_smoke

@@ -10,26 +10,22 @@ public class Member_Mailinator_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.account.mailinator_mail");
 
-    @FindBy(css = "#inboxfield")
-    private WebElement email_txtField;
-    @FindBy(css = ".btn-dark")
-    private WebElement go_btn;
-    @FindBy(css = "#inboxpane > div > div > div > table > tbody > tr")
-    private List<WebElement> email_list;
-    @FindBy(css = "div.verify-code-container > span")
-    private WebElement smsCodeDetail_lbl;
+    @FindBy(css = "#inboxfield") private WebElement email_txtField;
+    @FindBy(css = ".btn-dark") private WebElement go_btn;
+    @FindBy(css = "#inboxpane > div > div > div > table > tbody > tr") private List<WebElement> email_listItems;
+    @FindBy(css = "div.verify-code-container > span") private WebElement smsCodeDetail_lbl;
     @FindBy(id = "msg_body") private WebElement msgBody;
 
-    public void inputMail(String mail){
+    public void inputMail(String mail) {
         waitUntilPageReady();
         waitUntilVisible(email_txtField);
         this.email_txtField.sendKeys(mail);
         this.go_btn.click();
     }
 
-    public void clickGoMailDetail(){
+    public void goToMailDetail() {
         waitUntilPageReady();
-        this.email_list.get(0).click();
+        this.email_listItems.get(0).click();
     }
 
     public String getSMSCodeDetail() {
@@ -38,5 +34,4 @@ public class Member_Mailinator_Page extends PageObject {
         waitUntilVisible(smsCodeDetail_lbl);
         return smsCodeDetail_lbl.getText();
     }
-
 }
