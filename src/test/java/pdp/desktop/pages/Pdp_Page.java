@@ -225,7 +225,7 @@ public class Pdp_Page extends PageObject {
 
 
     public void waitUntilAddressChanged(String beforeChangedAddress){
-        waitUntilInvisibilityOf(By.xpath(String.format("//div[text()[contains(.,'%s')]]",leadtimeAddress_lbl.getText())));
+        waitUntilInvisibilityOf(By.xpath(String.format("//div[text()[contains(.,'%s')]]", beforeChangedAddress)));
     }
 
     public String getCurrentAddress() {
