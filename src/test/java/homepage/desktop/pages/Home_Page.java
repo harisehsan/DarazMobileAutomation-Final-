@@ -56,7 +56,6 @@ public class Home_Page extends PageObject {
         waitUntilPageReady();
         List<WebElement> elements = checkIfExists(swithLanguage_lbl_by);
         if (elements.size() > 0) {
-            if (switchLanguage_lbl.isDisplayed()) {
                 if (currentLanguage_lbl.getAttribute("data-lang").equals("vi") || currentLanguage_lbl.getAttribute("data-lang").equals("th")) {
                     switchLanguage_lbl.click();
                     waitUntilVisible(switchToEnglishLanguage_lbl);
@@ -65,7 +64,6 @@ public class Home_Page extends PageObject {
                     return checkPageSwitchSuccessful();
                 }
                 return true;
-            }
         }
         return true;
     }
@@ -75,7 +73,7 @@ public class Home_Page extends PageObject {
     }
 
     private boolean checkPageSwitchSuccessful() {
-        return !currentLanguage_lbl.getAttribute("data-lang").equals("vi") && currentLanguage_lbl.getAttribute("data-lang").equals("th");
+        return !currentLanguage_lbl.getAttribute("data-lang").equals("vi") && !currentLanguage_lbl.getAttribute("data-lang").equals("th");
     }
 
     public void clickOnPlayQRCode() {
