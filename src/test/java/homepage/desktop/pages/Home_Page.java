@@ -19,10 +19,12 @@ public class Home_Page extends PageObject {
     @FindBy(css = "#topActionCustomCare") private WebElement customerCare_lbl;
     @FindBy(css = "#topActionSell") private WebElement sellOnSite_lbl;
     @FindBy(css = ".care-item-anchor") private WebElement customerCareItems_lbl;
-    @FindBy(xpath = "//*[@id='topActionCustomCare']/div/div/ul/li[1]/a") private WebElement helpCenter_lbl;
+    @FindBy(css = "#topActionCustomCare a[href*='helpcenter'] span.help-center") private WebElement helpCenter_lbl;
     @FindBy(css = ".lzd-switch-item.currentSelected") private WebElement currentLanguage_lbl;
     @FindBy(css = "#topActionSwitchLang") private WebElement switchLanguage_lbl;
     @FindBy(css = "[data-lang=en]") private WebElement switchToEnglishLanguage_lbl;
+    @FindBy(css = "#topActionCustomCare .care-list") private WebElement customerCare_list;
+
     private By swithLanguage_lbl_by = By.cssSelector("#topActionSwitchLang");
 
     public void clickToLoginPage() {
@@ -49,7 +51,7 @@ public class Home_Page extends PageObject {
 
     public boolean isCustomerCarePopUpDisplayed() {
         waitUntilPageReady();
-            return (customerCareItems_lbl.isDisplayed() && helpCenter_lbl.getText().equals(Global.config.getString("homepage.help_center_text")));
+        return customerCare_list.isDisplayed() && customerCare_list.getText().contains(Global.config.getString("homepage.help_center_text"));
     }
 
     public boolean switchLanguage() {

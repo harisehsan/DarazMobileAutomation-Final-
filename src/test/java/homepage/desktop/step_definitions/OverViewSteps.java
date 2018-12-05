@@ -5,14 +5,16 @@ import cucumber.api.java.en.And;
 import base.BaseSteps;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import homepage.desktop.pages.CustomerCare_LandingPage;
 import homepage.desktop.pages.Home_Page;
 import homepage.desktop.pages.Landing_Page;
+import homepage.desktop.pages.SellOnLazada_LandingPage;
 import org.testng.Assert;
 
 public class OverViewSteps extends BaseSteps {
 
     @When("^I go to HomePage")
-    public void landInHomePage() throws Throwable
+    public void landInHomePage()
     {
                 visit(Home_Page.class);
         Assert.assertTrue(on(Home_Page.class).switchLanguage(),"Can't change language");
@@ -83,7 +85,7 @@ public class OverViewSteps extends BaseSteps {
 
     @Then ("^I should land on Sell On Lazada Page")
     public void verifySellOnLazadaLandingPage() {
-        Assert.assertTrue(on(Landing_Page.class).isSellOnLazadaLandingPage(),"Can't land on Sell On Lazada/Daraz Landing Page");
+        Assert.assertTrue(on(SellOnLazada_LandingPage.class).isSellOnLazadaLandingPage(),"Can't land on Sell On Lazada/Daraz Landing Page");
     }
 
     @And ("^I click on Help Center label")
@@ -93,6 +95,6 @@ public class OverViewSteps extends BaseSteps {
 
     @Then ("^I should land on Help Center Page")
     public void isHelpCenterLandingPage() {
-        Assert.assertTrue(on(Landing_Page.class).isHelpCenterLandingPage(),"Can't land on Help Center Landing Page");
+        Assert.assertTrue(on(CustomerCare_LandingPage.class).isHelpCenterLandingPage(),"Can't land on Help Center Landing Page");
     }
 }
