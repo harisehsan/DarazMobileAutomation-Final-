@@ -124,7 +124,7 @@ public class Member_AddressPC_Page extends PageObject {
 
     public void selectTree() {
         if(selectTree_listItems.size() > 0) {
-            WebElement random_element = selectTree_listItems.get(new Random().nextInt(selectTree_listItems.size()-1));
+            WebElement random_element = selectTree_listItems.get(new Random().nextInt(selectTree_listItems.size()));
             waitUntilVisible(random_element);
             waitUntilClickable(selectTree_listItems_by);
             random_element.click();
