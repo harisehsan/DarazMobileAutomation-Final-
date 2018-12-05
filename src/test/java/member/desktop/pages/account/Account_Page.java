@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import base.PageObject;
 
+import java.util.Base64;
+
 /**
  * Created by admin.son.ton on 1/25/18.
  */
@@ -83,7 +85,7 @@ public class Account_Page extends PageObject {
     public void allureMailUrlPass(String pass) {
         AllureAttachment.attachURL(page_url);
         AllureAttachment.attachComment("Email", emailInformation_lbl.getText());
-        AllureAttachment.attachComment("Password", pass);
+        AllureAttachment.attachComment("Password", Base64.getEncoder().encodeToString(pass.getBytes()));
     }
 
     public void allureUrl() {

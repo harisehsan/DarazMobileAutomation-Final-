@@ -38,7 +38,8 @@ public class MemberSignupSteps extends BaseSteps {
     public void changePass() throws Throwable {
         visit(Member_Change_Pass_Page.class);
         String current_pass = Global.config.getString("member.account.pass");
-        String changed_pass = Global.config.getString("member.account.changed_pass");
+        String changed_pass = "q" + RandomeHelper.generateResetPass();
+        Global.map.put("changed_pass",changed_pass);
         on(Member_Change_Pass_Page.class).resetPass(current_pass,changed_pass);
     }
 }

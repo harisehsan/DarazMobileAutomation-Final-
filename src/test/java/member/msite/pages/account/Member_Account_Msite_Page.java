@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import base.PageObject;
 
+import java.util.Base64;
+
 public class Member_Account_Msite_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.msite_url") + "/user/account";
@@ -43,7 +45,7 @@ public class Member_Account_Msite_Page extends PageObject {
     public void allureMailUrlPass(String email, String pass) {
         AllureAttachment.attachURL(page_url);
         AllureAttachment.attachComment("Email", email);
-        AllureAttachment.attachComment("Password", pass);
+        AllureAttachment.attachComment("Password", Base64.getEncoder().encodeToString(pass.getBytes()));
     }
 
     public void allureMobilePhone(String mobile) {
