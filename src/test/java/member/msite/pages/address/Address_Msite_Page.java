@@ -93,6 +93,7 @@ public class Address_Msite_Page extends PageObject {
         this.addressName_txtField.sendKeys(name);
         this.addressPhone_txtField.sendKeys(phone);
         this.saveAddress_btn.click();
+        waitUntilInvisibilityOf(saveAddress_btn_by);
         waitUntilInvisibilityOf(loading_icon_by);
     }
 
