@@ -31,3 +31,12 @@ Feature: homepage Test
     And I click on Sell On Lazada label
     Then I should land on Sell On Lazada Page
 
+  @18009334
+  Scenario: Guest users come to HomePage and visit Help Center page
+    When  I go to HomePage
+    And I click on Customer Care label
+    Then I see Customer Care pop up is display
+    And I click on Help Center label
+    Then I should land on Help Center Page
+
+

@@ -2,11 +2,10 @@ package homepage.desktop.pages;
 
 import base.PageObject;
 import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
 
 public class Home_Page extends PageObject {
 
@@ -17,7 +16,15 @@ public class Home_Page extends PageObject {
     @FindBy(css = ".promotion-text") private WebElement promotion_lbl;
     @FindBy(css = ".app-google") private WebElement playStore_icon;
     @FindBy(css = ".app-apple") private WebElement appStore_icon;
+    @FindBy(css = "#topActionCustomCare") private WebElement customerCare_lbl;
     @FindBy(css = "#topActionSell") private WebElement sellOnSite_lbl;
+    @FindBy(css = "#topActionCustomCare a[href*='helpcenter'] span.help-center") private WebElement helpCenter_lbl;
+    @FindBy(css = ".lzd-switch-item.currentSelected") private WebElement currentLanguage_lbl;
+    @FindBy(css = "#topActionSwitchLang") private WebElement switchLanguage_lbl;
+    @FindBy(css = "[data-lang=en]") private WebElement switchToEnglishLanguage_lbl;
+    @FindBy(css = "#topActionCustomCare .care-list") private WebElement customerCare_list;
+
+    private By swithLanguage_lbl_by = By.cssSelector("#topActionSwitchLang");
 
     public void clickToLoginPage() {
         waitUntilVisible(login_btn);
@@ -40,7 +47,36 @@ public class Home_Page extends PageObject {
     public boolean verifyAppPopUp() {
         return promotion_lbl.isDisplayed();
     }
-    
+
+    public boolean isCustomerCarePopUpDisplayed() {
+        waitUntilPageReady();
+        return customerCare_list.isDisplayed() && customerCare_list.getText().contains(Global.config.getString("homepage.help_center_text"));
+    }
+
+    public boolean switchLanguage() {
+        waitUntilPageReady();
+        List<WebElement> elements = checkIfExists(swithLanguage_lbl_by);
+        if (elements.size() > 0) {
+                if (currentLanguage_lbl.getAttribute("data-lang").equals("vi") || currentLanguage_lbl.getAttribute("data-lang").equals("th")) {
+                    switchLanguage_lbl.click();
+                    waitUntilVisible(switchToEnglishLanguage_lbl);
+                    switchToEnglishLanguage_lbl.click();
+                    waitUntilPageReady();
+                    return checkPageSwitchSuccessful();
+                }
+                return true;
+        }
+        return true;
+    }
+
+    private List<WebElement> checkIfExists(By selector) {
+        return Global.browser.getWebDriver().findElements(selector);
+    }
+
+    private boolean checkPageSwitchSuccessful() {
+        return !currentLanguage_lbl.getAttribute("data-lang").equals("vi") && !currentLanguage_lbl.getAttribute("data-lang").equals("th");
+    }
+
     public void clickOnPlayQRCode() {
         waitUntilPageReady();
         playStore_icon.click();
@@ -51,9 +87,21 @@ public class Home_Page extends PageObject {
         appStore_icon.click();
     }
 
+    public void clickOnCustomerCareLabel() {
+        waitUntilPageReady();
+        customerCare_lbl.click();
+        waitUntilPageReady();
+    }
+
     public void clickOnSellOnLazada() {
         waitUntilPageReady();
         sellOnSite_lbl.click();
+        waitUntilPageReady();
+    }
+
+    public void clickOnHelpCenterLabel() {
+        waitUntilPageReady();
+        helpCenter_lbl.click();
     }
 }
 

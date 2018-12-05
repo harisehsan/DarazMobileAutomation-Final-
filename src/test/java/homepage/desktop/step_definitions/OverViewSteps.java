@@ -5,16 +5,19 @@ import cucumber.api.java.en.And;
 import base.BaseSteps;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import homepage.desktop.pages.CustomerCare_LandingPage;
 import homepage.desktop.pages.Home_Page;
 import homepage.desktop.pages.Landing_Page;
+import homepage.desktop.pages.SellOnLazada_LandingPage;
 import org.testng.Assert;
 
 public class OverViewSteps extends BaseSteps {
 
     @When("^I go to HomePage")
-    public void landInHomePage() throws Throwable
+    public void landInHomePage()
     {
                 visit(Home_Page.class);
+        Assert.assertTrue(on(Home_Page.class).switchLanguage(),"Can't change language");
     }
 
     @Then("^I click on log in to login page")
@@ -31,6 +34,11 @@ public class OverViewSteps extends BaseSteps {
     @Then("^I see pop up is display")
     public void popUpIsDisplay()  {
         Assert.assertTrue(on(Home_Page.class).verifyAppPopUp(),"Pop up can't display");
+    }
+
+    @Then("^I see Customer Care pop up is display")
+    public void customerCarePopUpIsDisplayed()  {
+        Assert.assertTrue(on(Home_Page.class).isCustomerCarePopUpDisplayed(),"Customer Care Pop up can't display");
     }
 
     @And ("I click on App benefit text")
@@ -63,7 +71,6 @@ public class OverViewSteps extends BaseSteps {
     @Then("^I should land on App Store Page")
     public void verifyAppStoreLandingPage()  {
         Assert.assertTrue(on(Landing_Page.class).isAppStoreLandingPage(), "Fail cannot reach App Store Landing Page");
-
     }
 
     @And("^I click on Sell On Lazada label")
@@ -71,8 +78,23 @@ public class OverViewSteps extends BaseSteps {
         on(Home_Page.class).clickOnSellOnLazada();
     }
 
+    @And("^I click on Customer Care label")
+    public void clickOnCustomerCareLabel() {
+        on(Home_Page.class).clickOnCustomerCareLabel();
+    }
+
     @Then ("^I should land on Sell On Lazada Page")
     public void verifySellOnLazadaLandingPage() {
-        Assert.assertTrue(on(Landing_Page.class).isSellOnLazadaLandingPage(),"Can't land on Sell On Lazada/Daraz Landing Page");
+        Assert.assertTrue(on(SellOnLazada_LandingPage.class).isSellOnLazadaLandingPage(),"Can't land on Sell On Lazada/Daraz Landing Page");
+    }
+
+    @And ("^I click on Help Center label")
+    public void clickOnHelpCenterLabel() {
+        on(Home_Page.class).clickOnHelpCenterLabel();
+    }
+
+    @Then ("^I should land on Help Center Page")
+    public void isHelpCenterLandingPage() {
+        Assert.assertTrue(on(CustomerCare_LandingPage.class).isHelpCenterLandingPage(),"Can't land on Help Center Landing Page");
     }
 }
