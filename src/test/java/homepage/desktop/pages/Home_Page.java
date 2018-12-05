@@ -18,7 +18,6 @@ public class Home_Page extends PageObject {
     @FindBy(css = ".app-apple") private WebElement appStore_icon;
     @FindBy(css = "#topActionCustomCare") private WebElement customerCare_lbl;
     @FindBy(css = "#topActionSell") private WebElement sellOnSite_lbl;
-    @FindBy(css = ".care-item-anchor") private WebElement customerCareItems_lbl;
     @FindBy(css = "#topActionCustomCare a[href*='helpcenter'] span.help-center") private WebElement helpCenter_lbl;
     @FindBy(css = ".lzd-switch-item.currentSelected") private WebElement currentLanguage_lbl;
     @FindBy(css = "#topActionSwitchLang") private WebElement switchLanguage_lbl;
