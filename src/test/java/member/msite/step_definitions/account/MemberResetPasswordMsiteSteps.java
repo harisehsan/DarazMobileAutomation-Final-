@@ -3,6 +3,8 @@ package member.msite.step_definitions.account;
 import base.BaseSteps;
 import cucumber.api.java.en.*;
 import global.Global;
+import helper.RandomeHelper;
+import member.msite.pages.account.Member_Account_Msite_Page;
 import member.msite.pages.account.Member_Mailinator_Msite_Page;
 import member.msite.pages.account.Member_Reset_Password_Msite_Page;
 import org.testng.Assert;
@@ -36,8 +38,9 @@ public class MemberResetPasswordMsiteSteps extends BaseSteps {
     @And("^I open email on Msite to get sms code")
     public void accessSMSCode() throws Throwable {
         String emailReset = Global.config.getString("member.mail_for_reset");
+        Global.map.put("email is reset",emailReset);
         on(Member_Mailinator_Msite_Page.class).inputMail(emailReset);
-        on(Member_Mailinator_Msite_Page.class).clickGoMailDetail();
+        on(Member_Mailinator_Msite_Page.class).goToMailDetail();
         String smsCode = on(Member_Mailinator_Msite_Page.class).getSMSCodeDetail();
         Global.map.put("sms_code",smsCode);
     }
@@ -55,13 +58,14 @@ public class MemberResetPasswordMsiteSteps extends BaseSteps {
 
     @And("^I input the new password for reset")
     public void inputNewPassword() throws Throwable {
-        String newPass = Global.config.getString("member.account.new_pass");
-        on(Member_Reset_Password_Msite_Page.class).progressNewPass(newPass);
+        String randomPassword = "q" + RandomeHelper.generateResetPass();
+        on(Member_Reset_Password_Msite_Page.class).progressNewPass(randomPassword);
+        Global.map.put("new_reset_pass",randomPassword);
     }
 
     @Then("^I should see the success reset password on reset page")
     public void hasSuccessMessage() throws Throwable {
         Assert.assertTrue(on(Member_Reset_Password_Msite_Page.class).hasSuccessResetMessage(),"Checking reset password is successful if user getting the success message on reset page");
+        on(Member_Reset_Password_Msite_Page.class).allureResetPassword((String)(Global.map.get("email is reset")),(String)Global.map.get("new_reset_pass"));
     }
-
 }

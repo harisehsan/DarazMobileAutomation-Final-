@@ -24,7 +24,7 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
         Global.map.put("name_of_account",name);
         String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
         Global.map.put("email_random",randomEmail);
-        String passWord = Global.config.getString("member.pass");
+        String passWord = Global.config.getString("member.account.pass");
         Global.map.put("password", passWord);
         on(Member_Signupemail_Msite_Page.class).signUpByEmail(name,randomEmail,passWord);
         on(Member_Signupemail_Msite_Page.class).signUpButton();
@@ -54,5 +54,6 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
         String before = (String) Global.map.get("current_newsletter");
         String after = on(Member_Account_Msite_Page.class).getCurrentNewsletter();
         Assert.assertNotEquals(before,after, "Checking the newsletter action should be different before and after configuration");
+        on(Member_Account_Msite_Page.class).allureConfigNewsletter(before,after);
     }
 }

@@ -15,15 +15,15 @@ public class MemberSignupSMSSteps extends BaseSteps {
     @And("^I process to signup user by sms on signup page")
     public void signUpBySMSProcess() throws Throwable {
         String smsCode = Global.config.getString("member.account.sms_code");
-        String passWord = Global.config.getString("member.pass");
+        String passWord = Global.config.getString("member.account.pass");
         String name = Global.config.getString("member.account.name");
-        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
+        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@mailinator.com";
         on(Member_SignUp_SMS_Page.class).signUpBySMS(smsCode,passWord,name,randomEmail);
     }
 
     @And("^I input the phonenumber")
     public void inputPhone() throws Throwable {
-        String mobilephone = Global.config.getString("member.phone_number_signup");
+        String mobilephone = Global.config.getString("member.phone_number_template");
         Global.map.put("mobile_phone_number", mobilephone);
         on(Member_SignUp_SMS_Page.class).inputPhoneNumber(mobilephone + RandomeHelper.generatePhoneNumber());
     }

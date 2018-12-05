@@ -18,18 +18,18 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
 
     @And("^I input email just signned up on Msite")
     public void inputEmailSignUp() throws Throwable {
-        String new_pass = Global.config.getString("member.account.new_pass");
+        String changed_pass = Global.config.getString("member.account.changed_pass");
         on(Member_Loginemail_Msite_Page.class).inputEmail((String) Global.map.get("email_random"));
-        on(Member_Loginemail_Msite_Page.class).inputPass(new_pass);
+        on(Member_Loginemail_Msite_Page.class).inputPass(changed_pass);
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
     }
 
     @And("^I input account information to login by email Msite page")
     public void logInByEmailMsite() throws Throwable {
-        String email = Global.config.getString("member.account.mail_test");
+        String email = Global.config.getString("member.account.mail");
         Global.map.put("email_login", email);
         on(Member_Loginemail_Msite_Page.class).inputEmail(email);
-        String pass = Global.config.getString("member.pass");
+        String pass = Global.config.getString("member.account.pass");
         Global.map.put("password_login", pass);
         on(Member_Loginemail_Msite_Page.class).inputPass(pass);
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
@@ -57,10 +57,12 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
     @Then("^I should stayed in setting account page")
     public void hasStayOnSettingPage(){
         Assert.assertTrue(on(Member_AccountSetting_Msite_Page.class).hasSettingPage(),"Checking user should be stayed back the setting page after logging in success");
+        on(Member_AccountSetting_Msite_Page.class).allureUrlSettingPage();
     }
 
     @Then("^I should logout success")
     public void waitUntilVisible() throws Throwable {
         Assert.assertTrue(on(Member_Loginemail_Msite_Page.class).hasLoginForm(),"Checking user should not be stayed in account page after logging out success");
+        on(Member_Account_Msite_Page.class).allureCurrentUrl();
     }
 }

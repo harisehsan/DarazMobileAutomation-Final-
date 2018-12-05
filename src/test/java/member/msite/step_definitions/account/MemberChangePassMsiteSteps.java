@@ -3,6 +3,7 @@ package member.msite.step_definitions.account;
 import base.BaseSteps;
 import cucumber.api.java.en.*;
 import global.Global;
+import helper.RandomeHelper;
 import member.msite.pages.account.Member_AccountSetting_Msite_Page;
 import member.msite.pages.account.Member_ChangePass_Msite_Page;
 
@@ -15,9 +16,9 @@ public class MemberChangePassMsiteSteps extends BaseSteps {
 
     @And("^I input all information to change pass")
     public void changePassProcess() throws Throwable {
-        String old_pass = Global.config.getString("member.pass");
-        String new_pass = Global.config.getString("member.account.new_pass");
-        on(Member_ChangePass_Msite_Page.class).setNewPassWord(old_pass,new_pass);
+        String old_pass = Global.config.getString("member.account.pass");
+        String changed_pass = "q" + RandomeHelper.generateResetPass();
+        on(Member_ChangePass_Msite_Page.class).setNewPassWord(old_pass,changed_pass);
         on(Member_ChangePass_Msite_Page.class).saveButton();
         on(Member_ChangePass_Msite_Page.class).gotItButton();
     }

@@ -16,7 +16,7 @@ public class MemberSIgnupSMSMsiteSteps extends BaseSteps {
 
     @And("^I input the phone number on Msite")
     public void inputPhone() throws Throwable {
-        String mobilephone = Global.config.getString("member.phone_number_signup");
+        String mobilephone = Global.config.getString("member.phone_number_template");
         on(Member_SIgnupsms_Msite_Page.class).inputPhone(mobilephone + RandomeHelper.generatePhoneNumber());
     }
 

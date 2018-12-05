@@ -7,20 +7,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class Member_ChangePass_Msite_Page extends PageObject {
-    public static String page_url = Global.config.getString("member.url1") + "/user/change-password";
+    public static String page_url = Global.config.getString("member.msite_url") + "/user/change-password";
 
-    @FindBy(css = ".mod-input-password input")
-    private WebElement oldPass_txtField;
-    @FindBy(css = ".mod-input-newPassword input")
-    private WebElement newPass_txtField;
-    @FindBy(css = ".mod-input-re-newPassword input")
-    private WebElement reNewPass_txtField;
-    @FindBy(css = ".mod-button")
-    private WebElement save_btn;
-    @FindBy(css = "div.mod-dialog-ft > button")
-    private WebElement gotIt_btn;
+    @FindBy(css = ".mod-input-password input") private WebElement oldPass_txtField;
+    @FindBy(css = ".mod-input-newPassword input") private WebElement newPass_txtField;
+    @FindBy(css = ".mod-input-re-newPassword input") private WebElement reNewPass_txtField;
+    @FindBy(css = ".mod-button") private WebElement save_btn;
+    @FindBy(css = "div.mod-dialog-ft > button") private WebElement gotIt_btn;
 
-    public void setNewPassWord(String oldPassWord, String newPassWord){
+    private By save_btn_by = By.cssSelector(".mod-button");
+    private By gotIt_btn_by = By.cssSelector("div.mod-dialog-ft > button");
+
+    public void setNewPassWord(String oldPassWord, String newPassWord) {
         waitUntilPageReady();
         waitUntilVisible(oldPass_txtField);
         this.oldPass_txtField.sendKeys(oldPassWord);
@@ -28,14 +26,14 @@ public class Member_ChangePass_Msite_Page extends PageObject {
         this.reNewPass_txtField.sendKeys(newPassWord);
     }
 
-    public void saveButton(){
+    public void saveButton() {
         waitUntilPageReady();
-        waitUntilClickable(By.cssSelector(".mod-button"));
+        waitUntilClickable(save_btn_by);
         this.save_btn.click();
     }
 
-    public void gotItButton(){
-        waitUntilClickable(By.cssSelector("div.mod-dialog-ft > button"));
+    public void gotItButton() {
+        waitUntilClickable(gotIt_btn_by);
         this.gotIt_btn.click();
     }
 }

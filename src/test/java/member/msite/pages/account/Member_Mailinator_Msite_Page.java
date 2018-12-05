@@ -11,26 +11,20 @@ public class Member_Mailinator_Msite_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.account.mailinator_mail");
 
-    @FindBy(css = "#inboxfield")
-    private WebElement mail_txtField;
-    @FindBy(css = ".btn-dark")
-    private WebElement go_btn;
-    @FindBy(xpath = "//*[starts-with(@id,'row_lazadatest_1111')]/div")
-    private WebElement email_list;
-    //    @FindBy(css = "body > table > tbody > tr > td > center > table > tbody > tr > td > div > div.verify-code-container > span") private WebElement smsCodeDetail;
-    @FindBy(css = "div.verify-code-container > span")
-    private WebElement smsCodeDetail_lbl;
-    @FindBy(id = "msg_body")
-    private WebElement msgBody_btn;
+    @FindBy(css = "#inboxfield") private WebElement mail_txtField;
+    @FindBy(css = ".btn-dark") private WebElement go_btn;
+    @FindBy(xpath = "//*[starts-with(@id,'row_lazadatest_1111')]/div") private WebElement email_list;
+    @FindBy(css = "div.verify-code-container > span") private WebElement smsCodeDetail_lbl;
+    @FindBy(id = "msg_body") private WebElement msgBody_btn;
 
-    public void inputMail(String mail){
+    public void inputMail(String mail) {
         waitUntilPageReady();
         waitUntilVisible(mail_txtField);
         this.mail_txtField.sendKeys(mail);
         this.go_btn.click();
     }
 
-    public void clickGoMailDetail(){
+    public void goToMailDetail() {
         waitUntilPageReady();
         this.email_list.click();
     }
@@ -41,5 +35,4 @@ public class Member_Mailinator_Msite_Page extends PageObject {
         waitUntilVisible(smsCodeDetail_lbl);
         return smsCodeDetail_lbl.getText();
     }
-
 }

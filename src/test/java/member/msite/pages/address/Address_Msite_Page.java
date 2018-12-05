@@ -24,14 +24,20 @@ public class Address_Msite_Page extends PageObject {
     @FindBy(css = ".mod-input-detailAddress input") private WebElement addressDetail_txtField;
     @FindBy(css = ".mod-address-form-yatra-btn") private WebElement saveAddress_btn;
     @FindBy(css = ".address-list-body > div") private List<WebElement> address_list;
-    @FindBy(css = "div > i.address-list-item-del")
-    private WebElement deleteAddress_btn;
+    @FindBy(css = "div > i.address-list-item-del") private WebElement deleteAddress_btn;
     @FindBy(css = "div > i.address-list-item-edit") private WebElement editAddress_btn;
     @FindBy(css = "div.mod-input-name > div") private WebElement removeAddressName_btn;
     @FindBy(css = "div.mod-input-phone > div") private WebElement removeAddressPhone_btn;
     @FindBy(css = "div.mod-address-item-user") private WebElement addressNameUser_lbl;
-    @FindBy(css = "div > button.ok")
-    private WebElement deleteAddressOk_btn;
+    @FindBy(css = "div > button.ok") private WebElement deleteAddressOk_btn;
+
+    private By loading_icon_by = By.id("__react_loading_show__");
+    private By locationTree1_listBtn_by = By.cssSelector(".mod-select-location-tree-1");;
+    private By saveAddress_btn_by = By.cssSelector(".mod-address-form-yatra-btn");
+    private By editAddress_btn_by = By.cssSelector("div > i.address-list-item-edit");
+    private By removeAddressName_btn_by = By.cssSelector("div.mod-input-name > div");
+    private By deleteAddress_btn_by = By.cssSelector("div > i.address-list-item-del");
+    private By deleteAddressOk_btn_by = By.cssSelector("div > button.ok");
 
     public void clickNewAddress() {
         waitUntilPageReady();
@@ -51,18 +57,18 @@ public class Address_Msite_Page extends PageObject {
         waitUntilVisible(locationTree1_listBtn);
         this.addressName_txtField.sendKeys(addName);
         this.addressPhone_txtField.sendKeys(addPhone);
-        waitUntilClickable(By.cssSelector(".mod-select-location-tree-1"));
+        waitUntilClickable(locationTree1_listBtn_by);
         this.locationTree1_listBtn.click();
         selectTree(selectLocation1_drpDownList);
-        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilInvisibilityOf(loading_icon_by);
         this.locationTree2_listBtn.click();
-        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilInvisibilityOf(loading_icon_by);
         selectTree(selectLocation2_drpDownList);
-        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilInvisibilityOf(loading_icon_by);
         this.locationTree3_listBtn.click();
-        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilInvisibilityOf(loading_icon_by);
         selectTree(selectLocation3_drpDownList);
-        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilInvisibilityOf(loading_icon_by);
     }
 
     public void inputAddressContent(String address) {
@@ -74,23 +80,24 @@ public class Address_Msite_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(saveAddress_btn);
         this.saveAddress_btn.click();
-        waitUntilInvisibilityOf(By.cssSelector(".mod-address-form-yatra-btn"));
+        waitUntilInvisibilityOf(saveAddress_btn_by);
     }
 
     public void editAddressInformation(String name, String phone) {
         waitUntilPageReady();
-        waitUntilClickable(By.cssSelector("div > i.address-list-item-edit"));
+        waitUntilClickable(editAddress_btn_by);
         this.editAddress_btn.click();
-        waitUntilClickable(By.cssSelector("div.mod-input-name > div"));
+        waitUntilClickable(removeAddressName_btn_by);
         this.removeAddressName_btn.click();
         this.removeAddressPhone_btn.click();
         this.addressName_txtField.sendKeys(name);
         this.addressPhone_txtField.sendKeys(phone);
         this.saveAddress_btn.click();
-        waitUntilInvisibilityOf(By.id("__react_loading_show__"));
+        waitUntilInvisibilityOf(saveAddress_btn_by);
+        waitUntilInvisibilityOf(loading_icon_by);
     }
 
-    public String hasNewAddressName(){
+    public String hasNewAddressName() {
         waitUntilPageReady();
         waitUntilVisible(addressNameUser_lbl);
         return addressNameUser_lbl.getText();
@@ -104,9 +111,9 @@ public class Address_Msite_Page extends PageObject {
 
     public void deleteAddressProgress() {
         waitUntilPageReady();
-        waitUntilClickable(By.cssSelector("div > i.address-list-item-del"));
+        waitUntilClickable(deleteAddress_btn_by);
         this.deleteAddress_btn.click();
-        waitUntilClickable(By.cssSelector("div > button.ok"));
+        waitUntilClickable(deleteAddressOk_btn_by);
         this.deleteAddressOk_btn.click();
     }
 }

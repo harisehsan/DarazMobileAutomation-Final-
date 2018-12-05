@@ -8,18 +8,16 @@ import base.PageObject;
 
 public class Member_Loginemail_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url1") + "/user/login";
+    public static String page_url = Global.config.getString("member.msite_url") + "/user/login";
 
-    @FindBy(css = ".mod-input-loginName input")
-    private WebElement email_txtField;
-    @FindBy(css = ".mod-input-password input")
-    private WebElement password_txtField;
-    @FindBy(css = "div.login-btn > button")
-    private WebElement login_btn;
-    @FindBy(css = ".login-foot-btn")
-    private WebElement smsLogin_btn;
-    @FindBy(css = "div.login-forgot > a")
-    private WebElement forgotPassword_btn;
+    @FindBy(css = ".mod-input-loginName input") private WebElement email_txtField;
+    @FindBy(css = ".mod-input-password input") private WebElement password_txtField;
+    @FindBy(css = "div.login-btn > button") private WebElement login_btn;
+    @FindBy(css = ".login-foot-btn") private WebElement smsLogin_btn;
+    @FindBy(css = "div.login-forgot > a") private WebElement forgotPassword_btn;
+
+    private By login_btn_by = By.cssSelector("div.login-btn > button");
+    private By smsLogin_btn_by = By.cssSelector(".login-foot-btn");
 
     public void inputEmail(String email) {
         waitUntilPageReady();
@@ -31,15 +29,15 @@ public class Member_Loginemail_Msite_Page extends PageObject {
         this.password_txtField.sendKeys(pass);
     }
 
-    public void clickLoginButton(){
+    public void clickLoginButton() {
         waitUntilPageReady();
-        waitUntilClickable(By.cssSelector("div.login-btn > button"));
+        waitUntilClickable(login_btn_by);
         this.login_btn.click();
     }
 
     public void clickSMSButton(){
         waitUntilPageReady();
-        waitUntilClickable(By.cssSelector(".login-foot-btn"));
+        waitUntilClickable(smsLogin_btn_by);
         this.smsLogin_btn.click();
     }
 
