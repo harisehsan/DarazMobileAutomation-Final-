@@ -2,8 +2,10 @@ package homepage.desktop.pages;
 
 import base.PageObject;
 import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import java.util.List;
 
 public class Home_Page extends PageObject {
 
@@ -21,6 +23,7 @@ public class Home_Page extends PageObject {
     @FindBy(css = ".lzd-switch-item.currentSelected") private WebElement currentLanguage_lbl;
     @FindBy(css = "#topActionSwitchLang") private WebElement switchLanguage_lbl;
     @FindBy(css = "[data-lang=en]") private WebElement switchToEnglishLanguage_lbl;
+    private By swithLanguage_lbl_by = By.cssSelector("#topActionSwitchLang");
 
     public void clickToLoginPage() {
         waitUntilVisible(login_btn);
@@ -50,28 +53,29 @@ public class Home_Page extends PageObject {
     }
 
     public boolean switchLanguage() {
-        if (switchLanguage_lbl.isDisplayed()) {
-            if (currentLanguage_lbl.getAttribute("data-lang").equals("vi") || currentLanguage_lbl.getAttribute("data-lang").equals("th") ) {
-                switchLanguage_lbl.click();
-                waitUntilVisible(switchToEnglishLanguage_lbl);
-                switchToEnglishLanguage_lbl.click();
-                waitUntilPageReady();
-                return checkPageSwitchSuccessful();
-            }
-            else {
+        waitUntilPageReady();
+        List<WebElement> elements = checkIfExists(swithLanguage_lbl_by);
+        if (elements.size() > 0) {
+            if (switchLanguage_lbl.isDisplayed()) {
+                if (currentLanguage_lbl.getAttribute("data-lang").equals("vi") || currentLanguage_lbl.getAttribute("data-lang").equals("th")) {
+                    switchLanguage_lbl.click();
+                    waitUntilVisible(switchToEnglishLanguage_lbl);
+                    switchToEnglishLanguage_lbl.click();
+                    waitUntilPageReady();
+                    return checkPageSwitchSuccessful();
+                }
                 return true;
             }
         }
-        else return true;
+        return true;
     }
 
-    public boolean checkPageSwitchSuccessful() {
-        if (currentLanguage_lbl.getAttribute("data-lang").equals("vi") || currentLanguage_lbl.getAttribute("data-lang").equals("th") ) {
-            return false;
-        }
-        else {
-            return true;
-        }
+    private List<WebElement> checkIfExists(By selector) {
+        return Global.browser.getWebDriver().findElements(selector);
+    }
+
+    private boolean checkPageSwitchSuccessful() {
+        return !currentLanguage_lbl.getAttribute("data-lang").equals("vi") && currentLanguage_lbl.getAttribute("data-lang").equals("th");
     }
 
     public void clickOnPlayQRCode() {
