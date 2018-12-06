@@ -46,16 +46,11 @@ Feature: Member PC Test
 
   @17417198 @member_regression @member_smoke
   Scenario: User can logout successfully
-    Given I login by api with email
+    When I go to the login by email page
+    And I login by api with email and password
     And I go to the account page
     And I click on logout account
-    And I login by api with phone
-    And I go to the account page
-    And I click on logout account
-    And I sign up by api with email
-    And I create a new member address by api
-
-#    Then I logout successful
+    Then I logout successful
 
   @17480530 @member_regression @member_smoke @no_lzd
   Scenario: User can change password successfully
