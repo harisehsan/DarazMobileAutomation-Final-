@@ -24,7 +24,7 @@ public class MemberLoginSteps extends BaseSteps {
 
     @And("^I login account information by mobile phone on login by email page")
     public void loginByPhoneNumber()throws Throwable {
-        String mobilephone = Global.config.getString("member.phone_number_login");
+        String mobilephone = Global.config.getString("member.registered_phone");
         String pass = Global.config.getString("member.account.pass");
         on(Member_Login_Page.class).loginEmailPass(mobilephone,pass);
     }
@@ -32,7 +32,7 @@ public class MemberLoginSteps extends BaseSteps {
     @And("I login with new password")
     public void loginNewPass() throws Throwable {
         String changed_pass = Global.config.getString("member.account.changed_pass");
-        on(Member_Login_Page.class).loginEmailPass((String)Global.map.get("email_random"),changed_pass);
+        on(Member_Login_Page.class).loginEmailPass((String)Global.map.get("current_mail"),changed_pass);
     }
 
     @And("^I go to the account page")
@@ -43,7 +43,7 @@ public class MemberLoginSteps extends BaseSteps {
 
     @And("^I login email with new password after reset")
     public void loginWithResetPass() throws Throwable {
-        String emailForReset = Global.config.getString("member.mail_for_reset");
+        String emailForReset = Global.config.getString("member.reset_password_mail");
         on(Member_Login_Page.class).loginEmailPass(emailForReset, (String) Global.map.get("new_reset_pass"));
     }
 

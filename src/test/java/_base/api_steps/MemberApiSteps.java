@@ -34,14 +34,14 @@ public class MemberApiSteps extends BaseSteps {
         visit(SignUp_Page.class);
         String signupEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@MAILINATOR.com";
         on(SignUp_Page.class).signUpApi(signupEmail,commonPass);
-        Global.map.put("email_random",signupEmail);
+        Global.map.put("current_mail",signupEmail);
         Global.browser.refresh();
     }
 
     @And("^I create a new member address by api")
     public void createAddressByApi(){
         visit(Account_Page.class);
-        String addressPhone = Global.config.getString("member.phone_number_signup") + RandomeHelper.generatePhoneNumber();
+        String addressPhone = Global.config.getString("member.phone_number_template") + RandomeHelper.generatePhoneNumber();
         String addressName = Global.config.getString("member.account.name");
         on(Account_Page.class).createAddressByApi(Global.config.getConfig("member.address"),addressPhone,addressName);
         Global.browser.refresh();

@@ -22,8 +22,8 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
     public void signUpByEmail() throws Throwable {
         String name = Global.config.getString("member.account.name");
         Global.map.put("name_of_account",name);
-        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
-        Global.map.put("email_random",randomEmail);
+        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@mailinator.com";
+        Global.map.put("current_mail",randomEmail);
         String passWord = Global.config.getString("member.account.pass");
         Global.map.put("password", passWord);
         on(Member_Signupemail_Msite_Page.class).signUpByEmail(name,randomEmail,passWord);
@@ -44,9 +44,9 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
     @Then("^I should see the name of user in account title")
     public void hasTitleAccount() throws Throwable {
         Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking account tittle on my account page should be displayed");
-        String email = (String) Global.map.get("email_random");
+        String email = (String) Global.map.get("current_mail");
         String password = (String) Global.map.get("password");
-        on(Member_Account_Msite_Page.class).allureMailUrlPass(email, password);
+        on(Member_Account_Msite_Page.class).allureMailUrlPassMsite(email, password);
     }
 
     @Then("^I should see the result of current newsletter config changed")

@@ -15,15 +15,16 @@ public class MemberCompleteProfileSteps extends BaseSteps {
 
     @And("^I will input the name on form")
     public void inputName() throws Throwable {
-        String name_msite = Global.config.getString("member.account.name_msite");
+        String name_msite = RandomeHelper.generateName();
+        Global.map.put("name_msite",name_msite);
         on(Member_Complete_Your_Profile_Page.class).inputName(name_msite);
     }
 
     @And("^I will input the email on form")
     public void inputEmail() throws Throwable {
-        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
-        Global.map.put("email_random",randomEmail);
-        on(Member_Complete_Your_Profile_Page.class).inputEmail((String) Global.map.get("email_random"));
+        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@mailinator.com";
+        Global.map.put("current_mail",randomEmail);
+        on(Member_Complete_Your_Profile_Page.class).inputEmail((String) Global.map.get("current_mail"));
     }
 
     @And("^I will input the password on form")

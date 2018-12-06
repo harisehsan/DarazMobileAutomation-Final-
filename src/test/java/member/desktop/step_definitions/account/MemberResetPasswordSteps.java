@@ -21,7 +21,7 @@ public class MemberResetPasswordSteps extends BaseSteps {
 
     @And("^I submit email to reset password process")
     public void submitEmail() throws Throwable {
-        String emailReset = Global.config.getString("member.mail_for_reset");
+        String emailReset = Global.config.getString("member.reset_password_mail");
         on(Member_Forget_Pass_PC_Page.class).inputEmail(emailReset);
     }
 
@@ -45,7 +45,7 @@ public class MemberResetPasswordSteps extends BaseSteps {
 
     @And("^I open email to get sms code")
     public void accessSMSCode() throws Throwable {
-        String emailReset = Global.config.getString("member.mail_for_reset");
+        String emailReset = Global.config.getString("member.reset_password_mail");
         on(Member_Mailinator_Page.class).inputMail(emailReset);
         on(Member_Mailinator_Page.class).goToMailDetail();
         String smsCode = on(Member_Mailinator_Page.class).getSMSCodeDetail();
