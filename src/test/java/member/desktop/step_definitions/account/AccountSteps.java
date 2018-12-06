@@ -3,7 +3,7 @@ package member.desktop.step_definitions.account;
 import java.lang.String;
 import cucumber.api.java.en.*;
 import global.Global;
-import helper.RandomeHelper;
+import helper.RandomHelper;
 import member.desktop.pages.account.*;
 import base.BaseSteps;
 import org.testng.Assert;
@@ -45,7 +45,7 @@ public class AccountSteps extends BaseSteps{
     public void changePass() throws Throwable {
         visit(Member_Change_Pass_Page.class);
         String current_pass = Global.config.getString("member.account.pass");
-        String changedPass = "q" + RandomeHelper.generateResetPass();
+        String changedPass = RandomHelper.randomAlphaNumericString(6);
         Global.map.put("changed_pass",changedPass);
         on(Member_Change_Pass_Page.class).resetPass(current_pass,changedPass);
     }

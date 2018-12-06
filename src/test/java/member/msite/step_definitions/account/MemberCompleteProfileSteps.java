@@ -3,7 +3,7 @@ package member.msite.step_definitions.account;
 import base.BaseSteps;
 import cucumber.api.java.en.And;
 import global.Global;
-import helper.RandomeHelper;
+import helper.RandomHelper;
 import member.msite.pages.account.Member_Complete_Your_Profile_Page;
 
 public class MemberCompleteProfileSteps extends BaseSteps {
@@ -15,14 +15,14 @@ public class MemberCompleteProfileSteps extends BaseSteps {
 
     @And("^I will input the name on form")
     public void inputName() throws Throwable {
-        String name_msite = RandomeHelper.generateName();
+        String name_msite = RandomHelper.randomAlphabetString(6);
         Global.map.put("name_msite",name_msite);
         on(Member_Complete_Your_Profile_Page.class).inputName(name_msite);
     }
 
     @And("^I will input the email on form")
     public void inputEmail() throws Throwable {
-        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@mailinator.com";
+        String randomEmail = RandomHelper.randomTestMail();
         Global.map.put("current_mail",randomEmail);
         on(Member_Complete_Your_Profile_Page.class).inputEmail((String) Global.map.get("current_mail"));
     }

@@ -3,7 +3,7 @@ package member.desktop.step_definitions.account;
 import base.BaseSteps;
 import cucumber.api.java.en.*;
 import global.Global;
-import helper.RandomeHelper;
+import helper.RandomHelper;
 import member.desktop.pages.account.*;
 import org.testng.Assert;
 
@@ -11,7 +11,7 @@ public class MemberEditnamePCSteps extends BaseSteps {
 
     @And("^I go to edit profile page and edit name info")
     public void accessEditName() throws Throwable{
-        String editNameOfUser = RandomeHelper.generateName();
+        String editNameOfUser = RandomHelper.randomAlphaNumericString(6);
         Global.map.put("edit_name_of_user",editNameOfUser);
         visit(Member_AccEdit_PC_Page.class);
         on(Member_AccEdit_PC_Page.class).clearOldName();

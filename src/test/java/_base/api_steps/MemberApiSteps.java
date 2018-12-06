@@ -3,7 +3,7 @@ package _base.api_steps;
 import base.BaseSteps;
 import cucumber.api.java.en.And;
 import global.Global;
-import helper.RandomeHelper;
+import helper.RandomHelper;
 import member.desktop.pages.account.*;
 
 public class MemberApiSteps extends BaseSteps {
@@ -32,7 +32,7 @@ public class MemberApiSteps extends BaseSteps {
     @And("^I sign up by api with email")
     public void signUpEmailByApi(){
         visit(SignUp_Page.class);
-        String signupEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@MAILINATOR.com";
+        String signupEmail = RandomHelper.randomTestMail();
         on(SignUp_Page.class).signUpApi(signupEmail,commonPass);
         Global.map.put("current_mail",signupEmail);
         Global.map.put("current_pass",commonPass);
@@ -42,7 +42,8 @@ public class MemberApiSteps extends BaseSteps {
     @And("^I create a new member address by api")
     public void createAddressByApi(){
         visit(Account_Page.class);
-        String addressPhone = Global.config.getString("member.phone_number_template") + RandomeHelper.generatePhoneNumber();
+        String mobilephoneTemplate = Global.config.getString("member.phone_number_template");
+        String addressPhone = RandomHelper.randomPhoneNumber(mobilephoneTemplate);
         String addressName = Global.config.getString("member.account.name");
         on(Account_Page.class).createAddressByApi(Global.config.getConfig("member.address"),addressPhone,addressName);
         Global.browser.refresh();

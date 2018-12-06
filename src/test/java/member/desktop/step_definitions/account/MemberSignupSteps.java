@@ -3,7 +3,7 @@ package member.desktop.step_definitions.account;
 import base.BaseSteps;
 import cucumber.api.java.en.*;
 import global.Global;
-import helper.RandomeHelper;
+import helper.RandomHelper;
 import member.desktop.pages.account.*;
 
 public class MemberSignupSteps extends BaseSteps {
@@ -17,7 +17,7 @@ public class MemberSignupSteps extends BaseSteps {
 
     @And("^I process to signup user by email on signup by email page")
     public void signUpByEmailProcess() throws Throwable {
-        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@mailinator.com";
+        String randomEmail = RandomHelper.randomTestMail();
         Global.map.put("current_mail",randomEmail);
         String pass = Global.config.getString("member.account.pass");
         Global.map.put("current_pass",pass);

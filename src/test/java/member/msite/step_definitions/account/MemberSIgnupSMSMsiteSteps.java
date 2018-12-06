@@ -2,7 +2,7 @@ package member.msite.step_definitions.account;
 
 import cucumber.api.java.en.*;
 import global.Global;
-import helper.RandomeHelper;
+import helper.RandomHelper;
 import member.msite.pages.account.Member_SIgnupsms_Msite_Page;
 import base.BaseSteps;
 
@@ -16,8 +16,9 @@ public class MemberSIgnupSMSMsiteSteps extends BaseSteps {
 
     @And("^I input the phone number on Msite")
     public void inputPhone() throws Throwable {
-        String mobilephone = Global.config.getString("member.phone_number_template");
-        on(Member_SIgnupsms_Msite_Page.class).inputPhone(mobilephone + RandomeHelper.generatePhoneNumber());
+        String mobilephoneTemplate = Global.config.getString("member.phone_number_template");
+        String mobilephone = RandomHelper.randomPhoneNumber(mobilephoneTemplate);
+        on(Member_SIgnupsms_Msite_Page.class).inputPhone(mobilephone);
     }
 
     @And("^I click sendcode button on Msite")

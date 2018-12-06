@@ -3,8 +3,7 @@ package member.msite.step_definitions.account;
 import base.BaseSteps;
 import cucumber.api.java.en.*;
 import global.Global;
-import helper.RandomeHelper;
-import member.msite.pages.account.Member_Account_Msite_Page;
+import helper.RandomHelper;
 import member.msite.pages.account.Member_Mailinator_Msite_Page;
 import member.msite.pages.account.Member_Reset_Password_Msite_Page;
 import org.testng.Assert;
@@ -58,7 +57,7 @@ public class MemberResetPasswordMsiteSteps extends BaseSteps {
 
     @And("^I input the new password for reset")
     public void inputNewPassword() throws Throwable {
-        String randomPassword = "q" + RandomeHelper.generateResetPass();
+        String randomPassword = RandomHelper.randomAlphaNumericString(6);
         on(Member_Reset_Password_Msite_Page.class).progressNewPass(randomPassword);
         Global.map.put("current_pass",randomPassword);
     }

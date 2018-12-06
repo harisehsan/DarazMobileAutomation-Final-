@@ -2,7 +2,7 @@ package member.msite.step_definitions.account;
 
 import cucumber.api.java.en.*;
 import global.Global;
-import helper.RandomeHelper;
+import helper.RandomHelper;
 import member.msite.pages.account.Member_AccountSetting_Msite_Page;
 import member.msite.pages.account.Member_Account_Msite_Page;
 import member.msite.pages.account.Member_Loginemail_Msite_Page;
@@ -18,7 +18,7 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
 
     @And("^I input email just signned up on Msite")
     public void inputEmailSignUp() throws Throwable {
-        String changed_pass = "q" + RandomeHelper.generateResetPass();
+        String changed_pass = RandomHelper.randomAlphaNumericString(6);
         Global.map.put("changed_pass", changed_pass);
         on(Member_Loginemail_Msite_Page.class).inputEmail((String) Global.map.get("current_mail"));
         on(Member_Loginemail_Msite_Page.class).inputPass((String) Global.map.get("changed_pass"));
