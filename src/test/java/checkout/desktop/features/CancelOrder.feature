@@ -5,7 +5,7 @@ Feature: My Order PC Test for Daraz project
   @17916529 @911
   Scenario: User cancel order
     When I go to a pdp page
-    And I login by api with email and password
+    And I login by api with email
     And I click on Add to cart button
     And I click Checkout button on Cart popup
     And I click Place Order button on Checkout Shipping page
