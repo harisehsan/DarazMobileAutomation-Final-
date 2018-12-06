@@ -15,6 +15,6 @@ import java.util.List;
 
 @CucumberOptions(
         features = {"src/test/java/member/desktop/features"},
-        tags = {"@17417198"},
+        tags = {"@Address_PC"},
         glue = {"member.desktop.step_definitions"})
 public class DesktopRunner extends TestRunner {}

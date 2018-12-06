@@ -4,9 +4,7 @@ Feature: Address on PC
 
   @17807244 @member_regression @member_smoke @no_sg @no_drz
   Scenario: User can add new address
-    Given I go to the sign up page by smsphone
-    And I login by api with email
-#    And I sign up by api
+    Given I login by api with email
     And I open add new address page input name info
     And I create new address
     Then I should see the new address on account page
@@ -17,15 +15,13 @@ Feature: Address on PC
 
   @17807244 @member_regression @member_smoke @no_drz @no_lzd
   Scenario: User can add new address
-    Given I go to the sign up page by smsphone
-    And I sign up by api with phone
+    Given I sign up by api with email
     And I open add new address page input name info
     And I create new address
     Then I should see the new address on account page
 
   @18062654 @member_regression @member_smoke @no_drz @no_id @no_th @no_vn @no_my @no_ph
   Scenario: User can add new address and delete address- SG
-    Given I go to the sign up page by smsphone
     And I login by api with email
     And I open add new address page input name info
     And I create a new address for SG

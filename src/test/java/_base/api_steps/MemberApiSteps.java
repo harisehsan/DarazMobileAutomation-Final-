@@ -34,7 +34,7 @@ public class MemberApiSteps extends BaseSteps {
         visit(SignUp_Page.class);
         String signupEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@MAILINATOR.com";
         on(SignUp_Page.class).signUpApi(signupEmail,commonPass);
-        Global.map.put("current_email",signupEmail);
+        Global.map.put("email_random",signupEmail);
         Global.browser.refresh();
     }
 

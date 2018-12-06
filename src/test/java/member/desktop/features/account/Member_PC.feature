@@ -11,7 +11,8 @@ Feature: Member PC Test
 
   @17417151 @member_regression @member_smoke @signup @no_drz @no_lzd
   Scenario: Signup by email
-    And I sign up by api with email
+    Given I sign up by api with email
+    And I go to the account page
     Then I should see the account page
 
   @17417173 @member_regression @member_smoke @login @no_lzd
@@ -46,16 +47,14 @@ Feature: Member PC Test
 
   @17417198 @member_regression @member_smoke
   Scenario: User can logout successfully
-    When I go to the login by email page
-    And I login by api with email and password
+    And I login by api with email
     And I go to the account page
     And I click on logout account
     Then I logout successful
 
   @17480530 @member_regression @member_smoke @no_lzd
   Scenario: User can change password successfully
-    When I go to the sign up page by smsphone
-    And I sign up by api with phone
+    Given I sign up by api with email
     And I go to change password page
     And I click on logout account
     And I re-login by api with new password
