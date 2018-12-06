@@ -60,12 +60,12 @@ public class MemberResetPasswordMsiteSteps extends BaseSteps {
     public void inputNewPassword() throws Throwable {
         String randomPassword = "q" + RandomeHelper.generateResetPass();
         on(Member_Reset_Password_Msite_Page.class).progressNewPass(randomPassword);
-        Global.map.put("new_reset_pass",randomPassword);
+        Global.map.put("current_pass",randomPassword);
     }
 
     @Then("^I should see the success reset password on reset page")
     public void hasSuccessMessage() throws Throwable {
         Assert.assertTrue(on(Member_Reset_Password_Msite_Page.class).hasSuccessResetMessage(),"Checking reset password is successful if user getting the success message on reset page");
-        on(Member_Reset_Password_Msite_Page.class).allureResetPassword((String)(Global.map.get("email is reset")),(String)Global.map.get("new_reset_pass"));
+        on(Member_Reset_Password_Msite_Page.class).allureResetPassword((String)(Global.map.get("email is reset")),(String)Global.map.get("current_pass"));
     }
 }

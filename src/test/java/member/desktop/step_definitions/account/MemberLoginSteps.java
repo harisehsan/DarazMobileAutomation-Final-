@@ -18,7 +18,9 @@ public class MemberLoginSteps extends BaseSteps {
     @And("^I login account information on login by email page")
     public void loginByEmail()throws Throwable {
         String email = Global.config.getString("member.account.mail");
+        Global.map.put("current_mail",email);
         String pass = Global.config.getString("member.account.pass");
+        Global.map.put("current_pass",pass);
         on(Member_Login_Page.class).loginEmailPass(email,pass);
     }
 
@@ -44,7 +46,7 @@ public class MemberLoginSteps extends BaseSteps {
     @And("^I login email with new password after reset")
     public void loginWithResetPass() throws Throwable {
         String emailForReset = Global.config.getString("member.reset_password_mail");
-        on(Member_Login_Page.class).loginEmailPass(emailForReset, (String) Global.map.get("new_reset_pass"));
+        on(Member_Login_Page.class).loginEmailPass(emailForReset, (String) Global.map.get("current_pass"));
     }
 
     @Then("^I should see the texts on configuration Newsletter difference before configuration")
@@ -57,10 +59,10 @@ public class MemberLoginSteps extends BaseSteps {
         on(Account_Page.class).allureConfigNewsletter(beforeConfigNewsletter,afterConfigNewsletter);
     }
 
-    @And("^I re-login by api with new password$")
-    public void loginByApiNewPass(String pass){
+    @And("^I re-login by api with new password")
+    public void loginByApiNewPass(){
         visit(Login_Page.class);
-        String emailLogin = (String) Global.map.get("email_random");
+        String emailLogin = (String) Global.map.get("current_mail");
         String newPass = (String) Global.map.get("changed_pass");
         on(Login_Page.class).loginApi(emailLogin,newPass);
         Global.browser.refresh();

@@ -1,6 +1,5 @@
 package member.msite.step_definitions.account;
 
-import allure.AllureAttachment;
 import cucumber.api.java.en.*;
 import global.Global;
 import helper.RandomeHelper;
@@ -19,7 +18,6 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
 
     @And("^I input email just signned up on Msite")
     public void inputEmailSignUp() throws Throwable {
-//        String changed_pass = Global.config.getString("member.account.changed_pass");
         String changed_pass = "q" + RandomeHelper.generateResetPass();
         Global.map.put("changed_pass", changed_pass);
         on(Member_Loginemail_Msite_Page.class).inputEmail((String) Global.map.get("current_mail"));
@@ -30,10 +28,10 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
     @And("^I input account information to login by email Msite page")
     public void logInByEmailMsite() throws Throwable {
         String email = Global.config.getString("member.account.mail");
-        Global.map.put("email_login", email);
+        Global.map.put("current_mail", email);
         on(Member_Loginemail_Msite_Page.class).inputEmail(email);
         String pass = Global.config.getString("member.account.pass");
-        Global.map.put("password_login", pass);
+        Global.map.put("current_pass", pass);
         on(Member_Loginemail_Msite_Page.class).inputPass(pass);
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
     }

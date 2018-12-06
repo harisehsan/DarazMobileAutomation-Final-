@@ -115,5 +115,6 @@ public class Address_Msite_Page extends PageObject {
         this.deleteAddress_btn.click();
         waitUntilClickable(deleteAddressOk_btn_by);
         this.deleteAddressOk_btn.click();
+        waitUntilInvisibilityOf(deleteAddressOk_btn_by);
     }
 }

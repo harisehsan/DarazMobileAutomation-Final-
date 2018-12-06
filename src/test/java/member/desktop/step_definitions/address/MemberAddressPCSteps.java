@@ -164,6 +164,6 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @Then("^I should delete address successfully")
     public void hasNoAddressDeleted() throws Throwable {
-//        Assert.assertTrue(on(Member_AddressPC_Page.class).hasNoAddressDeleted(), "Checking after deleted address the list address will be back 1 address on address book ");
+        Assert.assertTrue(on(Member_AddressPC_Page.class).hasNoAddressDeleted(), "Checking after deleted address the list address will be back 1 address on address book ");
     }
 }

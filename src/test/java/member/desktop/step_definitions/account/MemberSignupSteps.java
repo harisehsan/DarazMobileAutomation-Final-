@@ -20,6 +20,7 @@ public class MemberSignupSteps extends BaseSteps {
         String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@mailinator.com";
         Global.map.put("current_mail",randomEmail);
         String pass = Global.config.getString("member.account.pass");
+        Global.map.put("current_pass",pass);
         String name = Global.config.getString("member.account.name");
         on(SignUp_Page.class).signUpByEmail(randomEmail,pass,name);
     }

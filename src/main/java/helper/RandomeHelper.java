@@ -16,6 +16,18 @@ public interface RandomeHelper {
         return saltStr;
     }
 
+    static String generateName() {
+        String NAMERANDOM = "SKHDFBCLISGCKSGDISAWEKDGSDFASVMVMVMCHGC";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 8) {
+            int index = (int) (rnd.nextFloat() * NAMERANDOM.length());
+            salt.append(NAMERANDOM.charAt(index));
+        }
+        String saltStr = String.format("%s", salt);
+        return saltStr;
+    }
+
     static String  generatePhoneNumber() {
         String PHONENUMBERRANDOM = "92735";
         StringBuilder salt = new StringBuilder();

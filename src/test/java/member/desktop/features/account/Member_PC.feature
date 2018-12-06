@@ -7,19 +7,19 @@ Feature: Member PC Test
     When I go to the sign up page by email
     And I process to signup user by email on signup by email page
     And I click on submit button
-    Then I should see the account page
+    Then I should see the user info is correctly displayed on account page
 
   @17417151 @member_regression @member_smoke @signup @no_drz @no_lzd
   Scenario: Signup by email
     Given I sign up by api with email
     And I go to the account page
-    Then I should see the account page
+    Then I should see the user info is correctly displayed on account page
 
   @17417173 @member_regression @member_smoke @login @no_lzd
   Scenario: Normal login by email
     When I go to the login by email page
     And I login account information on login by email page
-    Then I should see the logged account page
+    Then I should see the user info is correctly displayed on account page
 
   @17560793 @member_regression @member_smoke @login
   Scenario: Login by phone
@@ -29,7 +29,7 @@ Feature: Member PC Test
   @18053135 @member_regression @member_smoke @login
   Scenario: Login by email
     Given I login by api with email
-    Then I should see the logged account page
+    Then I should see the user info is correctly displayed on account page
 
   @17417183 @member_regression @member_smoke @login @no_lzd
   Scenario: Normal login by phone
@@ -58,7 +58,7 @@ Feature: Member PC Test
     And I go to change password page
     And I click on logout account
     And I re-login by api with new password
-    Then I should login success with new password
+    Then I should see the user info is correctly displayed on account page
 
   @17480524 @member_regression @member_smoke
   Scenario: User can config newsletter
@@ -81,7 +81,7 @@ Feature: Member PC Test
     And I input the smscode on verifyemail page from old tab
     And I click Verify Code button on verifyemail page
     And I process reset password on reset password page
-    Then I should see the email for reset on account page
+    Then I should see the user info is correctly displayed on account page
 
 #    @18090215 @member_regression @member_smoke
 #    Scenario: User can change email successfully

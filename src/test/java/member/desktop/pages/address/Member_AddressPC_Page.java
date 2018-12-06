@@ -216,10 +216,9 @@ public class Member_AddressPC_Page extends PageObject {
         waitUntilInvisibilityOf(save_btn_by);
     }
 
-    public int hasNoAddressDeleted() {
+    public boolean hasNoAddressDeleted() {
         waitUntilPageReady();
         waitUntilVisible(editAddLzd_btn);
-        int lengthOfAddressListItem = address_listItems.size();
-        return lengthOfAddressListItem;
+        return address_listItems.size() == 1;
     }
 }
