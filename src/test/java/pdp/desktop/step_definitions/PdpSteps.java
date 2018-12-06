@@ -179,4 +179,18 @@ public class PdpSteps extends BaseSteps {
         Assert.assertEquals(on(Pdp_Page.class).getCurrentAddress(), on(Pdp_Page.class).randomAddress, "Random address is not selected");
     }
 
+    @And("^I submit new postcode in Leadtime$")
+    public void submitPostCode() {
+        String beforeChangedAddress = on(Pdp_Page.class).getCurrentAddress();
+        Global.map.put("beforeChangedAddress",beforeChangedAddress);
+        on(Pdp_Page.class).clickChangeLink();
+        on(Pdp_Page.class).submitPostCode(Global.config.getString("pdp.valid_postcode"));
+    }
+
+    @Then("^I should see new Leadtime address has postcode$")
+    public void newAddressHasPostCode() {
+        on(Pdp_Page.class).waitUntilAddressChanged((String) Global.map.get("beforeChangedAddress"));
+        Assert.assertTrue(on(Pdp_Page.class).getCurrentAddress().contains(Global.config.getString("pdp.valid_postcode")));
+    }
+
 }
