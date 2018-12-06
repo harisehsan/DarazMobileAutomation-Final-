@@ -56,4 +56,13 @@ public class MemberLoginSteps extends BaseSteps {
         on(Account_Page.class).allureUrl();
         on(Account_Page.class).allureConfigNewsletter(beforeConfigNewsletter,afterConfigNewsletter);
     }
+
+    @And("^I re-login by api with new password$")
+    public void loginByApiNewPass(String pass){
+        visit(Login_Page.class);
+        String emailLogin = (String) Global.map.get("email_random");
+        String newPass = (String) Global.map.get("changed_pass");
+        on(Login_Page.class).loginApi(emailLogin,newPass);
+        Global.browser.refresh();
+    }
 }

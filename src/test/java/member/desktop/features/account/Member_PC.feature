@@ -11,8 +11,8 @@ Feature: Member PC Test
 
   @17417151 @member_regression @member_smoke @signup @no_drz @no_lzd
   Scenario: Signup by email
-    When I go to the sign up page by smsphone
-    And I sign up by api
+    Given I sign up by api with email
+    And I go to the account page
     Then I should see the account page
 
   @17417173 @member_regression @member_smoke @login @no_lzd
@@ -23,14 +23,12 @@ Feature: Member PC Test
 
   @17560793 @member_regression @member_smoke @login
   Scenario: Login by phone
-    When I go to the login by email page
-    And I login by api with mobile phone and password
+    Given I login by api with phone
     Then I should see the account is verified
 
   @18053135 @member_regression @member_smoke @login
   Scenario: Login by email
-    When I go to the login by email page
-    And I login by api with email and password
+    Given I login by api with email
     Then I should see the logged account page
 
   @17417183 @member_regression @member_smoke @login @no_lzd
@@ -41,8 +39,7 @@ Feature: Member PC Test
 
   @17480509 @member_regression @member_smoke @no_lzd
   Scenario: User can edit name information
-    When I go to the login by email page
-    And I sign up by api
+    When I sign up by api with email
     And I go to the account page
     And I go to edit profile page and edit name info
     And I click on save changes button
@@ -50,25 +47,22 @@ Feature: Member PC Test
 
   @17417198 @member_regression @member_smoke
   Scenario: User can logout successfully
-    When I go to the login by email page
-    And I login by api with email and password
+    And I login by api with email
     And I go to the account page
     And I click on logout account
     Then I logout successful
 
   @17480530 @member_regression @member_smoke @no_lzd
   Scenario: User can change password successfully
-    When I go to the sign up page by smsphone
-    And I sign up by api
+    Given I sign up by api with email
     And I go to change password page
     And I click on logout account
-    And I login by api with old email and changed_pass
+    And I re-login by api with new password
     Then I should login success with new password
 
   @17480524 @member_regression @member_smoke
   Scenario: User can config newsletter
-    When I go to the login by email page
-    And I login by api with email and password
+    And I login by api with email
     And I go to the account page
     And I click on newsletter button to turn on or off config
     Then I should see the texts on configuration Newsletter difference before configuration

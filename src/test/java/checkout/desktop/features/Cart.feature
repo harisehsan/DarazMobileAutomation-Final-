@@ -3,7 +3,7 @@ Feature: Cart features
 
   @17740822 @Checkout_Regression @Checkout_Smoke
   Scenario: User can move a product on Cart to wishlist
-    Given I login by email on lazada/daraz
+    Given I login by api with email
     When I go to a pdp page
     And I get the product title
     And I click on Add to cart button
@@ -13,7 +13,7 @@ Feature: Cart features
 
   @17742324 @Checkout_Regression @Checkout_Smoke
   Scenario: User can delete a product on Cart successfully
-    Given I login by email on lazada/daraz
+    Given I login by api with phone
     When I go to a pdp page
     And I get the product title
     And I click on Add to cart button
@@ -23,7 +23,7 @@ Feature: Cart features
 
   @17757740 @Checkout_Regression @Checkout_Smoke
   Scenario: Confirm Cart button leads user to Checkout Shipping page
-    Given I login by email on lazada/daraz
+    Given I login by api with email
     When I go to a pdp page
     And I click on Add to cart button
     And I click Go To Cart button on Cart popup
