@@ -4,6 +4,7 @@ import base.BaseSteps;
 import checkout.desktop.pages.Cart_PopUp;
 import checkout.desktop.pages.CheckoutShipping_Page;
 import cucumber.api.java.en.And;
+import helper.RandomHelper;
 import pdp.desktop.pages.MyWishlist_Page;
 import pdp.desktop.pages.Pdp_Page;
 import cucumber.api.java.en.Given;
@@ -11,6 +12,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import global.Global;
 import org.testng.Assert;
+
+import java.util.Random;
 
 
 public class PdpSteps extends BaseSteps {
@@ -42,16 +45,16 @@ public class PdpSteps extends BaseSteps {
     public void askQuestion(String questionType) {
         switch (questionType) {
             case "valid_question":
-                on(Pdp_Page.class).askQuestion(Global.config.getString("pdp.ask_valid_question"));
+                on(Pdp_Page.class).askQuestion(RandomHelper.randomSentence(10));
                 break;
             case "question_contain_email":
-                on(Pdp_Page.class).askQuestion(Global.config.getString("pdp.question_contain_email"));
+                on(Pdp_Page.class).askQuestion(RandomHelper.randomSentence(5)+ " " + RandomHelper.randomTestMail());
                 break;
             case "question_contain_phonenumber":
-                on(Pdp_Page.class).askQuestion(Global.config.getString("pdp.question_contain_phonenumber"));
+                on(Pdp_Page.class).askQuestion(RandomHelper.randomSentence( 5)+ " " + RandomHelper.randomNumber(8));
                 break;
             case "question_contain_externalWebLink":
-                on(Pdp_Page.class).askQuestion(Global.config.getString("pdp.question_contain_externalWebLink"));
+                on(Pdp_Page.class).askQuestion(RandomHelper.randomSentence(5) + " https://www."+RandomHelper.randomAlphabetString(5) + ".com/" + RandomHelper.randomAlphaNumericString(6));
                 break;
         }
     }
