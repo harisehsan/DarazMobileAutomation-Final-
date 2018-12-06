@@ -1,6 +1,8 @@
 package member.desktop.pages.account;
 
+import com.google.gson.JsonObject;
 import global.Global;
+import helper.XhrHelper;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.*;
@@ -14,6 +16,7 @@ import base.PageObject;
 public class SignUp_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url") + "/user/register";
+    private static String signUpApiUrl = Global.config.getString("member.url")+"/user/api/register";
 
     @FindBy(className = "mod-change-register-btn") private WebElement email_btn;
     @FindBy(css = ".mod-input-email input") private WebElement email_txtField;
@@ -46,5 +49,20 @@ public class SignUp_Page extends PageObject {
         Actions move = new Actions(Global.browser.getWebDriver());
         Action actions = move.clickAndHold(slider_btn).moveByOffset(300, 0).release().build();
         actions.perform();
+    }
+
+    /**
+     *
+     * @param userId could be email or phone number
+     * @param password
+     */
+    public void signUpApi(String userId, String password){
+        String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
+        String name = Global.config.getString("member.account.name");
+        String [] args = {signUpApiUrl,userId,password,name,csrfToken};
+        JsonObject response = XhrHelper.executeXhrRequest("member_signup.js",args);
+        if(!String.valueOf(response.get("success")).equalsIgnoreCase("true")){
+            throw new RuntimeException(String.format("Login with credential %s/%s fail . Response from server: %s",userId,password,String.valueOf(response)));
+        }
     }
 }

@@ -1,7 +1,11 @@
 package member.desktop.pages.account;
 
 import allure.AllureAttachment;
+import com.google.gson.JsonObject;
+import com.typesafe.config.Config;
 import global.Global;
+import helper.RandomeHelper;
+import helper.XhrHelper;
 import io.qameta.allure.AllureResultsWriteException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -17,6 +21,7 @@ import java.util.Base64;
 public class Account_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url") + "/user/profile";
+    private static String create_address_api_url = Global.config.getString("member.url")+"/address/api/createAddress";
 
     @FindBy(css = "div.breadcrumb > a") private WebElement mainContainer_lbl;
     @FindBy(id = "lzd_current_logon_user_name") private WebElement nameOfUser_lbl;
@@ -98,12 +103,24 @@ public class Account_Page extends PageObject {
         AllureAttachment.attachComment("Current name", newName);
     }
 
-   public void allureMobilePhone(String mobile) {
+    public void allureMobilePhone(String mobile) {
         AllureAttachment.attachComment("Mobile phone", mobile);
     }
 
     public void allureConfigNewsletter(String beforeConfigure, String afterConfigure) {
         AllureAttachment.attachComment("Before configure Newsletter", beforeConfigure);
         AllureAttachment.attachComment("After configure Newsletter", afterConfigure);
+    }
+
+    public void createAddressByApi(Config address,String phone,String name){
+        String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
+        String locationTreeAddressArray=address.getString("locationTreeAddressArray");
+        String locationTreeAddressId=address.getString("locationTreeAddressId");
+        String locationTreeAddressName=address.getString("locationTreeAddressName");
+        String [] args = {create_address_api_url,name,phone,locationTreeAddressArray,locationTreeAddressId,locationTreeAddressName,csrfToken};
+        JsonObject response = XhrHelper.executeXhrRequest("member_create_address.js",args);
+        if(!String.valueOf(response.get("success")).equalsIgnoreCase("true")){
+            throw new RuntimeException(String.format("Create address fail . Response from server: %s",String.valueOf(response)));
+        }
     }
 }
