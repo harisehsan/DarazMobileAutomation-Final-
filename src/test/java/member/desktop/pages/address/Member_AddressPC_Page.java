@@ -214,7 +214,7 @@ public class Member_AddressPC_Page extends PageObject {
         waitUntilVisible(detailAddress_txtField);
         this.detailAddress_txtField.sendKeys(detailAdd);
         waitUntilInvisibilityOf(loadingicon_by);
-//        waitUntilClickable(save_btn_by);
+        waitUntilClickable(save_btn_by);
         this.savesg_btn.click();
         waitUntilInvisibilityOf(savesg_btn_by);
     }
