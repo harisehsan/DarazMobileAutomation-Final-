@@ -57,7 +57,7 @@ public class MemberResetPasswordMsiteSteps extends BaseSteps {
 
     @And("^I input the new password for reset")
     public void inputNewPassword() throws Throwable {
-        String randomPassword = "q" + RandomHelper.randomAlphaNumericString(6);
+        String randomPassword = RandomHelper.randomAlphabetString(5) + RandomHelper.randomNumber(5);
         on(Member_Reset_Password_Msite_Page.class).progressNewPass(randomPassword);
         Global.map.put("current_pass",randomPassword);
     }
