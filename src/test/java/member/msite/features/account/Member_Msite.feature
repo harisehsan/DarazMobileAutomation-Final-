@@ -18,7 +18,7 @@ Feature: Member Msite Test
   Scenario: User can logout successfully
     When I go to login by email on Msite
     And I input account information to login by email Msite page
-    And I should stayed in account page
+    And On Msite I should see the user info is correctly displayed on account page
     And I go to setting page
     And I progress logout account on account setting page
     Then I should logout success
@@ -41,7 +41,7 @@ Feature: Member Msite Test
   Scenario: User can config newsletter
     When I go to login by email on Msite
     And I input account information to login by email Msite page
-    And I should stayed in account page
+    And On Msite I should see the user info is correctly displayed on account page
     And I get result of newsletter config before trigger
     And I trigger on newsletter config
     Then I should see the result of current newsletter config changed
