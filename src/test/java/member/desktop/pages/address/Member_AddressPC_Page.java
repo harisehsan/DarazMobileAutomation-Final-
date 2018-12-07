@@ -21,7 +21,7 @@ public class Member_AddressPC_Page extends PageObject {
     @FindBy(css = ".mod-select-location-tree-3") private WebElement locationTree3_listBtn;
     @FindBy(css = ".mod-input-detailAddress > input") private WebElement address_txtField;
     @FindBy(css = ".mod-input-postCode > input[type='number']") private WebElement postCode_txtField;
-    @FindBy(css = ".mod-address-form-btn") private WebElement save_btn;
+    @FindBy(css = "button.mod-address-form-btn") private WebElement save_btn;
     @FindBy(className = "mod-address-book-default") private WebElement hasAddress_lbl;
     @FindBy(css = ".mod-input-detailAddress input") private WebElement detailAddress_txtField;
     @FindBy(css = ".next-table-cell") private WebElement editAddress_btn;
@@ -29,7 +29,7 @@ public class Member_AddressPC_Page extends PageObject {
     @FindBy(css = "tr > td:nth-child(2) > div") private WebElement hasNewNameDrz_lbl;
     @FindBy(css = "tr > td.next-table-cell.first > div") private WebElement hasNewNameLzd_lbl;
     @FindBy(css = "tbody > tr:nth-child(2) > td > div > button") private WebElement accessDeleteAddDrz_btn;
-    @FindBy(css = " tbody > tr.next-table-row.last > td.next-table-cell.last > div > button") private WebElement accessDeleteAddLzd_btn;
+    @FindBy(css = "tbody > tr:nth-child(2) > td > div > button") private WebElement accessDeleteAddLzd_btn;
     @FindBy(className = "mod-address-update-hd") private WebElement delete_btn;
     @FindBy(css = "div.mod-input-name > div") private WebElement clearName_btn;
     @FindBy(css = "div.mod-input-phone > div") private WebElement clearPhone_btn;
@@ -151,7 +151,7 @@ public class Member_AddressPC_Page extends PageObject {
 
     public void clickSaveBtn() {
         waitUntilPageReady();
-        waitUntilVisible(save_btn);
+        waitUntilClickable(save_btn_by);
         this.save_btn.click();
         waitUntilInvisibilityOf(save_btn_by);
     }
@@ -212,13 +212,14 @@ public class Member_AddressPC_Page extends PageObject {
         waitUntilVisible(detailAddress_txtField);
         this.detailAddress_txtField.sendKeys(detailAdd);
         waitUntilInvisibilityOf(loadingicon_by);
+        waitUntilClickable(save_btn_by);
         this.save_btn.click();
         waitUntilInvisibilityOf(save_btn_by);
     }
 
     public boolean hasNoAddressDeleted() {
         waitUntilPageReady();
-        waitUntilVisible(editAddLzd_btn);
+        waitUntilVisible(editAddress_btn);
         return address_listItems.size() == 1;
     }
 }

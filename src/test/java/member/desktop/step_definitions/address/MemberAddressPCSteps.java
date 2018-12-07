@@ -130,7 +130,8 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I create a new address for SG")
     public void createAddressSg() throws Throwable {
-        String mobile = Global.config.getString("member.phone_number_login");
+        String mobilephoneTemplate = Global.config.getString("member.phone_number_template");
+        String mobile = RandomHelper.randomPhoneNumber(mobilephoneTemplate);
         String postCode = Global.config.getString("member.post_code");
         String addressDetail = "123 " + RandomHelper.randomAlphabetString(5);
         on(Member_AddressPC_Page.class).createAddressSg(mobile, postCode, addressDetail);
