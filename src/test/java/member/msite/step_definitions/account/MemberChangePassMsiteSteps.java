@@ -17,7 +17,7 @@ public class MemberChangePassMsiteSteps extends BaseSteps {
     @And("^I input all information to change pass")
     public void changePassProcess() throws Throwable {
         String old_pass = Global.config.getString("member.account.pass");
-        String changed_pass = RandomHelper.randomAlphaNumericString(6);
+        String changed_pass = "q" + RandomHelper.randomAlphaNumericString(6);
         on(Member_ChangePass_Msite_Page.class).setNewPassWord(old_pass,changed_pass);
         on(Member_ChangePass_Msite_Page.class).saveButton();
         on(Member_ChangePass_Msite_Page.class).gotItButton();
