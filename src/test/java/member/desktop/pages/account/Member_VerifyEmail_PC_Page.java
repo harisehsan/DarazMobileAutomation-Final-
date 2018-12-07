@@ -27,7 +27,6 @@ public class Member_VerifyEmail_PC_Page extends PageObject {
     }
 
     public void clickVerifyCodeBtn() {
-        waitUntilClickable(verify_btn_by);
         this.verify_btn.click();
         waitUntilInvisibilityOf(verify_btn_by);
     }
