@@ -100,7 +100,7 @@ public class PageObject {
     }
 
     protected void clearText(WebElement ele){
-        ele.sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END));
+        ele.sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END),Keys.DELETE);
     }
 
 }
