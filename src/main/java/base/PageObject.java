@@ -99,5 +99,8 @@ public class PageObject {
                 .until(ExpectedConditions.invisibilityOfElementLocated(by));
     }
 
+    protected void clearText(WebElement ele){
+        ele.sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END));
+    }
 
 }
