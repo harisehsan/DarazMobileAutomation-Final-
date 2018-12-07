@@ -21,7 +21,7 @@ public class Member_AddressPC_Page extends PageObject {
     @FindBy(css = ".mod-select-location-tree-3") private WebElement locationTree3_listBtn;
     @FindBy(css = ".mod-input-detailAddress > input") private WebElement address_txtField;
     @FindBy(css = ".mod-input-postCode > input[type='number']") private WebElement postCode_txtField;
-    @FindBy(css = "button.mod-address-form-btn") private WebElement save_btn;
+    @FindBy(css = "div.mod-address-form-action > button.mod-address-form-btn") private WebElement save_btn;
     @FindBy(className = "mod-address-book-default") private WebElement hasAddress_lbl;
     @FindBy(css = ".mod-input-detailAddress input") private WebElement detailAddress_txtField;
     @FindBy(css = ".next-table-cell") private WebElement editAddress_btn;
@@ -47,7 +47,7 @@ public class Member_AddressPC_Page extends PageObject {
     private By clearName_btn_by = By.cssSelector("div.mod-input-name > div");
     private By clearPhone_btn_by = By.cssSelector("div.mod-input-phone > div");
     private By selectTree_listItems_by = By.cssSelector(".next-menu-content > li");
-    private By save_btn_by = By.cssSelector(".mod-address-form-btn");
+    private By save_btn_by = By.cssSelector("div.mod-address-form-action > button.mod-address-form-btn");
 
     public void addNewAddress() {
         waitUntilPageReady();
