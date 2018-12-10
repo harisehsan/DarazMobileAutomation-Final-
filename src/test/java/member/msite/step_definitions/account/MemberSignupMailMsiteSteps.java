@@ -1,8 +1,7 @@
 package member.msite.step_definitions.account;
 
-import allure.AllureAttachment;
 import global.Global;
-import helper.RandomeHelper;
+import helper.RandomHelper;
 import member.msite.pages.account.Member_Account_Msite_Page;
 import member.msite.pages.account.Member_Signupemail_Msite_Page;
 import base.BaseSteps;
@@ -22,10 +21,10 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
     public void signUpByEmail() throws Throwable {
         String name = Global.config.getString("member.account.name");
         Global.map.put("name_of_account",name);
-        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@hotmail.com";
-        Global.map.put("email_random",randomEmail);
+        String randomEmail = RandomHelper.randomTestMail();
+        Global.map.put("current_mail",randomEmail);
         String passWord = Global.config.getString("member.account.pass");
-        Global.map.put("password", passWord);
+        Global.map.put("current_pass", passWord);
         on(Member_Signupemail_Msite_Page.class).signUpByEmail(name,randomEmail,passWord);
         on(Member_Signupemail_Msite_Page.class).signUpButton();
     }
@@ -41,12 +40,12 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
         on(Member_Account_Msite_Page.class).setNewsletterTrigger();
     }
 
-    @Then("^I should see the name of user in account title")
+    @Then("^On Msite I should see the user info is correctly displayed on account page")
     public void hasTitleAccount() throws Throwable {
         Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking account tittle on my account page should be displayed");
-        String email = (String) Global.map.get("email_random");
-        String password = (String) Global.map.get("password");
-        on(Member_Account_Msite_Page.class).allureMailUrlPass(email, password);
+        String email = (String) Global.map.get("current_mail");
+        String password = (String) Global.map.get("current_pass");
+        on(Member_Account_Msite_Page.class).allureMailUrlPassMsite(email, password);
     }
 
     @Then("^I should see the result of current newsletter config changed")

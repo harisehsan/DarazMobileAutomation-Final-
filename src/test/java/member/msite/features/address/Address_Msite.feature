@@ -6,7 +6,7 @@ Feature: Address Msite test
   Scenario: User can add new address
     When I go to the sign up on Msite page by email
     And I input all information to signup by email page
-    And I should stayed in account page
+    And On Msite I should see the user info is correctly displayed on account page
     And I access to address page
     And I input content of address_detail
     And I click save address button
@@ -16,7 +16,7 @@ Feature: Address Msite test
   Scenario: User can edit address information - Drz
     Given I go to the sign up on Msite page by email
     When I input all information to signup by email page
-    And I should stayed in account page
+    And On Msite I should see the user info is correctly displayed on account page
     And I access to address page
     And I input content of address_detail
     And I click save address button
@@ -27,7 +27,7 @@ Feature: Address Msite test
   Scenario: User can delete address successfully - Drz
     Given I go to the sign up on Msite page by email
     When I input all information to signup by email page
-    And I should stayed in account page
+    And On Msite I should see the user info is correctly displayed on account page
     And I access to address page
     And I input content of address_detail
     And I click save address button

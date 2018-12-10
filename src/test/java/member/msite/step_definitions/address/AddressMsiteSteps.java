@@ -1,10 +1,9 @@
 package member.msite.step_definitions.address;
 
 import base.BaseSteps;
-import com.typesafe.config.Config;
 import cucumber.api.java.en.*;
 import global.Global;
-import member.msite.pages.account.*;
+import helper.RandomHelper;
 import member.msite.pages.address.*;
 import org.testng.Assert;
 
@@ -18,14 +17,26 @@ public class AddressMsiteSteps extends BaseSteps {
     @And("I input content of (.*?)$")
     public void inputAddress(String address) throws Throwable {
         String name = Global.config.getString("member.account.name");
-        String phone = Global.config.getString("member.phone_number_login");
+        String mobilephoneTemplate = Global.config.getString("member.phone_number_template");
+        String phone = RandomHelper.randomPhoneNumber(mobilephoneTemplate);
+        String address_detail = "123 " +  RandomHelper.randomAlphabetString(5);
+        Global.map.put("address_detail", address_detail);
+        String address_delete = "456 " + RandomHelper.randomAlphabetString(5);
+        Global.map.put("address_delete", address_delete);
         visit(Address_Msite_Page.class);
         Global.browser.refresh();
         on(Address_Msite_Page.class).clickNewAddress();
         on(Address_Msite_Page.class).inputAddressDetail(name,phone);
-        Config memberConfig = Global.config.getConfig("member.account");
-        String addressInfo = memberConfig.getString(address);
-        on(Address_Msite_Page.class).inputAddressContent(addressInfo);
+        switch (address) {
+            case "address_detail":
+                String addressDetail = (String) Global.map.get("address_detail");
+                on(Address_Msite_Page.class).inputAddressContent(addressDetail);
+                break;
+            case "address_delete":
+                String addressDelete = (String) Global.map.get("address_delete");
+                on(Address_Msite_Page.class).inputAddressContent(addressDelete);
+                break;
+        }
     }
 
     @And("^I click save address button")
@@ -35,10 +46,12 @@ public class AddressMsiteSteps extends BaseSteps {
 
     @When("^I go to edit address information")
     public void editAddressInformation() throws Throwable {
-        String new_name = Global.config.getString("member.account.name_edit");
-        String new_phone = Global.config.getString("member.phone_number_login");
-        on(Address_Msite_Page.class).editAddressInformation(new_name,new_phone);
+        String new_name = RandomHelper.randomAlphabetString(6);
         Global.map.put("edit_address_name",new_name);
+        String mobilephoneTemplate = Global.config.getString("member.phone_number_template");
+        String new_phone = RandomHelper.randomPhoneNumber(mobilephoneTemplate);
+        Global.map.put("edit_address_phone",new_phone);
+        on(Address_Msite_Page.class).editAddressInformation(new_name,new_phone);
     }
 
     @And("^I delete address on address book")

@@ -1,8 +1,8 @@
 package member.msite.step_definitions.account;
 
-import allure.AllureAttachment;
 import cucumber.api.java.en.*;
 import global.Global;
+import helper.RandomHelper;
 import member.msite.pages.account.Member_AccountSetting_Msite_Page;
 import member.msite.pages.account.Member_Account_Msite_Page;
 import member.msite.pages.account.Member_Loginemail_Msite_Page;
@@ -18,19 +18,20 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
 
     @And("^I input email just signned up on Msite")
     public void inputEmailSignUp() throws Throwable {
-        String changed_pass = Global.config.getString("member.account.changed_pass");
-        on(Member_Loginemail_Msite_Page.class).inputEmail((String) Global.map.get("email_random"));
-        on(Member_Loginemail_Msite_Page.class).inputPass(changed_pass);
+        String changed_pass = RandomHelper.randomAlphaNumericString(6);
+        Global.map.put("changed_pass", changed_pass);
+        on(Member_Loginemail_Msite_Page.class).inputEmail((String) Global.map.get("current_mail"));
+        on(Member_Loginemail_Msite_Page.class).inputPass((String) Global.map.get("changed_pass"));
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
     }
 
     @And("^I input account information to login by email Msite page")
     public void logInByEmailMsite() throws Throwable {
         String email = Global.config.getString("member.account.mail");
-        Global.map.put("email_login", email);
+        Global.map.put("current_mail", email);
         on(Member_Loginemail_Msite_Page.class).inputEmail(email);
         String pass = Global.config.getString("member.account.pass");
-        Global.map.put("password_login", pass);
+        Global.map.put("current_pass", pass);
         on(Member_Loginemail_Msite_Page.class).inputPass(pass);
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
     }
@@ -46,13 +47,13 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
         on(Member_AccountSetting_Msite_Page.class).setOkButton();
     }
 
-    @Then("^I should stayed in account page")
-    public void hasStayOnAccountPage(){
-        Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking user should be stayed in account page after logging in success");
-        String email = (String) Global.map.get("email_login");
-        String password = (String) Global.map.get("password_login");
-        on(Member_Account_Msite_Page.class).allureMailUrlPass(email, password);
-    }
+//    @Then("^I should stayed in account page")
+//    public void hasStayOnAccountPage(){
+//        Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking user should be stayed in account page after logging in success");
+//        String email = (String) Global.map.get("email_login");
+//        String password = (String) Global.map.get("password_login");
+//        on(Member_Account_Msite_Page.class).allureMailUrlPassMsite(email, password);
+//    }
 
     @Then("^I should stayed in setting account page")
     public void hasStayOnSettingPage(){

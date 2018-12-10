@@ -3,6 +3,7 @@ package member.desktop.step_definitions.account;
 import java.lang.String;
 import cucumber.api.java.en.*;
 import global.Global;
+import helper.RandomHelper;
 import member.desktop.pages.account.*;
 import base.BaseSteps;
 import org.testng.Assert;
@@ -40,39 +41,27 @@ public class AccountSteps extends BaseSteps{
         on(Account_Page.class).logOut();
     }
 
+    @And("^I go to change password page")
+    public void changePass() throws Throwable {
+        visit(Member_Change_Pass_Page.class);
+        String current_pass = Global.config.getString("member.account.pass");
+        String changedPass = RandomHelper.randomAlphabetString(5) + RandomHelper.randomNumber(5);
+        Global.map.put("changed_pass",changedPass);
+        on(Member_Change_Pass_Page.class).resetPass(current_pass,changedPass);
+    }
+
     @Then("^I logout successful")
     public void hasID() throws Throwable {
         Assert.assertTrue(on(Member_Login_Page.class).hasID(),"Checking user should be stay in login page");
         on(Account_Page.class).allureUrl();
     }
 
-    @Then("^I should see the account page$")
-    public void hasEmailOnAccountPage() {
-        on(Account_Page.class).untilLoaded();
-        String currentEmail = on(Account_Page.class).hasEmail();
-        String expectEmail = (String) Global.map.get("email_random");
-        String pass = Global.config.getString("member.account.pass");
-        Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashbogitard");
-        on(Account_Page.class).allureMailUrlPass(pass);
-    }
-
     @Then("^I should see the email for reset on account page$")
     public void hasEmailReset() {
         on(Account_Page.class).untilLoaded();
         String currentEmail = on(Account_Page.class).hasEmail();
-        String expectEmail = Global.config.getString("member.mail_for_reset");
-        String passWord = (String) Global.map.get("new_reset_pass");
-        Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
-        on(Account_Page.class).allureMailUrlPass(passWord);
-    }
-
-    @Then("^I should login success with new password")
-    public void hasEmail() {
-        on(Account_Page.class).untilLoaded();
-        Global.browser.refresh();
-        String currentEmail = on(Account_Page.class).hasEmail();
-        String passWord = Global.config.getString("member.account.changed_pass");
-        String expectEmail = (String) Global.map.get("email_random");
+        String expectEmail = Global.config.getString("member.reset_password_mail");
+        String passWord = (String) Global.map.get("current_pass");
         Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
         on(Account_Page.class).allureMailUrlPass(passWord);
     }
@@ -80,21 +69,8 @@ public class AccountSteps extends BaseSteps{
     @And("^I should see the account is verified")
     public void isVerified() throws Throwable {
         Assert.assertTrue(on(Account_Page.class).isVerified(), "Checking is verified icon should be display if user has updated mobile phone");
-        String mobilephone = Global.config.getString("member.phone_number_login");
+        String mobilephone = Global.config.getString("member.registered_phone");
         String pass = Global.config.getString("member.account.pass");
-        on(Account_Page.class).allureMailUrlPass(pass);
-        on(Account_Page.class).allureMobilePhone(mobilephone);
-    }
-
-    @Then("^I should see the logged account page")
-    public void hasEmailLogged() {
-        on(Account_Page.class).untilLoaded();
-        Global.browser.refresh();
-        String mobilephone = Global.config.getString("member.phone_number_login");
-        String currentEmail = on(Account_Page.class).hasEmail();
-        String pass = Global.config.getString("member.account.pass");
-        String expectEmail = Global.config.getString("member.account.mail");
-        Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
         on(Account_Page.class).allureMailUrlPass(pass);
         on(Account_Page.class).allureMobilePhone(mobilephone);
     }
@@ -103,5 +79,16 @@ public class AccountSteps extends BaseSteps{
     public void hasNewEmailAfterChanging() throws Throwable {
         Assert.assertTrue(on(Account_Page.class).isEmail(),"Checking user should login new email successfully");
         on(Account_Page.class).allureMailUrlPass(Global.config.getString("member.account.pass"));
+    }
+
+    @Then("^I should see the user info is correctly displayed on account page")
+    public void isCorrectUserInfo() throws Throwable {
+        on(Account_Page.class).untilLoaded();
+        Global.browser.refresh();
+        String pass = (String) Global.map.get("current_pass");
+        String expectEmail = (String) Global.map.get("current_mail");
+        String currentEmail = on(Account_Page.class).hasEmail();
+        Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
+        on(Account_Page.class).allureMailUrlPass(pass);
     }
 }
