@@ -41,6 +41,12 @@ Feature: Pdp features
     When I change a new address for Leadtime
     Then I should see Leadtime with new address
 
+  @18135032 @checkout_regression @checkout_smoke @no_drz @no_vn @no_sg @no_ph @no_id
+  Scenario: Check LeadTime function for MY and TH
+    When I go to a normal pdp page
+    And I submit new postcode in Leadtime
+    Then I should see new Leadtime address has postcode
+
   @18009106 @checkout_regression @checkout_smoke
   Scenario: Check Buy Now/Add To Cart buttons work with guest user
     When I go to a normal pdp page

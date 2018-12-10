@@ -45,16 +45,18 @@ public class Pdp_Page extends PageObject {
     @FindBy(css = ".location__link-change") private WebElement changeLeadtime_link;
     @FindBy(css = ".automation-location-list-item") private List<WebElement> locationListItems;
     @FindBy(css = ".location__address") private WebElement leadtimeAddress_lbl;
+    @FindBy(css = ".location-postcode__input-wrap > span > input[type='text']") private WebElement postCode_txtField;
+    @FindBy(css = ".location-postcode__button-save") private WebElement postCodeSave_btn;
 
     private By location_loading_icon_by = By.cssSelector(".location-level__loader");
     private By location_overlay_by = By.cssSelector(".location-overlay");
+    private By postCodeSave_btn_by = By.cssSelector(".location-postcode__button-save");
 
     public static void setUrl(String url) {
         page_url = url;
     }
 
     public String randomAddress = "";
-
 
     public String getProductTitle() {
         return productTitle_lbl.getText();
@@ -116,7 +118,8 @@ public class Pdp_Page extends PageObject {
         waitUntilInvisibilityOf(By.cssSelector(".next-feedback-content"));
         openQuestionTextArea_btn.click();
         waitUntilVisible(askQuestion_txtArea);
-        askQuestion_txtArea.sendKeys(Keys.chord(Keys.CONTROL, "a"), question);
+        clearText(askQuestion_txtArea);
+        askQuestion_txtArea.sendKeys(question);
         askQuestion_btn.click();
     }
 
@@ -223,7 +226,6 @@ public class Pdp_Page extends PageObject {
         }
     }
 
-
     public void waitUntilAddressChanged(String beforeChangedAddress){
         waitUntilInvisibilityOf(By.xpath(String.format("//div[text()[contains(.,'%s')]]", beforeChangedAddress)));
     }
@@ -232,6 +234,13 @@ public class Pdp_Page extends PageObject {
         waitUntilInvisibilityOf(location_loading_icon_by);
         waitUntilInvisibilityOf(location_overlay_by);
         return leadtimeAddress_lbl.getText();
+    }
+
+    public void submitPostCode(String postCode) {
+        postCode_txtField.click();
+        postCode_txtField.sendKeys(postCode);
+        postCodeSave_btn.click();
+        waitUntilInvisibilityOf(postCodeSave_btn_by);
     }
 
 }
