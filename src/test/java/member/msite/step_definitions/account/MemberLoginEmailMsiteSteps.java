@@ -47,13 +47,13 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
         on(Member_AccountSetting_Msite_Page.class).setOkButton();
     }
 
-    @Then("^I should stayed in account page")
-    public void hasStayOnAccountPage(){
-        Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking user should be stayed in account page after logging in success");
-        String email = (String) Global.map.get("email_login");
-        String password = (String) Global.map.get("password_login");
-        on(Member_Account_Msite_Page.class).allureMailUrlPassMsite(email, password);
-    }
+//    @Then("^I should stayed in account page")
+//    public void hasStayOnAccountPage(){
+//        Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking user should be stayed in account page after logging in success");
+//        String email = (String) Global.map.get("email_login");
+//        String password = (String) Global.map.get("password_login");
+//        on(Member_Account_Msite_Page.class).allureMailUrlPassMsite(email, password);
+//    }
 
     @Then("^I should stayed in setting account page")
     public void hasStayOnSettingPage(){
