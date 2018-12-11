@@ -1,5 +1,6 @@
 package pdp.desktop.pages;
 
+import _base.page_helpers.BuyerSitePageHelper;
 import base.PageObject;
 import global.Global;
 import org.openqa.selenium.By;
@@ -75,16 +76,7 @@ public class Pdp_Page extends PageObject {
     }
 
     public void switchToEnglish() {
-        waitUntilPageReady();
-        try {
-            if (changeLanguage_list.isDisplayed()) {
-                changeLanguage_list.click();
-                englishVersion_listItem.click();
-            }
-        }catch (NoSuchElementException ex) {
-            System.out.println("Switch Language is not available");
-        }
-
+        BuyerSitePageHelper.switchToEnglish();
     }
 
     public void addToWishlist() {
