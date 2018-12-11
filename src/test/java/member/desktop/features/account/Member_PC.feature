@@ -83,7 +83,7 @@ Feature: Member PC Test
     And I process reset password on reset password page
     Then I should see the user info is correctly displayed on account page
 
-    @18217646 @member_regression @member_smoke
+    @18217646 @member_regression @member_smoke @no_lzd
     Scenario: User can change email successfully
       Given I sign up by api with email
       When I go to send sms code for before changing mail
