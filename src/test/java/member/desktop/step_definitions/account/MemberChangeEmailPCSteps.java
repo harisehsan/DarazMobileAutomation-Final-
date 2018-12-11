@@ -1,30 +1,20 @@
 package member.desktop.step_definitions.account;
 
 import base.BaseSteps;
-import com.typesafe.config.Config;
 import cucumber.api.java.en.*;
 import global.Global;
+import helper.RandomHelper;
 import member.desktop.pages.account.*;
 import org.testng.Assert;
 
 public class MemberChangeEmailPCSteps extends BaseSteps {
 
-    @Given("^I login account by before changing email")
-    public void loginByBeforeChangingMail() throws Throwable {
-        visit(Member_Login_Page.class);
-        String mailBeforeChanging = Global.config.getString("member.account.mail_before_change");
-        Global.map.put("mail_before_change",mailBeforeChanging);
-        String password = Global.config.getString("member.account.pass");
-        on(Member_Login_Page.class).loginEmailPass(mailBeforeChanging,password);
-    }
-
-    @When("^I progress to send sms code for (.*?)$")
-    public void sendSmsCodeToBeforeChangingMail(String email) throws Throwable {
+    @When("^I go to send sms code for before changing mail")
+    public void sendSmsCodeToBeforeChangingMail() throws Throwable {
         visit(Member_AccEdit_PC_Page.class);
         on(Member_AccEdit_PC_Page.class).sendCodeToInboxMail();
-        Config emailConfig = Global.config.getConfig("member.account");
-        String oldEmail = emailConfig.getString(email);
-        Global.map.put("old_email",oldEmail);
+        String beforeChangingMail = (String) Global.map.get("current_mail");
+        Global.map.put("before_changing_mail",beforeChangingMail);
     }
 
     @And("^I access the inbox of (.*?) to get sms code")
@@ -33,9 +23,14 @@ public class MemberChangeEmailPCSteps extends BaseSteps {
         Global.map.put("current_tab", currentWindowHandleId);
         Global.browser.openNewTab("");
         visit(Member_Mailinator_Page.class);
-        Config emailConfig = Global.config.getConfig("member.account");
-        String currentEmail = emailConfig.getString(email);
-        on(Member_Mailinator_Page.class).inputMail(currentEmail);
+        switch (email) {
+            case "before changing mail":
+                on(Member_Mailinator_Page.class).inputMail((String) Global.map.get("before_changing_mail"));
+                break;
+            case "after changing mail":
+                on(Member_Mailinator_Page.class).inputMail((String) Global.map.get("after_changing_mail"));
+                break;
+        }
         on(Member_Mailinator_Page.class).goToMailDetail();
         Global.map.put("sms_code", on(Member_Mailinator_Page.class).getSMSCodeDetail());
     }
@@ -47,26 +42,22 @@ public class MemberChangeEmailPCSteps extends BaseSteps {
         on(Member_VerifyEmail_PC_Page.class).clickVerifyCodeBtn();
     }
 
-    @And("^I input (.*?) information to send code$")
-    public void sendSmsCodeToAfterChangingMail(String email) throws Throwable {
-        Config emailConfig = Global.config.getConfig("member.account");
-        String currentEmail = emailConfig.getString(email);
-        on(Member_ChangeEmail_Page.class).sendCodeToMailAfterChanging(currentEmail);
+    @And("^I input mail after changing information to send sms code")
+    public void sendSmsCodeToAfterChangingMail() throws Throwable {
+        String afterChangingMail = RandomHelper.randomTestMail();
+        Global.map.put("after_changing_mail",afterChangingMail);
+        on(Member_ChangeEmail_Page.class).sendCodeToMailAfterChanging(afterChangingMail);
     }
 
-    @Then("^I should see the (.*?) info on account page$")
-    public void hasEmailAfterChanging(String email) throws Throwable {
-        Config emailConfig = Global.config.getConfig("member.account");
-        String currentEmail = emailConfig.getString(email);
-        Assert.assertTrue(on(Member_ChangeEmail_Page.class).hasEmailChanging(currentEmail), "Checking the new email should be display on account page");
-        on(Member_ChangeEmail_Page.class).allureReportEmailChanging(currentEmail);
+    @Then("^I should see the mail after changing info on account page$")
+    public void hasEmailAfterChanging() throws Throwable {
+        Assert.assertTrue(on(Member_ChangeEmail_Page.class).hasEmailChanging((String) Global.map.get("after_changing_mail")), "Checking the new email should be display on account page");
+        on(Member_ChangeEmail_Page.class).allureReportEmailChanging((String) Global.map.get("after_changing_mail"));
     }
 
-    @And("^I progress to login by (.*?)$")
-    public void loginByEmailAfterChanging(String email) throws Throwable {
+    @And("^I progress to login by mail after changing")
+    public void loginByAfterChangingMail() throws Throwable {
         on(Account_Page.class).logOut();
-        Config emailConfig = Global.config.getConfig("member.account");
-        String currentEmail = emailConfig.getString(email);
-        on(Member_Login_Page.class).loginEmailPass(currentEmail,Global.config.getString("member.account.pass"));
+        on(Member_Login_Page.class).loginEmailPass((String) Global.map.get("after_changing_mail"),(String) Global.map.get("current_pass"));
     }
 }

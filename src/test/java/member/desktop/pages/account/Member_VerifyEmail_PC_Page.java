@@ -11,8 +11,6 @@ public class Member_VerifyEmail_PC_Page extends PageObject {
     @FindBy(className = "primary") private WebElement verify_btn;
     @FindBy(className = "mod-sendcode-btn") private WebElement sendCode_btn;
 
-    private By verify_btn_by = By.className("primary");
-
     public void processVerifyEmailBtn() {
         waitUntilPageReady();
         waitUntilVisible(sendCode_btn);
@@ -22,12 +20,10 @@ public class Member_VerifyEmail_PC_Page extends PageObject {
     public void inputSMSCode(String smsCode) {
         waitUntilPageReady();
         waitUntilVisible(smsCode_txtField);
-        this.smsCode_txtField.click();
         this.smsCode_txtField.sendKeys(smsCode);
     }
 
     public void clickVerifyCodeBtn() {
         this.verify_btn.click();
-        waitUntilInvisibilityOf(verify_btn_by);
     }
 }
