@@ -61,7 +61,7 @@ Feature: Pdp features
     Given I sign up by api with email
     And I create a new member address by api
     And I go to a normal pdp page
-    And I click on Add to cart button
+    And I click on Add to cart button on Pdp Page
     Then I should see Cart popup with product added to Cart
     When I close Cart popup
     And I click on Buy Now button
@@ -76,7 +76,7 @@ Feature: Pdp features
     And I click minus icon to decrease quantity
     Then I should see product quantity is 1
     And I click plus icon to increase quantity
-    And I click on Add to cart button
+    And I click on Add to cart button on Pdp Page
     Then I should see product quantity on Cart same to quantity on pdp
 
   @18009359 @checkout_regression @checkout_smoke

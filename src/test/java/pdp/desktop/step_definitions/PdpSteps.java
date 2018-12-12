@@ -95,8 +95,8 @@ public class PdpSteps extends BaseSteps {
         Assert.assertTrue(on(Pdp_Page.class).isLeadtimeInfoDisplayed());
     }
 
-    @And("^I click on Add to cart button$")
-    public void clickAddToCart() {
+    @And("^I click on Add to cart button on Pdp Page$")
+    public void clickAddToCartFromPdp() {
         on(Pdp_Page.class).clickAddToCartButton();
     }
 
