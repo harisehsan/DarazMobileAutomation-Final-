@@ -1,5 +1,6 @@
 package pdp.desktop.step_definitions;
 
+import _base.api_helpers.buyer.BuyerSearchApi;
 import base.BaseSteps;
 import checkout.desktop.pages.Cart_PopUp;
 import checkout.desktop.pages.CheckoutShipping_Page;
@@ -13,13 +14,12 @@ import cucumber.api.java.en.When;
 import global.Global;
 import org.testng.Assert;
 
-import java.util.Random;
-
 
 public class PdpSteps extends BaseSteps {
     @Given("^I go to a normal pdp page$")
     public void visitNormalPdpPage() {
-        Pdp_Page.setUrl(Global.config.getString("pdp.normal_pdp_url"));
+        BuyerSearchApi searchApi = new BuyerSearchApi();
+        Pdp_Page.setUrl(searchApi.searchRandomCodProductUrlWithKeyword("test"));
         visit(Pdp_Page.class);
         on(Pdp_Page.class).closeShippingFromOverseaPopup();
         on(Pdp_Page.class).switchToEnglish();
