@@ -1,4 +1,4 @@
-package _base.msite_steps;
+package _base.global_steps.msite_steps;
 
 import base.BaseSteps;
 
