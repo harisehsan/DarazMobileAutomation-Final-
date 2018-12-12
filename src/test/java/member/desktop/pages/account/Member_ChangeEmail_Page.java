@@ -16,7 +16,7 @@ public class Member_ChangeEmail_Page extends PageObject {
     private By send_btn_by = By.className("mod-sendcode");
     private By newEmail_txtField_by = By.cssSelector(".mod-input.mod-input-email input");
 
-    public void sendCodeToMailAfterChanging(String email) throws InterruptedException {
+    public void sendCodeToMailAfterChanging(String email) {
         waitUntilPageReady();
         waitUntilVisibility(newEmail_txtField_by);
         this.newEmail_txtField.sendKeys(email);
