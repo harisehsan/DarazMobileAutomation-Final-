@@ -48,9 +48,9 @@ Feature: homepage Test
     Then I should see new items loaded
 
   @18174993
-  Scenario: Guest users come to HomePage and select category to visit
+  Scenario: Guest users come to HomePage and select category level 2 to visit
     When I go to HomePage
-    And I select random category on Categories Tree
+    And I select random category level 2 on Categories Tree
     Then I should see category page that I selected
 
 
