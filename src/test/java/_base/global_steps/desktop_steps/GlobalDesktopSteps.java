@@ -1,4 +1,4 @@
-package _base.desktop_steps;
+package _base.global_steps.desktop_steps;
 
 import base.BaseSteps;
 import cucumber.api.java.en.And;

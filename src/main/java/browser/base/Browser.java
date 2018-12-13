@@ -77,7 +77,9 @@ public class Browser {
         return ((JavascriptExecutor) driver);
     }
 
-
-
-
+    public void addCookie(String name, String value) {
+        Cookie ck = new Cookie(name, value);
+        driver.manage().deleteCookieNamed(name);
+        driver.manage().addCookie(ck);
+    }
 }

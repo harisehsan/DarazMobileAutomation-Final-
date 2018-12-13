@@ -42,10 +42,10 @@ public class Member_Account_Msite_Page extends PageObject {
         this.addressBook_btn.click();
     }
 
-    public void allureMailUrlPass(String email, String pass) {
+    public void allureMailUrlPassMsite(String email, String password) {
         AllureAttachment.attachURL(page_url);
         AllureAttachment.attachComment("Email", email);
-        AllureAttachment.attachComment("Password", Base64.getEncoder().encodeToString(pass.getBytes()));
+        AllureAttachment.attachComment("Password", Base64.getEncoder().encodeToString(password.getBytes()));
     }
 
     public void allureMobilePhone(String mobile) {

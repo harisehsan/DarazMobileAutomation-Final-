@@ -2,9 +2,9 @@ package member.desktop.step_definitions.account;
 
 import cucumber.api.java.en.*;
 import global.Global;
+import helper.RandomHelper;
 import member.desktop.pages.account.*;
 import base.BaseSteps;
-import helper.RandomeHelper;
 
 public class MemberSignupSMSSteps extends BaseSteps {
     @Given("^I go to the sign up page by smsphone")
@@ -17,15 +17,16 @@ public class MemberSignupSMSSteps extends BaseSteps {
         String smsCode = Global.config.getString("member.account.sms_code");
         String passWord = Global.config.getString("member.account.pass");
         String name = Global.config.getString("member.account.name");
-        String randomEmail = "LAZADATEST_1111_" + RandomeHelper.generateEmail()+ "@mailinator.com";
+        String randomEmail = RandomHelper.randomTestMail();
         on(Member_SignUp_SMS_Page.class).signUpBySMS(smsCode,passWord,name,randomEmail);
     }
 
     @And("^I input the phonenumber")
     public void inputPhone() throws Throwable {
-        String mobilephone = Global.config.getString("member.phone_number_template");
-        Global.map.put("mobile_phone_number", mobilephone);
-        on(Member_SignUp_SMS_Page.class).inputPhoneNumber(mobilephone + RandomeHelper.generatePhoneNumber());
+        String mobilephoneTemplate = Global.config.getString("member.phone_number_template");
+        String currentPhoneNumber = RandomHelper.randomPhoneNumber(mobilephoneTemplate);
+        on(Member_SignUp_SMS_Page.class).inputPhoneNumber(currentPhoneNumber);
+        Global.map.put("mobile_phone_number", currentPhoneNumber);
     }
 
     @And("^I click the slider button")

@@ -16,10 +16,9 @@ import java.io.IOException;
 public class OverViewSteps extends BaseSteps {
 
     @When("^I go to HomePage")
-    public void landInHomePage()
-    {
-                visit(Home_Page.class);
-        Assert.assertTrue(on(Home_Page.class).switchLanguage(),"Can't change language");
+    public void landInHomePage() {
+        visit(Home_Page.class);
+        on(Home_Page.class).switchToEnglish();
     }
 
     @Then("^I click on log in to login page")

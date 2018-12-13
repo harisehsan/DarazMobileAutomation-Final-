@@ -17,4 +17,9 @@ public interface UrlHelper {
         }
 
     }
+
+    static String https(String url){
+        String httpsPrefix = "https://";
+        return httpsPrefix + removePrefix(url);
+    }
 }

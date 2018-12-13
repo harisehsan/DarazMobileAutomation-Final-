@@ -7,19 +7,19 @@ Feature: Member PC Test
     When I go to the sign up page by email
     And I process to signup user by email on signup by email page
     And I click on submit button
-    Then I should see the account page
+    Then I should see the user info is correctly displayed on account page
 
   @17417151 @member_regression @member_smoke @signup @no_drz @no_lzd
   Scenario: Signup by email
     Given I sign up by api with email
     And I go to the account page
-    Then I should see the account page
+    Then I should see the user info is correctly displayed on account page
 
   @17417173 @member_regression @member_smoke @login @no_lzd
   Scenario: Normal login by email
     When I go to the login by email page
     And I login account information on login by email page
-    Then I should see the logged account page
+    Then I should see the user info is correctly displayed on account page
 
   @17560793 @member_regression @member_smoke @login
   Scenario: Login by phone
@@ -29,7 +29,7 @@ Feature: Member PC Test
   @18053135 @member_regression @member_smoke @login
   Scenario: Login by email
     Given I login by api with email
-    Then I should see the logged account page
+    Then I should see the user info is correctly displayed on account page
 
   @17417183 @member_regression @member_smoke @login @no_lzd
   Scenario: Normal login by phone
@@ -58,7 +58,7 @@ Feature: Member PC Test
     And I go to change password page
     And I click on logout account
     And I re-login by api with new password
-    Then I should login success with new password
+    Then I should see the user info is correctly displayed on account page
 
   @17480524 @member_regression @member_smoke
   Scenario: User can config newsletter
@@ -73,35 +73,22 @@ Feature: Member PC Test
     And I click reset password on login page
     And I go to forgot password page
     And I submit email to reset password process
-    And I click Verify through Email button
-    And I process to get smscode on verify by email page
-    And I go to the inbox mail on new tab
-    And I open email to get sms code
-    And I go back the old tab
-    And I input the smscode on verifyemail page from old tab
-    And I click Verify Code button on verifyemail page
+    And I reset password by email verification code
+    And I get the email verification code from the inbox of current email
+    And I confirm code on Verify Email page
     And I process reset password on reset password page
-    Then I should see the email for reset on account page
+    Then I should see the user info is correctly displayed on account page
 
-#    @18090215 @member_regression @member_smoke
-#    Scenario: User can change email successfully
-#      Given I login account by before changing email
-##      Given I sign up by api
-#      When I progress to send sms code for mail_before_change
-#      And I access the inbox of mail_before_change to get sms code
-#      And I confirm sms code on Verify Email page
-#      And I input mail_after_change information to send code
-#      And I access the inbox of mail_after_change to get sms code
-#      And I confirm sms code on Verify Email page
-#      Then I should see the mail_after_change info on account page
-#      And I progress to login by mail_after_change
-#      Then I should see mail after changing logging in successfully
-#      When I progress to send sms code for mail_after_change
-#      And I access the inbox of mail_after_change to get sms code
-#      And I confirm sms code on Verify Email page
-#      And I input mail_before_change information to send code
-#      And I access the inbox of mail_before_change to get sms code
-#      And I confirm sms code on Verify Email page
-#      Then I should see the mail_before_change info on account page
-
-
+  @18217646 @member_regression @member_smoke @no_lzd
+  Scenario: User can change email successfully
+    Given I sign up by api with email
+    And I go to personal profile page to change email
+    And I change email by email verification code
+    And I get the email verification code from the inbox of current email
+    And I confirm code on Verify Email page
+    And I input new mail and send code
+    And I get the email verification code from the inbox of current email
+    And I confirm code on Verify Email page
+    Then I should see the new mail on personal profile page
+    And I re-login by new email
+    Then I should see the user info is correctly displayed on account page

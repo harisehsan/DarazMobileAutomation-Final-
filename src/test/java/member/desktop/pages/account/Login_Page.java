@@ -28,7 +28,6 @@ public class Login_Page extends PageObject {
         waitUntilPageReady();
     }
 
-
     /**
      *
      * @param userId could be email or phone number

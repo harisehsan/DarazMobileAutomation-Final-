@@ -1,8 +1,8 @@
 package homepage.desktop.pages;
 
+import _base.page_helpers.BuyerSitePageHelper;
 import base.PageObject;
 import global.Global;
-import helper.RandomHelper;
 import homepage.desktop.helper.HttpHelper;
 import homepage.desktop.helper.WebElementHelper;
 import org.openqa.selenium.By;
@@ -66,20 +66,8 @@ public class Home_Page extends PageObject {
         return customerCare_list.isDisplayed() && customerCare_list.getText().contains(Global.config.getString("homepage.help_center_text"));
     }
 
-    public boolean switchLanguage() {
-        waitUntilPageReady();
-        List<WebElement> elements = checkIfExists(swithLanguage_lbl_by);
-        if (elements.size() > 0) {
-            if (currentLanguage_lbl.getAttribute("data-lang").equals("vi") || currentLanguage_lbl.getAttribute("data-lang").equals("th")) {
-                switchLanguage_lbl.click();
-                waitUntilVisible(switchToEnglishLanguage_lbl);
-                switchToEnglishLanguage_lbl.click();
-                waitUntilPageReady();
-                return checkPageSwitchSuccessful();
-            }
-            return true;
-        }
-        return true;
+    public void switchToEnglish() {
+        BuyerSitePageHelper.switchToEnglish();
     }
 
     private List<WebElement> checkIfExists(By selector) {

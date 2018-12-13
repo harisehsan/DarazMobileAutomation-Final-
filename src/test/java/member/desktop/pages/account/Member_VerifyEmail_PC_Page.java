@@ -19,7 +19,6 @@ public class Member_VerifyEmail_PC_Page extends PageObject {
     public void inputSMSCode(String smsCode) {
         waitUntilPageReady();
         waitUntilVisible(smsCode_txtField);
-        this.smsCode_txtField.click();
         this.smsCode_txtField.sendKeys(smsCode);
     }
 

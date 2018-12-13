@@ -6,19 +6,19 @@ Feature: Member Msite Test
   Scenario: Normal signup by email
     When I go to the sign up on Msite page by email
     And I input all information to signup by email page
-    Then I should see the name of user in account title
+    Then On Msite I should see the user info is correctly displayed on account page
 
   @17417223 @member_regression @member_smoke @login
   Scenario: Normal login by email
     When I go to login by email on Msite
     And I input account information to login by email Msite page
-    Then I should stayed in account page
+    Then On Msite I should see the user info is correctly displayed on account page
 
   @17417234 @member_regression @member_smoke
   Scenario: User can logout successfully
     When I go to login by email on Msite
     And I input account information to login by email Msite page
-    And I should stayed in account page
+    And On Msite I should see the user info is correctly displayed on account page
     And I go to setting page
     And I progress logout account on account setting page
     Then I should logout success
@@ -27,7 +27,7 @@ Feature: Member Msite Test
   Scenario: User can change password successfully
     When I go to the sign up on Msite page by email
     And I input all information to signup by email page
-    And I should see the name of user in account title
+    And On Msite I should see the user info is correctly displayed on account page
     And I go to setting page
     And I click to change password button
     And I input all information to change pass
@@ -41,7 +41,7 @@ Feature: Member Msite Test
   Scenario: User can config newsletter
     When I go to login by email on Msite
     And I input account information to login by email Msite page
-    And I should stayed in account page
+    And On Msite I should see the user info is correctly displayed on account page
     And I get result of newsletter config before trigger
     And I trigger on newsletter config
     Then I should see the result of current newsletter config changed
@@ -58,3 +58,5 @@ Feature: Member Msite Test
     And I input the smsCode to reset password on msite
     And I input the new password for reset
     Then I should see the success reset password on reset page
+
+

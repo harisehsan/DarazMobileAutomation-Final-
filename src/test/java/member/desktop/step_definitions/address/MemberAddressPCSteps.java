@@ -2,6 +2,8 @@ package member.desktop.step_definitions.address;
 
 import cucumber.api.java.en.*;
 import global.Global;
+import helper.RandomHelper;
+import member.desktop.pages.account.Member_SignUp_SMS_Page;
 import member.desktop.pages.address.Member_AddressPC_Page;
 import base.BaseSteps;
 import org.testng.Assert;
@@ -18,8 +20,10 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I input the mobile phone number")
     public void inputPhone() throws Throwable {
-        String mobile = Global.config.getString("member.phone_number_login");
-        on(Member_AddressPC_Page.class).inputPhone(mobile);
+        String mobilephoneTemplate = Global.config.getString("member.phone_number_template");
+        String currentPhoneNumber = RandomHelper.randomPhoneNumber(mobilephoneTemplate);
+        on(Member_SignUp_SMS_Page.class).inputPhoneNumber(currentPhoneNumber);
+        Global.map.put("mobile_phone_number", currentPhoneNumber);
     }
 
     @And("^I select the location 1")
@@ -43,21 +47,25 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I input address detail")
     public void inputAddress() throws Throwable {
-        String address_detail = Global.config.getString("member.account.address_detail");
-        on(Member_AddressPC_Page.class).inputAddress(address_detail);
+        String address_detail = "123 " + RandomHelper.randomAlphabetString(6);
+        Global.map.put("address_detail", address_detail);
+        on(Member_AddressPC_Page.class).inputAddress((String)Global.map.get("address_detail"));
     }
 
     @And("^I create new address")
     public void createAddress() throws Throwable {
-        String mobile = Global.config.getString("member.phone_number_login");
-        String address_detail = Global.config.getString("member.account.address_detail");
-        on(Member_AddressPC_Page.class).createFastNewAddress(mobile, address_detail);
+        String mobileTemplate = Global.config.getString("member.phone_number_template");
+        String mobile = RandomHelper.randomPhoneNumber(mobileTemplate);
+        String address_detail = "123 " + RandomHelper.randomAlphabetString(5);
+        Global.map.put("address_detail", address_detail);
+        on(Member_AddressPC_Page.class).createFastNewAddress(mobile,address_detail);
     }
 
     @And("^I create an address to delete")
     public void createAddressDelete() throws Throwable {
-        String mobile = Global.config.getString("member.phone_number_login");
-        String address_delete = Global.config.getString("member.account.address_delete");
+        String mobile = Global.config.getString("member.registered_phone");
+        String address_delete = "456 " + RandomHelper.randomAlphabetString(6);
+        Global.map.put("address_delete", address_delete);
         on(Member_AddressPC_Page.class).createFastNewAddress(mobile, address_delete);
         int beforeDeleting = on(Member_AddressPC_Page.class).getAddressListSize();
         Global.map.put("before_delete",beforeDeleting);
@@ -88,8 +96,7 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I input floor/unit number address detail")
     public void inputfloor() throws Throwable {
-        String address_detail = Global.config.getString("member.account.address_detail");
-        on(Member_AddressPC_Page.class).setDetailAddress(address_detail);
+        on(Member_AddressPC_Page.class).setDetailAddress((String)Global.map.get("address_detail"));
     }
 
 
@@ -105,8 +112,9 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I edit name, phone number information")
     public void editNamePhone() throws Throwable {
-        String name_edit = Global.config.getString("member.account.name_edit");
-        String mobile = Global.config.getString("member.phone_number_login");
+        String name_edit = RandomHelper.randomAlphabetString(5);
+        String mobilephoneTemplate = Global.config.getString("member.phone_number_template");
+        String mobile = RandomHelper.randomPhoneNumber(mobilephoneTemplate);
         on(Member_AddressPC_Page.class).clearName();
         on(Member_AddressPC_Page.class).inputName(name_edit);
         Global.map.put("new_name_address", name_edit);
@@ -121,9 +129,10 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I create a new address for SG")
     public void createAddressSg() throws Throwable {
-        String mobile = Global.config.getString("member.phone_number_login");
+        String mobilephoneTemplate = Global.config.getString("member.phone_number_template");
+        String mobile = RandomHelper.randomPhoneNumber(mobilephoneTemplate);
         String postCode = Global.config.getString("member.post_code");
-        String addressDetail = Global.config.getString("member.account.address_detail");
+        String addressDetail = "123 " + RandomHelper.randomAlphabetString(5);
         on(Member_AddressPC_Page.class).createAddressSg(mobile, postCode, addressDetail);
     }
 
@@ -157,6 +166,4 @@ public class MemberAddressPCSteps extends BaseSteps {
     public void hasNoAddressDeleted() throws Throwable {
         Assert.assertTrue(on(Member_AddressPC_Page.class).hasNoAddressDeleted(), "Checking after deleted address the list address will be back 1 address on address book ");
     }
-
-
 }
