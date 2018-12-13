@@ -43,11 +43,11 @@ public class AccountSteps extends BaseSteps{
 
     @And("^I go to change password page")
     public void changePass() throws Throwable {
-        visit(Member_Change_Pass_Page.class);
+        visit(Member_Change_Email_Pass_Page.class);
         String current_pass = Global.config.getString("member.account.pass");
         String changedPass = RandomHelper.randomAlphabetString(5) + RandomHelper.randomNumber(5);
         Global.map.put("changed_pass",changedPass);
-        on(Member_Change_Pass_Page.class).resetPass(current_pass,changedPass);
+        on(Member_Change_Email_Pass_Page.class).resetPass(current_pass,changedPass);
     }
 
     @Then("^I logout successful")

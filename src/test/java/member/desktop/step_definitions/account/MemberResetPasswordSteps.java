@@ -26,51 +26,10 @@ public class MemberResetPasswordSteps extends BaseSteps {
         on(Member_Forget_Pass_PC_Page.class).inputEmail(emailReset);
     }
 
-    @And("^I click Verify through Email button")
-    public void clickVerifyEmailBtn()throws Throwable {
+    @And("^I reset password by email verification code")
+    public void sendSmsCodeToEmail()throws Throwable {
         on(Member_Forget_Pass_PC_Page.class).clickVerifyEmailBtn();
-    }
-
-    @And("^I process to get smscode on verify by email page")
-    public void processSMSCode() throws Throwable {
         on(Member_VerifyEmail_PC_Page.class).processVerifyEmailBtn();
-    }
-
-    @And("^I go to the inbox mail on new tab")
-    public void accessInboxMail() throws Throwable {
-        String currentWindowHandleId = Global.browser.currentWindowHandleId();
-        Global.map.put("current_tab",currentWindowHandleId);
-        Global.browser.openNewTab("");
-        visit(Member_Mailinator_Page.class);
-    }
-
-    @And("^I open email to get sms code")
-    public void accessSMSCode() throws Throwable {
-        String emailReset = Global.config.getString("member.reset_password_mail");
-        on(Member_Mailinator_Page.class).inputMail(emailReset);
-        on(Member_Mailinator_Page.class).goToMailDetail();
-        String smsCode = on(Member_Mailinator_Page.class).getSMSCodeDetail();
-        Global.map.put("sms_code",smsCode);
-    }
-
-    @And("^I go back the old tab")
-    public void goBackOldTab() throws Throwable {
-        Global.browser.switchToTab((String) Global.map.get("current_tab"));
-    }
-
-    @And("^I input the smscode on verifyemail page from old tab")
-    public void seeDetail() throws Throwable {
-        on(Member_VerifyEmail_PC_Page.class).inputSMSCode((String) Global.map.get("sms_code"));
-    }
-
-    @And("I click Verify Code button on verifyemail page")
-    public void clickVerifyCodeBtn() throws Throwable {
-        on(Member_VerifyEmail_PC_Page.class).clickVerifyCodeBtn();
-    }
-
-    @And("^I go to reset password page")
-    public void goToResetPass() throws Throwable {
-        visit(Member_Reset_PassWord_Page.class);
     }
 
     @And("^I process reset password on reset password page")
