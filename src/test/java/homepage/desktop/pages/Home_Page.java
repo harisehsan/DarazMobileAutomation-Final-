@@ -2,10 +2,17 @@ package homepage.desktop.pages;
 
 import base.PageObject;
 import global.Global;
+import helper.RandomHelper;
+import homepage.desktop.helper.HttpHelper;
+import homepage.desktop.helper.WebElementHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
+
 
 public class Home_Page extends PageObject {
 
@@ -23,6 +30,12 @@ public class Home_Page extends PageObject {
     @FindBy(css = "#topActionSwitchLang") private WebElement switchLanguage_lbl;
     @FindBy(css = "[data-lang=en]") private WebElement switchToEnglishLanguage_lbl;
     @FindBy(css = "#topActionCustomCare .care-list") private WebElement customerCare_list;
+    @FindBy(css = "#hp-just-for-your") private WebElement justForYou_lbl;
+    @FindBy(css = ".lzd-site-nav-menu-dropdown") private WebElement categoriesTree_lbl;
+    @FindBy(css = ".lzd-site-menu-root-item") private List<WebElement> rootCategories_lbl;
+    @FindBy(css = ".lzd-site-menu-root") private WebElement menu_lbl;
+    @FindBy(xpath = "//*[@id=\'J_breadcrumb\']/li[3]/span") private WebElement categoryLevel2_lbl;
+
 
     private By swithLanguage_lbl_by = By.cssSelector("#topActionSwitchLang");
 
@@ -57,14 +70,14 @@ public class Home_Page extends PageObject {
         waitUntilPageReady();
         List<WebElement> elements = checkIfExists(swithLanguage_lbl_by);
         if (elements.size() > 0) {
-                if (currentLanguage_lbl.getAttribute("data-lang").equals("vi") || currentLanguage_lbl.getAttribute("data-lang").equals("th")) {
-                    switchLanguage_lbl.click();
-                    waitUntilVisible(switchToEnglishLanguage_lbl);
-                    switchToEnglishLanguage_lbl.click();
-                    waitUntilPageReady();
-                    return checkPageSwitchSuccessful();
-                }
-                return true;
+            if (currentLanguage_lbl.getAttribute("data-lang").equals("vi") || currentLanguage_lbl.getAttribute("data-lang").equals("th")) {
+                switchLanguage_lbl.click();
+                waitUntilVisible(switchToEnglishLanguage_lbl);
+                switchToEnglishLanguage_lbl.click();
+                waitUntilPageReady();
+                return checkPageSwitchSuccessful();
+            }
+            return true;
         }
         return true;
     }
@@ -102,6 +115,40 @@ public class Home_Page extends PageObject {
     public void clickOnHelpCenterLabel() {
         waitUntilPageReady();
         helpCenter_lbl.click();
+    }
+
+    public void scrollToJustForYou() {
+
+    }
+
+    public void isJustForYouDisplayed() {
+        waitUntilPageReady();
+
+    }
+
+    public boolean isCategoryTreeDisplayed() {
+        waitUntilPageReady();
+        return categoriesTree_lbl.isDisplayed();
+    }
+
+    public void selectRandomCategoryLevelTwo() throws IOException {
+        int randomNumber = homepage.desktop.helper.RandomHelper.randomNumberInRange(rootCategories_lbl.size()-1,0);
+        rootCategories_lbl.get(randomNumber).click();
+        String currentCssSelect = ("." + rootCategories_lbl.get(randomNumber).getAttribute("id") +" > li") ;
+        By categoryLevel_2_list_by = By.cssSelector(currentCssSelect);
+        List<WebElement> categoryLevel2_list = menu_lbl.findElements(categoryLevel_2_list_by);
+        waitUntilVisibility(categoryLevel_2_list_by);
+        int randomNumberForCat2 = homepage.desktop.helper.RandomHelper.randomNumberInRange(categoryLevel2_list.size()-1,0);
+        By href = By.cssSelector(currentCssSelect + " > a");
+        WebElement hrefLandingPage_String = menu_lbl.findElement(href);
+        if(HttpHelper.checkHttpResponseCode(hrefLandingPage_String.getAttribute("href")) != 200) {
+        throw new RuntimeException();
+        }
+        else categoryLevel2_list.get(randomNumberForCat2).click();
+    }
+
+    public boolean isCategoryLevel2LandingPage() throws IOException {
+        return (HttpHelper.checkHttpResponseCode(currentUrl()) == 200);
     }
 }
 

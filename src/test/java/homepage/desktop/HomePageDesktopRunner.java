@@ -14,6 +14,6 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = {"src/test/java/homepage/desktop/features"},
-        tags = {"@18009334"},
+        tags = {"@18174993"},
         glue = {"homepage.desktop.step_definitions"})
 public class HomePageDesktopRunner extends _base.TestRunner { }

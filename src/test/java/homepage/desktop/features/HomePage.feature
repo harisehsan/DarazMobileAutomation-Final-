@@ -39,4 +39,19 @@ Feature: homepage Test
     And I click on Help Center label
     Then I should land on Help Center Page
 
+  @18134723
+  Scenario: Guest users come to HomePage and press loading button on Just For You
+    When I go to HomePage
+    And I scroll to Just For You part
+    Then I should see Just For You module
+    And I click on Load More button
+    Then I should see new items loaded
+
+  @18174993
+  Scenario: Guest users come to HomePage and select category to visit
+    When I go to HomePage
+    And I select random category on Categories Tree
+    Then I should see category page that I selected
+
+
 
