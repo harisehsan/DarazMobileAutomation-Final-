@@ -47,7 +47,6 @@ public class MemberAddressPCSteps extends BaseSteps {
 
     @And("^I input address detail")
     public void inputAddress() throws Throwable {
-//        String address_detail = Global.config.getString("member.account.address_detail");
         String address_detail = "123 " + RandomHelper.randomAlphabetString(6);
         Global.map.put("address_detail", address_detail);
         on(Member_AddressPC_Page.class).inputAddress((String)Global.map.get("address_detail"));
