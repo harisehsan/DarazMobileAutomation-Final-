@@ -22,8 +22,6 @@ public class Member_Change_Email_Pass_Page extends PageObject {
     @FindBy(css = ".my-profile-bd > div:nth-child(2) > div") private WebElement emailInformation_lbl;
 
     private By send_btn_by = By.className("mod-sendcode");
-    private By newEmail_txtField_by = By.cssSelector(".mod-input.mod-input-email input");
-
 
     public void resetPass(String oldPass,String newPass) {
         waitUntilPageReady();
@@ -36,9 +34,9 @@ public class Member_Change_Email_Pass_Page extends PageObject {
         this.okSaveChangePass_btn.click();
     }
 
-    public void sendCodeToMailAfterChanging(String email) {
+    public void sendCodeToMail(String email) {
         waitUntilPageReady();
-        waitUntilVisibility(newEmail_txtField_by);
+        waitUntilVisible(newEmail_txtField);
         this.newEmail_txtField.sendKeys(email);
         waitUntilClickable(send_btn_by);
         this.send_btn.click();

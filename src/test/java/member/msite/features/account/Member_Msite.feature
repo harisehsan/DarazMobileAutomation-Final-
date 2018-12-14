@@ -52,11 +52,24 @@ Feature: Member Msite Test
     When I access to reset password on Msite
     And I progress to forgot password
     And I choose Verify through Email button
-    And I go to the inbox mail in Msite on new tab
-    And I open email on Msite to get sms code
-    And I on Msite go back the old tab
-    And I input the smsCode to reset password on msite
+    And I get the email verification code on Msite from the inbox of current email
+    And On Msite i confirm code on Verify Email page
     And I input the new password for reset
     Then I should see the success reset password on reset page
 
+  @18235358 @member_regression @member_smoke @no_lzd
+  Scenario: User can change email successfully on Msite
+    When I go to the sign up on Msite page by email
+    And I input all information to signup by email page
+    And On Msite I should see the user info is correctly displayed on account page
+    And I go to account info page
+    And I change email on Msite by email verification code
+    And I get the email verification code on Msite from the inbox of current email
+    And On Msite i confirm code on Verify Email page
+    And On Msite I input new mail and send code
+    And I get the email verification code on Msite from the inbox of current email
+    And On Msite i confirm code on Verify Email page
+    Then I should see the new mail on account info page
+    And On Msite i re-login by new email
+    Then On Msite I should see the user info is correctly displayed on account page
 

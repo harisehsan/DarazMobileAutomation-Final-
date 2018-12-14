@@ -56,8 +56,8 @@ public class AddressMsiteSteps extends BaseSteps {
 
     @And("^I delete address on address book")
     public void deleteAddress() throws Throwable {
-        on(Address_Msite_Page.class).deleteAddressProgress();
         Global.browser.refresh();
+        on(Address_Msite_Page.class).deleteAddressProgress();
     }
 
     @Then("^I should see the new address name on Msite")
@@ -69,6 +69,7 @@ public class AddressMsiteSteps extends BaseSteps {
 
     @Then("^I should see one address on address page$")
     public void existAddress() throws Throwable {
+        Global.browser.refresh();
         Assert.assertTrue(on(Address_Msite_Page.class).hasAddress(), "Checking the address book should have at least one address");
     }
 }
