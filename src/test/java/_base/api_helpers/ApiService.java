@@ -2,11 +2,13 @@ package _base.api_helpers;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -41,6 +43,22 @@ public class ApiService {
         InputStream is = entity.getContent();
         String body = IOUtils.toString(is, "UTF-8");
         is.close();
-        return new Gson().fromJson(body, JsonObject.class);
+        try {
+            return new Gson().fromJson(body, JsonObject.class);
+        }catch (JsonSyntaxException ex){
+            return null;
+        }
+    }
+
+    public boolean isUrlValid(String url) {
+        try{
+            HttpGet httpGet = new HttpGet(url);
+            try(CloseableHttpResponse response = httpClient.execute(httpGet)){
+                return response.getStatusLine().getStatusCode() == 200;
+            }
+        }catch (IOException ex){
+            System.out.println("Something wrong with url"+ url);
+        }
+        return false;
     }
 }

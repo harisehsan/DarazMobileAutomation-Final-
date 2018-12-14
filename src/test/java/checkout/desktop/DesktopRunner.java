@@ -11,6 +11,6 @@ import cucumber.api.CucumberOptions;
 
 @CucumberOptions(
         features = {"src/test/java/checkout/desktop/features"},
-        tags = {"@Checkout_Regression"},
+        tags = {"@CheckoutWithCOD"},
         glue = {"checkout.desktop.step_definitions"})
 public class DesktopRunner extends TestRunner{}
