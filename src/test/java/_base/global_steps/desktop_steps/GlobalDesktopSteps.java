@@ -55,4 +55,11 @@ public class GlobalDesktopSteps extends BaseSteps {
         on(Pdp_Page.class).closeShippingFromOverseaPopup();
         on(Pdp_Page.class).switchToEnglish();
     }
+
+    @When("^I go to a test COD pdp page$")
+    public void goToPdpPage() {
+        Pdp_Page.setUrl(Global.config.getString("checkout.test_cod_pdp_url"));
+        visit(Pdp_Page.class);
+        on(Pdp_Page.class).switchToEnglish();
+    }
 }

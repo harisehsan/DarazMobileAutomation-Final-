@@ -11,12 +11,7 @@ import org.testng.Assert;
 import pdp.desktop.pages.Pdp_Page;
 
 public class CheckoutByCODSteps extends BaseSteps {
-    @When("^I go to a pdp page$")
-    public void goToPdpPage() {
-        Pdp_Page.setUrl(Global.config.getString("checkout.cod_pdp_url"));
-        visit(Pdp_Page.class);
-        on(Pdp_Page.class).switchToEnglish();
-    }
+
 
     @And("^I click on Add to cart button$")
     public void clickAddToCart() {
