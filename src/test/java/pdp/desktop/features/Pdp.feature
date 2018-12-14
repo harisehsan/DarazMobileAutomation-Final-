@@ -49,17 +49,18 @@ Feature: Pdp features
 
   @18009106 @checkout_regression @checkout_smoke
   Scenario: Check Buy Now/Add To Cart buttons work with guest user
-    When I go to a normal pdp page
+    When I go to a pdp page that ask_question feature enabled
     And I click on Add to cart button as a guest
     Then I should see Login form
     When I close Login form
     And I click on Buy Now button
     Then I should see Login form
 
-  @18009198 @checkout_regression @checkout_smoke
+  @18009198 @checkout_regression @checkout_smoke @no_lzd
   Scenario: Check Buy Now/Add To Cart buttons work with login user
-    Given I login by api with email
-    And I go to a normal pdp page
+    Given I sign up by api with email
+    And I create a new member address by api
+    And I go to a pdp page that ask_question feature enabled
     And I click on Add to cart button on Pdp Page
     Then I should see Cart popup with product added to Cart
     When I close Cart popup
@@ -69,7 +70,7 @@ Feature: Pdp features
   @18009289 @checkout_regression @checkout_smoke @no_lzd
   Scenario: Change item quantity by +/- icon
     Given I sign up by api with email
-    And I go to a normal pdp page
+    And I go to a pdp page that ask_question feature enabled
     And I click plus icon to increase quantity
     Then I should see product quantity is 2
     And I click minus icon to decrease quantity
@@ -80,7 +81,7 @@ Feature: Pdp features
 
   @18009359 @checkout_regression @checkout_smoke
   Scenario: User cannot input a item quantity exceed than Max available number of product (maximum 5)
-    Given I go to a normal pdp page
+    Given I go to a pdp page that ask_question feature enabled
     And I enter a number that equals to maximum available quantity
     Then I should see that quantity number cannot exceed more than maximum available quantity
 
