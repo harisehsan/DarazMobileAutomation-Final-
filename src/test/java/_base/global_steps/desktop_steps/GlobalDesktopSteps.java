@@ -27,10 +27,20 @@ public class GlobalDesktopSteps extends BaseSteps {
         Global.map.put("currentProductTitle", currentProductTitle);
     }
 
-    @When("^I go to test cash on delivery pdp$")
+    @When("^I go to a test pdp page$")
     public void goToTestCod(){
         BuyerSearchApi searchApi = new BuyerSearchApi();
         String url = searchApi.getRandomCodProductFromRandomSeller();
+        Pdp_Page.setUrl(url);
+        visit(Pdp_Page.class);
+        on(Pdp_Page.class).closeShippingFromOverseaPopup();
+        on(Pdp_Page.class).switchToEnglish();
+    }
+
+    @Given("^I go to a normal pdp page$")
+    public void visitNormalPdpPage() {
+        BuyerSearchApi searchApi = new BuyerSearchApi();
+        String url = searchApi.getCodProductFromCatalog("test");
         Pdp_Page.setUrl(url);
         visit(Pdp_Page.class);
         on(Pdp_Page.class).closeShippingFromOverseaPopup();

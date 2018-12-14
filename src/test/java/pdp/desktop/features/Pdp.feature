@@ -10,10 +10,10 @@ Feature: Pdp features
     Then I should see wishlist icon turns to orange
     And I should see the product on My wishlist page
 
-  @18008755 @checkout_regression @checkout_smoke @no_lzd_live @no_drz_live
+  @18008755 @checkout_regression @checkout_smoke
   Scenario: Ask valid question for shop
     Given I login by api with email
-    And I go to a normal pdp page
+    And I go to a test pdp page
     When I ask a valid_question
     Then I should see valid_question on the question list
 
