@@ -46,4 +46,13 @@ public class GlobalDesktopSteps extends BaseSteps {
         on(Pdp_Page.class).closeShippingFromOverseaPopup();
         on(Pdp_Page.class).switchToEnglish();
     }
+
+    @Given("^I go to a pdp page that ask_question feature enabled$")
+    public void visitAskQuestionEnabledPdpPage() {
+        String url = Global.config.getString("pdp.askQuestion_pdp_url");
+        Pdp_Page.setUrl(url);
+        visit(Pdp_Page.class);
+        on(Pdp_Page.class).closeShippingFromOverseaPopup();
+        on(Pdp_Page.class).switchToEnglish();
+    }
 }

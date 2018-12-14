@@ -1,16 +1,16 @@
 @pdp @911
 Feature: Pdp features
 
-  @17958367 @checkout_regression @checkout_smoke @no_lzd
+  @17958367 @checkout_regression @checkout_smoke
   Scenario: User can add the product to wishlist
-    Given I sign up by api with email
+    Given I login by api with email
     Given I go to a normal pdp page
     And I get the product title
     When I click wishlist icon
     Then I should see wishlist icon turns to orange
     And I should see the product on My wishlist page
 
-  @18008755 @checkout_regression @checkout_smoke
+  @18008755 @checkout_regression @checkout_smoke @no_drz @no_lzd
   Scenario: Ask valid question for shop
     Given I login by api with email
     And I go to a test pdp page
@@ -20,7 +20,7 @@ Feature: Pdp features
   @18008857 @checkout_regression @checkout_smoke
   Scenario: Ask invalid questions
     Given I login by api with email
-    And I go to a normal pdp page
+    And I go to a pdp page that ask_question feature enabled
     And I ask a question_contain_email
     Then I should see error message that question_should_not_contain_email
     And I ask a question_contain_phonenumber
@@ -30,7 +30,7 @@ Feature: Pdp features
 
   @18008960 @checkout_regression @checkout_smoke @no_drz
   Scenario: Chat with shop
-    Given I go to a normal pdp page
+    Given I go to a pdp page that ask_question feature enabled
     And I click Chat Now
     Then I should see Message popup opening
 
@@ -56,10 +56,9 @@ Feature: Pdp features
     And I click on Buy Now button
     Then I should see Login form
 
-  @18009198 @checkout_regression @checkout_smoke @no_lzd
+  @18009198 @checkout_regression @checkout_smoke
   Scenario: Check Buy Now/Add To Cart buttons work with login user
-    Given I sign up by api with email
-    And I create a new member address by api
+    Given I login by api with email
     And I go to a normal pdp page
     And I click on Add to cart button on Pdp Page
     Then I should see Cart popup with product added to Cart
