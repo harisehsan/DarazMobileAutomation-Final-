@@ -21,8 +21,8 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
         visit(Member_AccountSetting_Msite_Page.class);
         on(Member_AccountSetting_Msite_Page.class).logOut();
         on(Member_AccountSetting_Msite_Page.class).setOkButton();
-        on(Member_Loginemail_Msite_Page.class).clickLoginButton();
         on(Member_Loginemail_Msite_Page.class).logInByEmail((String) Global.map.get("current_mail"),(String) Global.map.get("current_pass"));
+        on(Member_Loginemail_Msite_Page.class).clickLoginButton();
     }
 
     @And("^I input email just signned up on Msite")

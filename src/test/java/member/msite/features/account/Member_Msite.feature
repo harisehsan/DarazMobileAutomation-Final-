@@ -71,5 +71,4 @@ Feature: Member Msite Test
     And On Msite i confirm code on Verify Email page
     Then I should see the new mail on account info page
     And On Msite i re-login by new email
-    Then On Msite I should see the user info is correctly displayed on account page
-
+    Then I should stayed in setting account page
