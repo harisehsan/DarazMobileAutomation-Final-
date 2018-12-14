@@ -15,7 +15,7 @@ public class MemberChangeEmailMsiteSteps extends BaseSteps {
         on(Member_ChangeEmail_Msite_Page.class).allureReportCurrentMail((String)Global.map.get("current_mail"));
     }
 
-    @And("^I change email on Msite by email verification code")
+    @And("^On Msite I change email by email verification code")
     public void sendCodetoBeforeChangingMail() throws Throwable {
         on(Member_ChangeEmail_Msite_Page.class).clickChangeEmail();
     }

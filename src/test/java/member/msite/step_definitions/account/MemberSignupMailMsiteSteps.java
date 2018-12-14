@@ -10,7 +10,7 @@ import org.testng.Assert;
 
 public class MemberSignupMailMsiteSteps extends BaseSteps {
 
-    @Given("^I go to the sign up on Msite page by email")
+    @Given("^On Msite I go to the sign up page by email")
     public void signUpMsite() throws Throwable {
         visit(Member_Signupemail_Msite_Page.class);
         Global.browser.refresh();

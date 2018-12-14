@@ -11,7 +11,7 @@ import org.testng.Assert;
 
 public class MemberResetPasswordMsiteSteps extends BaseSteps {
 
-    @When("^I access to reset password on Msite")
+    @When("^On Msite I access to reset password")
     public void accessPassWord() throws Throwable {
         visit(Member_Reset_Password_Msite_Page.class);
     }
@@ -28,7 +28,7 @@ public class MemberResetPasswordMsiteSteps extends BaseSteps {
         on(Member_Reset_Password_Msite_Page.class).verifyByMail();
     }
 
-    @And("^I get the email verification code on Msite from the inbox of current email")
+    @And("^On Msite I get the email verification code from the inbox of current email")
     public void getCodeFromInboxMail() throws Throwable {
         String currentWindowHandleId = Global.browser.currentWindowHandleId();
         Global.map.put("current_tab",currentWindowHandleId);

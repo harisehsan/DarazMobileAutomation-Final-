@@ -11,7 +11,7 @@ import org.testng.Assert;
 
 public class MemberLoginEmailMsiteSteps extends BaseSteps {
 
-    @Given("^I go to login by email on Msite")
+    @Given("^On Msite I go to login by email")
     public void openLogin() throws Throwable {
         visit(Member_Loginemail_Msite_Page.class);
     }
@@ -25,7 +25,7 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
     }
 
-    @And("^I input email just signned up on Msite")
+    @And("^On Msite I input email just signned up")
     public void inputEmailSignUp() throws Throwable {
         String changed_pass = RandomHelper.randomAlphaNumericString(6);
         Global.map.put("changed_pass", changed_pass);
@@ -34,7 +34,7 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
     }
 
-    @And("^I input account information to login by email Msite page")
+    @And("^On Msite I input account information to login by email page")
     public void logInByEmailMsite() throws Throwable {
         String email = Global.config.getString("member.account.mail");
         Global.map.put("current_mail", email);

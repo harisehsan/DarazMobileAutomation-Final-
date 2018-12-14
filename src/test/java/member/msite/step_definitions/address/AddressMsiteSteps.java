@@ -60,7 +60,7 @@ public class AddressMsiteSteps extends BaseSteps {
         on(Address_Msite_Page.class).deleteAddressProgress();
     }
 
-    @Then("^I should see the new address name on Msite")
+    @Then("^On Msite I should see the new address name")
     public void hasNewAddressName() throws Throwable {
         String expectAddressName = (String) Global.map.get("edit_address_name");
         String actualAddressName = (on(Address_Msite_Page.class).hasNewAddressName());

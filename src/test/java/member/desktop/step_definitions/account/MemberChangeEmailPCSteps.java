@@ -27,6 +27,7 @@ public class MemberChangeEmailPCSteps extends BaseSteps {
         Global.map.put("current_tab", currentWindowHandleId);
         Global.browser.openNewTab("");
         visit(Member_Mailinator_Page.class);
+        Global.browser.refresh();
         on(Member_Mailinator_Page.class).inputMail((String) Global.map.get("current_mail"));
         on(Member_Mailinator_Page.class).goToMailDetail();
         Global.map.put("verify_code", on(Member_Mailinator_Page.class).getSMSCodeDetail());
