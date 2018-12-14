@@ -11,6 +11,6 @@ import cucumber.api.CucumberOptions;
 
 @CucumberOptions(
         features = {"src/test/java/pdp/desktop/features"},
-        tags = {"@18008857"},
+        tags = {"@17958367"},
         glue = {"pdp.desktop.step_definitions"})
 public class DesktopRunner extends TestRunner{}

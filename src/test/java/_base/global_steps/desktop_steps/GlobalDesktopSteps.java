@@ -1,5 +1,6 @@
 package _base.global_steps.desktop_steps;
 
+import _base.api_helpers.buyer.BuyerSearchApi;
 import base.BaseSteps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -24,5 +25,15 @@ public class GlobalDesktopSteps extends BaseSteps {
     public void getProductTitle(){
         String currentProductTitle = on(Pdp_Page.class).getProductTitle();
         Global.map.put("currentProductTitle", currentProductTitle);
+    }
+
+    @When("^I go to test cash on delivery pdp$")
+    public void goToTestCod(){
+        BuyerSearchApi searchApi = new BuyerSearchApi();
+        String url = searchApi.getRandomCodProductFromRandomSeller();
+        Pdp_Page.setUrl(url);
+        visit(Pdp_Page.class);
+        on(Pdp_Page.class).closeShippingFromOverseaPopup();
+        on(Pdp_Page.class).switchToEnglish();
     }
 }
