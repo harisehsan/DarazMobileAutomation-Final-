@@ -9,9 +9,7 @@ import java.util.Optional;
 
 public class WebElementHelper {
 
-    public static boolean hasElement(By selector) {
-        return Global.browser.getWebDriver().findElements(selector).size() > 0;
-    }
+
 
     public static Optional<WebElement> getWebElement(By selector) {
         List<WebElement> elements = Global.browser.getWebDriver().findElements(selector);

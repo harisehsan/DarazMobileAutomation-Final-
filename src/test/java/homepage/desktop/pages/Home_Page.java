@@ -3,15 +3,15 @@ package homepage.desktop.pages;
 import _base.page_helpers.BuyerSitePageHelper;
 import base.PageObject;
 import global.Global;
-import homepage.desktop.helper.HttpHelper;
-import homepage.desktop.helper.WebElementHelper;
+import helper.RandomHelper;
+import helper.HttpHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
+
 
 
 public class Home_Page extends PageObject {
@@ -27,8 +27,6 @@ public class Home_Page extends PageObject {
     @FindBy(css = "#topActionSell") private WebElement sellOnSite_lbl;
     @FindBy(css = "#topActionCustomCare a[href*='helpcenter'] span.help-center") private WebElement helpCenter_lbl;
     @FindBy(css = ".lzd-switch-item.currentSelected") private WebElement currentLanguage_lbl;
-    @FindBy(css = "#topActionSwitchLang") private WebElement switchLanguage_lbl;
-    @FindBy(css = "[data-lang=en]") private WebElement switchToEnglishLanguage_lbl;
     @FindBy(css = "#topActionCustomCare .care-list") private WebElement customerCare_list;
     @FindBy(css = "#hp-just-for-your") private WebElement justForYou_lbl;
     @FindBy(css = ".lzd-site-nav-menu-dropdown") private WebElement categoriesTree_lbl;
@@ -119,20 +117,32 @@ public class Home_Page extends PageObject {
         return categoriesTree_lbl.isDisplayed();
     }
 
-    public void selectRandomCategoryLevelTwo() throws IOException {
-        int randomNumber = homepage.desktop.helper.RandomHelper.randomNumberInRange(rootCategories_lbl.size()-1,0);
+    public void selectRandomCategoryLevel(int depth) throws IOException {
+        int randomNumber = RandomHelper.randomNumberInRange(rootCategories_lbl.size()-1,0);
         rootCategories_lbl.get(randomNumber).click();
+        if (depth > 1) {
+            selectRandomCategoryLevelTwo(randomNumber);
+            if (depth > 2){
+                selectRandomCategoryLevelThree();
+            }
+        }
+    }
+
+    public void selectRandomCategoryLevelTwo (int randomNumber) throws IOException {
         String currentCssSelect = ("." + rootCategories_lbl.get(randomNumber).getAttribute("id") +" > li") ;
         By categoryLevel_2_list_by = By.cssSelector(currentCssSelect);
-        List<WebElement> categoryLevel2_list = menu_lbl.findElements(categoryLevel_2_list_by);
         waitUntilVisibility(categoryLevel_2_list_by);
-        int randomNumberForCat2 = homepage.desktop.helper.RandomHelper.randomNumberInRange(categoryLevel2_list.size()-1,0);
+        List<WebElement> categoryLevel2_list = menu_lbl.findElements(categoryLevel_2_list_by);
+        int randomNumberForCat2 = RandomHelper.randomNumberInRange(categoryLevel2_list.size() - 1, 0);
         By href = By.cssSelector(currentCssSelect + " > a");
         WebElement hrefLandingPage_String = menu_lbl.findElement(href);
-        if(HttpHelper.checkHttpResponseCode(hrefLandingPage_String.getAttribute("href")) != 200) {
-        throw new RuntimeException();
-        }
-        else categoryLevel2_list.get(randomNumberForCat2).click();
+        if (HttpHelper.checkHttpResponseCode(hrefLandingPage_String.getAttribute("href")) != 200) {
+            throw new RuntimeException();
+        } else categoryLevel2_list.get(randomNumberForCat2).click();
+    }
+
+    public void selectRandomCategoryLevelThree() {
+
     }
 
     public boolean isCategoryLevel2LandingPage() throws IOException {

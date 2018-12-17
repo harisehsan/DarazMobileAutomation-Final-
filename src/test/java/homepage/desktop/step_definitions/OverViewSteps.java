@@ -109,10 +109,14 @@ public class OverViewSteps extends BaseSteps {
         on(Home_Page.class).isJustForYouDisplayed();
     }
 
-    @And("^I select random category level 2 on Categories Tree")
-    public void selectRandomCategory() throws IOException {
+    @Then("^I should see category tree")
+    public void isCategoryTreeDisplayed () {
         Assert.assertTrue(on(Home_Page.class).isCategoryTreeDisplayed(),"No category displayed");
-        on(Home_Page.class).selectRandomCategoryLevelTwo();
+    }
+
+    @And("^I select random category level \"(\\d+)\" on Categories Tree$")
+    public void selectRandomCategory(int depth) throws IOException {
+        on(Home_Page.class).selectRandomCategoryLevel(depth);
     }
 
     @Then("^I should see category page that I selected")
