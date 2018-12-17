@@ -1,4 +1,4 @@
-@CheckoutWithCOD @911
+@CheckoutWithCOD @911 @smoke
   Feature: Checkout with COD method
 
     @17847731 @Checkout_COD @Checkout_Regression @Checkout_Smoke

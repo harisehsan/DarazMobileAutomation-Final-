@@ -1,4 +1,4 @@
-@My_Order_PC
+@smoke @My_Order_PC
 
 Feature: My Order PC Test for Daraz project
 

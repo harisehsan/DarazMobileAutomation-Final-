@@ -1,4 +1,4 @@
-@Address_Msite
+@smoke @Address_Msite
 
 Feature: Address Msite test
 
