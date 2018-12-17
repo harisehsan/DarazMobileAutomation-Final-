@@ -1,4 +1,4 @@
-@pdp @911
+@pdp @911 @smoke
 Feature: Pdp features
 
   @17958367 @checkout_regression @checkout_smoke @no_lzd

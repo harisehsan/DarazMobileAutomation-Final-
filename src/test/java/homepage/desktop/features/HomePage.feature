@@ -1,4 +1,4 @@
-@homepage
+@homepage @smoke
 Feature: homepage Test
 
   @17974383
