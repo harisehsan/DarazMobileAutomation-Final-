@@ -11,20 +11,21 @@ Feature: Cart features
     And I move the product to wishlist
     Then I should see successful message and the product is not in Cart
 
-  @17742324 @checkout_regression @checkout_smoke @smoke
+  @17742324 @checkout_regression @checkout_smoke @smoke @no_lzd @no_pk
   Scenario: User can delete a product on Cart successfully
-    Given I login by api with email
-    When I go to a pdp page that ask_question feature enabled
+    Given I sign up by api with email
+    When I go to a normal pdp page
     And I get the product title
     And I click on Add to cart button
     And I click Go To Cart button on Cart popup
     And I delete the product
     Then I should not see the product in Cart
 
-  @17757740 @checkout_regression @checkout_smoke @smoke @no_drz @no_id @no_my
+  @17757740 @checkout_regression @checkout_smoke @smoke @no_lzd @no_pk
   Scenario: Confirm Cart button leads user to Checkout Shipping page
-    Given I login by api with email
-    When I go to a test COD pdp page
+    Given I sign up by api with email
+    And I create a new member address by api
+    When I go to a test pdp page
     And I click on Add to cart button
     And I click Go To Cart button on Cart popup
     And I click Confirm Cart
