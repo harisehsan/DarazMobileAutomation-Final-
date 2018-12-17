@@ -12,7 +12,7 @@
       And I place order with COD payment method
       Then I should be on Checkout Success page
 
-    @17847772 @checkout_regression @checkout_smoke @smoke @no_drz @no_mm @no_pk
+    @17847772 @checkout_regression @checkout_smoke @smoke @no_lzd @no_mm @no_pk
     Scenario: Product exists on cart after user added successfully.
       Given I sign up by api with email
       When I go to a test pdp page
