@@ -127,22 +127,21 @@ public class Home_Page extends PageObject {
         if (depth == 2) {
             selectRandomCategoryLevelTwo(categoriesLevel2_list, currentCssSelect, randomNumberForCat2);
         } else if (depth == 3) {
-            selectRandomCategoryLevelThree(categoriesLevel2_list, currentCssSelect, randomNumberForCat2);
+            selectRandomCategoryLevelThree(categoriesLevel2_list, randomNumberForCat2);
         }
     }
 
-    public void selectRandomCategoryLevelTwo(List<WebElement> categoriesLevel2_list, String currentCssSelect, int randomNumberForCat2) throws IOException {
-        By href = By.cssSelector(currentCssSelect + " > a");
+    private void selectRandomCategoryLevelTwo(List<WebElement> categoriesLevel2_list, String currentCssSelect, int randomNumberForCat2) throws IOException {
         if (isHrefLinkWork(categoriesLevel2_list, currentCssSelect, randomNumberForCat2)) {
             throw new RuntimeException();
         } else categoriesLevel2_list.get(randomNumberForCat2).click();
     }
 
-    public void selectRandomCategoryLevelThree(List<WebElement> categoriesLevel2_list, String currentCssSelect, int randomNumberForCat2) throws IOException {
+    private void selectRandomCategoryLevelThree(List<WebElement> categoriesLevel2_list, int randomNumberForCat2) throws IOException {
         hover(categoriesLevel2_list.get(randomNumberForCat2));
         waitUntilVisibility(categoriesLevel3Tree_by);
         int randomNumberForCat3 = RandomHelper.randomNumberInRange(categoriesLevel3Tree_list.size() - 1, 0);
-        if (isHrefLinkWork(categoriesLevel3Tree_list, randomNumberForCat3)) {
+        if (isHrefLinkWork(randomNumberForCat3)) {
             throw new RuntimeException();
         } else categoriesLevel3Tree_list.get(randomNumberForCat3).click();
     }
@@ -150,16 +149,12 @@ public class Home_Page extends PageObject {
     private boolean isHrefLinkWork(List<WebElement> currentCategory, String currentCssSelect, int randomNumber) throws IOException {
         By href = By.cssSelector(currentCssSelect + " > a");
         WebElement hrefLandingPage_String = currentCategory.get(randomNumber).findElement(href);
-        if (HttpHelper.checkHttpResponseCode(hrefLandingPage_String.getAttribute("href")) != 200) {
-            return true;
-        } else return false;
+        return HttpHelper.checkHttpResponseCode(hrefLandingPage_String.getAttribute("href")) != 200;
     }
 
-    private boolean isHrefLinkWork(List<WebElement> currentCategory, int randomNumber) throws IOException {
+    private boolean isHrefLinkWork(int randomNumber) throws IOException {
         WebElement hrefLandingPage_String = categoriesLevel3Tree_list.get(randomNumber).findElement(By.cssSelector(".lzd-site-menu-grand-active > li >a"));
-        if (HttpHelper.checkHttpResponseCode(hrefLandingPage_String.getAttribute("href")) != 200) {
-            return true;
-        } else return false;
+        return HttpHelper.checkHttpResponseCode(hrefLandingPage_String.getAttribute("href")) != 200;
     }
 
     public boolean isCategoryLevel2LandingPage() throws IOException {
