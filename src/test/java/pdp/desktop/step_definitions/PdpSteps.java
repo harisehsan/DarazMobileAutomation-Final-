@@ -19,7 +19,7 @@ public class PdpSteps extends BaseSteps {
     @Given("^I go to a normal pdp page$")
     public void visitNormalPdpPage() {
         BuyerSearchApi searchApi = new BuyerSearchApi();
-        String url = searchApi.getCodProductFromCatalog("test");
+        String url = searchApi.getNormaPdpFromCatalog("test");
         Pdp_Page.setUrl(url);
         visit(Pdp_Page.class);
         on(Pdp_Page.class).closeShippingFromOverseaPopup();
