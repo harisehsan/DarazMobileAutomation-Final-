@@ -10,17 +10,17 @@ Feature: Pdp features
     Then I should see wishlist icon turns to orange
     And I should see the product on My wishlist page
 
-  @18008755 @pdp_regression @pdp_smoke @smoke @no_drz @no_lzd
+  @18008755 @pdp_regression @pdp_smoke @smoke
   Scenario: Ask valid question for shop
     Given I login by api with email
-    And I go to a test pdp page
+    And I go to a test QnA pdp page
     When I ask a valid_question
     Then I should see valid_question on the question list
 
   @18008857 @pdp_regression @pdp_smoke @smoke
   Scenario: Ask invalid questions
     Given I login by api with email
-    And I go to a pdp page that ask_question feature enabled
+    And I go to a normal QnA pdp page
     And I ask a question_contain_email
     Then I should see error message that question_should_not_contain_email
     And I ask a question_contain_phonenumber
@@ -28,9 +28,9 @@ Feature: Pdp features
     And I ask a question_contain_externalWebLink
     Then I should see error message that question_should_not_contain_externalWebLink
 
-  @18008960 @pdp_regression @pdp_smoke @smoke @no_drz
+  @fail2 @18008960 @pdp_regression @pdp_smoke @smoke
   Scenario: Chat with shop
-    Given I go to a pdp page that ask_question feature enabled
+    Given I go to a test QnA pdp page
     And I click Chat Now
     Then I should see Message popup opening
 
@@ -47,9 +47,9 @@ Feature: Pdp features
     And I submit new postcode in Leadtime
     Then I should see new Leadtime address has postcode
 
-  @18009106 @pdp_regression @pdp_smoke @smoke
+  @18009106 @pdp_regression @pdp_smoke @smoke @no_id @no_my
   Scenario: Check Buy Now/Add To Cart buttons work with guest user
-    When I go to a pdp page that ask_question feature enabled
+    When I go to a test COD pdp page
     And I click on Add to cart button as a guest
     Then I should see Login form
     When I close Login form
@@ -60,7 +60,7 @@ Feature: Pdp features
   Scenario: Check Buy Now/Add To Cart buttons work with login user
     Given I sign up by api with email
     And I create a new member address by api
-    And I go to a pdp page that ask_question feature enabled
+    And I go to a test COD pdp page
     And I click on Add to cart button on Pdp Page
     Then I should see Cart popup with product added to Cart
     When I close Cart popup
@@ -70,7 +70,7 @@ Feature: Pdp features
   @18009289 @pdp_regression @pdp_smoke @smoke @no_lzd
   Scenario: Change item quantity by +/- icon
     Given I sign up by api with email
-    And I go to a pdp page that ask_question feature enabled
+    And I go to a test COD pdp page
     And I click plus icon to increase quantity
     Then I should see product quantity is 2
     And I click minus icon to decrease quantity
@@ -79,9 +79,9 @@ Feature: Pdp features
     And I click on Add to cart button on Pdp Page
     Then I should see product quantity on Cart same to quantity on pdp
 
-  @18009359 @pdp_regression @pdp_smoke
+  @18009359 @pdp_regression @pdp_smoke @no_id @no_my
   Scenario: User cannot input a item quantity exceed than Max available number of product (maximum 5)
-    Given I go to a pdp page that ask_question feature enabled
+    Given I go to a test COD pdp page
     And I enter a number that equals to maximum available quantity
     Then I should see that quantity number cannot exceed more than maximum available quantity
 
