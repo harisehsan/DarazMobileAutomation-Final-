@@ -68,6 +68,16 @@ public class BuyerSearchApi {
         throw new RuntimeException("Can not search COD product");
     }
 
+    public String getIMPdpOfTestSellers(){List<String> sellerUrls = getListTestSellerUrls();
+        if(sellerUrls==null) throw new RuntimeException("Can not search COD product");
+        for(String url: sellerUrls){
+            List<String> productsListUrls = getListProductUrls(url);
+            String productUrl = getIMProduct(productsListUrls);
+            if(!productUrl.equalsIgnoreCase("")) return productUrl;
+        }
+        throw new RuntimeException("Can not search COD product");
+    }
+
 
     @SuppressWarnings("unchecked")
     private List<String> getListTestSellerUrls(){
@@ -86,6 +96,12 @@ public class BuyerSearchApi {
         if(productListUrls==null) return "";
         return productListUrls.stream()
                 .filter(productUrl -> apiService.isUrlValid(productUrl) && new PdpApi(productUrl).isQnaPdp()).findAny().orElse("");
+    }
+
+    private String getIMProduct(List<String> productListUrls){
+        if(productListUrls==null) return "";
+        return productListUrls.stream()
+                .filter(productUrl -> apiService.isUrlValid(productUrl) && new PdpApi(productUrl).isChatAvailable()).findAny().orElse("");
     }
 
     private String getNormalProduct(List<String> productListUrls){
