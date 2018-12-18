@@ -18,20 +18,25 @@ public class PdpApi {
     private static final String PDP_JSON_SUFFIX = "?debug=true";
 
     private ApiService apiService;
-    private JsonObject pdpJsonResponse;
+    private JsonObject pdpConvertUtil;
+    private JsonObject pdpSellerProvider;
     private String pdpUrl;
+
+    private static final String CONVERT_UTIL_MEMBER_NAME = "convertUtil";
+    private static final String SELLER_PROVIDER_MEMBER_NAME = "SellerProvider";
 
     PdpApi(String pdpUrl){
         this.apiService = new ApiService();
         this.pdpUrl = formatJsonPdpUrl(pdpUrl);
-        this.pdpJsonResponse = extractPdpJsonResponse(this.pdpUrl);
+        this.pdpConvertUtil = extractPdpJsonResponse(this.pdpUrl,CONVERT_UTIL_MEMBER_NAME);
+        this.pdpSellerProvider = extractPdpJsonResponse(this.pdpUrl,SELLER_PROVIDER_MEMBER_NAME);
     }
 
-    private JsonObject extractPdpJsonResponse(String url){
+    private JsonObject extractPdpJsonResponse(String url,String jsonMember){
         try {
             String jsonPdpUrl = formatJsonPdpUrl(url + PDP_JSON_SUFFIX);
             JsonObject pdpJsonObject = apiService.get(jsonPdpUrl);
-            return pdpJsonObject.getAsJsonObject("convertUtil").getAsJsonObject("response");
+            return pdpJsonObject.getAsJsonObject(jsonMember).getAsJsonObject("response");
         } catch (IOException e) {
             throw new RuntimeException("Can not find the response of this url "+url);
         }
@@ -61,12 +66,12 @@ public class PdpApi {
     }
 
     boolean isQnaPdp(){
-        return !pdpJsonResponse.getAsJsonObject("qna").getAsJsonPrimitive("hidden").getAsBoolean();
+        return !pdpConvertUtil.getAsJsonObject("qna").getAsJsonPrimitive("hidden").getAsBoolean();
     }
 
     boolean isCodPdp(){
         try {
-            JsonArray deliveryOptions = pdpJsonResponse.getAsJsonObject("deliveryOptions").getAsJsonArray(getSkuID());
+            JsonArray deliveryOptions = pdpConvertUtil.getAsJsonObject("deliveryOptions").getAsJsonArray(getSkuID());
             if(deliveryOptions==null) return false;
             Type listType = new TypeToken<List<JsonElement>>() {}.getType();
             List<JsonElement> deliveryOptionsList = new Gson().fromJson(deliveryOptions,listType);
@@ -79,8 +84,16 @@ public class PdpApi {
 
     boolean isStockAvailablePdp(){
         try {
-            int pdpStock = pdpJsonResponse.getAsJsonObject("skuInfos").getAsJsonObject(getSkuID()).getAsJsonPrimitive("stock").getAsInt();
+            int pdpStock = pdpConvertUtil.getAsJsonObject("skuInfos").getAsJsonObject(getSkuID()).getAsJsonPrimitive("stock").getAsInt();
             return pdpStock >0;
+        } catch (NullPointerException ex){
+            return false;
+        }
+    }
+
+    boolean isChatAvailable(){
+        try {
+            return pdpSellerProvider.getAsJsonObject("seller").getAsJsonObject("imStatus").getAsJsonPrimitive("imenabled").getAsBoolean();
         } catch (NullPointerException ex){
             return false;
         }
