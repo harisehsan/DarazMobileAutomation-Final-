@@ -30,7 +30,7 @@ public class GlobalDesktopSteps extends BaseSteps {
     @When("^I go to a test pdp page$")
     public void goToTestCod(){
         BuyerSearchApi searchApi = new BuyerSearchApi();
-        String url = searchApi.getRandomCodProductFromRandomSeller();
+        String url = searchApi.getCodPdpOfTestSellers();
         Pdp_Page.setUrl(url);
         visit(Pdp_Page.class);
         on(Pdp_Page.class).closeShippingFromOverseaPopup();

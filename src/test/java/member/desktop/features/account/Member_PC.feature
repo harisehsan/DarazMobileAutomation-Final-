@@ -1,4 +1,4 @@
-@Member_PC
+@Member_PC @smoke
 
 Feature: Member PC Test
 

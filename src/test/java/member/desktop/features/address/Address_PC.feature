@@ -1,4 +1,4 @@
-@Address_PC
+@Address_PC @smoke
 
 Feature: Address on PC
 

@@ -1,4 +1,4 @@
-@Member_Msite @911
+@Member_Msite @911 @smoke
 
 Feature: Member Msite Test
 
