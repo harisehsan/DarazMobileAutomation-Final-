@@ -30,7 +30,7 @@ Feature: Pdp features
 
   @fail2 @18008960 @pdp_regression @pdp_smoke @smoke
   Scenario: Chat with shop
-    Given I go to a test QnA pdp page
+    Given I go to a test Chat Message pdp page
     And I click Chat Now
     Then I should see Message popup opening
 
