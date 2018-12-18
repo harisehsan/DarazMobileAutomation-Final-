@@ -54,5 +54,13 @@ Feature: homepage Test
     And I select random category level "2" on Categories Tree
     Then I should see category page that I selected
 
+  @18263485 @smoke
+  Scenario: Guest users come to HomePage and select category level 2 to visit
+    When I go to HomePage
+    Then I should see category tree
+    And I select random category level "3" on Categories Tree
+    Then I should see category page that I selected
+
+
 
 
