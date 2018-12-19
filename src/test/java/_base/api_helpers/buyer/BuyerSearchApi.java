@@ -47,6 +47,13 @@ public class BuyerSearchApi {
         throw new RuntimeException("Can not search Normal product from Catalog");
     }
 
+    public String getImPdpFromCatalog(String searchKeyword){
+        String apiUrl = buyerSiteHomeUrl+CATALOG_URL_PREFIX+searchKeyword;
+        List<String> productsListUrls = getListProductUrls(apiUrl);
+        String productUrl = getIMProduct(productsListUrls);
+        if(!productUrl.equalsIgnoreCase("")){ return productUrl;}
+        throw new RuntimeException("Can not search Normal product from Catalog");
+    }
 
     public String getCodPdpOfTestSellers(){List<String> sellerUrls = getListTestSellerUrls();
         if(sellerUrls==null) throw new RuntimeException("Can not search COD product");

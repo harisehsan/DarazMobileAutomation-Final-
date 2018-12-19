@@ -94,8 +94,9 @@ public class PdpApi {
     boolean isChatAvailable(){
         try {
             return pdpSellerProvider.getAsJsonObject("seller").getAsJsonObject("imStatus").getAsJsonPrimitive("imenabled").getAsBoolean();
-        } catch (NullPointerException ex){
+        } catch (NullPointerException | ClassCastException ex){
             return false;
         }
     }
+
 }
