@@ -68,10 +68,20 @@ public class GlobalDesktopSteps extends BaseSteps {
     }
 
 
-    @Given("^I go to a test Chat Message pdp page$")
-    public void visitTestIMPdpPage() {
+    @Given("^I go to a test Chat Message pdp page from catalog$")
+    public void visitIMPdpPage() {
         BuyerSearchApi searchApi = new BuyerSearchApi();
         String url = searchApi.getImPdpFromCatalog("test");
+        Pdp_Page.setUrl(url);
+        visit(Pdp_Page.class);
+        on(Pdp_Page.class).closeShippingFromOverseaPopup();
+        on(Pdp_Page.class).switchToEnglish();
+    }
+
+    @Given("^I go to a test Chat Message pdp page from test sellers$")
+    public void visitTestIMPdpPage() {
+        BuyerSearchApi searchApi = new BuyerSearchApi();
+        String url = searchApi.getIMPdpOfTestSellers();
         Pdp_Page.setUrl(url);
         visit(Pdp_Page.class);
         on(Pdp_Page.class).closeShippingFromOverseaPopup();

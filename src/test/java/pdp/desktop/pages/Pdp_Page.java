@@ -34,8 +34,7 @@ public class Pdp_Page extends PageObject {
     @FindBy(css = ".seller-im-wrapper") private WebElement chatNow_link;
     @FindBy(css = ".message-view") private WebElement messageView_popup;
     @FindBy(xpath = "//*[@id='module_seller_warranty']/div/div[1]") private WebElement returnAndWaranty_lbl;
-    @FindBy(css = ".delivery-option-item") private WebElement deliveryOptionItem_lbl;
-    @FindBy(css = ".delivery-option-item__shipping-fee") private WebElement shippingFeeItem_lbl;
+    @FindBy(xpath = "//div[contains(text(),'Delivery Options')]") private WebElement leadtimeSection_lbl;
     @FindBy(css = ".next-dialog-close") private WebElement closeLoginForm_btn;
     @FindBy(xpath = "//*[@id='module_add_to_cart']/div/button[1]") private WebElement buyNow_btn;
     @FindBy(css = ".cart-message-text") private WebElement cartMessageText_lbl;
@@ -144,7 +143,7 @@ public class Pdp_Page extends PageObject {
     }
 
     public boolean isLeadtimeInfoDisplayed() {
-        return (deliveryOptionItem_lbl.isDisplayed() && shippingFeeItem_lbl.isDisplayed());
+        return (leadtimeSection_lbl.isDisplayed());
     }
 
     public boolean isLoginFormDisplayed() {
