@@ -28,7 +28,7 @@ Feature: Pdp features
     And I ask a question_contain_externalWebLink
     Then I should see error message that question_should_not_contain_externalWebLink
 
-  @fail2 @18008960 @pdp_regression @pdp_smoke @smoke
+  @18008960 @pdp_regression @pdp_smoke @smoke
   Scenario: Chat with shop
     Given I go to a test Chat Message pdp page
     And I click Chat Now

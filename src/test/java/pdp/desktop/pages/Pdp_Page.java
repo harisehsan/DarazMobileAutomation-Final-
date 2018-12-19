@@ -116,6 +116,7 @@ public class Pdp_Page extends PageObject {
     }
 
     public String getFirstQuestion() {
+        waitUntilPageReady();
         waitUntilVisible(firstQuestion_lbl);
         return firstQuestion_lbl.getText();
     }
