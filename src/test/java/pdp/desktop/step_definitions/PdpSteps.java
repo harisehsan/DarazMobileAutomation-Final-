@@ -1,18 +1,16 @@
 package pdp.desktop.step_definitions;
 
-import _base.api_helpers.buyer.BuyerSearchApi;
 import base.BaseSteps;
 import checkout.desktop.pages.Cart_PopUp;
 import checkout.desktop.pages.CheckoutShipping_Page;
 import cucumber.api.java.en.And;
-import helper.RandomHelper;
-import pdp.desktop.pages.MyWishlist_Page;
-import pdp.desktop.pages.Pdp_Page;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import global.Global;
+import helper.RandomHelper;
 import org.testng.Assert;
+import pdp.desktop.pages.MyWishlist_Page;
+import pdp.desktop.pages.Pdp_Page;
 
 
 public class PdpSteps extends BaseSteps {
@@ -191,4 +189,14 @@ public class PdpSteps extends BaseSteps {
         Assert.assertTrue(on(Pdp_Page.class).getCurrentAddress().contains(Global.config.getString("pdp.valid_postcode")));
     }
 
+    @And("^I send a message to shop$")
+    public void iSendAMessageToShop() throws Throwable {
+        String message = RandomHelper.randomAlphabetString(5) + RandomHelper.randomNumber(5);
+        on(Pdp_Page.class).submitMessageToShop(message);
+    }
+
+    @Then("^I should see my message in Message popup$")
+    public void iShouldSeeMyMessageInMessagePopup() throws Throwable {
+        Assert.assertTrue(on(Pdp_Page.class).messageListPopup().contains(on(Pdp_Page.class).getSentMessage()),"Message is not sent");
+    }
 }
