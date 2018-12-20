@@ -2,6 +2,13 @@
 
 Feature: Member PC Test
 
+  @17417150 @member_regression @member_smoke @signup @no_drz
+  Scenario: Normal signup by email
+    When I go to the sign up page by email
+    And I process to signup user by email on signup by email page
+    And I click and hold on slider button
+    Then I should see the user info is correctly displayed on account page
+
   @17417150 @member_regression @member_smoke @signup @no_lzd
   Scenario: Normal signup by email
     When I go to the sign up page by email
