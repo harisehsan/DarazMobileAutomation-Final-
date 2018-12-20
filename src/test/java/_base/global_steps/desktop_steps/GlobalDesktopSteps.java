@@ -30,7 +30,7 @@ public class GlobalDesktopSteps extends BaseSteps {
     @Given("^I go to a normal pdp page$")
     public void visitNormalPdpPage() {
         BuyerSearchApi searchApi = new BuyerSearchApi();
-        String url = searchApi.getNormaPdpFromCatalog("test");
+        String url = searchApi.getPdpFromCatalog("mobile");
         Pdp_Page.setUrl(url);
         visit(Pdp_Page.class);
         on(Pdp_Page.class).closeShippingFromOverseaPopup();
@@ -40,7 +40,7 @@ public class GlobalDesktopSteps extends BaseSteps {
     @Given("^I go to a normal QnA pdp page$")
     public void visitNormalQnAPdpPage() {
         BuyerSearchApi searchApi = new BuyerSearchApi();
-        String url = searchApi.getNormaQnaPdpFromCatalog("test");
+        String url = searchApi.getQnaPdpFromCatalog("mobile");
         Pdp_Page.setUrl(url);
         visit(Pdp_Page.class);
         on(Pdp_Page.class).closeShippingFromOverseaPopup();
@@ -70,7 +70,7 @@ public class GlobalDesktopSteps extends BaseSteps {
     @Given("^I go to a normal COD pdp page$")
     public void visitCodPdpPage() {
         BuyerSearchApi searchApi = new BuyerSearchApi();
-        String url = searchApi.getNormaCodPdpFromCatalog("test");
+        String url = searchApi.getCodPdpFromCatalog("mobile");
         Pdp_Page.setUrl(url);
         visit(Pdp_Page.class);
         on(Pdp_Page.class).closeShippingFromOverseaPopup();
@@ -81,7 +81,7 @@ public class GlobalDesktopSteps extends BaseSteps {
     @Given("^I go to a test Chat Message pdp page from catalog$")
     public void visitIMPdpPage() {
         BuyerSearchApi searchApi = new BuyerSearchApi();
-        String url = searchApi.getImPdpFromCatalog("test");
+        String url = searchApi.getImPdpFromCatalog("mobile");
         Pdp_Page.setUrl(url);
         visit(Pdp_Page.class);
         on(Pdp_Page.class).closeShippingFromOverseaPopup();

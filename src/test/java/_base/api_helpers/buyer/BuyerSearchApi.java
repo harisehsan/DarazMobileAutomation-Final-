@@ -31,28 +31,28 @@ public class BuyerSearchApi {
         this.apiService = new ApiService();
     }
 
-    public String getNormaQnaPdpFromCatalog(String searchKeyword){
+    public String getQnaPdpFromCatalog(String searchKeyword){
         String apiUrl = buyerSiteHomeUrl+CATALOG_URL_PREFIX+searchKeyword;
         List<String> productsListUrls = getListProductUrls(apiUrl);
         String productUrl = getQnaProduct(productsListUrls);
         if(!productUrl.equalsIgnoreCase("")){ return productUrl;}
-        throw new RuntimeException("Can not search QNA product");
+        throw new RuntimeException("Can not search Qna product From catalog with URL: "+apiUrl);
     }
 
-    public String getNormaCodPdpFromCatalog(String searchKeyword){
+    public String getCodPdpFromCatalog(String searchKeyword){
         String apiUrl = buyerSiteHomeUrl+CATALOG_URL_PREFIX+searchKeyword;
         List<String> productsListUrls = getListProductUrls(apiUrl);
         String productUrl = getCodProduct(productsListUrls);
         if(!productUrl.equalsIgnoreCase("")){ return productUrl;}
-        throw new RuntimeException("Can not search QNA product");
+        throw new RuntimeException("Can not search COD product From catalog with URL: "+apiUrl);
     }
 
-    public String getNormaPdpFromCatalog(String searchKeyword){
+    public String getPdpFromCatalog(String searchKeyword){
         String apiUrl = buyerSiteHomeUrl+CATALOG_URL_PREFIX+searchKeyword;
         List<String> productsListUrls = getListProductUrls(apiUrl);
         String productUrl = getNormalProduct(productsListUrls);
         if(!productUrl.equalsIgnoreCase("")){ return productUrl;}
-        throw new RuntimeException("Can not search Normal product from Catalog");
+        throw new RuntimeException("Can not search Normal pdp from Catalog with URL: " +apiUrl);
     }
 
     public String getImPdpFromCatalog(String searchKeyword){
@@ -60,7 +60,7 @@ public class BuyerSearchApi {
         List<String> productsListUrls = getListProductUrls(apiUrl);
         String productUrl = getIMProduct(productsListUrls);
         if(!productUrl.equalsIgnoreCase("")){ return productUrl;}
-        throw new RuntimeException("Can not search Normal product from Catalog");
+        throw new RuntimeException("Can not search IM product from Catalog with URL: "+apiUrl);
     }
 
     public String getCodPdpOfTestSellers(){List<String> sellerUrls = getListTestSellerUrls();
@@ -77,10 +77,10 @@ public class BuyerSearchApi {
         if(sellerUrls==null) throw new RuntimeException("Can not search COD product");
         for(String url: sellerUrls){
             List<String> productsListUrls = getListProductUrls(url);
-            String productUrl = getCodProduct(productsListUrls);
+            String productUrl = getQnaProduct(productsListUrls);
             if(!productUrl.equalsIgnoreCase("")) return productUrl;
         }
-        throw new RuntimeException("Can not search COD product");
+        throw new RuntimeException("Can not search QNA product");
     }
 
     public String getIMPdpOfTestSellers(){List<String> sellerUrls = getListTestSellerUrls();
@@ -90,7 +90,7 @@ public class BuyerSearchApi {
             String productUrl = getIMProduct(productsListUrls);
             if(!productUrl.equalsIgnoreCase("")) return productUrl;
         }
-        throw new RuntimeException("Can not search COD product");
+        throw new RuntimeException("Can not search IM product");
     }
 
 
@@ -136,7 +136,7 @@ public class BuyerSearchApi {
             List<JsonElement> productList = new Gson().fromJson(productArray, listType);
             Collections.shuffle(productList);
             return productList.stream().map(product -> formatProductUrl(product.getAsJsonObject().get("productUrl").getAsString())).collect(Collectors.toList());
-        } catch (IOException ex) {
+        } catch (IOException | NullPointerException ex) {
             throw new RuntimeException("Can not search cod product using this url: " + apiUrl + " Error: " + ex.getMessage());
         }
     }
