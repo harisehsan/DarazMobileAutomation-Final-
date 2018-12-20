@@ -27,8 +27,28 @@ public class GlobalDesktopSteps extends BaseSteps {
         Global.map.put("currentProductTitle", currentProductTitle);
     }
 
-    @When("^I go to test cash on delivery pdp$")
-    public void goToTestCod(){
+    @Given("^I go to a normal pdp page$")
+    public void visitNormalPdpPage() {
+        BuyerSearchApi searchApi = new BuyerSearchApi();
+        String url = searchApi.getNormaPdpFromCatalog("test");
+        Pdp_Page.setUrl(url);
+        visit(Pdp_Page.class);
+        on(Pdp_Page.class).closeShippingFromOverseaPopup();
+        on(Pdp_Page.class).switchToEnglish();
+    }
+
+    @Given("^I go to a normal QnA pdp page$")
+    public void visitNormalQnAPdpPage() {
+        BuyerSearchApi searchApi = new BuyerSearchApi();
+        String url = searchApi.getNormaQnaPdpFromCatalog("test");
+        Pdp_Page.setUrl(url);
+        visit(Pdp_Page.class);
+        on(Pdp_Page.class).closeShippingFromOverseaPopup();
+        on(Pdp_Page.class).switchToEnglish();
+    }
+
+    @Given("^I go to a test COD pdp page$")
+    public void visitTestCODPdpPage() {
         BuyerSearchApi searchApi = new BuyerSearchApi();
         String url = searchApi.getCodPdpOfTestSellers();
         Pdp_Page.setUrl(url);
@@ -36,4 +56,46 @@ public class GlobalDesktopSteps extends BaseSteps {
         on(Pdp_Page.class).closeShippingFromOverseaPopup();
         on(Pdp_Page.class).switchToEnglish();
     }
+
+    @Given("^I go to a test QnA pdp page$")
+    public void visitTestQnAPdpPage() {
+        BuyerSearchApi searchApi = new BuyerSearchApi();
+        String url = searchApi.getQnaPdpOfTestSellers();
+        Pdp_Page.setUrl(url);
+        visit(Pdp_Page.class);
+        on(Pdp_Page.class).closeShippingFromOverseaPopup();
+        on(Pdp_Page.class).switchToEnglish();
+    }
+
+    @Given("^I go to a normal COD pdp page$")
+    public void visitCodPdpPage() {
+        BuyerSearchApi searchApi = new BuyerSearchApi();
+        String url = searchApi.getNormaCodPdpFromCatalog("test");
+        Pdp_Page.setUrl(url);
+        visit(Pdp_Page.class);
+        on(Pdp_Page.class).closeShippingFromOverseaPopup();
+        on(Pdp_Page.class).switchToEnglish();
+    }
+
+
+    @Given("^I go to a test Chat Message pdp page from catalog$")
+    public void visitIMPdpPage() {
+        BuyerSearchApi searchApi = new BuyerSearchApi();
+        String url = searchApi.getImPdpFromCatalog("test");
+        Pdp_Page.setUrl(url);
+        visit(Pdp_Page.class);
+        on(Pdp_Page.class).closeShippingFromOverseaPopup();
+        on(Pdp_Page.class).switchToEnglish();
+    }
+
+    @Given("^I go to a test Chat Message pdp page from test sellers$")
+    public void visitTestIMPdpPage() {
+        BuyerSearchApi searchApi = new BuyerSearchApi();
+        String url = searchApi.getIMPdpOfTestSellers();
+        Pdp_Page.setUrl(url);
+        visit(Pdp_Page.class);
+        on(Pdp_Page.class).closeShippingFromOverseaPopup();
+        on(Pdp_Page.class).switchToEnglish();
+    }
+
 }

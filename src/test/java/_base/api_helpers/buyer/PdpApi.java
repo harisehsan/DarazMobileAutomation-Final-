@@ -85,7 +85,7 @@ public class PdpApi {
     boolean isStockAvailablePdp(){
         try {
             int pdpStock = pdpConvertUtil.getAsJsonObject("skuInfos").getAsJsonObject(getSkuID()).getAsJsonPrimitive("stock").getAsInt();
-            return pdpStock >0;
+            return pdpStock >5;
         } catch (NullPointerException ex){
             return false;
         }
@@ -94,8 +94,9 @@ public class PdpApi {
     boolean isChatAvailable(){
         try {
             return pdpSellerProvider.getAsJsonObject("seller").getAsJsonObject("imStatus").getAsJsonPrimitive("imenabled").getAsBoolean();
-        } catch (NullPointerException ex){
+        } catch (NullPointerException | ClassCastException ex){
             return false;
         }
     }
+
 }

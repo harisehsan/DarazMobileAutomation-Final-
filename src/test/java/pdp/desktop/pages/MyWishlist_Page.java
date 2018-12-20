@@ -10,11 +10,12 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class MyWishlist_Page extends PageObject {
-    @FindBy(css = ".wishlist-mod") private List<WebElement> productlist;
+    @FindBy(css = ".wishlist-item") private List<WebElement> productlist;
 
     public boolean isProductDisplayed() {
         waitUntilPageReady();
         boolean productExist = false;
+
         for (WebElement element : productlist) {
             try{
                 String myText = element.findElement(By.cssSelector("a[class~=title]")).getText();

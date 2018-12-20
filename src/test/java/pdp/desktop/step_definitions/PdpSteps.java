@@ -16,15 +16,7 @@ import org.testng.Assert;
 
 
 public class PdpSteps extends BaseSteps {
-    @Given("^I go to a normal pdp page$")
-    public void visitNormalPdpPage() {
-        BuyerSearchApi searchApi = new BuyerSearchApi();
-        String url = searchApi.getNormaPdpFromCatalog("test");
-        Pdp_Page.setUrl(url);
-        visit(Pdp_Page.class);
-        on(Pdp_Page.class).closeShippingFromOverseaPopup();
-        on(Pdp_Page.class).switchToEnglish();
-    }
+
 
     @When("^I click wishlist icon$")
     public void addToWishlist() {
@@ -46,7 +38,9 @@ public class PdpSteps extends BaseSteps {
     public void askQuestion(String questionType) {
         switch (questionType) {
             case "valid_question":
-                on(Pdp_Page.class).askQuestion(RandomHelper.randomSentence(10));
+                String validQuestion = RandomHelper.randomSentence(10);
+                on(Pdp_Page.class).askQuestion(validQuestion);
+                Global.map.put("Valid_Question", validQuestion);
                 break;
             case "question_contain_email":
                 on(Pdp_Page.class).askQuestion(RandomHelper.randomSentence(5)+ " " + RandomHelper.randomTestMail());
@@ -62,7 +56,7 @@ public class PdpSteps extends BaseSteps {
 
     @Then("^I should see valid_question on the question list$")
     public void getFirstQuestion() {
-        Assert.assertEquals(on(Pdp_Page.class).getFirstQuestion(), Global.config.getString("pdp.ask_valid_question"), "Verification failed: Valid question is not found");
+        Assert.assertEquals(on(Pdp_Page.class).getFirstQuestion(), Global.map.get("Valid_Question"), "Verification failed: Valid question is not found");
     }
 
     @Then("^I should see error message that (.*?)$")
