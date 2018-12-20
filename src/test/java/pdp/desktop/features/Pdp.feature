@@ -49,7 +49,7 @@ Feature: Pdp features
 
   @18009106 @pdp_regression @pdp_smoke @smoke @no_id @no_my
   Scenario: Check Buy Now/Add To Cart buttons work with guest user
-    When I go to a test COD pdp page
+    When I go to a normal COD pdp page
     And I click on Add to cart button as a guest
     Then I should see Login form
     When I close Login form
@@ -81,7 +81,7 @@ Feature: Pdp features
 
   @18009359 @pdp_regression @pdp_smoke @no_id @no_my
   Scenario: User cannot input a item quantity exceed than Max available number of product (maximum 5)
-    Given I go to a test COD pdp page
+    Given I go to a normal COD pdp page
     And I enter a number that equals to maximum available quantity
     Then I should see that quantity number cannot exceed more than maximum available quantity
 

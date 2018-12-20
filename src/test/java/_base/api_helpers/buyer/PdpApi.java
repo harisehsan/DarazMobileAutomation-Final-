@@ -27,18 +27,17 @@ public class PdpApi {
 
     PdpApi(String pdpUrl){
         this.apiService = new ApiService();
-        this.pdpUrl = formatJsonPdpUrl(pdpUrl);
+        this.pdpUrl = formatJsonPdpUrl(pdpUrl+PDP_JSON_SUFFIX);
         this.pdpConvertUtil = extractPdpJsonResponse(this.pdpUrl,CONVERT_UTIL_MEMBER_NAME);
         this.pdpSellerProvider = extractPdpJsonResponse(this.pdpUrl,SELLER_PROVIDER_MEMBER_NAME);
     }
 
     private JsonObject extractPdpJsonResponse(String url,String jsonMember){
         try {
-            String jsonPdpUrl = formatJsonPdpUrl(url + PDP_JSON_SUFFIX);
-            JsonObject pdpJsonObject = apiService.get(jsonPdpUrl);
+            JsonObject pdpJsonObject = apiService.get(url);
             return pdpJsonObject.getAsJsonObject(jsonMember).getAsJsonObject("response");
-        } catch (IOException e) {
-            throw new RuntimeException("Can not find the response of this url "+url);
+        } catch (IOException|NullPointerException e) {
+            throw new RuntimeException("Can not find the Json response of object name: "+jsonMember+" response of this url "+url +" Error: "+e.getMessage());
         }
 
     }
@@ -62,7 +61,7 @@ public class PdpApi {
     }
 
     private String getSkuID(){
-        return StringUtils.substringBetween(pdpUrl,"-s",".html");
+        return StringUtils.substring(pdpUrl,pdpUrl.lastIndexOf("-s")+2,pdpUrl.lastIndexOf(".html"));
     }
 
     boolean isQnaPdp(){
