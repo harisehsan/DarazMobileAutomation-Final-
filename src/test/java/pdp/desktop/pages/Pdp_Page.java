@@ -62,7 +62,6 @@ public class Pdp_Page extends PageObject {
     }
 
     public String randomAddress = "";
-    public String sentMessage = "";
 
     public String getProductTitle() {
         return productTitle_lbl.getText();
@@ -246,13 +245,8 @@ public class Pdp_Page extends PageObject {
         firstSeller_btn.click();
         waitUntilVisibility(messageInput_txtField_by);
         messageInput_txtField.sendKeys(message);
-        sentMessage = message;
         waitUntilVisible(messageSend_btn);
         messageSend_btn.click();
-    }
-
-    public String getSentMessage(){
-        return sentMessage;
     }
 
     public String messageListPopup(){

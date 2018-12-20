@@ -192,11 +192,14 @@ public class PdpSteps extends BaseSteps {
     @And("^I send a message to shop$")
     public void iSendAMessageToShop() throws Throwable {
         String message = RandomHelper.randomAlphabetString(5) + RandomHelper.randomNumber(5);
+        Global.map.put("current_chat_message",message);
         on(Pdp_Page.class).submitMessageToShop(message);
     }
 
     @Then("^I should see my message in Message popup$")
     public void iShouldSeeMyMessageInMessagePopup() throws Throwable {
-        Assert.assertTrue(on(Pdp_Page.class).messageListPopup().contains(on(Pdp_Page.class).getSentMessage()),"Message is not sent");
+        String messageList = on(Pdp_Page.class).messageListPopup();
+        String submittedChatMessage = Global.map.get("current_chat_message").toString();
+        Assert.assertTrue(messageList.contains(submittedChatMessage),"Message is not sent");
     }
 }
