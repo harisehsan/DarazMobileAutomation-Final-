@@ -67,6 +67,16 @@ public class GlobalDesktopSteps extends BaseSteps {
         on(Pdp_Page.class).switchToEnglish();
     }
 
+    @Given("^I go to a normal COD pdp page$")
+    public void visitCodPdpPage() {
+        BuyerSearchApi searchApi = new BuyerSearchApi();
+        String url = searchApi.getNormaCodPdpFromCatalog("test");
+        Pdp_Page.setUrl(url);
+        visit(Pdp_Page.class);
+        on(Pdp_Page.class).closeShippingFromOverseaPopup();
+        on(Pdp_Page.class).switchToEnglish();
+    }
+
 
     @Given("^I go to a test Chat Message pdp page from catalog$")
     public void visitIMPdpPage() {

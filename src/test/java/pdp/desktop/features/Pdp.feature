@@ -28,7 +28,7 @@ Feature: Pdp features
     And I ask a question_contain_externalWebLink
     Then I should see error message that question_should_not_contain_externalWebLink
 
-  @18008960 @pdp_regression @pdp_smoke @smoke
+  @18008960 @pdp_regression @pdp_smoke @smoke @no_drz
   Scenario: Chat with shop
     Given I go to a test Chat Message pdp page from catalog
     And I click Chat Now
@@ -58,9 +58,9 @@ Feature: Pdp features
 
   @18009198 @pdp_regression @pdp_smoke @smoke @no_lzd
   Scenario: Check Buy Now/Add To Cart buttons work with login user
-    Given I sign up by api with email
+    Given I login by api with email
     And I create a new member address by api
-    And I go to a test COD pdp page
+    And I go to a normal COD pdp page
     And I click on Add to cart button on Pdp Page
     Then I should see Cart popup with product added to Cart
     When I close Cart popup
@@ -69,8 +69,8 @@ Feature: Pdp features
 
   @18009289 @pdp_regression @pdp_smoke @smoke @no_lzd
   Scenario: Change item quantity by +/- icon
-    Given I sign up by api with email
-    And I go to a test COD pdp page
+    Given I login by api with email
+    And I go to a normal COD pdp page
     And I click plus icon to increase quantity
     Then I should see product quantity is 2
     And I click minus icon to decrease quantity

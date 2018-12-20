@@ -39,6 +39,14 @@ public class BuyerSearchApi {
         throw new RuntimeException("Can not search QNA product");
     }
 
+    public String getNormaCodPdpFromCatalog(String searchKeyword){
+        String apiUrl = buyerSiteHomeUrl+CATALOG_URL_PREFIX+searchKeyword;
+        List<String> productsListUrls = getListProductUrls(apiUrl);
+        String productUrl = getCodProduct(productsListUrls);
+        if(!productUrl.equalsIgnoreCase("")){ return productUrl;}
+        throw new RuntimeException("Can not search QNA product");
+    }
+
     public String getNormaPdpFromCatalog(String searchKeyword){
         String apiUrl = buyerSiteHomeUrl+CATALOG_URL_PREFIX+searchKeyword;
         List<String> productsListUrls = getListProductUrls(apiUrl);
