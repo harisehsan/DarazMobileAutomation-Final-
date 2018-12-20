@@ -14,7 +14,7 @@ Feature: Cart features
   @17742324 @checkout_regression @checkout_smoke @smoke @no_lzd @no_id @no_my
   Scenario: User can delete a product on Cart successfully
     Given I sign up by api with email
-    When I go to a test COD pdp page
+    When I go to a normal COD pdp page
     And I get the product title
     And I click on Add to cart button
     And I click Go To Cart button on Cart popup

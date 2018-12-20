@@ -1,4 +1,4 @@
-@checkoutCOD @911 @cart
+@checkoutCOD @911
   Feature: Checkout with COD method
 
     @17847731 @checkout_regression @checkout_smoke @smoke @no_lzd @no_id @no_my
