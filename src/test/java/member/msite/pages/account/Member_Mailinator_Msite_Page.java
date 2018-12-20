@@ -2,6 +2,7 @@ package member.msite.pages.account;
 
 import base.PageObject;
 import global.Global;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -17,6 +18,8 @@ public class Member_Mailinator_Msite_Page extends PageObject {
     @FindBy(css = "div.verify-code-container > span") private WebElement smsCodeDetail_lbl;
     @FindBy(id = "msg_body") private WebElement msgBody_btn;
 
+    private By email_list_by = By.xpath("//*[starts-with(@id,'row_lazadatest_1111')]/div");
+
     public void inputMail(String mail) {
         waitUntilPageReady();
         waitUntilVisible(mail_txtField);
@@ -26,7 +29,9 @@ public class Member_Mailinator_Msite_Page extends PageObject {
 
     public void goToMailDetail() {
         waitUntilPageReady();
+        waitUntilVisible(email_list);
         this.email_list.click();
+        waitUntilInvisibilityOf(email_list_by);
     }
 
     public String getSMSCodeDetail() {

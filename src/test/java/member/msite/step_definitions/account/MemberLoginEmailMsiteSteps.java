@@ -11,12 +11,21 @@ import org.testng.Assert;
 
 public class MemberLoginEmailMsiteSteps extends BaseSteps {
 
-    @Given("^I go to login by email on Msite")
+    @Given("^On Msite I go to login by email")
     public void openLogin() throws Throwable {
         visit(Member_Loginemail_Msite_Page.class);
     }
 
-    @And("^I input email just signned up on Msite")
+    @And("^On Msite i re-login by new email")
+    public void logoutThenLoginByNewEmail() throws Throwable {
+        visit(Member_AccountSetting_Msite_Page.class);
+        on(Member_AccountSetting_Msite_Page.class).logOut();
+        on(Member_AccountSetting_Msite_Page.class).setOkButton();
+        on(Member_Loginemail_Msite_Page.class).logInByEmail((String) Global.map.get("current_mail"),(String) Global.map.get("current_pass"));
+        on(Member_Loginemail_Msite_Page.class).clickLoginButton();
+    }
+
+    @And("^On Msite I input email just signned up")
     public void inputEmailSignUp() throws Throwable {
         String changed_pass = RandomHelper.randomAlphaNumericString(6);
         Global.map.put("changed_pass", changed_pass);
@@ -25,7 +34,7 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
     }
 
-    @And("^I input account information to login by email Msite page")
+    @And("^On Msite I input account information to login by email page")
     public void logInByEmailMsite() throws Throwable {
         String email = Global.config.getString("member.account.mail");
         Global.map.put("current_mail", email);
@@ -46,14 +55,6 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
         on(Member_AccountSetting_Msite_Page.class).logOut();
         on(Member_AccountSetting_Msite_Page.class).setOkButton();
     }
-
-//    @Then("^I should stayed in account page")
-//    public void hasStayOnAccountPage(){
-//        Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking user should be stayed in account page after logging in success");
-//        String email = (String) Global.map.get("email_login");
-//        String password = (String) Global.map.get("password_login");
-//        on(Member_Account_Msite_Page.class).allureMailUrlPassMsite(email, password);
-//    }
 
     @Then("^I should stayed in setting account page")
     public void hasStayOnSettingPage(){

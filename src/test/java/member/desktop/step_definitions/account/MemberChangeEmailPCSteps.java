@@ -22,28 +22,29 @@ public class MemberChangeEmailPCSteps extends BaseSteps {
     }
 
     @And("^I get the email verification code from the inbox of current email")
-    public void getSmsCodeFromInboxMail() throws Throwable {
+    public void getCodeFromInboxMail() throws Throwable {
         String currentWindowHandleId = Global.browser.currentWindowHandleId();
         Global.map.put("current_tab", currentWindowHandleId);
         Global.browser.openNewTab("");
         visit(Member_Mailinator_Page.class);
+        Global.browser.refresh();
         on(Member_Mailinator_Page.class).inputMail((String) Global.map.get("current_mail"));
         on(Member_Mailinator_Page.class).goToMailDetail();
-        Global.map.put("sms_code", on(Member_Mailinator_Page.class).getSMSCodeDetail());
+        Global.map.put("verify_code", on(Member_Mailinator_Page.class).getSMSCodeDetail());
     }
 
     @And("I confirm code on Verify Email page")
-    public void verifySmsCode() throws Throwable {
+    public void verifyCode() throws Throwable {
         Global.browser.switchToTab((String) Global.map.get("current_tab"));
-        on(Member_VerifyEmail_PC_Page.class).inputSMSCode((String) Global.map.get("sms_code"));
+        on(Member_VerifyEmail_PC_Page.class).inputSMSCode((String) Global.map.get("verify_code"));
         on(Member_VerifyEmail_PC_Page.class).clickVerifyCodeBtn();
     }
 
     @And("^I input new mail and send code")
-    public void sendSmsCodeToAfterChangingMail() throws Throwable {
+    public void sendCodeToAfterChangingMail() throws Throwable {
         String current_mail = RandomHelper.randomTestMail();
         Global.map.put("current_mail",current_mail);
-        on(Member_Change_Email_Pass_Page.class).sendCodeToMailAfterChanging(current_mail);
+        on(Member_Change_Email_Pass_Page.class).sendCodeToMail(current_mail);
     }
 
     @Then("^I should see the new mail on personal profile page")

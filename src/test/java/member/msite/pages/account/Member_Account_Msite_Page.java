@@ -16,6 +16,8 @@ public class Member_Account_Msite_Page extends PageObject {
     @FindBy(css = "div.mod-minlogin.member > div") private WebElement accountTittle_lbl;
     @FindBy(css = "div.account-newsletter > div") private WebElement newsletterConfig_btn;
     @FindBy(css = "#address-book > a") private WebElement addressBook_btn;
+    @FindBy(xpath = "//*[@id='account-info']/a") private WebElement accountInfo_btn;
+
 
     private By newsletterConfig_btn_by = By.cssSelector("div.account-newsletter > div");
     private By addressBook_btn_by = By.cssSelector("#address-book > a");
@@ -59,5 +61,10 @@ public class Member_Account_Msite_Page extends PageObject {
     public void allureConfigNewsletter(String beforeConfigure, String afterConfigure) {
         AllureAttachment.attachComment("Before configure Newsletter", beforeConfigure);
         AllureAttachment.attachComment("After configure Newsletter", afterConfigure);
+    }
+
+    public void goToAccountInfo() {
+        waitUntilPageReady();
+        this.accountInfo_btn.click();
     }
 }

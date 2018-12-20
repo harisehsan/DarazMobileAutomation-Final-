@@ -4,13 +4,14 @@ import base.BaseSteps;
 import cucumber.api.java.en.*;
 import global.Global;
 import helper.RandomHelper;
+import member.msite.pages.account.Member_ChangeEmail_Msite_Page;
 import member.msite.pages.account.Member_Mailinator_Msite_Page;
 import member.msite.pages.account.Member_Reset_Password_Msite_Page;
 import org.testng.Assert;
 
 public class MemberResetPasswordMsiteSteps extends BaseSteps {
 
-    @When("^I access to reset password on Msite")
+    @When("^On Msite I access to reset password")
     public void accessPassWord() throws Throwable {
         visit(Member_Reset_Password_Msite_Page.class);
     }
@@ -18,6 +19,7 @@ public class MemberResetPasswordMsiteSteps extends BaseSteps {
     @And("^I progress to forgot password")
     public void forgotPassword() throws Throwable {
         String mail = Global.config.getString("member.reset_password_mail");
+        Global.map.put("current_mail",mail);
         on(Member_Reset_Password_Msite_Page.class).resetPasswordStep(mail);
     }
 
@@ -26,33 +28,30 @@ public class MemberResetPasswordMsiteSteps extends BaseSteps {
         on(Member_Reset_Password_Msite_Page.class).verifyByMail();
     }
 
-    @And("^I go to the inbox mail in Msite on new tab")
-    public void accessInboxMail() throws Throwable {
+    @And("^On Msite I get the email verification code from the inbox of current email")
+    public void getCodeFromInboxMail() throws Throwable {
         String currentWindowHandleId = Global.browser.currentWindowHandleId();
         Global.map.put("current_tab",currentWindowHandleId);
         Global.browser.openNewTab("");
         visit(Member_Mailinator_Msite_Page.class);
-    }
-
-    @And("^I open email on Msite to get sms code")
-    public void accessSMSCode() throws Throwable {
-        String emailReset = Global.config.getString("member.reset_password_mail");
-        Global.map.put("email is reset",emailReset);
-        on(Member_Mailinator_Msite_Page.class).inputMail(emailReset);
+        on(Member_Mailinator_Msite_Page.class).inputMail((String)Global.map.get("current_mail"));
         on(Member_Mailinator_Msite_Page.class).goToMailDetail();
         String smsCode = on(Member_Mailinator_Msite_Page.class).getSMSCodeDetail();
-        Global.map.put("sms_code",smsCode);
+        Global.map.put("verify_code",smsCode);
     }
 
-    @And("^I on Msite go back the old tab")
+    @And("^On Msite i confirm code on Verify Email page")
     public void goBackOldTab() throws Throwable {
         Global.browser.switchToTab((String) Global.map.get("current_tab"));
+        String smsCode = (String) Global.map.get("verify_code");
+        on(Member_Reset_Password_Msite_Page.class).inputCode(smsCode);
     }
 
-    @And("^I input the smsCode to reset password on msite")
-    public void inputSmsCode() throws Throwable {
-        String smsCode = (String) Global.map.get("sms_code");
-        on(Member_Reset_Password_Msite_Page.class).inputCode(smsCode);
+    @And("^On Msite I input new mail and send code")
+    public void sendCodeToNewEmail() throws Throwable {
+        String current_mail = RandomHelper.randomTestMail();
+        Global.map.put("current_mail",current_mail);
+        on(Member_ChangeEmail_Msite_Page.class).sendCodeToNewEmail(current_mail);
     }
 
     @And("^I input the new password for reset")
