@@ -12,10 +12,10 @@
       And I place order with COD payment method
       Then I should be on Checkout Success page
 
-    @17847772 @checkout_regression @checkout_smoke @smoke @no_lzd @no_id @no_my
+    @17847772 @checkout @checkout_smoke @smoke @no_lzd @no_id @no_my
     Scenario: Product exists on cart after user added successfully.
-      Given I sign up by api with email
-      When I go to a test COD pdp page
+      Given I login by api with email
+      When I go to a normal COD pdp page
       And I get the product title
       And I click on Add to cart button
       And I click Go To Cart button on Cart popup

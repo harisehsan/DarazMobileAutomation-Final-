@@ -1,7 +1,7 @@
-@cart @911
+ @911
 Feature: Cart features
 
-  @17740822 @checkout_regression @checkout_smoke @smoke
+  @17740822 @checkout_regression @checkout_smoke @smoke @cart
   Scenario: User can move a product on Cart to wishlist
     Given I login by api with email
     When I go to a normal pdp page
