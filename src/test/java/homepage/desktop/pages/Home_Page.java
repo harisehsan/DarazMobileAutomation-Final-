@@ -103,13 +103,10 @@ public class Home_Page extends PageObject {
         helpCenter_lbl.click();
     }
 
-    public void scrollToJustForYou() {
-
-    }
+    public void scrollToJustForYou() { }
 
     public void isJustForYouDisplayed() {
         waitUntilPageReady();
-
     }
 
     public boolean isCategoryTreeDisplayed() {
