@@ -47,7 +47,7 @@ Feature: Pdp features
     And I submit new postcode in Leadtime
     Then I should see new Leadtime address has postcode
 
-  @18009106 @pdp_regression @pdp_smoke @smoke @no_id @no_my
+  @18009106 @pdp_regression @pdp_smoke @smoke @cart
   Scenario: Check Buy Now/Add To Cart buttons work with guest user
     When I go to a normal COD pdp page
     And I click on Add to cart button as a guest
@@ -56,7 +56,7 @@ Feature: Pdp features
     And I click on Buy Now button
     Then I should see Login form
 
-  @18009198 @pdp_regression @pdp_smoke @smoke @no_lzd
+  @18009198 @pdp_regression @pdp_smoke @smoke @cart
   Scenario: Check Buy Now/Add To Cart buttons work with login user
     Given I login by api with email
     And I create a new member address by api
@@ -67,7 +67,7 @@ Feature: Pdp features
     And I click on Buy Now button
     Then I should be on Checkout Shipping page
 
-  @18009289 @pdp_regression @pdp_smoke @smoke @no_lzd
+  @18009289 @pdp_regression @pdp_smoke @smoke @cart
   Scenario: Change item quantity by +/- icon
     Given I login by api with email
     And I go to a normal COD pdp page
@@ -79,7 +79,7 @@ Feature: Pdp features
     And I click on Add to cart button on Pdp Page
     Then I should see product quantity on Cart same to quantity on pdp
 
-  @18009359 @pdp_regression @pdp_smoke @no_id @no_my
+  @18009359 @pdp_regression @pdp_smoke
   Scenario: User cannot input a item quantity exceed than Max available number of product (maximum 5)
     Given I go to a normal COD pdp page
     And I enter a number that equals to maximum available quantity

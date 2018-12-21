@@ -70,7 +70,7 @@ public class GlobalDesktopSteps extends BaseSteps {
     @Given("^I go to a normal COD pdp page$")
     public void visitCodPdpPage() {
         BuyerSearchApi searchApi = new BuyerSearchApi();
-        String url = searchApi.getCodPdpFromCatalog("mobile");
+        String url = searchApi.getCodPdpFromCatalog("diaper");
         Pdp_Page.setUrl(url);
         visit(Pdp_Page.class);
         on(Pdp_Page.class).closeShippingFromOverseaPopup();
