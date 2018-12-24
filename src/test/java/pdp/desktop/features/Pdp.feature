@@ -28,11 +28,14 @@ Feature: Pdp features
     And I ask a question_contain_externalWebLink
     Then I should see error message that question_should_not_contain_externalWebLink
 
-  @18008960 @pdp_regression @pdp_smoke @smoke @no_drz
+  @17916534 @18008960 @pdp_regression @pdp_smoke @smoke @no_drz
   Scenario: Chat with shop
-    Given I go to a test Chat Message pdp page from catalog
+    Given I login by api with email
+    And I go to a test Chat Message pdp page from test sellers
     And I click Chat Now
-    Then I should see Message popup opening
+    And I should see Message popup opening
+    And I send a message to shop
+    Then I should see my message in Message popup
 
   @18009022 @pdp_regression @pdp_smoke @smoke @no_my @no_th @no_sg
   Scenario: Check LeadTime function on pdp

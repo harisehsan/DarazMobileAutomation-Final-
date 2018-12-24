@@ -2,9 +2,7 @@ package pdp.desktop.pages;
 
 import _base.page_helpers.BuyerSitePageHelper;
 import base.PageObject;
-import global.Global;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,7 +30,11 @@ public class Pdp_Page extends PageObject {
     @FindBy(css = ".qna-content") private WebElement firstQuestion_lbl;
     @FindBy(css = ".next-feedback-content") private WebElement errorMessageForInvalidQuestion_lbl;
     @FindBy(css = ".seller-im-wrapper") private WebElement chatNow_link;
+    @FindBy(css = "[data-lazyload-listened] > div:nth-of-type(1)") private WebElement firstSeller_btn;
     @FindBy(css = ".message-view") private WebElement messageView_popup;
+    @FindBy(css = "[rows]") private WebElement messageInput_txtField;
+    @FindBy(css = ".message-view-field__send") private WebElement messageSend_btn;
+    @FindBy(css = ".message-list") private WebElement messageList_popup;
     @FindBy(xpath = "//*[@id='module_seller_warranty']/div/div[1]") private WebElement returnAndWaranty_lbl;
     @FindBy(xpath = "//div[contains(text(),'Delivery Options')]") private WebElement leadtimeSection_lbl;
     @FindBy(css = ".next-dialog-close") private WebElement closeLoginForm_btn;
@@ -51,6 +53,9 @@ public class Pdp_Page extends PageObject {
     private By location_loading_icon_by = By.cssSelector(".location-level__loader");
     private By location_overlay_by = By.cssSelector(".location-overlay");
     private By postCodeSave_btn_by = By.cssSelector(".location-postcode__button-save");
+    private By messageInput_txtField_by = By.cssSelector("[rows]");
+    private By messageLoading_icon_by = By.cssSelector(".next-icon-loading.read-type");
+    private By firstSeller_btn_by = By.cssSelector("[data-lazyload-listened] > div:nth-of-type(1)");
 
     public static void setUrl(String url) {
         page_url = url;
@@ -233,6 +238,21 @@ public class Pdp_Page extends PageObject {
         postCode_txtField.sendKeys(postCode);
         postCodeSave_btn.click();
         waitUntilInvisibilityOf(postCodeSave_btn_by);
+    }
+
+    public void submitMessageToShop(String message) {
+        waitUntilVisibility(firstSeller_btn_by);
+        firstSeller_btn.click();
+        waitUntilVisibility(messageInput_txtField_by);
+        messageInput_txtField.sendKeys(message);
+        waitUntilVisible(messageSend_btn);
+        messageSend_btn.click();
+    }
+
+    public String messageListPopup(){
+        waitUntilInvisibilityOf(messageLoading_icon_by);
+        waitUntilVisible(messageList_popup);
+        return messageList_popup.getText();
     }
 
 }
