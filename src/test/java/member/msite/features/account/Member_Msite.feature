@@ -8,7 +8,7 @@ Feature: Member Msite Test
     And I input all information to signup by email page
     Then On Msite I should see the user info is correctly displayed on account page
 
-  @18375556 @member_regression @member_smoke @signup @no_drz @no_lzd
+  @18375556 @member_regression @member_smoke @signup @no_drz
   Scenario: Normal signup by email
     When I go to the sign up on Msite page by email
     And I input all information to signup email by slider button
