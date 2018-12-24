@@ -27,7 +27,7 @@ public class PdpApi {
 
     PdpApi(String pdpUrl){
         this.apiService = new ApiService();
-        this.pdpUrl = formatJsonPdpUrl(pdpUrl+PDP_JSON_SUFFIX);
+        this.pdpUrl = formatJsonPdpUrl(pdpUrl);
         this.pdpConvertUtil = extractPdpJsonResponse(this.pdpUrl,CONVERT_UTIL_MEMBER_NAME);
         this.pdpSellerProvider = extractPdpJsonResponse(this.pdpUrl,SELLER_PROVIDER_MEMBER_NAME);
     }
@@ -39,25 +39,26 @@ public class PdpApi {
         } catch (IOException|NullPointerException e) {
             throw new RuntimeException("Can not find the Json response of object name: "+jsonMember+" response of this url "+url +" Error: "+e.getMessage());
         }
-
     }
 
-    private boolean isUrlRedirect(String url){
+    private String getRedirectedUrl(String originUrl){
         try {
-            JsonObject pdpJsonObject = apiService.get(url);
-            return pdpJsonObject.getAsJsonObject("DetailService").getAsJsonObject("response").getAsJsonPrimitive("0").getAsString().contains("RedirectException");
+            JsonObject pdpJsonObject = apiService.get(originUrl);
+            String redirectedObject = pdpJsonObject.getAsJsonObject("DetailService").getAsJsonObject("response").getAsJsonPrimitive("0").getAsString();
+            String left ="RedirectException{urlToRedirect=";
+            String right = ";message:url is not match;returnCode:301}";
+            return StringUtils.substringBetween(redirectedObject,left,right);
         } catch (IOException e) {
-            throw new RuntimeException("Can not check if product is redirected or not. url: "+url);
+            throw new RuntimeException("Can not check if product is redirected or not. url: "+originUrl);
         } catch (NullPointerException ex){
-            return false;
+            return originUrl;
         }
     }
 
     private String formatJsonPdpUrl(String url){
-        if(isUrlRedirect(url)){
-            return url.replace("/products/","/");
-        }
-        return url;
+        String originUrl = url+PDP_JSON_SUFFIX;
+        String resultUrl = getRedirectedUrl(originUrl);
+        return resultUrl+PDP_JSON_SUFFIX;
     }
 
     private String getSkuID(){
@@ -81,7 +82,7 @@ public class PdpApi {
         }
     }
 
-    boolean isStockAvailablePdp(){
+    private boolean isStockAvailablePdp(){
         try {
             int pdpStock = pdpConvertUtil.getAsJsonObject("skuInfos").getAsJsonObject(getSkuID()).getAsJsonPrimitive("stock").getAsInt();
             return pdpStock >5;
