@@ -104,31 +104,31 @@ public class BuyerSearchApi {
     private String getCodProduct(List<String> productListUrls){
         if(productListUrls==null) return "";
         return productListUrls.stream()
-                .filter(productUrl -> apiService.isUrlValid(productUrl) && new PdpApi(productUrl).isCodPdp()).findAny().orElse("");
+                .filter(productUrl -> UrlHelper.isUrlOK(productUrl) && new PdpApi(productUrl).isCodPdp()).findAny().orElse("");
     }
 
     private String getQnaProduct(List<String> productListUrls){
         if(productListUrls==null) return "";
         return productListUrls.stream()
-                .filter(productUrl -> apiService.isUrlValid(productUrl) && new PdpApi(productUrl).isQnaPdp()).findAny().orElse("");
+                .filter(productUrl -> UrlHelper.isUrlOK(productUrl) && new PdpApi(productUrl).isQnaPdp()).findAny().orElse("");
     }
 
     private String getIMProduct(List<String> productListUrls){
         if(productListUrls==null) return "";
         return productListUrls.stream()
-                .filter(productUrl -> apiService.isUrlValid(productUrl) && new PdpApi(productUrl).isChatAvailable()).findAny().orElse("");
+                .filter(productUrl -> UrlHelper.isUrlOK(productUrl) && new PdpApi(productUrl).isChatAvailable()).findAny().orElse("");
     }
 
     private String getNormalProduct(List<String> productListUrls){
         if(productListUrls==null) return "";
         return productListUrls.stream()
-                .filter(productUrl -> apiService.isUrlValid(productUrl)).findAny().orElse("");
+                .filter(UrlHelper::isUrlOK).findAny().orElse("");
     }
 
 
     private List<String> getListProductUrls(String apiUrl) {
         try {
-            if (!apiService.isUrlValid(apiUrl)) return null;
+            if (!UrlHelper.isUrlOK(apiUrl)) return null;
             JsonObject json = apiService.get(apiUrl);
             JsonArray productArray = json.getAsJsonObject("mods").getAsJsonArray("listItems");
             if (productArray.size() == 0) return null;

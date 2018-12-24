@@ -15,6 +15,6 @@ import java.util.List;
 
 @CucumberOptions(
         features = {"src/test/java/member/desktop/features"},
-        tags = {"@18062654"},
+        tags = {"@17417150"},
         glue = {"member.desktop.step_definitions"})
 public class DesktopRunner extends TestRunner {}
