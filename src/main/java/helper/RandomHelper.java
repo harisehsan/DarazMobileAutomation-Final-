@@ -58,4 +58,9 @@ public class RandomHelper {
         Lorem loremIpsum = LoremIpsum.getInstance();
         return loremIpsum.getWords(numberOfWords);
     }
+
+    public static int randomNumberInRange (int max, int min) {
+        Random random = new Random();
+        return random.nextInt(max - min +1) + min;
+    }
 }

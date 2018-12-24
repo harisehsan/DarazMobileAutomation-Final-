@@ -11,6 +11,8 @@ import homepage.desktop.pages.Landing_Page;
 import homepage.desktop.pages.SellOnLazada_LandingPage;
 import org.testng.Assert;
 
+import java.io.IOException;
+
 public class OverViewSteps extends BaseSteps {
 
     @When("^I go to HomePage")
@@ -95,5 +97,30 @@ public class OverViewSteps extends BaseSteps {
     @Then ("^I should land on Help Center Page")
     public void isHelpCenterLandingPage() {
         Assert.assertTrue(on(CustomerCare_LandingPage.class).isHelpCenterLandingPage(),"Can't land on Help Center Landing Page");
+    }
+
+    @And ("^I scroll to Just For You part")
+    public void scrollToJustForYou() {
+        on(Home_Page.class).scrollToJustForYou();
+    }
+
+    @Then ("^I should see Just For You module")
+    public void isJustForYouDisplayed() {
+        on(Home_Page.class).isJustForYouDisplayed();
+    }
+
+    @Then("^I should see category tree")
+    public void isCategoryTreeDisplayed () {
+        Assert.assertTrue(on(Home_Page.class).isCategoryTreeDisplayed(),"No category displayed");
+    }
+
+    @And("^I select random category level \"(\\d+)\" on Categories Tree$")
+    public void selectRandomCategory(int depth) throws IOException {
+        on(Home_Page.class).selectRandomCategoryLevel(depth);
+    }
+
+    @Then("^I should see category page that I selected")
+    public void isCategoryLevel2LandingPage() throws IOException {
+        Assert.assertTrue(on(Home_Page.class).isCategoryLevel2LandingPage(),"Wrong category displayed");
     }
 }
