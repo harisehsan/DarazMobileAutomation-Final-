@@ -15,7 +15,6 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
     public void signUpMsite() throws Throwable {
         visit(Member_Signupemail_Msite_Page.class);
         Global.browser.refresh();
-        Global.browser.addCookie("LAZADATEST","test");
         on(Member_Signupemail_Msite_Page.class).signUpEmail();
     }
 
