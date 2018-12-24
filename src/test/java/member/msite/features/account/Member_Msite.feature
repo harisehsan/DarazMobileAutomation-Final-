@@ -10,7 +10,7 @@ Feature: Member Msite Test
 
   @18375556 @member_regression @member_smoke @signup @no_drz
   Scenario: Normal signup by email
-    When I go to the sign up on Msite page by email
+    When On Msite I go to the sign up page by email
     And I input all information to signup email by slider button
     Then On Msite I should see the user info is correctly displayed on account page
 

@@ -4,11 +4,11 @@ import _base.api_helpers.buyer.BuyerSearchApi;
 import base.BaseSteps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import global.Global;
-import member.desktop.pages.account.Account_Page;
+import helper.RandomHelper;
 import member.desktop.pages.account.Member_Login_Page;
+import member.desktop.pages.account.SignUp_Page;
 import pdp.desktop.pages.Pdp_Page;
 
 public class GlobalDesktopSteps extends BaseSteps {
@@ -96,6 +96,20 @@ public class GlobalDesktopSteps extends BaseSteps {
         visit(Pdp_Page.class);
         on(Pdp_Page.class).closeShippingFromOverseaPopup();
         on(Pdp_Page.class).switchToEnglish();
+    }
+
+    @Given("I sign up by slider with email")
+    public void signUpBySlider() {
+        visit(SignUp_Page.class);
+        Global.browser.refresh();
+        on(SignUp_Page.class).signEmail();
+        String randomEmail = RandomHelper.randomTestMail();
+        Global.map.put("current_mail",randomEmail);
+        String pass = Global.config.getString("member.account.pass");
+        Global.map.put("current_pass",pass);
+        String name = Global.config.getString("member.account.name");
+        on(SignUp_Page.class).signUpByEmail(randomEmail,pass,name);
+        on(SignUp_Page.class).setSliderbtn();
     }
 
 }
