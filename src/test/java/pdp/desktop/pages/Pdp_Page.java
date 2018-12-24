@@ -2,6 +2,7 @@ package pdp.desktop.pages;
 
 import _base.page_helpers.BuyerSitePageHelper;
 import base.PageObject;
+import global.Global;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -121,6 +122,7 @@ public class Pdp_Page extends PageObject {
 
     public String getFirstQuestion() {
         waitUntilPageReady();
+        waitUntilQuestionAdded(Global.map.get("Valid_Question").toString());
         waitUntilVisible(firstQuestion_lbl);
         return firstQuestion_lbl.getText();
     }
@@ -253,6 +255,10 @@ public class Pdp_Page extends PageObject {
         waitUntilInvisibilityOf(messageLoading_icon_by);
         waitUntilVisible(messageList_popup);
         return messageList_popup.getText();
+    }
+
+    private void waitUntilQuestionAdded(String question){
+        waitUntilVisibility(By.xpath(String.format("//div[text() = '%s']", question)));
     }
 
 }
