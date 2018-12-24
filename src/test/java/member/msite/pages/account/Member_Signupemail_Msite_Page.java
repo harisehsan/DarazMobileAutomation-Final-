@@ -3,6 +3,8 @@ package member.msite.pages.account;
 import global.Global;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import base.PageObject;
 
@@ -15,6 +17,7 @@ public class Member_Signupemail_Msite_Page extends PageObject {
     @FindBy(css = ".mod-input-email input") private WebElement email_txtField;
     @FindBy(css = ".mod-input-password input") private WebElement password_txtField;
     @FindBy(className = "signup-by-email-btn") private WebElement signup_btn;
+    @FindBy(className = "button") private WebElement slider_btn;
 
     private By signup_btn_by = By.className("signup-by-email-btn");
 
@@ -43,6 +46,12 @@ public class Member_Signupemail_Msite_Page extends PageObject {
         waitUntilPageReady();
         waitUntilClickable(signup_btn_by);
         this.signup_btn.click();
+    }
+
+    public void clickAndHoldSlider() {
+        Actions move = new Actions(Global.browser.getWebDriver());
+        Action actions = move.clickAndHold(slider_btn).moveByOffset(1800, 0).release().build();
+        actions.perform();
     }
 
     public void signUpByEmail(String name, String email, String pass) {

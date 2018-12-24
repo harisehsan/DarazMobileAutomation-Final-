@@ -1,5 +1,6 @@
 package member.msite.step_definitions.account;
 
+import cucumber.api.java.en_scouse.An;
 import global.Global;
 import helper.RandomHelper;
 import member.msite.pages.account.Member_Account_Msite_Page;
@@ -29,6 +30,18 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
         on(Member_Signupemail_Msite_Page.class).signUpButton();
     }
 
+    @And("I input all information to signup email by slider button")
+    public void signUpEmailBySlider() throws Throwable {
+        String name = Global.config.getString("member.account.name");
+        Global.map.put("name_of_account",name);
+        String randomEmail = RandomHelper.randomTestMail();
+        Global.map.put("current_mail",randomEmail);
+        String passWord = Global.config.getString("member.account.pass");
+        Global.map.put("current_pass", passWord);
+        on(Member_Signupemail_Msite_Page.class).signUpByEmail(name,randomEmail,passWord);
+        on(Member_Signupemail_Msite_Page.class).clickAndHoldSlider();
+    }
+
     @And("^I get result of newsletter config before trigger")
     public void currentNewsLetterConfig() throws  Throwable {
         String beforeTriggerNewsLetter = on(Member_Account_Msite_Page.class).getCurrentNewsletter();
@@ -44,7 +57,7 @@ public class MemberSignupMailMsiteSteps extends BaseSteps {
     public void hasTitleAccount() throws Throwable {
         Assert.assertTrue(on(Member_Account_Msite_Page.class).hasAccountTittle(),"Checking account tittle on my account page should be displayed");
         String email = (String) Global.map.get("current_mail");
-        String password = (String) Global.map.get("current_pass");
+        String password = Global.map.get("current_pass").toString();
         on(Member_Account_Msite_Page.class).allureMailUrlPassMsite(email, password);
     }
 
