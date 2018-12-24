@@ -21,7 +21,7 @@ Feature: Cart features
     And I delete the product
     Then I should not see the product in Cart
 
-  @fail @17757740 @checkout_regression @checkout_smoke @smoke @no_lzd @no_id @no_my
+  @fail @17757740 @checkout_regression @checkout_smoke @smoke @no_lzd @no_id
   Scenario: Confirm Cart button leads user to Checkout Shipping page
     Given I sign up by api with email
     And I create a new member address by api

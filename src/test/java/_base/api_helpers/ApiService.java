@@ -49,16 +49,4 @@ public class ApiService {
             return null;
         }
     }
-
-    public boolean isUrlValid(String url) {
-        try{
-            HttpGet httpGet = new HttpGet(url);
-            try(CloseableHttpResponse response = httpClient.execute(httpGet)){
-                return response.getStatusLine().getStatusCode() == 200;
-            }
-        }catch (IOException ex){
-            System.out.println("Something wrong with url"+ url);
-        }
-        return false;
-    }
 }

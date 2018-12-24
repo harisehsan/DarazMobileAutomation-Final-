@@ -4,7 +4,7 @@ import _base.page_helpers.BuyerSitePageHelper;
 import base.PageObject;
 import global.Global;
 import helper.RandomHelper;
-import helper.HttpHelper;
+import helper.UrlHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -129,7 +129,7 @@ public class Home_Page extends PageObject {
     }
 
     private void selectRandomCategoryLevelTwo(List<WebElement> categoriesLevel2_list, String currentCssSelect, int randomNumberForCat2) throws IOException {
-        if (isHrefLinkWork(categoriesLevel2_list, currentCssSelect, randomNumberForCat2)) {
+        if (!isHrefLinkWork(categoriesLevel2_list, currentCssSelect, randomNumberForCat2)) {
             throw new RuntimeException();
         } else categoriesLevel2_list.get(randomNumberForCat2).click();
     }
@@ -138,7 +138,7 @@ public class Home_Page extends PageObject {
         hover(categoriesLevel2_list.get(randomNumberForCat2));
         waitUntilVisibility(categoriesLevel3Tree_by);
         int randomNumberForCat3 = RandomHelper.randomNumberInRange(categoriesLevel3Tree_list.size() - 1, 0);
-        if (isHrefLinkWork(randomNumberForCat3)) {
+        if (!isHrefLinkWork(randomNumberForCat3)) {
             throw new RuntimeException();
         } else categoriesLevel3Tree_list.get(randomNumberForCat3).click();
     }
@@ -146,16 +146,18 @@ public class Home_Page extends PageObject {
     private boolean isHrefLinkWork(List<WebElement> currentCategory, String currentCssSelect, int randomNumber) throws IOException {
         By href = By.cssSelector(currentCssSelect + " > a");
         WebElement hrefLandingPage_String = currentCategory.get(randomNumber).findElement(href);
-        return HttpHelper.checkHttpResponseCode(hrefLandingPage_String.getAttribute("href")) != 200;
+        String hrefUrl = hrefLandingPage_String.getAttribute("href");
+        return UrlHelper.isUrlOK(hrefUrl);
     }
 
-    private boolean isHrefLinkWork(int randomNumber) throws IOException {
+    private boolean isHrefLinkWork(int randomNumber) {
         WebElement hrefLandingPage_String = categoriesLevel3Tree_list.get(randomNumber).findElement(By.cssSelector(".lzd-site-menu-grand-active > li >a"));
-        return HttpHelper.checkHttpResponseCode(hrefLandingPage_String.getAttribute("href")) != 200;
+        String hrefUrl = hrefLandingPage_String.getAttribute("href");
+        return UrlHelper.isUrlOK(hrefUrl);
     }
 
-    public boolean isCategoryLevel2LandingPage() throws IOException {
-        return (HttpHelper.checkHttpResponseCode(currentUrl()) == 200);
+    public boolean isCategoryLevel2LandingPage() {
+        return UrlHelper.isUrlOK(currentUrl());
     }
 }
 
