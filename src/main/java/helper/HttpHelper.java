@@ -5,9 +5,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class HttpHelper {
-    public static int checkHttpResponseCode (String landingpage) throws IOException {
-        URL url = new URL(landingpage);
-        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+    public static int checkHttpResponseCode (String url) throws IOException {
+        URL checkUrl = new URL(url);
+        HttpURLConnection connection = (HttpURLConnection)checkUrl.openConnection();
         return connection.getResponseCode();
     }
 }
