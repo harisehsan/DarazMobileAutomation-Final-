@@ -91,4 +91,9 @@ public class AccountSteps extends BaseSteps{
         Assert.assertEquals(currentEmail, expectEmail, "Comparing email is using signup/login should be same with email display on my dashboard");
         on(Account_Page.class).allureMailUrlPass(pass);
     }
+
+    @Then("^I should see the receive register success email")
+    public void hasSuccessRegistrationEmail() throws Throwable{
+        Assert.assertTrue(on(Member_Mailinator_Page.class).hasSuccessEmail(),"Checking email registration was success should send to inbox mail");
+    }
 }

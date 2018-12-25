@@ -33,7 +33,7 @@ public class MemberSignupSteps extends BaseSteps {
     }
 
     @And("^I click and hold on slider button")
-    public void sliderbtn() throws Throwable {
+    public void clickSliderBtn() throws Throwable {
         on(SignUp_Page.class).setSliderbtn();
     }
 
