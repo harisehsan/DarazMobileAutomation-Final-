@@ -37,11 +37,11 @@ public class Member_Mailinator_Page extends PageObject {
         return smsCodeDetail_lbl.getText();
     }
 
-    public boolean isSuccessRegistered() {
+    public boolean hasSuccessEmail() {
         switchToFrame(msgBody);
         waitUntilPageReady();
         waitUntilVisible(successRegisterMail_lbl);
-        return successRegisterMail_lbl.getText().equals("Your Registration was Successful");
+        return this.successRegisterMail_lbl.getText().equals("Your Registration was Successful");
     }
 
 }
