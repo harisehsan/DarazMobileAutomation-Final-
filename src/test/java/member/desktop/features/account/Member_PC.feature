@@ -9,7 +9,7 @@ Feature: Member PC Test
     And I click and hold on slider button
     Then I should see the user info is correctly displayed on account page
 
-  @18433990_lzd @member_regression @member_smoke @signup @no_drz
+  @18433990 @member_regression @member_smoke @signup @no_drz
   Scenario: Receive Register success email
     When I go to the sign up page by email
     And I process to signup user by email on signup by email page
@@ -24,7 +24,7 @@ Feature: Member PC Test
     And I click on submit button
     Then I should see the user info is correctly displayed on account page
 
-  @18433990_drz @member_regression @member_smoke @signup @no_lzd
+  @18433990 @member_regression @member_smoke @signup @no_lzd
   Scenario: Receive Register success email
     When I go to the sign up page by email
     And I process to signup user by email on signup by email page
