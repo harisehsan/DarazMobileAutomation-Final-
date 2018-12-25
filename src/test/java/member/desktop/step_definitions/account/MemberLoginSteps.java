@@ -34,7 +34,7 @@ public class MemberLoginSteps extends BaseSteps {
     @And("I login with new password")
     public void loginNewPass() throws Throwable {
         String changed_pass = Global.config.getString("member.account.changed_pass");
-        on(Member_Login_Page.class).loginEmailPass((String)Global.map.get("current_mail"),changed_pass);
+        on(Member_Login_Page.class).loginEmailPass(Global.map.get("current_mail").toString(), changed_pass);
     }
 
     @And("^I go to the account page")

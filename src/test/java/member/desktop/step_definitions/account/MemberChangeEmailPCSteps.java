@@ -17,7 +17,7 @@ public class MemberChangeEmailPCSteps extends BaseSteps {
     @And("^I change email by email verification code")
     public void sendSmsCodeToBeforeChangingMail() throws Throwable {
         on(Member_AccEdit_PC_Page.class).sendCodeToInboxMail();
-        String current_mail = (String) Global.map.get("current_mail");
+        String current_mail = Global.map.get("current_mail").toString();
         Global.map.put("current_mail",current_mail);
     }
 
@@ -28,15 +28,15 @@ public class MemberChangeEmailPCSteps extends BaseSteps {
         Global.browser.openNewTab("");
         visit(Member_Mailinator_Page.class);
         Global.browser.refresh();
-        on(Member_Mailinator_Page.class).inputMail((String) Global.map.get("current_mail"));
+        on(Member_Mailinator_Page.class).inputMail(Global.map.get("current_mail").toString());
         on(Member_Mailinator_Page.class).goToMailDetail();
         Global.map.put("verify_code", on(Member_Mailinator_Page.class).getSMSCodeDetail());
     }
 
     @And("I confirm code on Verify Email page")
     public void verifyCode() throws Throwable {
-        Global.browser.switchToTab((String) Global.map.get("current_tab"));
-        on(Member_VerifyEmail_PC_Page.class).inputSMSCode((String) Global.map.get("verify_code"));
+        Global.browser.switchToTab(Global.map.get("current_tab").toString());
+        on(Member_VerifyEmail_PC_Page.class).inputSMSCode(Global.map.get("verify_code").toString());
         on(Member_VerifyEmail_PC_Page.class).clickVerifyCodeBtn();
     }
 
@@ -49,13 +49,16 @@ public class MemberChangeEmailPCSteps extends BaseSteps {
 
     @Then("^I should see the new mail on personal profile page")
     public void hasEmailAfterChanging() throws Throwable {
-        Assert.assertTrue(on(Member_Change_Email_Pass_Page.class).hasEmailChanging((String) Global.map.get("current_mail")), "Checking the new email should be display on account page");
-        on(Member_Change_Email_Pass_Page.class).allureReportEmailChanging((String) Global.map.get("current_mail"));
+        String currentMail = Global.map.get("current_mail").toString();
+        Assert.assertTrue(on(Member_Change_Email_Pass_Page.class).hasEmailChanging(currentMail), "Checking the new email should be display on account page");
+        on(Member_Change_Email_Pass_Page.class).allureReportEmailChanging(currentMail);
     }
 
     @And("^I re-login by new email")
     public void loginByAfterChangingMail() throws Throwable {
         on(Account_Page.class).logOut();
-        on(Member_Login_Page.class).loginEmailPass((String) Global.map.get("current_mail"),(String) Global.map.get("current_pass"));
+        String currentMail = Global.map.get("current_mail").toString();
+        String currentPass = Global.map.get("current_pass").toString();
+        on(Member_Login_Page.class).loginEmailPass(currentMail, currentPass);
     }
 }
