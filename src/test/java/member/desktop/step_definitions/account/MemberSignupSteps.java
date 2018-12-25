@@ -5,6 +5,7 @@ import cucumber.api.java.en.*;
 import global.Global;
 import helper.RandomHelper;
 import member.desktop.pages.account.*;
+import org.testng.Assert;
 
 public class MemberSignupSteps extends BaseSteps {
 
@@ -12,6 +13,7 @@ public class MemberSignupSteps extends BaseSteps {
     public void signUpByEmail() throws Throwable {
         visit(SignUp_Page.class);
         Global.browser.refresh();
+        on(SignUp_Page.class).switchToEnglish();
         on(SignUp_Page.class).signEmail();
     }
 
@@ -33,5 +35,19 @@ public class MemberSignupSteps extends BaseSteps {
     @And("^I click and hold on slider button")
     public void sliderbtn() throws Throwable {
         on(SignUp_Page.class).setSliderbtn();
+    }
+
+    @And("^I go to the inbox of current email")
+    public void goToInboxMail() throws Throwable{
+        Global.browser.openNewTab("");
+        visit(Member_Mailinator_Page.class);
+        Global.browser.refresh();
+        on(Member_Mailinator_Page.class).inputMail(Global.map.get("current_mail").toString());
+        on(Member_Mailinator_Page.class).goToMailDetail();
+    }
+
+    @Then("^I should see the receive register success email")
+    public void isReceiveRegisterSuccessEmail() throws Throwable {
+        Assert.assertTrue(on(Member_Mailinator_Page.class).isSuccessRegistered(), "Checking email registration was success should send to inbox mail");
     }
 }
