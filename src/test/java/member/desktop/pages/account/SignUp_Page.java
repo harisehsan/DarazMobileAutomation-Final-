@@ -1,5 +1,6 @@
 package member.desktop.pages.account;
 
+import _base.page_helpers.BuyerSitePageHelper;
 import com.google.gson.JsonObject;
 import global.Global;
 import helper.XhrHelper;
@@ -29,6 +30,10 @@ public class SignUp_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(email_btn);
         email_btn.click();
+    }
+
+    public void switchToEnglish() {
+        BuyerSitePageHelper.switchToEnglish();
     }
 
     public void signUpByEmail(String emailInfo, String passWord, String nameInfo) {
