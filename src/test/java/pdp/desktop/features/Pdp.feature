@@ -10,7 +10,7 @@ Feature: Pdp features
     Then I should see wishlist icon turns to orange
     And I should see the product on My wishlist page
 
-  @18008755 @pdp_regression @pdp_smoke @smoke @no_ph
+  @18008755 @pdp_regression @pdp_smoke @smoke @no_ph @no_id
   Scenario: Ask valid question for shop
     Given I login by api with email
     And I go to a test QnA pdp page
