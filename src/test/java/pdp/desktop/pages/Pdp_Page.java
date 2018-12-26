@@ -37,7 +37,7 @@ public class Pdp_Page extends PageObject {
     @FindBy(css = ".message-view-field__send") private WebElement messageSend_btn;
     @FindBy(css = ".message-list") private WebElement messageList_popup;
     @FindBy(xpath = "//*[@id='module_seller_warranty']/div/div[1]") private WebElement returnAndWaranty_lbl;
-    @FindBy(xpath = "//div[contains(text(),'Delivery Options')]") private WebElement leadtimeSection_lbl;
+    @FindBy(xpath = "//div[text()='Delivery Options' or text()='Pilihan pengiriman']") private WebElement leadtimeSection_lbl;
     @FindBy(css = ".next-dialog-close") private WebElement closeLoginForm_btn;
     @FindBy(xpath = "//*[@id='module_add_to_cart']/div/button[1]") private WebElement buyNow_btn;
     @FindBy(css = ".cart-message-text") private WebElement cartMessageText_lbl;
