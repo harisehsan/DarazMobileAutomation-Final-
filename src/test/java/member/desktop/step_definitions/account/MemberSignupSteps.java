@@ -46,8 +46,4 @@ public class MemberSignupSteps extends BaseSteps {
         on(Member_Mailinator_Page.class).goToMailDetail();
     }
 
-    @Then("^I should see the receive register success email")
-    public void isReceiveRegisterSuccessEmail() throws Throwable {
-        Assert.assertTrue(on(Member_Mailinator_Page.class).hasSuccessEmail(), "Checking email registration was success should send to inbox mail");
-    }
 }
