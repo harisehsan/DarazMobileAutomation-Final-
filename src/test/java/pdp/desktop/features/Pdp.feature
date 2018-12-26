@@ -10,7 +10,7 @@ Feature: Pdp features
     Then I should see wishlist icon turns to orange
     And I should see the product on My wishlist page
 
-  @18008755 @pdp_regression @pdp_smoke @smoke
+  @18008755 @pdp_regression @pdp_smoke @smoke @no_ph
   Scenario: Ask valid question for shop
     Given I login by api with email
     And I go to a test QnA pdp page
@@ -39,7 +39,7 @@ Feature: Pdp features
 
   @18009022 @pdp_regression @pdp_smoke @smoke @no_my @no_th @no_sg
   Scenario: Check LeadTime function on pdp
-    When I go to a normal pdp page
+    When I go to a normal COD pdp page
     Then I should see lead time section
     When I change a new address for Leadtime
     Then I should see Leadtime with new address
@@ -62,7 +62,6 @@ Feature: Pdp features
   @18009198 @pdp_regression @pdp_smoke @smoke @cart
   Scenario: Check Buy Now/Add To Cart buttons work with login user
     Given I login by api with email
-    And I create a new member address by api
     And I go to a normal COD pdp page
     And I click on Add to cart button on Pdp Page
     Then I should see Cart popup with product added to Cart
