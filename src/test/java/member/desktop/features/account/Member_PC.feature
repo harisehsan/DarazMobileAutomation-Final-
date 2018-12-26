@@ -9,12 +9,28 @@ Feature: Member PC Test
     And I click and hold on slider button
     Then I should see the user info is correctly displayed on account page
 
+  @18433990 @member_regression @member_smoke @signup @no_drz
+  Scenario: Receive Register success email
+    When I go to the sign up page by email
+    And I process to signup user by email on signup by email page
+    And I click and hold on slider button
+    And I go to the inbox of current email
+    Then I should see the receive register success email
+
   @17417150 @member_regression @member_smoke @signup @no_lzd
   Scenario: Normal signup by email
     When I go to the sign up page by email
     And I process to signup user by email on signup by email page
     And I click on submit button
     Then I should see the user info is correctly displayed on account page
+
+  @18433990 @member_regression @member_smoke @signup @no_lzd
+  Scenario: Receive Register success email
+    When I go to the sign up page by email
+    And I process to signup user by email on signup by email page
+    And I click on submit button
+    And I go to the inbox of current email
+    Then I should see the receive register success email
 
   @17417151 @member_regression @member_smoke @signup @no_drz @no_lzd
   Scenario: Signup by email
