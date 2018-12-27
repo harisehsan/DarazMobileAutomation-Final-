@@ -15,7 +15,8 @@ public class Member_Mailinator_Page extends PageObject {
     @FindBy(css = "#inboxpane > div > div > div > table > tbody > tr") private List<WebElement> email_listItems;
     @FindBy(css = "div.verify-code-container > span") private WebElement smsCodeDetail_lbl;
     @FindBy(id = "msg_body") private WebElement msgBody;
-    @FindBy(xpath = "//p[contains(.,'Your Registration was Successful')]") private WebElement successRegisterMail_lbl;
+    @FindBy(xpath = "//p[text()='Your Registration was Successful' or 'LAZADA - Registrasi Akun' or 'Tài khoản tạo thành công']")
+    private WebElement successRegisterMail_lbl;
 
 
     public void inputMail(String mail) {
@@ -41,7 +42,7 @@ public class Member_Mailinator_Page extends PageObject {
         switchToFrame(msgBody);
         waitUntilPageReady();
         waitUntilVisible(successRegisterMail_lbl);
-        return this.successRegisterMail_lbl.getText().equals("Your Registration was Successful");
+        return this.successRegisterMail_lbl.isDisplayed();
     }
 
 }
