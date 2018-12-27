@@ -47,7 +47,7 @@ public class BrowserFactory {
         String optionStringFromSystem = System.getProperty("browser.options");
         if(optionStringFromConfig==null && optionStringFromSystem==null) return new String[0];
         optionStringFromSystem = optionStringFromSystem == null ? "" : optionStringFromSystem;
-        String optionString = String.format("%s,%s",optionStringFromConfig,optionStringFromSystem);
+        String optionString = String.format("%s|%s",optionStringFromConfig,optionStringFromSystem);
         return optionString.split(OPTIONS_DELIMETER);
     }
 }
