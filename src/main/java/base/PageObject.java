@@ -103,8 +103,7 @@ public class PageObject {
         ele.sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END),Keys.DELETE);
     }
 
-    public static boolean hasElement(By selector) {
-        //Exits or not in DOM
-        return Global.browser.getWebDriver().findElements(selector).size() > 0;
+    public boolean isExist(By bySelector) {
+        return driver.findElements(bySelector).size() > 0;
     }
 }
