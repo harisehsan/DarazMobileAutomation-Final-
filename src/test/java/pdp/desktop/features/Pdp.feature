@@ -10,7 +10,7 @@ Feature: Pdp features
     Then I should see wishlist icon turns to orange
     And I should see the product on My wishlist page
 
-  @18008755 @pdp_regression @pdp_smoke @smoke @no_ph @no_id
+  @18008755 @pdp_regression @pdp_smoke @smoke @no_ph @no_id @test_product
   Scenario: Ask valid question for shop
     Given I login by api with email
     And I go to a test QnA pdp page
@@ -28,7 +28,7 @@ Feature: Pdp features
     And I ask a question_contain_externalWebLink
     Then I should see error message that question_should_not_contain_externalWebLink
 
-  @17916534 @18008960 @pdp_regression @pdp_smoke @smoke @no_drz
+  @17916534 @18008960 @pdp_regression @pdp_smoke @smoke @no_drz @test_product
   Scenario: Chat with shop
     Given I login by api with email
     And I go to a test Chat Message pdp page from test sellers
@@ -37,9 +37,9 @@ Feature: Pdp features
     And I send a message to shop
     Then I should see my message in Message popup
 
-  @18009022 @pdp_regression @pdp_smoke @smoke @no_my @no_th @no_sg
+  @18009022 @pdp_regression @pdp_smoke @smoke @no_my @no_th @no_sg @test_product
   Scenario: Check LeadTime function on pdp
-    When I go to a normal COD pdp page
+    When I go to a test COD pdp page
     Then I should see lead time section
     When I change a new address for Leadtime
     Then I should see Leadtime with new address
