@@ -103,7 +103,7 @@ public class PageObject {
         ele.sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END),Keys.DELETE);
     }
 
-    public boolean isExist(By bySelector) {
+    protected boolean isExist(By bySelector) {
         return driver.findElements(bySelector).size() > 0;
     }
 }

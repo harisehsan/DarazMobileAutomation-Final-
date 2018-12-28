@@ -1,10 +1,10 @@
 @checkoutCOD @911
   Feature: Checkout with COD method
 
-    @17847731_A @checkout_regression @checkout_smoke @smoke @no_lzd @no_id @no_my
+    @17847731_A @checkout_regression @checkout_smoke @smoke
     Scenario: User (login by email and password) can checkout with COD successfully
-      Given I sign up by api with email
-      And I create a new member address by api
+      Given I login by api with email for checkout
+      And I empty cart
       When I go to a test COD pdp page
       And I click on Add to cart button
       And I click Checkout button on Cart popup
@@ -14,17 +14,17 @@
 
     @17847772 @checkout @checkout_smoke @smoke @no_lzd @no_id @no_my
     Scenario: Product exists on cart after user added successfully.
-      Given I login by api with email
+      Given I login by api with email for checkout
       When I go to a normal COD pdp page
       And I get the product title
       And I click on Add to cart button
       And I click Go To Cart button on Cart popup
       Then I should see the product title in the Cart
 
-    @17847731_B @checkout_regression @checkout_smoke @smoke @no_drz @no_id
+    @17847731_B @checkout_regression @checkout_smoke @smoke
     Scenario: User (login by email and password) can checkout with COD successfully
-      Given I sign up by slider with email
-      And I create a new member address by api
+      Given I login by api with email for checkout
+      And I empty cart
       When I go to a test COD pdp page
       And I click on Add to cart button
       And I click Checkout button on Cart popup

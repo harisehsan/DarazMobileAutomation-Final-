@@ -11,7 +11,8 @@ public class MemberApiSteps extends BaseSteps {
     private static String commonEmail = Global.config.getString("member.account.mail");
     private static String commonPhone = Global.config.getString("member.registered_phone");
     private static String commonPass = Global.config.getString("member.account.pass");
-
+    private static String checkoutEmail = Global.config.getString("checkout.checkoutAccount.mail");
+    private static String checkoutPass = Global.config.getString("checkout.checkoutAccount.pass");
 
     @And("^I login by api with email$")
     public void loginApiByEmail(){
@@ -19,6 +20,15 @@ public class MemberApiSteps extends BaseSteps {
         on(Login_Page.class).loginApi(commonEmail,commonPass);
         Global.map.put("current_mail",commonEmail);
         Global.map.put("current_pass",commonPass);
+        Global.browser.refresh();
+    }
+
+    @And ("^I login by api with email for checkout$")
+    public void loginApiByEmailForCheckout(){
+        visit(Login_Page.class);
+        on(Login_Page.class).loginApi(checkoutEmail,checkoutPass);
+        Global.map.put("current_mail",checkoutEmail);
+        Global.map.put("current_pass",checkoutPass);
         Global.browser.refresh();
     }
 
