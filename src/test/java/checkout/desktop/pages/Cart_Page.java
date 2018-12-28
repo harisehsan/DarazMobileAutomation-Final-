@@ -29,7 +29,6 @@ public class Cart_Page extends PageObject {
     private By deleteAllItems_chkBox_by = By.cssSelector(".list-header-operations .automation-btn-delete");
     private By deleteItem_icon_by = By.cssSelector(".delete");
     private By emptyCart_text_by = By.cssSelector(".cart-empty-text");
-
     private By loadingIcon_by = By.cssSelector("#Oval");
 
     public void clickGoToCartButton() {
@@ -61,7 +60,7 @@ public class Cart_Page extends PageObject {
     public void confirmMoveOrRemove() {
         waitUntilVisible(confirmMoveOrRemove_btn);
         confirmMoveOrRemove_btn.click();
-        waitUntilInvisibilityOf(By.cssSelector(".Oval"));
+        waitUntilInvisibilityOf(loadingIcon_by);
     }
 
     public boolean checkMoveToWishlistSuccessMessage() {
