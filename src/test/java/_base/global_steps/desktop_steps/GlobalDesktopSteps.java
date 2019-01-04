@@ -2,6 +2,7 @@ package _base.global_steps.desktop_steps;
 
 import _base.api_helpers.buyer.BuyerSearchApi;
 import base.BaseSteps;
+import checkout.desktop.pages.Cart_Page;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
@@ -110,6 +111,12 @@ public class GlobalDesktopSteps extends BaseSteps {
         String name = Global.config.getString("member.account.name");
         on(SignUp_Page.class).signUpByEmail(randomEmail,pass,name);
         on(SignUp_Page.class).setSliderbtn();
+    }
+
+    @And("I empty cart")
+    public void emptyCart() {
+        visit(Cart_Page.class);
+        on(Cart_Page.class).emptyCart();
     }
 
 }

@@ -27,7 +27,7 @@ public class CartSteps extends BaseSteps {
 
     @Then("^I should not see the product in Cart$")
     public void checkProductNotExistInCart(){
-        Assert.assertTrue(on(Cart_Page.class).checkEmptyCart(), "Verification failed: Cart is not empty");
+        Assert.assertFalse(on(Cart_Page.class).checkProductExistInTheCart(), "Verification failed: Cart is not empty");
     }
 
     @And("^I click Confirm Cart$")
