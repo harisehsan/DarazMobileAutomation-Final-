@@ -58,4 +58,11 @@ public class MemberApiSteps extends BaseSteps {
         on(Account_Page.class).createAddressByApi(Global.config.getConfig("member.address"),addressPhone,addressName);
         Global.browser.refresh();
     }
+
+    @And("^I delete address by api")
+    public void deleteAddressByApi() {
+        visit(Account_Page.class);
+        on(Account_Page.class).getListAddressByApi();
+        on(Account_Page.class).deleteAddressByApi();
+    }
 }
