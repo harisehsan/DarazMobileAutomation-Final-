@@ -36,7 +36,7 @@ Feature: Address Msite test
     And I delete address on address book
     Then I should see one address on address page
 
-  @Delete_Address_API
+  @Delete_Address_API @no_sg
   Scenario: User can delete address successfully - Drz
     When On Msite I go to login by email
     And On Msite I input account information to login by email page

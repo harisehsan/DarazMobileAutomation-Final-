@@ -22,7 +22,8 @@ public class Address_Msite_Page extends PageObject {
     @FindBy(css = "div.mod-select-location-tree-2 > select > option:nth-child(2)") private List<WebElement> selectLocation2_drpDownList;
     @FindBy(css = "div.mod-select-location-tree-3 > select > option:nth-child(2)") private List<WebElement> selectLocation3_drpDownList;
     @FindBy(css = ".mod-input-detailAddress input") private WebElement addressDetail_txtField;
-    @FindBy(css = ".mod-address-form-yatra-btn") private WebElement saveAddress_btn;
+    @FindBy(css = "div.mod-address-form-footer > button.mod-button")
+    private WebElement saveAddress_btn;
     @FindBy(css = ".address-list-body > div") private List<WebElement> address_list;
     @FindBy(css = "div > i.address-list-item-del") private WebElement deleteAddress_btn;
     @FindBy(css = "div > i.address-list-item-edit") private WebElement editAddress_btn;
