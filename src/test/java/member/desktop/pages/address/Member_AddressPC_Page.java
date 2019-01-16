@@ -48,7 +48,7 @@ public class Member_AddressPC_Page extends PageObject {
     private By clearName_btn_by = By.cssSelector("div.mod-input-name > div");
     private By clearPhone_btn_by = By.cssSelector("div.mod-input-phone > div");
     private By selectTree_listItems_by = By.cssSelector(".next-menu-content > li");
-    private By savesg_btn_by = By.xpath("//button[contains(.,'SAVE')]"); // checking
+    private By savedrz_btn_by = By.xpath("//button[contains(.,'SAVE')]"); // checking
     private By save_btn_by = By.cssSelector("div.mod-address-form-action > button");
 
     public void addNewAddress() {

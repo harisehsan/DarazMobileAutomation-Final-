@@ -61,7 +61,7 @@ public class MemberApiSteps extends BaseSteps {
 
     @And("^I delete address by api")
     public void deleteAddressByApi() {
-        on(Account_Page.class).getListAddressByApi();
+        on(Account_Page.class).getSecondAddressID();
         on(Account_Page.class).deleteAddressByApi();
     }
 }

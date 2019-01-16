@@ -124,7 +124,7 @@ public class Account_Page extends PageObject {
         }
     }
 
-    public void getListAddressByApi() {
+    public String getSecondAddressID() {
         String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
         String[] args = {getIpAddress_api_url, csrfToken};
         JsonObject response = XhrHelper.executeXhrRequest("member_getList_address.js", args);
@@ -132,12 +132,12 @@ public class Account_Page extends PageObject {
             throw new RuntimeException(String.format("Get list address fail . Response from server: %s", String.valueOf(response)));
         }
         String address_id = response.getAsJsonArray("module").get(1).getAsJsonObject().getAsJsonPrimitive("id").getAsString();
-        Global.map.put("address_id", address_id);
+        return address_id;
     }
 
     public void deleteAddressByApi() {
         String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
-        String addressId = Global.map.get("address_id").toString();
+        String addressId = getSecondAddressID();
         String[] args = {deleteAddress_api_url, csrfToken, addressId};
         JsonObject response = XhrHelper.executeXhrRequest("member_delete_address.js", args);
         if (!String.valueOf(response.get("success")).equalsIgnoreCase("true")) {
