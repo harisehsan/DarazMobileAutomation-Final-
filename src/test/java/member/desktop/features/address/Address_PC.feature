@@ -69,7 +69,6 @@ Feature: Address on PC
     And I login by api with email
     And I open add new address page input name info
     And I create new address
-    Then I should see the new address on account page
     And I delete address by api
     Then I should delete address successfully
 

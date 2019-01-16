@@ -38,6 +38,7 @@ public class Address_Msite_Page extends PageObject {
     private By removeAddressName_btn_by = By.cssSelector("div.mod-input-name > div");
     private By deleteAddress_btn_by = By.cssSelector("div > i.address-list-item-del");
     private By deleteAddressOk_btn_by = By.cssSelector("div > button.ok");
+    private By address_list_by = By.cssSelector(".address-list-body > div");
 
     public void clickNewAddress() {
         waitUntilPageReady();
@@ -105,7 +106,7 @@ public class Address_Msite_Page extends PageObject {
 
     public boolean hasAddress() {
         waitUntilPageReady();
-        waitUntilVisible(editAddress_btn);
+        waitUntilVisibility(address_list_by);
         return this.address_list.size() == 1;
     }
 
