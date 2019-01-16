@@ -135,9 +135,8 @@ public class Account_Page extends PageObject {
         return address_id;
     }
 
-    public void deleteAddressByApi() {
+    public void deleteAddressByApi(String addressId) {
         String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
-        String addressId = getSecondAddressID();
         String[] args = {deleteAddress_api_url, csrfToken, addressId};
         JsonObject response = XhrHelper.executeXhrRequest("member_delete_address.js", args);
         if (!String.valueOf(response.get("success")).equalsIgnoreCase("true")) {

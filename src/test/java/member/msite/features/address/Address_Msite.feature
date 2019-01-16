@@ -37,7 +37,7 @@ Feature: Address Msite test
     Then I should see one address on address page
 
   @Delete_Address_API @no_sg
-  Scenario: User can delete address successfully - Drz
+  Scenario: User can delete address by api successfully
     When On Msite I go to login by email
     And On Msite I input account information to login by email page
     And I access to address page

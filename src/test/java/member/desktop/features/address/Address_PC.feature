@@ -23,7 +23,7 @@ Feature: Address on PC
     Then I should see the new address on account page
 
   @18062654 @member_regression @member_smoke @no_drz @no_id @no_th @no_vn @no_my @no_ph
-  Scenario: User can add new address and delete address- SG
+  Scenario: User can add new address and delete address by API - SG
     Given I go to the sign up page by smsphone
     And I login by api with email
     And I open add new address page input name info
@@ -87,8 +87,8 @@ Feature: Address on PC
     Then I should delete address successfully
 
 
-  @Delete_Address_API
-  Scenario: User can delete address successfully - Lzd
+  @Delete_Address_API @no_sg
+  Scenario: User can delete address by api successfully
     Given I go to the sign up page by smsphone
     And I login by api with email
     And I open add new address page input name info
