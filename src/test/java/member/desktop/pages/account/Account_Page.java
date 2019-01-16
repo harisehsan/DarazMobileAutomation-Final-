@@ -20,6 +20,8 @@ public class Account_Page extends PageObject {
 
     public static String page_url = Global.config.getString("member.url") + "/user/profile";
     private static String create_address_api_url = Global.config.getString("member.url")+"/address/api/createAddress";
+    private static String getIpAddress_api_url = Global.config.getString("member.url") + "/address/api/listAddress";
+    private static String deleteAddress_api_url = Global.config.getString("member.url") + "/address/api/deleteAddress";
 
     @FindBy(css = "div.breadcrumb > a") private WebElement mainContainer_lbl;
     @FindBy(id = "lzd_current_logon_user_name") private WebElement nameOfUser_lbl;
@@ -119,6 +121,26 @@ public class Account_Page extends PageObject {
         JsonObject response = XhrHelper.executeXhrRequest("member_create_address.js",args);
         if(!String.valueOf(response.get("success")).equalsIgnoreCase("true")){
             throw new RuntimeException(String.format("Create address fail . Response from server: %s",String.valueOf(response)));
+        }
+    }
+
+    public String getSecondAddressID() {
+        String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
+        String[] args = {getIpAddress_api_url, csrfToken};
+        JsonObject response = XhrHelper.executeXhrRequest("member_getList_address.js", args);
+        if (!String.valueOf(response.get("success")).equalsIgnoreCase("true")) {
+            throw new RuntimeException(String.format("Get list address fail . Response from server: %s", String.valueOf(response)));
+        }
+        String address_id = response.getAsJsonArray("module").get(1).getAsJsonObject().getAsJsonPrimitive("id").getAsString();
+        return address_id;
+    }
+
+    public void deleteAddressByApi(String addressId) {
+        String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
+        String[] args = {deleteAddress_api_url, csrfToken, addressId};
+        JsonObject response = XhrHelper.executeXhrRequest("member_delete_address.js", args);
+        if (!String.valueOf(response.get("success")).equalsIgnoreCase("true")) {
+            throw new RuntimeException(String.format("Delete address fail . Response from server: %s", String.valueOf(response)));
         }
     }
 }

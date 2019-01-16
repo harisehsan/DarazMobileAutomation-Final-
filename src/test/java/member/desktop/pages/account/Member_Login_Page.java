@@ -1,5 +1,6 @@
 package member.desktop.pages.account;
 
+import _base.page_helpers.BuyerSitePageHelper;
 import global.Global;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -17,6 +18,10 @@ public class Member_Login_Page extends PageObject {
     @FindBy(className = "mod-login-forgot") private WebElement resetPass_btn;
 
     private By submit_btn_by = By.cssSelector(".mod-login-btn");
+
+    public void switchToEnglish() {
+        BuyerSitePageHelper.switchToEnglish();
+    }
 
     public void submitButton() {
         waitUntilVisible(submit_btn);

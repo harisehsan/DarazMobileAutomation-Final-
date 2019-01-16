@@ -23,15 +23,13 @@ Feature: Address on PC
     Then I should see the new address on account page
 
   @18062654 @member_regression @member_smoke @no_drz @no_id @no_th @no_vn @no_my @no_ph
-  Scenario: User can add new address and delete address- SG
+  Scenario: User can add new address and delete address by API - SG
     Given I go to the sign up page by smsphone
     And I login by api with email
     And I open add new address page input name info
     And I create a new address for SG
     Then I should see the new address on account page
-    And I access edit page on Lazada to delete address
-    And I click delete button
-    And I go back the address book page
+    And I delete address by api
     Then I should delete address successfully
 
   @17480501 @member_regression @member_smoke @no_lzd
@@ -65,6 +63,7 @@ Feature: Address on PC
     And I go back the address book page
     Then I should not see address has deleted on page
 
+
   @17938204 @member_regression @member_smoke @no_drz @no_sg
   Scenario: User can delete address successfully - Lzd
 ##    Given I go to the sign up page by smsphone
@@ -86,3 +85,14 @@ Feature: Address on PC
     And I click delete button
     And I go back the address book page
     Then I should delete address successfully
+
+
+  @Delete_Address_API @no_sg
+  Scenario: User can delete address by api successfully
+    Given I go to the sign up page by smsphone
+    And I login by api with email
+    And I open add new address page input name info
+    And I create new address
+    And I delete address by api
+    Then I should delete address successfully
+
