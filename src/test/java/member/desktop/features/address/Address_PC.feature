@@ -64,7 +64,7 @@ Feature: Address on PC
     Then I should not see address has deleted on page
 
 
-  @17938204 @member_regression @member_smoke @no_sg
+  @17938204 @member_regression @member_smoke @no_drz @no_sg
   Scenario: User can delete address successfully - Lzd
 ##    Given I go to the sign up page by smsphone
 ##    And I sign up by api

@@ -23,7 +23,7 @@ Feature: Address Msite test
     When I go to edit address information
     Then On Msite I should see the new address name
 
-  @17480537 @member_regression @member_smoke
+  @17480537 @member_regression @member_smoke @no_lzd
   Scenario: User can delete address successfully - Drz
     Given I go to the sign up on Msite page by email
     When I input all information to signup by email page
