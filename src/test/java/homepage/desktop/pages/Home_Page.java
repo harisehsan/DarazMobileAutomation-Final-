@@ -34,6 +34,8 @@ public class Home_Page extends PageObject {
     @FindBy(css = ".lzd-site-menu-root") private WebElement menu_lbl;
     @FindBy(xpath = "//*[@id=\'J_breadcrumb\']/li[3]/span") private WebElement categoryLevel2_lbl;
     @FindBy(css = (".lzd-site-menu-grand-active > li")) private List<WebElement> categoriesLevel3Tree_list;
+    @FindBy(id = "q") private WebElement searchBar;
+    @FindBy(className = "search-box__button--1oH7") private WebElement searchBarButton;
 
     private By categoriesLevel3Tree_by = By.cssSelector(".lzd-site-menu-grand-active");
 
@@ -159,5 +161,17 @@ public class Home_Page extends PageObject {
     public boolean isCategoryLevel2LandingPage() {
         return UrlHelper.isUrlOK(currentUrl());
     }
+
+    public void searchKeyword(String arg0){
+        if(arg0.equalsIgnoreCase("Random")){
+            searchBar.sendKeys(".");
+        }else {
+            searchBar.sendKeys(arg0);
+        }
+        this.searchBarButton.click();
+        System.out.println(currentUrl());
+    }
 }
+
+
 
