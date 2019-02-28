@@ -29,6 +29,7 @@ private def createCucumberOpts(String Theme,String Tags,String Venture_Env){
             "--glue member.${theme}.step_definitions " +
             "--glue homepage.${theme}.step_definitions " +
             "--glue pdp.${theme}.step_definitions "
+            "--glue catalog.${theme}.step_definitions "
     String featureFolder = "./src/test/java/regression/features"
     sh "mkdir -p '${featureFolder}' && find . -path \"*/${theme}/*.feature\" -exec cp -prv '{}' '${featureFolder}' ';'"
 
