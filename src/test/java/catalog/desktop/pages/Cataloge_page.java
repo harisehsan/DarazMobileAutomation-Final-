@@ -23,118 +23,118 @@ public class Cataloge_page extends PageObject {
     public static final String page_url = Global.config.getString("homepage.catalog_url");
 
     @FindBy(xpath = "//div[div/text()='Color Family']/div[@class='c3Guy3' or @class='c2uiAC']")
-    private WebElement colorselectionEle;
+    private WebElement colorselection_List;
     @FindBy(xpath = "//*[*/text()='Brand']/*[@class='c3Guy3' or @class='c2uiAC']")
-    private WebElement brandFilter;
+    private WebElement brandFilter_List;
     @FindBy(className = "anticon-cross")
-    private List<WebElement> crossButton;
+    private List<WebElement> cross_Button;
 
     @FindAll({
             @FindBy(className = "cSrWVv"), //Daraz Element
             @FindBy(className = "c30Om7") //lazada element
     })
-    private List<WebElement> priceRange;
+    private List<WebElement> priceRange_Text;
 
     @FindAll({
             @FindBy(className = "c3Qp1f"), //Daraz Element
             @FindBy(className = "c3wo-b") //lazada element
     })
-    private WebElement sortBy;
+    private WebElement sortBy_Div;
 
     @FindAll({
             @FindBy(className = "c2p6A5"), //daraz list of products on catalog
             @FindBy(className = "c2prKC") //lazada List of products on catalog
     })
-    private WebElement listofProducts;
+    private WebElement catalogProduct_List;
 
     @FindAll({
             @FindBy(className = "c1-XO2"), //Daraz Element
             @FindBy(className = "cOT0eH") //lazada element
     })
-    private WebElement clearButton;
+    private WebElement clear_link;
 
     @FindAll({
             @FindBy(className = "cahB9n"), //Daraz Element
             @FindBy(className = "c1nVRb") //lazada element
     })
-    private WebElement noResults;
+    private WebElement catalogePageNoResults_div;
 
     @FindAll({
             @FindBy(className = "ant-btn-icon-only"), //Daraz Element
             @FindBy(className = "ant-btn-icon-only") //lazada element
     })
-    private WebElement priceSearchButton;
+    private WebElement priceSearch_Btn;
 
     @FindAll({
             @FindBy(className = "c3H-ZP"), //Daraz Element
             @FindBy(className = "c3NYEr") //lazada element
     })
-    private WebElement sizeSelectionListEle;
+    private WebElement sizeSelection_List;
 
     @FindAll({
             @FindBy(className = "c1meGu"), //Daraz Element
             @FindBy(className = "cM5DKB")  //lazada element
     })
-    private WebElement appliedFilter;
+    private WebElement filtersAppliedCatlog_div;
 
 
-    private By appFilter = By.className("ant-tag-text");
-    private By leftFilterElement = By.className("ant-checkbox-wrapper");
-    private By anttag = By.className("ant-tag");
-    private By noResult = By.xpath("//*[@class='cahB9n' or @class='c1nVRb']"); // Daraz & Lazada
-    private By brand = By.xpath("//*[*/text()='Brand']/*[@class='c3Guy3' or @class='c2uiAC']"); // Daraz & Lazada
-    private By apliedFilter = By.xpath("//*[@class='c1meGu' or @class='cM5DKB']"); // Daraz & Lazada
-    private By productlist = By.xpath("//*[@class='c2p6A5' or @class='c2prKC']"); // Daraz & Lazada
+    private By appFilter_Text = By.className("ant-tag-text");
+    private By leftFilterElement_List = By.className("ant-checkbox-wrapper");
+    private By appliedFilterText_div = By.className("ant-tag");
+    private By noResult_div = By.xpath("//*[@class='cahB9n' or @class='c1nVRb']"); // Daraz & Lazada
+    private By brand_List = By.xpath("//*[*/text()='Brand']/*[@class='c3Guy3' or @class='c2uiAC']"); // Daraz & Lazada
+    private By apliedFilter_Div = By.xpath("//*[@class='c1meGu' or @class='cM5DKB']"); // Daraz & Lazada
+    private By productlist_List = By.xpath("//*[@class='c2p6A5' or @class='c2prKC']"); // Daraz & Lazada
 
 
     public void applyCatalogPageFilters(String arg0) {
         switch (arg0) {
-            case "brand":
+            case "brand_List":
                 waitUntilPageReady();
-                waitUntilVisibility(brand, 5);
-                List<WebElement> brandsList = (brandFilter.findElements(leftFilterElement));
+                waitUntilVisibility(brand_List, 5);
+                List<WebElement> brandsList = (brandFilter_List.findElements(leftFilterElement_List));
                 int selectRandomBrand = brandsList.size() >= 7 ? random.nextInt(7) : random.nextInt(brandsList.size());
-                waitUntilClickable(productlist);
+                waitUntilClickable(productlist_List);
                 selectedFilter = brandsList.get(selectRandomBrand).getText();
                 brandsList.get(selectRandomBrand).click();
                 waitUntilPageReady();
                 break;
             case "size":
                 waitUntilPageReady();
-                List<WebElement> sizeList = sizeSelectionListEle.findElements(leftFilterElement);
+                List<WebElement> sizeList = sizeSelection_List.findElements(leftFilterElement_List);
                 System.out.println(sizeList);
                 int selectRandomSize = sizeList.size() >= 7 ? random.nextInt(7) : random.nextInt(sizeList.size());
                 selectedFilter = sizeList.get(selectRandomSize).getText();
                 sizeList.get(selectRandomSize).click();
                 waitUntilPageReady();
-                waitUntilVisible(listofProducts);
+                waitUntilVisible(catalogProduct_List);
                 break;
             case "Color Family":
                 waitUntilPageReady();
-                waitUntilVisible(listofProducts);
-                List<WebElement> ColorsList = colorselectionEle.findElements(leftFilterElement);
+                waitUntilVisible(catalogProduct_List);
+                List<WebElement> ColorsList = colorselection_List.findElements(leftFilterElement_List);
                 int selectedColor = ColorsList.size() >= 7 ? random.nextInt(7) : random.nextInt(ColorsList.size());
                 selectedFilter = ColorsList.get(selectedColor).getText();
-                colorselectionEle.findElements(leftFilterElement).get(selectedColor).click();
-                waitUntilVisible(listofProducts);
+                colorselection_List.findElements(leftFilterElement_List).get(selectedColor).click();
+                waitUntilVisible(catalogProduct_List);
                 break;
             case "Price Range":
                 waitUntilPageReady();
-                waitUntilVisible(priceRange.get(0));
+                waitUntilVisible(priceRange_Text.get(0));
                 maxPrice = random.nextInt(9999);
                 minPrice = random.nextInt(maxPrice - 1) - 1;
-                priceRange.get(0).sendKeys(String.valueOf(minPrice));
-                priceRange.get(1).sendKeys(String.valueOf(maxPrice));
-                priceSearchButton.click();
+                priceRange_Text.get(0).sendKeys(String.valueOf(minPrice));
+                priceRange_Text.get(1).sendKeys(String.valueOf(maxPrice));
+                priceSearch_Btn.click();
                 waitUntilPageReady();
-                waitUntilVisible(listofProducts);
+                waitUntilVisible(catalogProduct_List);
                 try {
-                    waitUntilVisibility(noResult, 5);
-                    if (noResults.isDisplayed()) {
+                    waitUntilVisibility(noResult_div, 5);
+                    if (catalogePageNoResults_div.isDisplayed()) {
                         waitUntilPageReady();
-                        clearButton.click();
+                        clear_link.click();
                         waitUntilPageReady();
-                        waitUntilVisible(listofProducts);
+                        waitUntilVisible(catalogProduct_List);
                         applyCatalogPageFilters("Price Range");
                     }
                 } catch (Exception e) {
@@ -142,28 +142,28 @@ public class Cataloge_page extends PageObject {
                 }
                 break;
             default:
-                assertTrue(appliedFilter.isDisplayed());
+                assertTrue(filtersAppliedCatlog_div.isDisplayed());
         }
     }
 
     public void assertFilteredResults(String arg0) {
-        //verify filtered results are from specific brand.
+        //verify filtered results are from specific brand_List.
         String appliedFilterText = tryFindElement();
         switch (arg0) {
-            case "brand":
-                scrollToView(sortBy);
+            case "brand_List":
+                scrollToView(sortBy_Div);
                 assertTrue(appliedFilterText.contains(selectedFilter));
                 break;
             case "size":
-                scrollToView(sortBy);
+                scrollToView(sortBy_Div);
                 assertTrue(appliedFilterText.contains(selectedFilter));
                 break;
             case "Color Family":
-                scrollToView(sortBy);
+                scrollToView(sortBy_Div);
                 assertTrue(appliedFilterText.contains(selectedFilter));
                 break;
             case "Price Range":
-                scrollToView(sortBy);
+                scrollToView(sortBy_Div);
                 assertTrue(appliedFilterText.contains((selectedFilter)));
                 break;
         }
@@ -175,7 +175,7 @@ public class Cataloge_page extends PageObject {
         int loop = 1;
         while (staleElement) {
             try {
-                appliedFilterText = appliedFilter.findElement(anttag).findElement(appFilter).getText();
+                appliedFilterText = filtersAppliedCatlog_div.findElement(appliedFilterText_div).findElement(appFilter_Text).getText();
                 staleElement = false;
             } catch (StaleElementReferenceException e) {
                 loop++;
@@ -189,12 +189,12 @@ public class Cataloge_page extends PageObject {
         switch (arg0) {
             case "All":
                 waitUntilPageReady();
-                clearButton.click();
-                waitUntilInvisibilityOf(apliedFilter);
+                clear_link.click();
+                waitUntilInvisibilityOf(apliedFilter_Div);
                 break;
             case "One":
                 waitUntilPageReady();
-                crossButton.get(0).click();
+                cross_Button.get(0).click();
                 break;
         }
     }
@@ -203,13 +203,13 @@ public class Cataloge_page extends PageObject {
         switch (arg0) {
             case "All":
                 try {
-                    assertTrue(!appliedFilter.findElement(anttag).isDisplayed());
+                    assertTrue(!filtersAppliedCatlog_div.findElement(appliedFilterText_div).isDisplayed());
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
                 break;
             case "One":
-                crossButton.size();
+                cross_Button.size();
                 assertTrue(true);
                 break;
         }
