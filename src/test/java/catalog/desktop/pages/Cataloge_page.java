@@ -89,7 +89,7 @@ public class Cataloge_page extends PageObject {
 
     public void applyCatalogPageFilters(String arg0) {
         switch (arg0) {
-            case "brand_List":
+            case "brand":
                 waitUntilPageReady();
                 waitUntilVisibility(brand_List, 5);
                 List<WebElement> brandsList = (brandFilter_List.findElements(leftFilterElement_List));
@@ -150,7 +150,7 @@ public class Cataloge_page extends PageObject {
         //verify filtered results are from specific brand_List.
         String appliedFilterText = tryFindElement();
         switch (arg0) {
-            case "brand_List":
+            case "brand":
                 scrollToView(sortBy_Div);
                 assertTrue(appliedFilterText.contains(selectedFilter));
                 break;
