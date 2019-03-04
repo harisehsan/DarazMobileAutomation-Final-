@@ -17,21 +17,21 @@ public class Member_AccEdit_PC_Page extends PageObject {
     @FindBy(css = "div > div:nth-child(2) > h3 > a") private WebElement changeEmail_btn;
     @FindBy(className = "buttons") private WebElement verifyEmail_btn;
     @FindBy(className = "mod-sendcode") private WebElement sendCode_btn;
-    @FindBy(css = "span#month > span") private WebElement monthPicker;
-    @FindBy (css = "span#day > span") private WebElement dayPicker;
-    @FindBy (css = "span#year > span") private WebElement yearPicker;
-    @FindBy(css = "span#gender > span")  private WebElement genderPicker;
-    @FindBy(css = "ul > li.next-menu-item") private List <WebElement> listSelector;
+    @FindBy(css = "span#month > span") private WebElement month_drpDownList;
+    @FindBy (css = "span#day > span") private WebElement day_drpDownList;
+    @FindBy (css = "span#year > span") private WebElement year_drpDownList;
+    @FindBy(css = "span#gender > span")  private WebElement gender_drpDownList;
+    @FindBy(css = "ul > li.next-menu-item") private List <WebElement> Selector_listItem;
     @FindBy(css = "div#container div:nth-child(6) > div > div > input[type='text']") private WebElement editTaxId_txtField;
     @FindBy(css = ".mod-input-branchId input") private WebElement editBranchId_txtField;
-    @FindBy(css = "div#container div:nth-child(6) > div > div > div") private WebElement clearOldTaxId_btn;
-    @FindBy(css = "div#container div:nth-child(7) > div > div > div") private WebElement clearOldBrnachId_btn;
+    @FindBy(css = "div#container div:nth-child(6) > div > div > div") private WebElement clearTaxId_btn;
+    @FindBy(css = "div#container div:nth-child(7) > div > div > div") private WebElement clearBrnachId_btn;
 
     private int random;
     private String day = "";
     private int size = 0;
 
-    private By listSelection_by  = By.cssSelector("ul > li.next-menu-item");
+    private By Selector_listItem_by = By.cssSelector("ul > li.next-menu-item");
     private By changeEmail_btn_by = By.cssSelector("div > div:nth-child(2) > h3 > a");
     private By verifyEmail_btn_by = By.className("buttons");
     private By sendCode_btn_by = By.className("mod-sendcode");
@@ -71,8 +71,8 @@ public class Member_AccEdit_PC_Page extends PageObject {
         waitUntilVisible(editTaxId_txtField);
         if(!(editTaxId_txtField.getAttribute("value").equalsIgnoreCase("")))
         {
-            waitUntilVisible(clearOldTaxId_btn);
-            this.clearOldTaxId_btn.click();
+            waitUntilVisible(clearTaxId_btn);
+            this.clearTaxId_btn.click();
         }
     }
     }
@@ -84,8 +84,8 @@ public class Member_AccEdit_PC_Page extends PageObject {
         waitUntilVisible(editBranchId_txtField);
         if(!(editBranchId_txtField.getAttribute("value").equalsIgnoreCase("")))
         {
-            waitUntilVisible(clearOldBrnachId_btn);
-            this.clearOldBrnachId_btn.click();
+            waitUntilVisible(clearBrnachId_btn);
+            this.clearBrnachId_btn.click();
         }
     }
     }
@@ -115,53 +115,53 @@ public class Member_AccEdit_PC_Page extends PageObject {
     }
 
     public String changeMonth() { // This method changes the month of date of birth on edit profile page
-        waitUntilVisible(monthPicker);
-        monthPicker.click();
-        size = listSelector.size();
+        waitUntilVisible(month_drpDownList);
+        month_drpDownList.click();
+        size = Selector_listItem.size();
         if (size > 12) {size = 12;}
         random = getRandom(size);
-        waitUntilLocated(listSelection_by);
-        clickWithoutException(listSelector.get(random));
+        waitUntilLocated(Selector_listItem_by);
+        clickWithoutException(Selector_listItem.get(random));
         return (Integer.toString((random+1)));
     }
 
     public String changeDay() { // This method changes the day of date of birth on edit profile page
-        waitUntilVisible(dayPicker);
-        dayPicker.click();
-        size = listSelector.size();
-        if (size > 30) {size = 30;}
+        waitUntilVisible(day_drpDownList);
+        day_drpDownList.click();
+        size = Selector_listItem.size();
+        if (size > 28) {size = 28;}
         random = getRandom(size);
-        waitUntilLocated(listSelection_by);
-        listSelector.get(random).click();
-        day = dayPicker.getText();
+        waitUntilLocated(Selector_listItem_by);
+        Selector_listItem.get(random).click();
+        day = day_drpDownList.getText();
         if (Integer.parseInt(day) < 10) {day = day.replace("0", "");}
         return day;
     }
 
     public String changeYear() { // This method changes the year of date of birth on edit profile page
-        waitUntilVisible(yearPicker);
-        yearPicker.click();
-        size = listSelector.size();
+        waitUntilVisible(year_drpDownList);
+        year_drpDownList.click();
+        size = Selector_listItem.size();
         if (size > 120) {size = 120;}
-        waitUntilLocated(listSelection_by);
+        waitUntilLocated(Selector_listItem_by);
         random = getRandom(size);
-        clickWithoutException(listSelector.get(random));
-        return yearPicker.getText();
+        clickWithoutException(Selector_listItem.get(random));
+        return year_drpDownList.getText();
     }
 
-    public String changeGender() { // This method changes the gender of birth on edit profile page
+    public String changeGender() { // This method changes the gender on edit profile page
         waitUntilPageReady();
-        waitUntilVisible(genderPicker);
-        if (genderPicker.getText().equalsIgnoreCase("male") || genderPicker.getText().equalsIgnoreCase("Male")) {
-            genderPicker.click();
-            listSelector.get(1).click();
-        } else if (genderPicker.getText().equalsIgnoreCase("female") || genderPicker.getText().equalsIgnoreCase("Female")) {
-            genderPicker.click();
-            listSelector.get(0).click();
+        waitUntilVisible(gender_drpDownList);
+        if (gender_drpDownList.getText().equalsIgnoreCase("male") || gender_drpDownList.getText().equalsIgnoreCase("Male")) {
+            gender_drpDownList.click();
+            Selector_listItem.get(1).click();
+        } else if (gender_drpDownList.getText().equalsIgnoreCase("female") || gender_drpDownList.getText().equalsIgnoreCase("Female")) {
+            gender_drpDownList.click();
+            Selector_listItem.get(0).click();
         } else {
-            genderPicker.click();
-            listSelector.get(0).click();
+            gender_drpDownList.click();
+            Selector_listItem.get(0).click();
         }
-        return this.genderPicker.getText();
+        return this.gender_drpDownList.getText();
     }
 }

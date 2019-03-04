@@ -23,7 +23,6 @@ public class MemberChangeAccountInfoSteps extends BaseSteps {
        String current_day = on(Member_AccEdit_PC_Page.class).changeDay();
        String current_year = on(Member_AccEdit_PC_Page.class).changeYear();
        Global.map.put("current_date_of_birth",current_year+"-"+current_month+"-"+current_day);
-
     }
 
     @And("^I change the gender$")

@@ -43,7 +43,6 @@ public class Account_Page extends PageObject {
     private By logOut_btn_by = By.cssSelector(".account-icon.logout");
 
     public void untilLoaded(){
-        waitUntilVisible(mainContainer_lbl);
         waitUntilVisible(editProfile_btn);
     }
 
@@ -68,6 +67,7 @@ public class Account_Page extends PageObject {
 
     public String hasGender() { //This method return the gender value on personal profile page
         waitUntilPageReady();
+        untilLoaded();
         waitUntilVisible(gender_lbl);
         return gender_lbl.getText();
     }
