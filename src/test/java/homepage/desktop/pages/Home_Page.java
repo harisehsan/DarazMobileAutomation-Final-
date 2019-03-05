@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.io.IOException;
 import java.util.List;
-
+import java.util.Random;
 
 
 public class Home_Page extends PageObject {
@@ -36,8 +36,11 @@ public class Home_Page extends PageObject {
     @FindBy(css = (".lzd-site-menu-grand-active > li")) private List<WebElement> categoriesLevel3Tree_list;
     @FindBy(id = "q") private WebElement searchBar;
     @FindBy(className = "search-box__button--1oH7") private WebElement searchBarButton;
+    @FindBy(className = "ant-modal-content")  private WebElement ageLimit_popup; //lazada element
 
     private By categoriesLevel3Tree_by = By.cssSelector(".lzd-site-menu-grand-active");
+    private By iAmOver18_btn = By.className("ant-btn-primary");
+
 
     public void clickToLoginPage() {
         waitUntilVisible(login_btn);
@@ -163,13 +166,24 @@ public class Home_Page extends PageObject {
     }
 
     public void searchKeyword(String arg0){
+        Random random = new Random();
         if(arg0.equalsIgnoreCase("Random")){
-            searchBar.sendKeys(".");
+            String[] keyWords = {"women dresses","men dresses"};
+            int position = random.nextInt(keyWords.length);
+            searchBar.sendKeys(keyWords[position]);
         }else {
             searchBar.sendKeys(arg0);
         }
         this.searchBarButton.click();
-        System.out.println(currentUrl());
+        ageLimitVerification();
+    }
+
+    public void ageLimitVerification(){
+        try {
+            ageLimit_popup.findElement(iAmOver18_btn).click();
+        }catch (Exception e ){
+            System.out.println("AGE LIMIT POPUP NOT DISPLAYED");
+        }
     }
 }
 

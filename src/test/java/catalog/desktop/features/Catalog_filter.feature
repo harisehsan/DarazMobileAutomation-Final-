@@ -1,4 +1,4 @@
-@catalog @filter @desktop @fire_test @19116911
+  @catalog @filter @desktop @fire_test @19116911
 Feature: Apply filters to the products in catalog
 
   @catalog_filter @filter_brand_vertical @27226916
@@ -33,17 +33,17 @@ Feature: Apply filters to the products in catalog
   Scenario: Filter the items by combining Brand and Price filters
     Given I visit the catalog page
     When  I search "Random" in header
-    And   I apply the vertical "brand" filter
     And  I apply the vertical "Price Range" filter
+    And   I apply the vertical "brand" filter
     Then Filter should be applied
 
 # Remove Filters
-  @catalog_filter @reset_all_finters @27226091
+  @catalog_filter @reset_all_finters @27226091 @shahbaz1
   Scenario: Apply two filters and rest filters
     Given I visit the catalog page
     When  I search "Random" in header
-    And   I apply the vertical "brand" filter
     And  I apply the vertical "Price Range" filter
+    And   I apply the vertical "brand" filter
     And   I remove "All" filters
     Then  "All" Filters should be removed
 
@@ -52,8 +52,8 @@ Feature: Apply filters to the products in catalog
   Scenario: Remove one filter
     Given I visit the catalog page
     When  I search "random" in header
-    And   I apply the vertical "brand" filter
     And   I apply the vertical "Price Range" filter
+    And   I apply the vertical "brand" filter
     And   I remove "One" filters
     Then  "One" Filters should be removed
 

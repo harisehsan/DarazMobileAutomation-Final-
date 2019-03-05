@@ -16,9 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class Cataloge_page extends PageObject {
 
-    Random random = new Random();
-    private String selectedFilter = "";
-    private int maxPrice, minPrice;
+
 
     public static final String page_url = Global.config.getString("homepage.catalog_url");
 
@@ -45,7 +43,7 @@ public class Cataloge_page extends PageObject {
             @FindBy(className = "c2p6A5"), //daraz list of products on catalog
             @FindBy(className = "c2prKC") //lazada List of products on catalog
     })
-    private WebElement catalogProduct_List;
+    private List<WebElement> catalogProduct_List;
 
     @FindAll({
             @FindBy(className = "c1-XO2"), //Daraz Element
@@ -53,16 +51,7 @@ public class Cataloge_page extends PageObject {
     })
     private WebElement clear_link;
 
-    @FindAll({
-            @FindBy(className = "cahB9n"), //Daraz Element
-            @FindBy(className = "c1nVRb") //lazada element
-    })
-    private WebElement catalogePageNoResults_div;
-
-    @FindAll({
-            @FindBy(className = "ant-btn-icon-only"), //Daraz Element
-            @FindBy(className = "ant-btn-icon-only") //lazada element
-    })
+    @FindBy(className = "ant-btn-icon-only")
     private WebElement priceSearch_Btn;
 
     @FindAll({
@@ -81,65 +70,49 @@ public class Cataloge_page extends PageObject {
     private By appFilter_Text = By.className("ant-tag-text");
     private By leftFilterElement_List = By.className("ant-checkbox-wrapper");
     private By appliedFilterText_div = By.className("ant-tag");
-    private By noResult_div = By.xpath("//*[@class='cahB9n' or @class='c1nVRb']"); // Daraz & Lazada
     private By brand_List = By.xpath("//*[*/text()='Brand']/*[@class='c3Guy3' or @class='c2uiAC']"); // Daraz & Lazada
-    private By apliedFilter_Div = By.xpath("//*[@class='c1meGu' or @class='cM5DKB']"); // Daraz & Lazada
-    private By productlist_List = By.xpath("//*[@class='c2p6A5' or @class='c2prKC']"); // Daraz & Lazada
 
+
+
+    Random random = new Random();
+    private String selectedFilter = "";
 
     public void applyCatalogPageFilters(String arg0) {
         switch (arg0) {
             case "brand":
                 waitUntilPageReady();
-                waitUntilVisibility(brand_List, 5);
                 List<WebElement> brandsList = (brandFilter_List.findElements(leftFilterElement_List));
                 int selectRandomBrand = brandsList.size() >= 7 ? random.nextInt(7) : random.nextInt(brandsList.size());
-                waitUntilClickable(productlist_List);
+                waitUntilVisibility(brand_List, 5);
                 selectedFilter = brandsList.get(selectRandomBrand).getText();
                 brandsList.get(selectRandomBrand).click();
                 waitUntilPageReady();
                 break;
             case "size":
                 waitUntilPageReady();
+                waitUntilVisibility(leftFilterElement_List,5);
                 List<WebElement> sizeList = sizeSelection_List.findElements(leftFilterElement_List);
-                System.out.println(sizeList);
                 int selectRandomSize = sizeList.size() >= 7 ? random.nextInt(7) : random.nextInt(sizeList.size());
                 selectedFilter = sizeList.get(selectRandomSize).getText();
                 sizeList.get(selectRandomSize).click();
                 waitUntilPageReady();
-                waitUntilVisible(catalogProduct_List);
                 break;
             case "Color Family":
                 waitUntilPageReady();
-                waitUntilVisible(catalogProduct_List);
+                waitUntilVisible(catalogProduct_List.get(0));
                 List<WebElement> ColorsList = colorselection_List.findElements(leftFilterElement_List);
                 int selectedColor = ColorsList.size() >= 7 ? random.nextInt(7) : random.nextInt(ColorsList.size());
                 selectedFilter = ColorsList.get(selectedColor).getText();
                 colorselection_List.findElements(leftFilterElement_List).get(selectedColor).click();
-                waitUntilVisible(catalogProduct_List);
+                waitUntilPageReady();
                 break;
             case "Price Range":
                 waitUntilPageReady();
                 waitUntilVisible(priceRange_Text.get(0));
-                maxPrice = random.nextInt(9999);
-                minPrice = random.nextInt(maxPrice - 1) - 1;
-                priceRange_Text.get(0).sendKeys(String.valueOf(minPrice));
-                priceRange_Text.get(1).sendKeys(String.valueOf(maxPrice));
+                priceRange_Text.get(0).sendKeys("10");
+                priceRange_Text.get(1).sendKeys("999999");
                 priceSearch_Btn.click();
                 waitUntilPageReady();
-                waitUntilVisible(catalogProduct_List);
-                try {
-                    waitUntilVisibility(noResult_div, 5);
-                    if (catalogePageNoResults_div.isDisplayed()) {
-                        waitUntilPageReady();
-                        clear_link.click();
-                        waitUntilPageReady();
-                        waitUntilVisible(catalogProduct_List);
-                        applyCatalogPageFilters("Price Range");
-                    }
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
                 break;
             default:
                 assertTrue(filtersAppliedCatlog_div.isDisplayed());
@@ -188,12 +161,11 @@ public class Cataloge_page extends PageObject {
     public void clearFilters(String arg0) {
         switch (arg0) {
             case "All":
-                waitUntilPageReady();
+                waitUntilVisible(clear_link);
                 clear_link.click();
-                waitUntilInvisibilityOf(apliedFilter_Div);
                 break;
             case "One":
-                waitUntilPageReady();
+                waitUntilVisible(clear_link);
                 cross_Button.get(0).click();
                 break;
         }
@@ -202,18 +174,18 @@ public class Cataloge_page extends PageObject {
     public void assertFilterRemoved(String arg0) {
         switch (arg0) {
             case "All":
+                Global.browser.refresh();
                 try {
-                    assertTrue(!filtersAppliedCatlog_div.findElement(appliedFilterText_div).isDisplayed());
+                    assertFalse(filtersAppliedCatlog_div.isDisplayed());
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    System.out.println("Element no longer available on the page");
                 }
                 break;
             case "One":
+                Global.browser.refresh();
                 cross_Button.size();
                 assertTrue(true);
                 break;
         }
     }
 }
-
-
