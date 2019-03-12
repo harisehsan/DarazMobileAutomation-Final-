@@ -2,6 +2,7 @@ package base;
 
 import global.Global;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,7 +14,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class PageObject {
 
     private WebDriver driver;
-    private static final int DEFAULT_TIMEOUT = 30;
+    private static final int DEFAULT_TIMEOUT = 60;
+    private int FLAG = 0;
 
     protected PageObject() {
         driver = Global.browser.getWebDriver();
@@ -97,6 +99,22 @@ public class PageObject {
     protected void waitLongUntilInvisibilityOf(By by, int time) {
         new WebDriverWait(driver, time)
                 .until(ExpectedConditions.invisibilityOfElementLocated(by));
+    }
+
+    protected void clickWithoutException (WebElement ele) { // This method is used to click on the element by avoiding any kind of exception
+        FLAG = 0;
+        do {
+            try {
+                Actions action = new Actions(driver);
+                hover(ele);
+                action.click(ele);
+                Action ob = action.build();
+                ob.perform();
+                FLAG =11;
+            } catch (Exception ex) {
+                FLAG++;
+            }
+        } while (FLAG <=10);
     }
 
     protected void clearText(WebElement ele){

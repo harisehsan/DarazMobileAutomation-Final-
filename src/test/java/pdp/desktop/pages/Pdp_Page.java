@@ -50,6 +50,7 @@ public class Pdp_Page extends PageObject {
     @FindBy(css = ".location__address") private WebElement leadtimeAddress_lbl;
     @FindBy(css = ".location-postcode__input-wrap > span > input[type='text']") private WebElement postCode_txtField;
     @FindBy(css = ".location-postcode__button-save") private WebElement postCodeSave_btn;
+    @FindBy(className = "pdp-price") private WebElement productPrice_lbl;
 
     private By location_loading_icon_by = By.cssSelector(".location-level__loader");
     private By location_overlay_by = By.cssSelector(".location-overlay");
@@ -63,6 +64,10 @@ public class Pdp_Page extends PageObject {
     }
 
     public String randomAddress = "";
+
+    private float price = 0;
+
+    private int FLAG = 1;
 
     public String getProductTitle() {
         return productTitle_lbl.getText();
@@ -259,6 +264,38 @@ public class Pdp_Page extends PageObject {
 
     private void waitUntilQuestionAdded(String question){
         waitUntilVisibility(By.xpath(String.format("//div[text() = '%s']", question)));
+    }
+
+    public boolean changeProduct() { // I change the Product as per the COD limit rules
+        if (page_url.contains(".bd")) {
+            while (FLAG <= 5) {
+                waitUntilVisible(productPrice_lbl);
+                price = Float.parseFloat(productPrice_lbl.getText().replace("৳ ", "").replace(",", ""));
+                if (price < 500 || price > 65000) {
+                    FLAG++;
+                    return true;
+                } else {
+                    FLAG = 6;
+                    return false;
+                }
+            }
+            throw new RuntimeException("There is no COD product available that suits the COD range");
+        } if (page_url.contains(".sg")) {
+            waitUntilVisible(productPrice_lbl);
+            while (FLAG <= 5) {
+                waitUntilVisible(productPrice_lbl);
+                price = Float.parseFloat(productPrice_lbl.getText().replace("SGD", "").replace(",", ""));
+                if (price > 500) {
+                    FLAG++;
+                    return true;
+                } else {
+                    FLAG = 6;
+                    return false;
+                }
+            }
+            throw new RuntimeException("There is no COD product available that suits the COD range");
+        }
+        return false;
     }
 
 }

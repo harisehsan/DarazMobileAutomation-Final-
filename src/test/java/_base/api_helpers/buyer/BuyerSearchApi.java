@@ -23,6 +23,7 @@ public class BuyerSearchApi {
     private static String buyerSiteHomeUrl = Global.config.getString("homepage.home_url");
     private static final String SELLER_URL_PREFIX = "shop/site/api/seller/products?shopId=";
     private static final String CATALOG_URL_PREFIX = "catalog/?ajax=true&from=input&service=COD&q=";
+    private static final String SELLER_URL_REPLACE = "134303";
 
     public BuyerSearchApi() {
         this.apiService = new ApiService();
@@ -64,6 +65,8 @@ public class BuyerSearchApi {
         List<String> sellerUrls = getListTestSellerUrls();
         if(sellerUrls==null) throw new RuntimeException("Can not search COD product");
         for(String url: sellerUrls){
+            if (url.contains(".th") && url.contains("134301")) // Avoid this seller as its PDP pages are not correct
+                url = url.replace("134301",SELLER_URL_REPLACE);
             List<String> productsListUrls = getListProductUrlsFromSeller(url);
             String productUrl = getCodProduct(productsListUrls);
             if(!productUrl.equalsIgnoreCase("")) return productUrl;

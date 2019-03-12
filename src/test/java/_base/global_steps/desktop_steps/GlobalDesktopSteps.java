@@ -119,4 +119,10 @@ public class GlobalDesktopSteps extends BaseSteps {
         on(Cart_Page.class).emptyCart();
     }
 
+    @And("^I change the product page as per COD limit$")
+    public void iChangeThePpPageAsPerCODLimit() {
+        while(on(Pdp_Page.class).changeProduct())
+            visitTestCODPdpPage();
+    }
+
 }

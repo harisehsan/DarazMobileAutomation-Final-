@@ -15,21 +15,25 @@ public class CheckoutByCODSteps extends BaseSteps {
 
     @And("^I click on Add to cart button$")
     public void clickAddToCart() {
+        on(Pdp_Page.class).switchToEnglish();
         on(Pdp_Page.class).clickAddToCartButton();
     }
 
     @And("^I click Checkout button on Cart popup$")
     public void clickCheckout() {
+        on(Pdp_Page.class).switchToEnglish();
         on(Cart_PopUp.class).clickCheckout();
     }
 
     @And("^I click Place Order button on Checkout Shipping page$")
     public void clickPlaceOrder() {
+        on(Pdp_Page.class).switchToEnglish();
         on(CheckoutShipping_Page.class).clickPlaceOrder();
     }
 
     @And("^I place order with COD payment method$")
     public void selectCOD() {
+        on(Pdp_Page.class).switchToEnglish();
         on(CheckoutPaymentMethod_Page.class).selectCOD();
         on(CheckoutPaymentMethod_Page.class).clickConfirmOrderButton();
     }

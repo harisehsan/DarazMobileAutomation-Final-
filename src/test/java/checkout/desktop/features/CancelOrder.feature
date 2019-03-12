@@ -6,6 +6,7 @@ Feature: My Order PC Test for Daraz project
   Scenario: User cancel order
     Given I login by api with email
     And I go to a test COD pdp page
+    And I change the product page as per COD limit
     And I click on Add to cart button
     And I click Checkout button on Cart popup
     And I click Place Order button on Checkout Shipping page
