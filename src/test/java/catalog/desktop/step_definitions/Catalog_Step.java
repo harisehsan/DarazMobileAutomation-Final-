@@ -1,7 +1,7 @@
 package catalog.desktop.step_definitions;
 
 import base.BaseSteps;
-import catalog.desktop.pages.Cataloge_page;
+import catalog.desktop.pages.Catalog_page;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -13,18 +13,8 @@ public class Catalog_Step extends BaseSteps {
 
     @Given("^I visit the catalog page$")
     public void iVisitTheCatalogPage() {
-        visit(Cataloge_page.class);
+        visit(Catalog_page.class);
         on(Pdp_Page.class).switchToEnglish();
-    }
-
-    @When("^I apply the vertical \"([^\"]*)\" filter$")
-    public void iApplyTheVerticalFilter(String arg0) {
-        on(Cataloge_page.class).applyCatalogPageFilters(arg0);
-    }
-
-    @Then("^\"([^\"]*)\" Filter should be applied$")
-    public void filterShouldBeApplied(String arg0) {
-        on(Cataloge_page.class).assertFilteredResults(arg0);
     }
 
     @And("^I search \"([^\"]*)\" in header$")
@@ -32,18 +22,38 @@ public class Catalog_Step extends BaseSteps {
         on(Home_Page.class).searchKeyword(arg0);
     }
 
+    @When("^I apply the vertical brand filter$")
+    public void iApplyTheVerticalBrandFilter() {
+        on(Catalog_page.class).applyVerticalBrandFilter();
+    }
+
+    @When("^I apply the vertical size filter$")
+    public void iApplyTheVerticalSizeFilter() {
+        on(Catalog_page.class).applyVerticalSizeFilter();
+    }
+
+    @When("^I apply the vertical Color Family filter$")
+    public void iApplyTheVerticalColorFamilyFilter() {
+        on(Catalog_page.class).applyVerticalColorFilter();
+    }
+
+    @When("^I apply the vertical Price Range filter$")
+    public void iApplyTheVerticalPriceRangeFilter() {
+        on(Catalog_page.class).applyVerticalPriceFilter();
+    }
+
+    @Then("^\".*?\" Filter should be applied$")
+    public void filterShouldBeApplied() {
+        on(Catalog_page.class).assertFilterShouldBeApplied();
+    }
+
     @And("^I remove \"([^\"]*)\" filters$")
     public void iRemoveFilters(String arg0){
-        on(Cataloge_page.class).clearFilters(arg0);
+        on(Catalog_page.class).clearFilters(arg0);
     }
 
     @Then("^\"([^\"]*)\" Filters should be removed$")
     public void filtersShouldBeRemoved(String arg0) {
-        on(Cataloge_page.class).assertFilterRemoved(arg0);
-    }
-
-    @Then("^Filter should be applied$")
-    public void filterShouldBeApplied() {
-        on(Cataloge_page.class).applyCatalogPageFilters("");
+        on(Catalog_page.class).assertFilterRemoved(arg0);
     }
 }
