@@ -2,10 +2,12 @@ package base;
 
 import global.Global;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.Random;
 
 /**
  * Created by admin.son.ton on 1/23/18.
@@ -97,6 +99,27 @@ public class PageObject {
     protected void waitLongUntilInvisibilityOf(By by, int time) {
         new WebDriverWait(driver, time)
                 .until(ExpectedConditions.invisibilityOfElementLocated(by));
+    }
+
+    protected void clickWithoutException (WebElement ele) { // This method is used to click on the element by avoiding any kind of exception
+      int FLAG = 0;
+        do {
+            try {
+                Actions action = new Actions(driver);
+                hover(ele);
+                action.click(ele);
+                Action ob = action.build();
+                ob.perform();
+                FLAG =11;
+            } catch (Exception ex) {
+                FLAG++;
+            }
+        } while (FLAG <=10);
+    }
+
+    protected int getRandom(int size) { // This method returns the random number of the given bound
+        Random rand = new Random();
+        return rand.nextInt((size-1));
     }
 
     protected void clearText(WebElement ele){
