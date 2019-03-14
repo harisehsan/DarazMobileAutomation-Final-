@@ -122,6 +122,8 @@ public class Catalog_page extends PageObject {
     public void assertFilterShouldBeApplied() {
         //verify filtered results are from specific brand_List.
         Global.browser.refresh();
+        waitUntilPageReady();
+        waitUntilClickable(catalogProduct_by);
         scrollToFilterDiv();
         assertTrue(tryFindElement().stream().anyMatch(str -> str.trim().contains(selectedFilter)));
     }
