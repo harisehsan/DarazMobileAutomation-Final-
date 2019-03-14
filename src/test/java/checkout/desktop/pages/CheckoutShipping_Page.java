@@ -12,7 +12,7 @@ public class CheckoutShipping_Page extends PageObject {
     @FindBy(css = ".address-hat") private WebElement shippingAddressTitle;
     @FindBy(className = "automation-address-edit") private WebElement edit_btn;
 
-    private By placeorder_btn_by = By.cssSelector(".automation-checkout-order-total-button-button");
+    private By placeorder_btn_by = By.className("checkout-order-total-button");
 
     public void clickPlaceOrder()
     {

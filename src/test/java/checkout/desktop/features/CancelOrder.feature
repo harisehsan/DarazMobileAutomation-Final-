@@ -1,8 +1,7 @@
 @smoke @My_Order_PC
-
 Feature: My Order PC Test for Daraz project
 
-  @17916529 @911 @no_my @no_id
+  @17916529 @911 @no_my @no_sg
   Scenario: User cancel order
     Given I login by api with email
     And I go to a test COD pdp page

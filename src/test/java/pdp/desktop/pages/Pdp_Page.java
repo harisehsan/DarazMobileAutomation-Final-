@@ -266,36 +266,21 @@ public class Pdp_Page extends PageObject {
         waitUntilVisibility(By.xpath(String.format("//div[text() = '%s']", question)));
     }
 
-    public boolean changeProduct() { // I change the Product as per the COD limit rules
+    public boolean changeProduct() { // I change the Product as per the COD price limit rules (if needed)
         if (page_url.contains(".bd")) {
-            while (FLAG <= 5) {
+            while (FLAG <= 6) {
                 waitUntilVisible(productPrice_lbl);
                 price = Float.parseFloat(productPrice_lbl.getText().replace("৳ ", "").replace(",", ""));
                 if (price < 500 || price > 65000) {
                     FLAG++;
                     return true;
                 } else {
-                    FLAG = 6;
+                    FLAG = 7;
                     return false;
                 }
             }
-            throw new RuntimeException("There is no COD product available that suits the COD range");
-        } if (page_url.contains(".sg")) {
-            waitUntilVisible(productPrice_lbl);
-            while (FLAG <= 5) {
-                waitUntilVisible(productPrice_lbl);
-                price = Float.parseFloat(productPrice_lbl.getText().replace("SGD", "").replace(",", ""));
-                if (price > 500) {
-                    FLAG++;
-                    return true;
-                } else {
-                    FLAG = 6;
-                    return false;
-                }
-            }
-            throw new RuntimeException("There is no COD product available that suits the COD range");
+            throw new RuntimeException("There is no COD product available that suits the COD price range");
         }
         return false;
     }
-
 }
