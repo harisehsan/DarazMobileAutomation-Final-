@@ -148,10 +148,10 @@ public class Catalog_page extends PageObject {
     public void clearFilters(String arg0) {
         switch (arg0) {
             case "All":
-                Global.browser.refresh();
-                scrollToFilterDiv();
                 waitUntilClickable(clearLink_by);
+                scrollToFilterDiv();
                 clear_link.click();
+                Global.browser.refresh();
                 if(isExist(clearLink_by)){
                     clear_link.click();
                 }
