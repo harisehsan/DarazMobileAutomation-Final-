@@ -115,3 +115,14 @@ Feature: Member PC Test
     Then I should see the new mail on personal profile page
     And I re-login by new email
     Then I should see the user info is correctly displayed on account page
+
+  @26484085 @member_regression @member_smoke
+  Scenario: Can edit profile info and save it successfully
+    Given I login by api with email
+    And I go to personal profile page to edit profile info
+    And I change the gender
+    And I change date of birth
+    And I change the tax code
+    And I change the branch id
+    And I click on save changes button
+    Then I should see new info on personal profile page

@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.Random;
 
 /**
  * Created by admin.son.ton on 1/23/18.
@@ -102,7 +103,7 @@ public class PageObject {
     }
 
     protected void clickWithoutException (WebElement ele) { // This method is used to click on the element by avoiding any kind of exception
-        FLAG = 0;
+      int FLAG = 0;
         do {
             try {
                 Actions action = new Actions(driver);
@@ -115,6 +116,11 @@ public class PageObject {
                 FLAG++;
             }
         } while (FLAG <=10);
+    }
+
+    protected int getRandom(int size) { // This method returns the random number of the given bound
+        Random rand = new Random();
+        return rand.nextInt((size-1));
     }
 
     protected void clearText(WebElement ele){

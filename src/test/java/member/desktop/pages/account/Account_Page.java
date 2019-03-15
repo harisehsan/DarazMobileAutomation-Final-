@@ -31,6 +31,11 @@ public class Account_Page extends PageObject {
     @FindBy(css = "div.dashboard-info-item.last > a") private WebElement newsLetter_btn;
     @FindBy(css = ".next-btn-primary") private WebElement okNewsletterConfig_btn;
     @FindBy(css = "div.dashboard-info > div:nth-child(2)") private WebElement emailInformation_lbl;
+    @FindBy(css = "div#container div:nth-child(4) > div") private WebElement dateOfBirth_lbl;
+    @FindBy(css = "div#container div:nth-child(5) > div") private WebElement gender_lbl;
+    @FindBy(css = "div#container div:nth-child(6) > div") private WebElement taxcode_lbl;
+    @FindBy(css = "div#container div:nth-child(7) > div") private WebElement branchid_lbl;
+    @FindBy (css = "div#container button[type='a']") private WebElement editProfile_btn;
 
     private By isVerified_lbl_by = By.cssSelector("div.dashboard-info-item.last > a");
     private By okNewsletterConfig_btn_by = By.cssSelector(".next-btn-primary");
@@ -38,7 +43,7 @@ public class Account_Page extends PageObject {
     private By logOut_btn_by = By.cssSelector(".account-icon.logout");
 
     public void untilLoaded(){
-        waitUntilVisible(mainContainer_lbl);
+        waitUntilVisible(editProfile_btn);
     }
 
     public String hasName() {
@@ -51,6 +56,42 @@ public class Account_Page extends PageObject {
         waitUntilPageReady();
         waitUntilVisible(emailInformation_lbl);
         return emailInformation_lbl.getText();
+    }
+
+    public String hasDateOfBirth() { //This method return the DOB value on personal profile page
+        waitUntilPageReady();
+        untilLoaded();
+        waitUntilVisible(dateOfBirth_lbl);
+        return dateOfBirth_lbl.getText();
+    }
+
+    public String hasGender() { //This method return the gender value on personal profile page
+        waitUntilPageReady();
+        untilLoaded();
+        waitUntilVisible(gender_lbl);
+        return gender_lbl.getText();
+    }
+
+    public String hasTaxCode() //This method return the tax code value on personal profile page (if available)
+    {
+        if (page_url.contains(".th") || page_url.contains(".vn"))
+        {
+            waitUntilPageReady();
+            waitUntilVisible(taxcode_lbl);
+            return taxcode_lbl.getText();
+        }
+        return "";
+    }
+
+    public String hasBranchId() //This method return the branch id value on personal profile page (if available)
+    {
+        if (page_url.contains(".th"))
+        {
+            waitUntilPageReady();
+            waitUntilVisible(branchid_lbl);
+            return branchid_lbl.getText();
+        }
+        return "";
     }
 
     public boolean isVerified() {
