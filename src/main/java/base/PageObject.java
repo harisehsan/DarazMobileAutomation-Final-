@@ -15,7 +15,8 @@ import java.util.Random;
 public class PageObject {
 
     private WebDriver driver;
-    private static final int DEFAULT_TIMEOUT = 30;
+    private static final int DEFAULT_TIMEOUT = 60;
+    private int FLAG = 0;
 
     protected PageObject() {
         driver = Global.browser.getWebDriver();

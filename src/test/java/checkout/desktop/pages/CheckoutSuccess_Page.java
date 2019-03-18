@@ -7,7 +7,8 @@ import org.openqa.selenium.support.FindBy;
 public class CheckoutSuccess_Page extends PageObject {
     @FindBy (css = ".thank-you-heading") private WebElement thankyouTitle;
     @FindBy (css = ".thank-you-order-number") private WebElement orderNumber;
-    @FindBy (id = "automation-link-track-order" ) private WebElement trackOrder;
+//   @FindBy (id = "automation-link-track-order" ) private WebElement trackOrder;
+    @FindBy (id = "package-delivery-view-order-btn") private WebElement trackOrder_btn;
 
     public boolean hasThankyouTitle() {
         waitUntilVisible(thankyouTitle);
@@ -25,8 +26,8 @@ public class CheckoutSuccess_Page extends PageObject {
     }
 
     public void clickTrackOrder(){
-        waitUntilVisible(trackOrder);
-        trackOrder.click();
+        waitUntilVisible(trackOrder_btn);
+        trackOrder_btn.click();
     }
 
 }
