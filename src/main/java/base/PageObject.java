@@ -19,7 +19,7 @@ public class PageObject {
     private int FLAG = 0;
 
     protected PageObject() {
-        driver = Global.browser.getWebDriver();
+        driver = Global.getBrowser().getWebDriver();
         PageFactory.initElements(driver, this);
     }
 

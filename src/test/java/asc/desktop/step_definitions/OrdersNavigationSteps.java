@@ -17,7 +17,7 @@ public class OrdersNavigationSteps extends BaseSteps {
     @Then("^I go to Pending orders Tab")
     public void goToPending() throws Throwable {
         on(OrderManagement_Page.class).openPendingTab();
-        Global.map.get("current_seller");
+        Global.getMap().get("current_seller");
     }
 
     @Then("^I go to RTS orders Tab$")
@@ -33,11 +33,11 @@ public class OrdersNavigationSteps extends BaseSteps {
     @Then("^I search for the current order$")
     public void searchCurrentOrder()  throws Throwable{
         on(OrderManagement_Page.class).clearFilter();
-        on(OrderManagement_Page.class).searchOrder(String.valueOf(Global.map.get("current_OrderNo")));
+        on(OrderManagement_Page.class).searchOrder(String.valueOf(Global.getMap().get("current_OrderNo")));
     }
 
     @Then("^I Should see order is displayed")
     public void isDisplayed() throws Throwable {
-        on(OrderManagement_Page.class).orderDisplayed(String.valueOf(Global.map.get("current_OrderNo")));
+        on(OrderManagement_Page.class).orderDisplayed(String.valueOf(Global.getMap().get("current_OrderNo")));
     }
 }

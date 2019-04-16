@@ -7,7 +7,7 @@ import base.PageObject;
 
 public class Seller_Login_Page extends PageObject {
 
-    public static final String page_url = Global.config.getString("asc.home_url");
+    public static final String page_url = Global.getConfig().getString("asc.home_url");
 
     @FindBy(css = ".input-account input") private WebElement email_input;
     @FindBy(css = ".input-password input") private WebElement pass_input;

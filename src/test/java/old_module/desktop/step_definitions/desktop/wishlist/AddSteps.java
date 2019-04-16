@@ -25,7 +25,7 @@ public class AddSteps extends BaseSteps{
 
     @Then("^I should see item displayed in Wishlist$")
     public void hasItem() throws Throwable {
-        boolean result = on(Wishlist_Page.class).hasItem((ProductDetailInfo)Global.map.get("current_info"));
+        boolean result = on(Wishlist_Page.class).hasItem((ProductDetailInfo)Global.getMap().get("current_info"));
         Assert.assertTrue(result,"Wishlist item is not match PDP item");
     }
 

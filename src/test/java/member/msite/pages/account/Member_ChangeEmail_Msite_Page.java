@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class Member_ChangeEmail_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.msite_url") + "/member/account-info";
+    public static String page_url = Global.getConfig().getString("member.msite_url") + "/member/account-info";
 
     @FindBy(xpath = "/html/body/div[2]/div[2]/span[3]")private WebElement changeEmail_btn;
     @FindBy(xpath = "/html/body/div[2]/div/div/div[1]/span[2]") private WebElement verifyByEmail_btn;

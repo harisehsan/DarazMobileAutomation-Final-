@@ -14,7 +14,7 @@ public class OrdersCancelSteps extends BaseSteps {
         String orderNumber = on(OrderManagement_Page.class).getLastOrderNumber();
         on(OrderManagement_Page.class).openCancelForm(orderNumber);
         on(Cancel_Form.class).performCancel();
-        Global.map.put("current_OrderNo",orderNumber);
+        Global.getMap().put("current_OrderNo",orderNumber);
         System.out.println(orderNumber);
     }
 

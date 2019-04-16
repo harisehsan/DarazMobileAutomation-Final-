@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class Member_AddressPC_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url") + "/address";
+    public static String page_url = Global.getConfig().getString("member.url") + "/address";
 
     @FindBy(css = ".next-btn-normal") private WebElement addNewAddress_btn;
     @FindBy(css = ".mod-input-name input") private WebElement name_txtField;

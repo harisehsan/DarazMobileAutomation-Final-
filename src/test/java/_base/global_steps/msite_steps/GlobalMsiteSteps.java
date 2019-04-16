@@ -11,14 +11,14 @@ public class GlobalMsiteSteps extends BaseSteps {
     @Given("On Msite I sign up by slider with email")
     public void signUpBySliderOnMsite() {
         visit(Member_Signupemail_Msite_Page.class);
-        Global.browser.refresh();
+        Global.getBrowser().refresh();
         on(Member_Signupemail_Msite_Page.class).signUpEmail();
-        String name = Global.config.getString("member.account.name");
-        Global.map.put("name_of_account",name);
+        String name = Global.getConfig().getString("member.account.name");
+        Global.getMap().put("name_of_account",name);
         String randomEmail = RandomHelper.randomTestMail();
-        Global.map.put("current_mail",randomEmail);
-        String passWord = Global.config.getString("member.account.pass");
-        Global.map.put("current_pass", passWord);
+        Global.getMap().put("current_mail",randomEmail);
+        String passWord = Global.getConfig().getString("member.account.pass");
+        Global.getMap().put("current_pass", passWord);
         on(Member_Signupemail_Msite_Page.class).signUpByEmail(name,randomEmail,passWord);
         on(Member_Signupemail_Msite_Page.class).clickAndHoldSlider();
     }

@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class BuyerSearchApi {
 
     private ApiService apiService;
-    private static String buyerSiteHomeUrl = Global.config.getString("homepage.home_url");
+    private static String buyerSiteHomeUrl = Global.getConfig().getString("homepage.home_url");
     private static final String SELLER_URL_PREFIX = "shop/site/api/seller/products?shopId=";
     private static final String CATALOG_URL_PREFIX = "catalog/?ajax=true&from=input&service=COD&q=";
 
@@ -95,7 +95,7 @@ public class BuyerSearchApi {
 
     @SuppressWarnings("unchecked")
     private List<String> getListTestSellerUrls(){
-        List<Object> listTestSellers  = Global.config.getList("seller.test_seller").unwrapped();
+        List<Object> listTestSellers  = Global.getConfig().getList("seller.test_seller").unwrapped();
         Collections.shuffle(listTestSellers);
         return listTestSellers.stream().map(seller -> buyerSiteHomeUrl+SELLER_URL_PREFIX+((Map<String, String>)seller).get("shop_id")).collect(Collectors.toList());
     }

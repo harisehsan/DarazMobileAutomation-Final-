@@ -18,8 +18,8 @@ public class MemberResetPasswordMsiteSteps extends BaseSteps {
 
     @And("^I progress to forgot password")
     public void forgotPassword() throws Throwable {
-        String mail = Global.config.getString("member.reset_password_mail");
-        Global.map.put("current_mail",mail);
+        String mail = Global.getConfig().getString("member.reset_password_mail");
+        Global.getMap().put("current_mail",mail);
         on(Member_Reset_Password_Msite_Page.class).resetPasswordStep(mail);
     }
 
@@ -30,27 +30,27 @@ public class MemberResetPasswordMsiteSteps extends BaseSteps {
 
     @And("^On Msite I get the email verification code from the inbox of current email")
     public void getCodeFromInboxMail() throws Throwable {
-        String currentWindowHandleId = Global.browser.currentWindowHandleId();
-        Global.map.put("current_tab",currentWindowHandleId);
-        Global.browser.openNewTab("");
+        String currentWindowHandleId = Global.getBrowser().currentWindowHandleId();
+        Global.getMap().put("current_tab",currentWindowHandleId);
+        Global.getBrowser().openNewTab("");
         visit(Member_Mailinator_Msite_Page.class);
-        on(Member_Mailinator_Msite_Page.class).inputMail((String)Global.map.get("current_mail"));
+        on(Member_Mailinator_Msite_Page.class).inputMail((String)Global.getMap().get("current_mail"));
         on(Member_Mailinator_Msite_Page.class).goToMailDetail();
         String smsCode = on(Member_Mailinator_Msite_Page.class).getSMSCodeDetail();
-        Global.map.put("verify_code",smsCode);
+        Global.getMap().put("verify_code",smsCode);
     }
 
     @And("^On Msite i confirm code on Verify Email page")
     public void goBackOldTab() throws Throwable {
-        Global.browser.switchToTab((String) Global.map.get("current_tab"));
-        String smsCode = (String) Global.map.get("verify_code");
+        Global.getBrowser().switchToTab((String) Global.getMap().get("current_tab"));
+        String smsCode = (String) Global.getMap().get("verify_code");
         on(Member_Reset_Password_Msite_Page.class).inputCode(smsCode);
     }
 
     @And("^On Msite I input new mail and send code")
     public void sendCodeToNewEmail() throws Throwable {
         String current_mail = RandomHelper.randomTestMail();
-        Global.map.put("current_mail",current_mail);
+        Global.getMap().put("current_mail",current_mail);
         on(Member_ChangeEmail_Msite_Page.class).sendCodeToNewEmail(current_mail);
     }
 
@@ -58,12 +58,12 @@ public class MemberResetPasswordMsiteSteps extends BaseSteps {
     public void inputNewPassword() throws Throwable {
         String randomPassword = RandomHelper.randomAlphabetString(5) + RandomHelper.randomNumber(5);
         on(Member_Reset_Password_Msite_Page.class).progressNewPass(randomPassword);
-        Global.map.put("current_pass",randomPassword);
+        Global.getMap().put("current_pass",randomPassword);
     }
 
     @Then("^I should see the success reset password on reset page")
     public void hasSuccessMessage() throws Throwable {
         Assert.assertTrue(on(Member_Reset_Password_Msite_Page.class).hasSuccessResetMessage(),"Checking reset password is successful if user getting the success message on reset page");
-        on(Member_Reset_Password_Msite_Page.class).allureResetPassword((String)(Global.map.get("email is reset")),(String)Global.map.get("current_pass"));
+        on(Member_Reset_Password_Msite_Page.class).allureResetPassword((String)(Global.getMap().get("email is reset")),(String)Global.getMap().get("current_pass"));
     }
 }

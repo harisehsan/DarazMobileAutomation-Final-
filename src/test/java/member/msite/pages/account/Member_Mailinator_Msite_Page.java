@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Member_Mailinator_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.account.mailinator_mail");
+    public static String page_url = Global.getConfig().getString("member.account.mailinator_mail");
 
     @FindBy(css = "#inboxfield") private WebElement mail_txtField;
     @FindBy(css = ".btn-dark") private WebElement go_btn;

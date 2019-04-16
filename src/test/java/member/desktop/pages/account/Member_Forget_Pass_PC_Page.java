@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class Member_Forget_Pass_PC_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url") + "/user/forget-password";
+    public static String page_url = Global.getConfig().getString("member.url") + "/user/forget-password";
 
     @FindBy(css = "div > input[type='text']") private WebElement email_txtField;
     @FindBy(css = ".next-btn-large") private WebElement submit_btn;

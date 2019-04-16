@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class Address_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url") + "/address";
+    public static String page_url = Global.getConfig().getString("member.url") + "/address";
 
     @FindBy(css = "div.address-list-footer > button") private WebElement addNewAddress_btn;
     @FindBy(css = "div.mod-input-name > input") private WebElement addressName_txtField;

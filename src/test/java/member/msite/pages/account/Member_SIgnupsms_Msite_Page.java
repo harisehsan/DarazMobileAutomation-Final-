@@ -8,7 +8,7 @@ import base.PageObject;
 
 public class Member_SIgnupsms_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.msite_url") + "/user/register";
+    public static String page_url = Global.getConfig().getString("member.msite_url") + "/user/register";
 
     @FindBy(css = ".mod-input-phone input") private WebElement phone_txtField;
     @FindBy(className = "mod-sendcode-btn") private WebElement send_btn;

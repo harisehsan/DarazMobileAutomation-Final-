@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 @CucumberOptions(
         glue = {"_base.global_steps.msite_steps","_base.global_steps.desktop_steps","_base.global_steps.api_steps"},
         plugin = {"pretty",
-                "io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm",
+                "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm",
                 "html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/json-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun-reports/rerun.txt"
@@ -28,7 +28,7 @@ public class TestRunner extends CucumberRunner {
         testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
     }
 
-    @DataProvider
+    @DataProvider(parallel = true)
     public Object[][] scenarios() {
         return testNGCucumberRunner.provideScenarios();
     }

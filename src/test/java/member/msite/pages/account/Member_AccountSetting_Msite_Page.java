@@ -9,7 +9,7 @@ import base.PageObject;
 
 public class Member_AccountSetting_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.msite_url") + "/user/setting";
+    public static String page_url = Global.getConfig().getString("member.msite_url") + "/user/setting";
 
     @FindBy(className = "logout") private WebElement logout_btn;
     @FindBy(className = "ok") private WebElement ok_btn;

@@ -7,7 +7,7 @@ import base.PageObject;
 
 public class Seller_Home_Page extends PageObject {
 
-    private static final String page_url = Global.config.getString("asc.home_url");
+    private static final String page_url = Global.getConfig().getString("asc.home_url");
 
     @FindBy(css = ".la-header-nav-user-content .username") private WebElement displayed_user_nav;
 

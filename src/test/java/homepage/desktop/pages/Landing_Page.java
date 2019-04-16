@@ -3,9 +3,6 @@ package homepage.desktop.pages;
 
 import base.*;
 import global.Global;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 
 import java.util.regex.Pattern;
 
@@ -16,10 +13,10 @@ public class Landing_Page extends PageObject {
     }
 
     public boolean isPlayStoreLandingPage() {
-        return currentUrl().contains(Global.config.getString("homepage.playstore_url"));
+        return currentUrl().contains(Global.getConfig().getString("homepage.playstore_url"));
     }
 
     public boolean isAppStoreLandingPage() {
-        return currentUrl().contains(Global.config.getString("homepage.appstore_id"));
+        return currentUrl().contains(Global.getConfig().getString("homepage.appstore_id"));
     }
 }

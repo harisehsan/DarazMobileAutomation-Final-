@@ -7,17 +7,17 @@ public interface AllureAttachment {
 
     @Attachment("{0}")
     static byte[] attachScreenShot(String name) {
-        return Global.browser.takeScreenShot();
+        return Global.getBrowser().takeScreenShot();
     }
 
     @Attachment(value = "{0}", type = "text/html",fileExtension = ".html")
     static String attachHtml(String name) {
-        return Global.browser.getHtml();
+        return Global.getBrowser().getHtml();
     }
 
     @Attachment(value = "{0}", type = "text/plain")
     static String attachURL(String name) {
-        return Global.browser.getUrl();
+        return Global.getBrowser().getUrl();
     }
 
     @Attachment(value = "{0}", type = "text/plain")

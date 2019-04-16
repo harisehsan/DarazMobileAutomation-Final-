@@ -11,7 +11,7 @@ import java.util.List;
 
 public class OrderManagement_Page extends PageObject {
 
-    public static final String page_url = Global.config.getString("asc.home_url")+"/order/query";
+    public static final String page_url = Global.getConfig().getString("asc.home_url")+"/order/query";
 
 
     @FindBy(css = ".orders-table") private WebElement orders_table;

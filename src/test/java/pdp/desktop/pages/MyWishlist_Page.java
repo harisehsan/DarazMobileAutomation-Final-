@@ -19,7 +19,7 @@ public class MyWishlist_Page extends PageObject {
         for (WebElement element : productlist) {
             try{
                 String myText = element.findElement(By.cssSelector("a[class~=title]")).getText();
-                if (myText.equals(Global.map.get("currentProductTitle"))) {
+                if (myText.equals(Global.getMap().get("currentProductTitle"))) {
                     productExist = true;
                 }
             }catch (StaleElementReferenceException ex){

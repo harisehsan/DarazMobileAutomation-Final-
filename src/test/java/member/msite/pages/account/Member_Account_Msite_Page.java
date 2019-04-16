@@ -11,7 +11,7 @@ import java.util.Base64;
 
 public class Member_Account_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.msite_url") + "/user/account";
+    public static String page_url = Global.getConfig().getString("member.msite_url") + "/user/account";
 
     @FindBy(css = "div.mod-minlogin.member > div") private WebElement accountTittle_lbl;
     @FindBy(css = "div.account-newsletter > div") private WebElement newsletterConfig_btn;

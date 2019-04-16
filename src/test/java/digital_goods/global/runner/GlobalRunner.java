@@ -20,7 +20,7 @@ import static com.codeborne.selenide.Selenide.*;
         //tags = {"@SelectOperatorBlockManual"},
         //tags = {"@Debug"},
         //glue={"lazada.topup.steps", "global.steps", "lazada.login.steps", "lazada.global.steps"},
-        format = {"pretty"}
+        plugin = {"pretty"}
 )
 public class GlobalRunner {
 

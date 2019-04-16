@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 
 public class Member_Change_Email_Pass_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url") + "/user/change-password";
+    public static String page_url = Global.getConfig().getString("member.url") + "/user/change-password";
 
     @FindBy(css = ".mod-input-password input") private WebElement currentPass_txtField;
     @FindBy(css = ".mod-input-newPassword input") private WebElement newPass_txtField;

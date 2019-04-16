@@ -18,10 +18,10 @@ import java.util.Base64;
 
 public class Account_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url") + "/user/profile";
-    private static String create_address_api_url = Global.config.getString("member.url")+"/address/api/createAddress";
-    private static String getIpAddress_api_url = Global.config.getString("member.url") + "/address/api/listAddress";
-    private static String deleteAddress_api_url = Global.config.getString("member.url") + "/address/api/deleteAddress";
+    public static String page_url = Global.getConfig().getString("member.url") + "/user/profile";
+    private static String create_address_api_url = Global.getConfig().getString("member.url")+"/address/api/createAddress";
+    private static String getIpAddress_api_url = Global.getConfig().getString("member.url") + "/address/api/listAddress";
+    private static String deleteAddress_api_url = Global.getConfig().getString("member.url") + "/address/api/deleteAddress";
 
     @FindBy(css = "div.breadcrumb > a") private WebElement mainContainer_lbl;
     @FindBy(id = "lzd_current_logon_user_name") private WebElement nameOfUser_lbl;
@@ -154,7 +154,7 @@ public class Account_Page extends PageObject {
     }
 
     public void createAddressByApi(Config address,String phone,String name){
-        String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
+        String csrfToken = Global.getBrowser().getCookiesAsMap().get("_tb_token_");
         String locationTreeAddressArray=address.getString("locationTreeAddressArray");
         String locationTreeAddressId=address.getString("locationTreeAddressId");
         String locationTreeAddressName=address.getString("locationTreeAddressName");
@@ -166,7 +166,7 @@ public class Account_Page extends PageObject {
     }
 
     public String getSecondAddressID() {
-        String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
+        String csrfToken = Global.getBrowser().getCookiesAsMap().get("_tb_token_");
         String[] args = {getIpAddress_api_url, csrfToken};
         JsonObject response = XhrHelper.executeXhrRequest("member_getList_address.js", args);
         if (!String.valueOf(response.get("success")).equalsIgnoreCase("true")) {
@@ -177,7 +177,7 @@ public class Account_Page extends PageObject {
     }
 
     public void deleteAddressByApi(String addressId) {
-        String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
+        String csrfToken = Global.getBrowser().getCookiesAsMap().get("_tb_token_");
         String[] args = {deleteAddress_api_url, csrfToken, addressId};
         JsonObject response = XhrHelper.executeXhrRequest("member_delete_address.js", args);
         if (!String.valueOf(response.get("success")).equalsIgnoreCase("true")) {

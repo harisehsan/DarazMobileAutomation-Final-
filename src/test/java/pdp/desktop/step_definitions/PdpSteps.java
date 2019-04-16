@@ -23,7 +23,7 @@ public class PdpSteps extends BaseSteps {
 
     @Then("^I should see wishlist icon turns to orange$")
     public void isWishlistIconChangedColor() {
-        Assert.assertEquals(on(Pdp_Page.class).currentWishlistIconColor(), Global.config.getString("pdp.wishlist_clicked_icon_color"));
+        Assert.assertEquals(on(Pdp_Page.class).currentWishlistIconColor(), Global.getConfig().getString("pdp.wishlist_clicked_icon_color"));
     }
 
     @Then("^I should see the product on My wishlist page$")
@@ -38,7 +38,7 @@ public class PdpSteps extends BaseSteps {
             case "valid_question":
                 String validQuestion = RandomHelper.randomSentence(10);
                 on(Pdp_Page.class).askQuestion(validQuestion);
-                Global.map.put("Valid_Question", validQuestion);
+                Global.getMap().put("Valid_Question", validQuestion);
                 break;
             case "question_contain_email":
                 on(Pdp_Page.class).askQuestion(RandomHelper.randomSentence(5)+ " " + RandomHelper.randomTestMail());
@@ -54,20 +54,20 @@ public class PdpSteps extends BaseSteps {
 
     @Then("^I should see valid_question on the question list$")
     public void getFirstQuestion() {
-        Assert.assertEquals(on(Pdp_Page.class).getFirstQuestion(), Global.map.get("Valid_Question"), "Verification failed: Valid question is not found");
+        Assert.assertEquals(on(Pdp_Page.class).getFirstQuestion(), Global.getMap().get("Valid_Question"), "Verification failed: Valid question is not found");
     }
 
     @Then("^I should see error message that (.*?)$")
     public void errorMessageForInvalidQuestion(String errorMessage) {
         switch (errorMessage) {
             case "question_should_not_contain_email":
-                Assert.assertEquals(on(Pdp_Page.class).errorMessageForInvalidQuestion(), Global.config.getString("pdp.error_message_for_question_contain_email"), "Verification failed: No error message for invalid question");
+                Assert.assertEquals(on(Pdp_Page.class).errorMessageForInvalidQuestion(), Global.getConfig().getString("pdp.error_message_for_question_contain_email"), "Verification failed: No error message for invalid question");
                 break;
             case "question_should_not_contain_phonenumber":
-                Assert.assertEquals(on(Pdp_Page.class).errorMessageForInvalidQuestion(), Global.config.getString("pdp.error_message_for_question_contain_phonenumber"), "Verification failed: No error message for invalid question");
+                Assert.assertEquals(on(Pdp_Page.class).errorMessageForInvalidQuestion(), Global.getConfig().getString("pdp.error_message_for_question_contain_phonenumber"), "Verification failed: No error message for invalid question");
                 break;
             case "question_should_not_contain_externalWebLink":
-                Assert.assertEquals(on(Pdp_Page.class).errorMessageForInvalidQuestion(), Global.config.getString("pdp.error_message_for_question_contain_externalWeblink"), "Verification failed: No error message for invalid question");
+                Assert.assertEquals(on(Pdp_Page.class).errorMessageForInvalidQuestion(), Global.getConfig().getString("pdp.error_message_for_question_contain_externalWeblink"), "Verification failed: No error message for invalid question");
                 break;
         }
 
@@ -145,15 +145,15 @@ public class PdpSteps extends BaseSteps {
 
     @And("^I enter a number that equals to maximum available quantity$")
     public void enterQuantity() {
-        Global.map.put("Max_Available_Quantity", on(Pdp_Page.class).getMaxAvailableQuantity());
-        int number = (int) Global.map.get("Max_Available_Quantity");
+        Global.getMap().put("Max_Available_Quantity", on(Pdp_Page.class).getMaxAvailableQuantity());
+        int number = (int) Global.getMap().get("Max_Available_Quantity");
 
         on(Pdp_Page.class).enterProductQuantity(number);
     }
 
     @Then("^I should see that quantity number cannot exceed more than maximum available quantity$")
     public void checkItemQuantityCanBeInputed() {
-        Assert.assertEquals(Global.map.get("Max_Available_Quantity"), on(Pdp_Page.class).getItemQuantity(), "Maximum Quantity that can be inputted is not correct");
+        Assert.assertEquals(Global.getMap().get("Max_Available_Quantity"), on(Pdp_Page.class).getItemQuantity(), "Maximum Quantity that can be inputted is not correct");
     }
 
     @Then("^I should see product quantity on Cart same to quantity on pdp$")
@@ -164,42 +164,42 @@ public class PdpSteps extends BaseSteps {
     @And("^I change a new address for Leadtime$")
     public void changeAddressInLeadtime() {
         String beforeChangedAddress = on(Pdp_Page.class).getCurrentAddress();
-        Global.map.put("beforeChangedAddress",beforeChangedAddress);
+        Global.getMap().put("beforeChangedAddress",beforeChangedAddress);
         on(Pdp_Page.class).clickChangeLink();
         on(Pdp_Page.class).selectRandomAddress();
     }
 
     @Then("^I should see Leadtime with new address$")
     public void isNewAddressSelected() {
-        on(Pdp_Page.class).waitUntilAddressChanged((String) Global.map.get("beforeChangedAddress"));
+        on(Pdp_Page.class).waitUntilAddressChanged((String) Global.getMap().get("beforeChangedAddress"));
         Assert.assertEquals(on(Pdp_Page.class).getCurrentAddress(), on(Pdp_Page.class).randomAddress, "Random address is not selected");
     }
 
     @And("^I submit new postcode in Leadtime$")
     public void submitPostCode() {
         String beforeChangedAddress = on(Pdp_Page.class).getCurrentAddress();
-        Global.map.put("beforeChangedAddress",beforeChangedAddress);
+        Global.getMap().put("beforeChangedAddress",beforeChangedAddress);
         on(Pdp_Page.class).clickChangeLink();
-        on(Pdp_Page.class).submitPostCode(Global.config.getString("pdp.valid_postcode"));
+        on(Pdp_Page.class).submitPostCode(Global.getConfig().getString("pdp.valid_postcode"));
     }
 
     @Then("^I should see new Leadtime address has postcode$")
     public void newAddressHasPostCode() {
-        on(Pdp_Page.class).waitUntilAddressChanged((String) Global.map.get("beforeChangedAddress"));
-        Assert.assertTrue(on(Pdp_Page.class).getCurrentAddress().contains(Global.config.getString("pdp.valid_postcode")));
+        on(Pdp_Page.class).waitUntilAddressChanged((String) Global.getMap().get("beforeChangedAddress"));
+        Assert.assertTrue(on(Pdp_Page.class).getCurrentAddress().contains(Global.getConfig().getString("pdp.valid_postcode")));
     }
 
     @And("^I send a message to shop$")
     public void iSendAMessageToShop() throws Throwable {
         String message = RandomHelper.randomAlphabetString(5) + RandomHelper.randomNumber(5);
-        Global.map.put("current_chat_message",message);
+        Global.getMap().put("current_chat_message",message);
         on(Pdp_Page.class).submitMessageToShop(message);
     }
 
     @Then("^I should see my message in Message popup$")
     public void iShouldSeeMyMessageInMessagePopup() throws Throwable {
         String messageList = on(Pdp_Page.class).messageListPopup();
-        String submittedChatMessage = Global.map.get("current_chat_message").toString();
+        String submittedChatMessage = Global.getMap().get("current_chat_message").toString();
         Assert.assertTrue(messageList.contains(submittedChatMessage),"Message is not sent");
     }
 }

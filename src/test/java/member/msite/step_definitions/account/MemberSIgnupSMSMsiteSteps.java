@@ -11,12 +11,12 @@ public class MemberSIgnupSMSMsiteSteps extends BaseSteps {
     @Given("^On Msite I go to signup by sms page")
     public void signupSMS() throws Throwable {
         visit(Member_SIgnupsms_Msite_Page.class);
-        Global.browser.refresh();
+        Global.getBrowser().refresh();
     }
 
     @And("^ON Msite I input the phone number")
     public void inputPhone() throws Throwable {
-        String mobilephoneTemplate = Global.config.getString("member.phone_number_template");
+        String mobilephoneTemplate = Global.getConfig().getString("member.phone_number_template");
         String mobilephone = RandomHelper.randomPhoneNumber(mobilephoneTemplate);
         on(Member_SIgnupsms_Msite_Page.class).inputPhone(mobilephone);
     }
@@ -28,7 +28,7 @@ public class MemberSIgnupSMSMsiteSteps extends BaseSteps {
 
     @And("^On Msite I input the smscode")
     public void inputSMSCode() throws Throwable {
-        String smscode = Global.config.getString("member.account.sms_code");
+        String smscode = Global.getConfig().getString("member.account.sms_code");
         on(Member_SIgnupsms_Msite_Page.class).inputSMSCode(smscode);
     }
 

@@ -11,11 +11,41 @@ import com.typesafe.config.Config;
  */
 public class Global {
 
-    public static Browser browser;
+    private static ThreadLocal<Browser> tlBrowser = new ThreadLocal<>();
+    private static ThreadLocal<PageHierarchy> tlPageHierarchy = new ThreadLocal<>();
+    private static ThreadLocal<Map<String,Object>> tlMap = new ThreadLocal<>();
 
-    public static Map<String,Object> map;
+    private static Config config;
 
-    public static Config config;
+    public static Browser getBrowser(){
+        return tlBrowser.get();
+    }
 
-    public static PageHierarchy pageHierarchy;
+    public static void setBrowser(Browser browser){
+        tlBrowser.set(browser);
+    }
+
+    public static PageHierarchy getPageHierachy(){
+        return tlPageHierarchy.get();
+    }
+
+    public static void setPageHierarchy(PageHierarchy pageHierarchy){
+        tlPageHierarchy.set(pageHierarchy);
+    }
+
+    public static Map<String,Object> getMap(){
+        return tlMap.get();
+    }
+
+    public static void setMap(Map<String,Object> map){
+        tlMap.set(map);
+    }
+
+    public static Config getConfig(){
+        return config;
+    }
+
+    public static void setConfig(Config globalConfig){
+        config = globalConfig;
+    }
 }

@@ -4,7 +4,7 @@ import global.Global;
 
 public class OrderDetail_Page {
 
-    private static final String page_url = Global.config.getString("asc.home_url");
+    private static final String page_url = Global.getConfig().getString("step2.url");
 
 
 }
