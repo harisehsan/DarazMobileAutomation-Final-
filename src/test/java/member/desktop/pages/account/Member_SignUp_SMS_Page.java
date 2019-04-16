@@ -9,7 +9,7 @@ import base.PageObject;
 
 public class Member_SignUp_SMS_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url") + "/user/register";
+    public static String page_url = Global.getConfig().getString("member.url") + "/user/register";
 
     @FindBy(css = ".mod-input-phone input") private WebElement phone_txtField;
     @FindBy(className = "mod-sendcode") private WebElement sendCode_btn;
@@ -43,7 +43,7 @@ public class Member_SignUp_SMS_Page extends PageObject {
     }
 
     public void setSliderbtn() {
-        Actions move = new Actions(Global.browser.getWebDriver());
+        Actions move = new Actions(Global.getBrowser().getWebDriver());
         Action actions = move.clickAndHold(slider_btn).moveByOffset(500, 0).release().build();
         actions.perform();
     }

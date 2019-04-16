@@ -16,24 +16,24 @@ public class AddressMsiteSteps extends BaseSteps {
 
     @And("I input content of (.*?)$")
     public void inputAddress(String address) throws Throwable {
-        String name = Global.config.getString("member.account.name");
-        String mobilephoneTemplate = Global.config.getString("member.phone_number_template");
+        String name = Global.getConfig().getString("member.account.name");
+        String mobilephoneTemplate = Global.getConfig().getString("member.phone_number_template");
         String phone = RandomHelper.randomPhoneNumber(mobilephoneTemplate);
         String address_detail = "123 " +  RandomHelper.randomAlphabetString(5);
-        Global.map.put("address_detail", address_detail);
+        Global.getMap().put("address_detail", address_detail);
         String address_delete = "456 " + RandomHelper.randomAlphabetString(5);
-        Global.map.put("address_delete", address_delete);
+        Global.getMap().put("address_delete", address_delete);
         visit(Address_Msite_Page.class);
-        Global.browser.refresh();
+        Global.getBrowser().refresh();
         on(Address_Msite_Page.class).clickNewAddress();
         on(Address_Msite_Page.class).inputAddressDetail(name,phone);
         switch (address) {
             case "address_detail":
-                String addressDetail = (String) Global.map.get("address_detail");
+                String addressDetail = (String) Global.getMap().get("address_detail");
                 on(Address_Msite_Page.class).inputAddressContent(addressDetail);
                 break;
             case "address_delete":
-                String addressDelete = (String) Global.map.get("address_delete");
+                String addressDelete = (String) Global.getMap().get("address_delete");
                 on(Address_Msite_Page.class).inputAddressContent(addressDelete);
                 break;
         }
@@ -47,29 +47,29 @@ public class AddressMsiteSteps extends BaseSteps {
     @When("^I go to edit address information")
     public void editAddressInformation() throws Throwable {
         String new_name = RandomHelper.randomAlphabetString(6);
-        Global.map.put("edit_address_name",new_name);
-        String mobilephoneTemplate = Global.config.getString("member.phone_number_template");
+        Global.getMap().put("edit_address_name",new_name);
+        String mobilephoneTemplate = Global.getConfig().getString("member.phone_number_template");
         String new_phone = RandomHelper.randomPhoneNumber(mobilephoneTemplate);
-        Global.map.put("edit_address_phone",new_phone);
+        Global.getMap().put("edit_address_phone",new_phone);
         on(Address_Msite_Page.class).editAddressInformation(new_name,new_phone);
     }
 
     @And("^I delete address on address book")
     public void deleteAddress() throws Throwable {
-        Global.browser.refresh();
+        Global.getBrowser().refresh();
         on(Address_Msite_Page.class).deleteAddressProgress();
     }
 
     @Then("^On Msite I should see the new address name")
     public void hasNewAddressName() throws Throwable {
-        String expectAddressName = (String) Global.map.get("edit_address_name");
+        String expectAddressName = (String) Global.getMap().get("edit_address_name");
         String actualAddressName = (on(Address_Msite_Page.class).hasNewAddressName());
         Assert.assertEquals(actualAddressName, expectAddressName, "Checking the current address name after should be same with address name edited");
     }
 
     @Then("^I should see one address on address page$")
     public void existAddress() throws Throwable {
-        Global.browser.refresh();
+        Global.getBrowser().refresh();
         Assert.assertTrue(on(Address_Msite_Page.class).hasAddress(), "Checking the address book should have at least one address");
     }
 }

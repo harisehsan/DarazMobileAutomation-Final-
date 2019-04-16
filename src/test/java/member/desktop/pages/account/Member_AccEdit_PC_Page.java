@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Member_AccEdit_PC_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url") + "/user/profile#/profile/edit";
+    public static String page_url = Global.getConfig().getString("member.url") + "/user/profile#/profile/edit";
 
     @FindBy(css = ".mod-input-name input") private WebElement editName_txtField;
     @FindBy(className = "mod-input-close-icon") private WebElement clearOldName_btn;

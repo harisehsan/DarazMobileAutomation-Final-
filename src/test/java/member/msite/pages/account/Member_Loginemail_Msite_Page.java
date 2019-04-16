@@ -8,7 +8,7 @@ import base.PageObject;
 
 public class Member_Loginemail_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.msite_url") + "/user/login";
+    public static String page_url = Global.getConfig().getString("member.msite_url") + "/user/login";
 
     @FindBy(css = ".mod-input-loginName input") private WebElement email_txtField;
     @FindBy(css = ".mod-input-password input") private WebElement password_txtField;

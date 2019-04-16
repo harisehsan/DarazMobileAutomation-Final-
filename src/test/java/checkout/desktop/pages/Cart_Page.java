@@ -3,7 +3,6 @@ package checkout.desktop.pages;
 import base.PageObject;
 import global.Global;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,7 +10,7 @@ import java.util.List;
 
 public class Cart_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("checkout.cart_url") + "/cart";
+    public static String page_url = Global.getConfig().getString("checkout.cart_url") + "/cart";
 
     @FindBy(css = ".content") private List<WebElement> productlist;
     @FindBy(css = ".automation-checkout-order-total-button-cartButton") private WebElement goToCart_btn;
@@ -41,7 +40,7 @@ public class Cart_Page extends PageObject {
         for (WebElement element : productlist) {
             try{
                 String myText = element.findElement(By.cssSelector("a[class~=title]")).getText();
-                if (myText.equals(Global.map.get("currentProductTitle"))) {
+                if (myText.equals(Global.getMap().get("currentProductTitle"))) {
                     productExist = true;
                 }
             }catch (StaleElementReferenceException ex) {

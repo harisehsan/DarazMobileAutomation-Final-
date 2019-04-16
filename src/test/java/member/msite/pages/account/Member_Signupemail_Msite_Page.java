@@ -10,7 +10,7 @@ import base.PageObject;
 
 public class Member_Signupemail_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url") + "/user/register";
+    public static String page_url = Global.getConfig().getString("member.url") + "/user/register";
 
     @FindBy(css = "div.signup-by-mobile-foot > div > button") private WebElement signupMail_btn;
     @FindBy(css = ".mod-input-name input") private WebElement name_txtField;
@@ -49,7 +49,7 @@ public class Member_Signupemail_Msite_Page extends PageObject {
     }
 
     public void clickAndHoldSlider() {
-        Actions move = new Actions(Global.browser.getWebDriver());
+        Actions move = new Actions(Global.getBrowser().getWebDriver());
         Action actions = move.clickAndHold(slider_btn).moveByOffset(1800, 0).release().build();
         actions.perform();
     }

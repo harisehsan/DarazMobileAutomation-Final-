@@ -127,7 +127,7 @@ public class Pdp_Page extends PageObject {
 
     public String getFirstQuestion() {
         waitUntilPageReady();
-        waitUntilQuestionAdded(Global.map.get("Valid_Question").toString());
+        waitUntilQuestionAdded(Global.getMap().get("Valid_Question").toString());
         waitUntilVisible(firstQuestion_lbl);
         return firstQuestion_lbl.getText();
     }

@@ -23,7 +23,9 @@ public class Browser {
     }
 
     public void tearDown(){
-        driver.quit();
+        if(driver!=null){
+            driver.quit();
+        }
     }
 
     public WebDriver getWebDriver(){

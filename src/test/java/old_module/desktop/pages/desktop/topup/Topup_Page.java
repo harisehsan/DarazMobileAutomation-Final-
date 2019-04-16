@@ -16,7 +16,7 @@ public class Topup_Page extends PageObject {
     @FindBy(css = ".topup__submit-button") private  WebElement submit;
     @FindBy(css = ".topup-login-prompt__link") private WebElement login_button;
 
-    public static void visit(String page_url){ Global.browser.goTo(page_url); }
+    public static void visit(String page_url){ Global.getBrowser().goTo(page_url); }
 
     public Topup_Page(){ super();}
 
@@ -41,7 +41,7 @@ public class Topup_Page extends PageObject {
         if(!operatorValue.equals(operatorName)) {
             throw new Exception("auto-detection of the operator does not work correctly");
         }
-        Global.browser.getWebDriver().getCurrentUrl();
+        Global.getBrowser().getWebDriver().getCurrentUrl();
     }
 
     public void selectProduct(String nameProduct) throws InterruptedException {

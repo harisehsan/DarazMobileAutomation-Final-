@@ -12,7 +12,7 @@ public class MemberChangeEmailMsiteSteps extends BaseSteps {
     @When("^I go to account info page")
     public void goToAccountInfoPage() throws Throwable {
         on(Member_Account_Msite_Page.class).goToAccountInfo();
-        on(Member_ChangeEmail_Msite_Page.class).allureReportCurrentMail((String)Global.map.get("current_mail"));
+        on(Member_ChangeEmail_Msite_Page.class).allureReportCurrentMail((String)Global.getMap().get("current_mail"));
     }
 
     @And("^On Msite I change email by email verification code")
@@ -22,7 +22,7 @@ public class MemberChangeEmailMsiteSteps extends BaseSteps {
 
     @Then("^I should see the new mail on account info page")
     public void isNewEmailOnAccountInfoPage() throws Throwable {
-        Assert.assertTrue(on(Member_ChangeEmail_Msite_Page.class).hasNewEmail((String)Global.map.get("current_mail")), "Checking new email should be display on account information page");
-        on(Member_ChangeEmail_Msite_Page.class).allureReportCurrentMail((String)Global.map.get("current_mail"));
+        Assert.assertTrue(on(Member_ChangeEmail_Msite_Page.class).hasNewEmail((String)Global.getMap().get("current_mail")), "Checking new email should be display on account information page");
+        on(Member_ChangeEmail_Msite_Page.class).allureReportCurrentMail((String)Global.getMap().get("current_mail"));
     }
 }

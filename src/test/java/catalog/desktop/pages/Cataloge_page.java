@@ -18,7 +18,7 @@ public class Cataloge_page extends PageObject {
 
 
 
-    public static final String page_url = Global.config.getString("homepage.catalog_url");
+    public static final String page_url = Global.getConfig().getString("homepage.catalog_url");
 
     @FindBy(xpath = "//div[div/text()='Color Family']/div[@class='c3Guy3' or @class='c2uiAC']")
     private WebElement colorselection_List;
@@ -174,7 +174,7 @@ public class Cataloge_page extends PageObject {
     public void assertFilterRemoved(String arg0) {
         switch (arg0) {
             case "All":
-                Global.browser.refresh();
+                Global.getBrowser().refresh();
                 try {
                     assertFalse(filtersAppliedCatlog_div.isDisplayed());
                 } catch (Exception e) {
@@ -182,7 +182,7 @@ public class Cataloge_page extends PageObject {
                 }
                 break;
             case "One":
-                Global.browser.refresh();
+                Global.getBrowser().refresh();
                 cross_Button.size();
                 assertTrue(true);
                 break;

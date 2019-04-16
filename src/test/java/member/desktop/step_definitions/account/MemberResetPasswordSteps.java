@@ -21,8 +21,8 @@ public class MemberResetPasswordSteps extends BaseSteps {
 
     @And("^I submit email to reset password process")
     public void submitEmail() throws Throwable {
-        String emailReset = Global.config.getString("member.reset_password_mail");
-        Global.map.put("current_mail",emailReset);
+        String emailReset = Global.getConfig().getString("member.reset_password_mail");
+        Global.getMap().put("current_mail",emailReset);
         on(Member_Forget_Pass_PC_Page.class).inputEmail(emailReset);
     }
 
@@ -35,7 +35,7 @@ public class MemberResetPasswordSteps extends BaseSteps {
     @And("^I process reset password on reset password page")
     public void processResetPass() throws Throwable {
         String randomPassword = RandomHelper.randomAlphabetString(5) + RandomHelper.randomNumber(5);
-        Global.map.put("current_pass",randomPassword);
+        Global.getMap().put("current_pass",randomPassword);
         on(Member_Reset_PassWord_Page.class).resetPassword(randomPassword);
         AllureAttachment.attachComment("reset_password", randomPassword);
     }

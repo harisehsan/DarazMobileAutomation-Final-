@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
         features="@target/rerun.txt",
         tags = "@TopupMobileSmokeSG",
         glue={"lazada.topup.steps", "global.steps", "lazada.login.steps", "lazada.steps"},
-        format = {"pretty", "html:target/site/cucumber-pretty",
+        plugin = {"pretty", "html:target/site/cucumber-pretty",
                 "json:target/cucumber.json"}
 )
 

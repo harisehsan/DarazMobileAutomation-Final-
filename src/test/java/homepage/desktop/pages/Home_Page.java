@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class Home_Page extends PageObject {
 
-    public static final String page_url = Global.config.getString("homepage.home_url");
+    public static final String page_url = Global.getConfig().getString("homepage.home_url");
     @FindBy(css = "#anonLogin") private WebElement login_btn;
     @FindBy(css = "#topActionDownload") private WebElement appPopup_btn;
     @FindBy(css = ".get-the-app-download-text") private WebElement appLP_lbl;
@@ -66,7 +66,7 @@ public class Home_Page extends PageObject {
 
     public boolean isCustomerCarePopUpDisplayed() {
         waitUntilPageReady();
-        return customerCare_list.isDisplayed() && customerCare_list.getText().contains(Global.config.getString("homepage.help_center_text"));
+        return customerCare_list.isDisplayed() && customerCare_list.getText().contains(Global.getConfig().getString("homepage.help_center_text"));
     }
 
     public void switchToEnglish() {
@@ -74,7 +74,7 @@ public class Home_Page extends PageObject {
     }
 
     private List<WebElement> checkIfExists(By selector) {
-        return Global.browser.getWebDriver().findElements(selector);
+        return Global.getBrowser().getWebDriver().findElements(selector);
     }
 
     private boolean checkPageSwitchSuccessful() {

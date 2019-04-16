@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class Catalog_page extends PageObject {
 
-    public static final String page_url = Global.config.getString("homepage.catalog_url");
+    public static final String page_url = Global.getConfig().getString("homepage.catalog_url");
     @FindBy(xpath = "//div[div/text()='Color Family']/div[@class='c3Guy3' or @class='c2uiAC']")
     private WebElement colorselection_List;
     @FindBy(xpath = "//*[*/text()='Brand']/*[@class='c3Guy3' or @class='c2uiAC']")
@@ -121,7 +121,7 @@ public class Catalog_page extends PageObject {
 
     public void assertFilterShouldBeApplied() {
         //verify filtered results are from specific brand_List.
-        Global.browser.refresh();
+        Global.getBrowser().refresh();
         waitUntilPageReady();
         waitUntilClickable(catalogProduct_by);
         scrollToFilterDiv();
@@ -153,13 +153,13 @@ public class Catalog_page extends PageObject {
                 waitUntilClickable(clearLink_by);
                 scrollToFilterDiv();
                 clear_link.click();
-                Global.browser.refresh();
+                Global.getBrowser().refresh();
                 if(isExist(clearLink_by)){
                     clear_link.click();
                 }
                 break;
             case "One":
-                Global.browser.refresh();
+                Global.getBrowser().refresh();
                 scrollToFilterDiv();
                 waitUntilClickable(clearLink_by);
                 cross_Button.get(random.nextInt(cross_Button.size())).click();
@@ -171,14 +171,14 @@ public class Catalog_page extends PageObject {
     public void assertFilterRemoved(String arg0) {
         switch (arg0) {
             case "All":
-                Global.browser.refresh();
+                Global.getBrowser().refresh();
                 try {
                     assertFalse(filtersAppliedCatlog_div.isDisplayed());
                 } catch (Exception e) {
                 }
                 break;
             case "One":
-                Global.browser.refresh();
+                Global.getBrowser().refresh();
                 cross_Button.size();
                 assertTrue(true);
                 break;

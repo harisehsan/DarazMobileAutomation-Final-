@@ -5,13 +5,13 @@ import global.Global;
 public class BuyerSitePageHelper {
 
     public static void switchToEnglish(){
-        String languageCookieValue = Global.browser.getCookiesAsMap().get("hng");
+        String languageCookieValue = Global.getBrowser().getCookiesAsMap().get("hng");
         String [] languageValueCookieSplit = languageCookieValue.split("\\|");
         String defaultLanguage = languageValueCookieSplit[1].split("-")[0];
         if(!defaultLanguage.equalsIgnoreCase("en")){
             String englishCookieValue = languageCookieValue.replace(defaultLanguage,"en");
-            Global.browser.addCookie("hng",englishCookieValue);
-            Global.browser.refresh();
+            Global.getBrowser().addCookie("hng",englishCookieValue);
+            Global.getBrowser().refresh();
         }
     }
 }

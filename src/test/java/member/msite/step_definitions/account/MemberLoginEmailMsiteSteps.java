@@ -21,26 +21,26 @@ public class MemberLoginEmailMsiteSteps extends BaseSteps {
         visit(Member_AccountSetting_Msite_Page.class);
         on(Member_AccountSetting_Msite_Page.class).logOut();
         on(Member_AccountSetting_Msite_Page.class).setOkButton();
-        on(Member_Loginemail_Msite_Page.class).logInByEmail((String) Global.map.get("current_mail"),(String) Global.map.get("current_pass"));
+        on(Member_Loginemail_Msite_Page.class).logInByEmail((String) Global.getMap().get("current_mail"),(String) Global.getMap().get("current_pass"));
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
     }
 
     @And("^On Msite I input email just signned up")
     public void inputEmailSignUp() throws Throwable {
         String changed_pass = RandomHelper.randomAlphaNumericString(6);
-        Global.map.put("changed_pass", changed_pass);
-        on(Member_Loginemail_Msite_Page.class).inputEmail((String) Global.map.get("current_mail"));
-        on(Member_Loginemail_Msite_Page.class).inputPass((String) Global.map.get("changed_pass"));
+        Global.getMap().put("changed_pass", changed_pass);
+        on(Member_Loginemail_Msite_Page.class).inputEmail((String) Global.getMap().get("current_mail"));
+        on(Member_Loginemail_Msite_Page.class).inputPass((String) Global.getMap().get("changed_pass"));
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
     }
 
     @And("^On Msite I input account information to login by email page")
     public void logInByEmailMsite() throws Throwable {
-        String email = Global.config.getString("member.account.mail");
-        Global.map.put("current_mail", email);
+        String email = Global.getConfig().getString("member.account.mail");
+        Global.getMap().put("current_mail", email);
         on(Member_Loginemail_Msite_Page.class).inputEmail(email);
-        String pass = Global.config.getString("member.account.pass");
-        Global.map.put("current_pass", pass);
+        String pass = Global.getConfig().getString("member.account.pass");
+        Global.getMap().put("current_pass", pass);
         on(Member_Loginemail_Msite_Page.class).inputPass(pass);
         on(Member_Loginemail_Msite_Page.class).clickLoginButton();
     }

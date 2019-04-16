@@ -22,17 +22,17 @@ public class LoginSteps extends BaseSteps {
 
     @When("^I login using seller \"([^\"]*)\" account")
     public void login(String seller) {
-        Config ascConfig = Global.config.getConfig("asc");
+        Config ascConfig = Global.getConfig().getConfig("asc");
         String email = ascConfig.getString(seller+".mail");
         String pass = ascConfig.getString(seller+".pass");
-        Global.map.put("current_seller",seller);
+        Global.getMap().put("current_seller",seller);
         on(Seller_Login_Page.class).login(email,pass);
     }
 
     @Then("^I should be logged in$")
     public void verifyLoggedIn() {
-        Config ascConfig = Global.config.getConfig("asc");
-        String sellerNameConfig = String.format("%s.name",Global.map.get("current_seller"));
+        Config ascConfig = Global.getConfig().getConfig("asc");
+        String sellerNameConfig = String.format("%s.name",Global.getMap().get("current_seller"));
         String sellerName = ascConfig.getString(sellerNameConfig);
         String actualSellerName = on(Seller_Home_Page.class).currentSellerName();
         Assert.assertEquals(actualSellerName,sellerName);

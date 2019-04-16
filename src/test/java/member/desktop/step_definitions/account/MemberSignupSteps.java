@@ -5,14 +5,13 @@ import cucumber.api.java.en.*;
 import global.Global;
 import helper.RandomHelper;
 import member.desktop.pages.account.*;
-import org.testng.Assert;
 
 public class MemberSignupSteps extends BaseSteps {
 
     @Given("^I go to the sign up page by email")
     public void signUpByEmail() throws Throwable {
         visit(SignUp_Page.class);
-        Global.browser.refresh();
+        Global.getBrowser().refresh();
         on(SignUp_Page.class).switchToEnglish();
         on(SignUp_Page.class).signEmail();
     }
@@ -20,10 +19,10 @@ public class MemberSignupSteps extends BaseSteps {
     @And("^I process to signup user by email on signup by email page")
     public void signUpByEmailProcess() throws Throwable {
         String randomEmail = RandomHelper.randomTestMail();
-        Global.map.put("current_mail",randomEmail);
-        String pass = Global.config.getString("member.account.pass");
-        Global.map.put("current_pass",pass);
-        String name = Global.config.getString("member.account.name");
+        Global.getMap().put("current_mail",randomEmail);
+        String pass = Global.getConfig().getString("member.account.pass");
+        Global.getMap().put("current_pass",pass);
+        String name = Global.getConfig().getString("member.account.name");
         on(SignUp_Page.class).signUpByEmail(randomEmail,pass,name);
     }
 
@@ -39,10 +38,10 @@ public class MemberSignupSteps extends BaseSteps {
 
     @And("^I go to the inbox of current email")
     public void goToInboxMail() throws Throwable{
-        Global.browser.openNewTab("");
+        Global.getBrowser().openNewTab("");
         visit(Member_Mailinator_Page.class);
-        Global.browser.refresh();
-        on(Member_Mailinator_Page.class).inputMail(Global.map.get("current_mail").toString());
+        Global.getBrowser().refresh();
+        on(Member_Mailinator_Page.class).inputMail(Global.getMap().get("current_mail").toString());
         on(Member_Mailinator_Page.class).goToMailDetail();
     }
 

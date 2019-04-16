@@ -15,7 +15,7 @@ public class OrdersReadyToShipSteps extends BaseSteps {
         String orderNumber = on(OrderManagement_Page.class).getLastOrderNumber();
         on(OrderManagement_Page.class).openRTSForm(orderNumber);
         on(Rts_Form.class).performRTS();
-        Global.map.put("current_OrderNo",orderNumber);
+        Global.getMap().put("current_OrderNo",orderNumber);
         AllureAttachment.attachComment("Current Order Number",orderNumber);
     }
 }

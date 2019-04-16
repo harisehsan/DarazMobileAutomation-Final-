@@ -16,8 +16,8 @@ import base.PageObject;
 
 public class SignUp_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.url") + "/user/register";
-    private static String signUpApiUrl = Global.config.getString("member.url")+"/user/api/register";
+    public static String page_url = Global.getConfig().getString("member.url") + "/user/register";
+    private static String signUpApiUrl = Global.getConfig().getString("member.url")+"/user/api/register";
 
     @FindBy(className = "mod-change-register-btn") private WebElement email_btn;
     @FindBy(css = ".mod-input-email input") private WebElement email_txtField;
@@ -51,7 +51,7 @@ public class SignUp_Page extends PageObject {
     }
 
     public void setSliderbtn() {
-        Actions move = new Actions(Global.browser.getWebDriver());
+        Actions move = new Actions(Global.getBrowser().getWebDriver());
         Action actions = move.clickAndHold(slider_btn).moveByOffset(300, 0).release().build();
         actions.perform();
     }
@@ -62,8 +62,8 @@ public class SignUp_Page extends PageObject {
      * @param password
      */
     public void signUpApi(String userId, String password){
-        String csrfToken = Global.browser.getCookiesAsMap().get("_tb_token_");
-        String name = Global.config.getString("member.account.name");
+        String csrfToken = Global.getBrowser().getCookiesAsMap().get("_tb_token_");
+        String name = Global.getConfig().getString("member.account.name");
         String [] args = {signUpApiUrl,userId,password,name,csrfToken};
         JsonObject response = XhrHelper.executeXhrRequest("member_signup.js",args);
         if(!String.valueOf(response.get("success")).equalsIgnoreCase("true")){

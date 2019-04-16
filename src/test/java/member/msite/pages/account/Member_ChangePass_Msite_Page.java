@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class Member_ChangePass_Msite_Page extends PageObject {
-    public static String page_url = Global.config.getString("member.msite_url") + "/user/change-password";
+    public static String page_url = Global.getConfig().getString("member.msite_url") + "/user/change-password";
 
     @FindBy(css = ".mod-input-password input") private WebElement oldPass_txtField;
     @FindBy(css = ".mod-input-newPassword input") private WebElement newPass_txtField;

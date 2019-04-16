@@ -19,14 +19,14 @@ public class PpdSteps extends BaseSteps{
 
     @Given("^I go to normal pdp page")
     public void goToNormalPdpPage() throws Throwable {
-        Pdp_Page.setUrl(Global.config.getConfig("asc").getString("pdp_url"));
+        Pdp_Page.setUrl(Global.getConfig().getConfig("asc").getString("pdp_url"));
         visit(Pdp_Page.class);
     }
 
     @Given("^I go to \"([^\"]*)\" pdp page$")
     public void goToSpecificPDPage(String pdpType) throws Throwable {
         throw new RuntimeException("test exception");
-//        LinkedHashMap map = (LinkedHashMap) Global.config.getString("pdp_url");
+//        LinkedHashMap map = (LinkedHashMap) Global.getConfig().getString("pdp_url");
 //        Object url = map.get(pdpType);
 //        on(Pdp_Page.class).goToPDP((String) url);
     }
@@ -45,7 +45,7 @@ public class PpdSteps extends BaseSteps{
 
     @And("^I get PDP info")
     public void getPDPInfo() throws Throwable {
-        Global.map.put("current_info",on(Pdp_Page.class).getProductInfo());
+        Global.getMap().put("current_info",on(Pdp_Page.class).getProductInfo());
     }
 
     @And("^I select product variation")

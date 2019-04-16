@@ -17,7 +17,7 @@ public class XhrHelper {
 
     public static JsonObject executeXhrRequest(String scriptName, String [] args){
         String script = getXhrScript(scriptName);
-        JavascriptExecutor jsExec = Global.browser.getJsExecutor();
+        JavascriptExecutor jsExec = Global.getBrowser().getJsExecutor();
         Object result =  jsExec.executeAsyncScript(script, (Object[]) args);
         JsonParser parser = new JsonParser();
         return parser.parse(String.valueOf(result)).getAsJsonObject();

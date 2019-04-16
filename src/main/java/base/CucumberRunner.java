@@ -17,9 +17,8 @@ public class CucumberRunner {
 
     @BeforeSuite
     public void initConfiguration(){
+        Global.setConfig(ConfigInit.loadConfig(System.getProperty("env")));
         AllureGenerator.removeAllureResultFolder();
-        Global.config = ConfigInit.loadConfig(System.getProperty("env"));
-        Global.map = new HashMap<>();
     }
 
     @BeforeClass(alwaysRun = true)
@@ -34,12 +33,13 @@ public class CucumberRunner {
 
     @BeforeMethod
     public void setupBrowser() throws Exception {
-        Global.browser = BrowserFactory.createBrowser();
-        Global.pageHierarchy = new PageHierarchy();
+        Global.setMap(new HashMap<>());
+        Global.setBrowser(BrowserFactory.createBrowser());
+        Global.setPageHierarchy(new PageHierarchy());
     }
 
     @AfterMethod(alwaysRun = true)
     public void teardownBrowser(ITestResult result) throws Exception {
-        Global.browser.tearDown();
+        Global.getBrowser().tearDown();
     }
 }

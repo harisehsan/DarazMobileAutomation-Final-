@@ -7,7 +7,7 @@ import base.PageObject;
 
 public class Member_Loginsms_Msite_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.msite_url") + "/user/login";
+    public static String page_url = Global.getConfig().getString("member.msite_url") + "/user/login";
 
     @FindBy(css = ".mod-input-phone input") private WebElement phone_txtField;
     @FindBy(className = "mod-sendcode") private WebElement sendCode_btn;

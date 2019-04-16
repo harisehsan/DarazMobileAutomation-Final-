@@ -17,15 +17,15 @@ public class GlobalDesktopSteps extends BaseSteps {
     @And("^I login by email on lazada/daraz")
     public void globalLoginByEmail()throws Throwable {
         visit(Member_Login_Page.class);
-        String email = Global.config.getString("member.account.mail");
-        String pass = Global.config.getString("member.account.pass");
+        String email = Global.getConfig().getString("member.account.mail");
+        String pass = Global.getConfig().getString("member.account.pass");
         on(Member_Login_Page.class).loginEmailPass(email,pass);
     }
 
     @When("^I get the product title$")
     public void getProductTitle(){
         String currentProductTitle = on(Pdp_Page.class).getProductTitle();
-        Global.map.put("currentProductTitle", currentProductTitle);
+        Global.getMap().put("currentProductTitle", currentProductTitle);
     }
 
     @Given("^I go to a normal pdp page$")
@@ -102,13 +102,13 @@ public class GlobalDesktopSteps extends BaseSteps {
     @Given("I sign up by slider with email")
     public void signUpBySlider() {
         visit(SignUp_Page.class);
-        Global.browser.refresh();
+        Global.getBrowser().refresh();
         on(SignUp_Page.class).signEmail();
         String randomEmail = RandomHelper.randomTestMail();
-        Global.map.put("current_mail",randomEmail);
-        String pass = Global.config.getString("member.account.pass");
-        Global.map.put("current_pass",pass);
-        String name = Global.config.getString("member.account.name");
+        Global.getMap().put("current_mail",randomEmail);
+        String pass = Global.getConfig().getString("member.account.pass");
+        Global.getMap().put("current_pass",pass);
+        String name = Global.getConfig().getString("member.account.name");
         on(SignUp_Page.class).signUpByEmail(randomEmail,pass,name);
         on(SignUp_Page.class).setSliderbtn();
     }

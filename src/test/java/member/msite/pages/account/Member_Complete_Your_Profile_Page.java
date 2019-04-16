@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class Member_Complete_Your_Profile_Page extends PageObject {
 
-    public static String page_url = Global.config.getString("member.msite_url") + "/user/complete-profile";
+    public static String page_url = Global.getConfig().getString("member.msite_url") + "/user/complete-profile";
 
     @FindBy(css = ".mod-input-name input") private WebElement name_txtField;
     @FindBy(css = ".mod-input-email input") private WebElement email_txtField;
