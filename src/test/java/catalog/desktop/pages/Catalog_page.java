@@ -185,7 +185,7 @@ public class Catalog_page extends PageObject {
         }
     }
 
-    private void scrollToFilterDiv(){
+    public void scrollToFilterDiv(){
         if(isExist(catalogPageBanner_by)){
             scrollToView(catalogBanner_div_ele);}
     }
