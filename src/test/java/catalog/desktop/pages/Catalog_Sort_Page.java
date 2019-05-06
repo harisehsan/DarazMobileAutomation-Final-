@@ -19,9 +19,9 @@ public class Catalog_Sort_Page extends PageObject {
 
 private By sort_By_drpDown_By = By.cssSelector("div#root div.c3trXJ > div > div > div > div");
 
-Catalog_page catalogPageobj = new Catalog_page();
+Catalog_page catalogPage = new Catalog_page();
 
-BuyerSearchApi buyerSearchApiobj = new BuyerSearchApi();
+BuyerSearchApi buyerSearchApi = new BuyerSearchApi();
 
 private ApiService apiService = new ApiService();
 
@@ -36,12 +36,12 @@ private String json_Format = "&ajax=true";
     public void applyPriceLowToHighFilter()  {
         waitUntilPageReady();
         waitUntilClickable(sort_By_drpDown_By);
-        catalogPageobj.scrollToFilterDiv();
+        catalogPage.scrollToFilterDiv();
         do{sort_By_drpDown.click();
         waitUntilVisible(low_To_High_lstItem.get(1));
         low_To_High_lstItem.get(1).click();}
         while(!sort_By_drpDown.getText().equalsIgnoreCase("Price low to high"));
-        catalogPageobj.scrollToFilterDiv();
+        catalogPage.scrollToFilterDiv();
         url = currentUrl()+json_Format;
     }
 
@@ -50,16 +50,13 @@ private String json_Format = "&ajax=true";
         urlSplit = url.split("page=1",2);
         for(int i=1;i<=3;++i) {
             url = urlSplit[0]+"page="+i+urlSplit[1];
-            System.out.println(url);
-            price_lst = buyerSearchApiobj.getListProductPriceFromCatalog(url);
+            price_lst = buyerSearchApi.getListProductPriceFromCatalog(url);
             productPrices_lst.addAll(price_lst);
          }
         return productPrices_lst;
         }
 
         public boolean verifyProductPrices(List <Float> productPrices) {
-            for (Float productPrice : productPrices)
-                System.out.println(productPrice);
             return Ordering.natural().isOrdered(productPrices);
 
           }
