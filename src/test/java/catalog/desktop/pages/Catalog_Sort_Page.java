@@ -23,7 +23,7 @@ Catalog_page catalogPage = new Catalog_page();
 
 BuyerSearchApi buyerSearchApi = new BuyerSearchApi();
 
-private ApiService apiService = new ApiService();
+ApiService apiService = new ApiService();
 
 private String url;
 
