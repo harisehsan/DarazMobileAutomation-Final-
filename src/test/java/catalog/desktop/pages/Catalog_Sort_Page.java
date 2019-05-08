@@ -34,7 +34,7 @@ private List<Float> price_lst;
 private String json_Format = "&ajax=true";
 
     public void applyPriceLowToHighFilter()  {
-        waitUntilPageReady();;
+        waitUntilPageReady();
         catalogPage.scrollToFilterDiv();
         waitUntilClickable(sort_By_drpDown_By);
         sort_By_drpDown.click();
