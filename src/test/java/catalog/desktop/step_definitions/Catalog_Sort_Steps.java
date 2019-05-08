@@ -11,10 +11,7 @@ import java.util.List;
 public class Catalog_Sort_Steps extends BaseSteps {
     @And("I apply price low to high filter")
     public void iApplyLowToHighPriceFilter() {
-        System.out.println("Before Execution!!!");
-        on(Catalog_Sort_Page.class).applyPriceLowToHighFilter();
-        System.out.println("After Execution!!!");
-    }
+        on(Catalog_Sort_Page.class).applyPriceLowToHighFilter(); }
 
     @Then("I verify the sorted price catalog")
     public void iVerifyTheSortedPriceCatalog() throws IOException {
