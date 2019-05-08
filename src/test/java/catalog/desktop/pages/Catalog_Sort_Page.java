@@ -35,12 +35,10 @@ private String json_Format = "&ajax=true";
 
     public void applyPriceLowToHighFilter()  {
         waitUntilPageReady();
-        waitUntilClickable(sort_By_drpDown_By);
         catalogPage.scrollToFilterDiv();
-        do{sort_By_drpDown.click();
-        waitUntilVisible(low_To_High_lstItem.get(1));
-        low_To_High_lstItem.get(1).click();}
-        while(!sort_By_drpDown.getText().equalsIgnoreCase("Price low to high"));
+        waitUntilClickable(sort_By_drpDown_By);
+        sort_By_drpDown.click();
+        low_To_High_lstItem.get(1).click();
         catalogPage.scrollToFilterDiv();
         url = currentUrl()+json_Format;
     }
