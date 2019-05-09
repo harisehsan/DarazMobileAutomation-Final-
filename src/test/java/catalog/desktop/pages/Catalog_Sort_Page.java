@@ -33,10 +33,13 @@ private List<Float> price_lst;
 
 private String json_Format = "&ajax=true";
 
-    public void applyPriceLowToHighFilter()  {
+    public void untilLoaded(){
         waitUntilPageReady();
         catalogPage.scrollToFilterDiv();
         waitUntilClickable(sort_By_drpDown_By);
+    }
+
+    public void applyPriceLowToHighFilter()  {
         sort_By_drpDown.click();
         low_To_High_lstItem.get(1).click();
         catalogPage.scrollToFilterDiv();
@@ -56,6 +59,5 @@ private String json_Format = "&ajax=true";
 
         public boolean verifyProductPrices(List <Float> productPrices) {
             return Ordering.natural().isOrdered(productPrices);
-
           }
         }
