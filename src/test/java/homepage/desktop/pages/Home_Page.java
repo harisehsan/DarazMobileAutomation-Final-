@@ -70,7 +70,7 @@ public class Home_Page extends PageObject {
     }
 
     public void switchToEnglish() {
-        BuyerSitePageHelper.switchToEnglish();
+        if(!page_url.contains("bd")) BuyerSitePageHelper.switchToEnglish();
     }
 
     private List<WebElement> checkIfExists(By selector) {

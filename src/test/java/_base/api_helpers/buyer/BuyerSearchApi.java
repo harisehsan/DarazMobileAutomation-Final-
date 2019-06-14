@@ -130,7 +130,7 @@ public class BuyerSearchApi {
             if (!UrlHelper.isUrlOK(sellerApiUrl)) return null;
             JsonObject json = apiService.get(sellerApiUrl);
             JsonArray productArray = json.getAsJsonObject("result").getAsJsonArray("products");
-            List<JsonElement> productList = getListProducts(productArray);
+            List<JsonElement> productList = getListProducts(productArray,true);
             return productList.stream().map(product -> product.getAsJsonObject().get("mobileUrl").getAsString()).collect(Collectors.toList());
         } catch (IOException | NullPointerException ex) {
             throw new RuntimeException("Can not search cod product using this url: " + sellerApiUrl + " Error: " + ex.getMessage());
@@ -142,18 +142,30 @@ public class BuyerSearchApi {
             if (!UrlHelper.isUrlOK(catalogApiUrl)) return null;
             JsonObject json = apiService.get(catalogApiUrl);
             JsonArray productArray = json.getAsJsonObject("mods").getAsJsonArray("listItems");
-            List<JsonElement> productList = getListProducts(productArray);
+            List<JsonElement> productList = getListProducts(productArray,true);
             return productList.stream().map(product -> formatProductUrl(product.getAsJsonObject().get("productUrl").getAsString())).collect(Collectors.toList());
         } catch (IOException | NullPointerException ex) {
             throw new RuntimeException("Can not search cod product using this url: " + catalogApiUrl + " Error: " + ex.getMessage());
         }
     }
 
-    private List<JsonElement> getListProducts(JsonArray productArray){
+    public List<Float> getListProductPriceFromCatalog(String catalogApiUrl) {
+        try {
+            if (!UrlHelper.isUrlOK(catalogApiUrl)) return null;
+            JsonObject json = apiService.get(catalogApiUrl);
+            JsonArray productArray = json.getAsJsonObject("mods").getAsJsonArray("listItems");
+            List<JsonElement> productList = getListProducts(productArray,false);
+            return productList.stream().map(product -> (product.getAsJsonObject().get("price").getAsFloat())).collect(Collectors.toList());
+        } catch (IOException | NullPointerException ex) {
+            throw new RuntimeException("Can not search cod product using this url: " + catalogApiUrl + " Error: " + ex.getMessage());
+        }
+    }
+
+    private List<JsonElement> getListProducts(JsonArray productArray, boolean shuffle){
             if (productArray.size() == 0) return new ArrayList<>();
             Type listType = new TypeToken<List<JsonElement>>() {}.getType();
             List<JsonElement> productList = new Gson().fromJson(productArray, listType);
-            Collections.shuffle(productList);
+          if(shuffle) {Collections.shuffle(productList);}
             return productList;
     }
 
