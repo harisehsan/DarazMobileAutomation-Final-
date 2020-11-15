@@ -14,8 +14,8 @@ import java.util.Random;
  */
 public class PageObject {
 
-    private WebDriver driver;
-    private static final int DEFAULT_TIMEOUT = 60;
+    protected WebDriver driver;
+    private static final int DEFAULT_TIMEOUT = 90;
     private int FLAG = 0;
 
     protected PageObject() {
@@ -106,6 +106,7 @@ public class PageObject {
       int FLAG = 0;
         do {
             try {
+                waitUntilVisible(ele);
                 Actions action = new Actions(driver);
                 hover(ele);
                 action.click(ele);
@@ -129,5 +130,53 @@ public class PageObject {
 
     protected boolean isExist(By bySelector) {
         return driver.findElements(bySelector).size() > 0;
+    }
+
+    protected void sendKeysWithoutException (WebElement ele,String sendKeys) { // This method is used to click on the element by avoiding any kind of exception
+        int FLAG = 0;
+        do {
+            try {
+                waitUntilVisible(ele);
+                Actions action = new Actions(driver);
+                hover(ele);
+                ele.sendKeys(sendKeys);
+                Action ob = action.build();
+                ob.perform();
+                System.out.println(">>>>> SendTry"+(FLAG+1));
+                if (!ele.getAttribute("value").equalsIgnoreCase(""))
+                 break;
+                else
+                    FLAG++;
+//                FLAG =11;
+            } catch (Exception ex) {
+                System.out.println(">>>>>> Element is not accessable!");
+                FLAG++;
+            }
+        } while (FLAG <=20);
+    }
+
+    protected boolean isExistByText(String Text)
+    {
+        return (driver.findElements(By.xpath("//div[text()='"+Text+"']")).size() > 0);
+    }
+
+    protected boolean isExistByTextContains(String Text)
+    {
+        return (driver.findElements(By.xpath("//div[contains(text(),'"+Text+"')]")).size() > 0);
+    }
+
+    protected boolean isExistedByButtonText(String Text)
+    {
+        return (driver.findElements(By.xpath("//button[text()='"+Text+"']")).size() > 0);
+    }
+
+    protected boolean booleanwaitUntilPresentOfElementBy(By by, int timeout) {
+        try {
+            new WebDriverWait(driver, timeout)
+                    .until(ExpectedConditions.presenceOfElementLocated(by));
+            return true;
+        } catch (Exception e) {
+           return false;
+        }
     }
 }
