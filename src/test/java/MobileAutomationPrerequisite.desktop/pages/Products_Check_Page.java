@@ -15,7 +15,7 @@ import java.util.List;
 public class Products_Check_Page extends PageObject {
     public static String page_url = Global.getConfig().getString("member.url") + "/user/profile";
 
-    public String digitalProduct = "Will be sent to your email address within 24 hours";
+    public String digitalProduct = "Will be sent to your email address";
 
     @FindBy(id = "q")
     public WebElement searchBar;
@@ -29,6 +29,8 @@ public class Products_Check_Page extends PageObject {
     public List <WebElement> skuSizebtn;
     @FindBy (css = ".tag-name")
     public WebElement tagNamelbl;
+    @FindBy (xpath = "//*[@class='next-icon next-icon-close next-icon-small']")
+    public WebElement overSeasPopupClosebtn;
 
     public By searchBarBy = By.id("q");
     public By searchButtonBy = By.xpath("//button[text()='SEARCH']");
@@ -37,6 +39,7 @@ public class Products_Check_Page extends PageObject {
     public By outOfStockBy = By.cssSelector("span[class='quantity-content-warning']");
     public By chatNowlnktxtBy = By.xpath("//span[text()='Chat Now']");
     public By tagNamelblBy = By.cssSelector(".tag-name");
+    public By overSeasPopupClosebtnBy = By.xpath("//*[@class='next-icon next-icon-close next-icon-small']");
 
     ProductsGetProperty productsGetProperty = new ProductsGetProperty();
     PdpGetProperty pdpGetProperty = new PdpGetProperty();
@@ -139,11 +142,14 @@ public class Products_Check_Page extends PageObject {
 
     public boolean verifyforDigitalItem()
     {
-       return isExistByText(digitalProduct);
+       return isExistByTextContains(digitalProduct);
     }
 
     public boolean verifyForTheSellerVoucher(String voucherType)
     {
+        waitUntilVisibility(tagNamelblBy);
+        if (booleanwaitUntilPresentOfElementBy(overSeasPopupClosebtnBy,10))
+            overSeasPopupClosebtn.click();
         waitUntilClickable(tagNamelblBy);
         tagNamelbl.click();
         return isExistedByButtonText(voucherType);

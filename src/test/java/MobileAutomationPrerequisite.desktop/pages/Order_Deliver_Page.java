@@ -86,6 +86,8 @@ public class Order_Deliver_Page extends PageObject {
     private WebElement addComboToCart;
     @FindBy (xpath = "//button[text()='CHECK OUT']")
     private WebElement checkOutbtn;
+    @FindBy (xpath = "//*[@class='lzd-layout-next-icon lzd-layout-next-icon-close lzd-layout-next-icon-xs closeAd']")
+    private WebElement hubPopupClosebtn;
 
 
     private By googlebtnBy = By.xpath("//button[text()='Google']");
@@ -100,7 +102,7 @@ public class Order_Deliver_Page extends PageObject {
     private By readyToShiplnktxtBy = By.xpath("//a[text()='Ready To Ship'] | //a[text()='Ready to Ship']");
     private By sellerInvoicetxtboxBy = By.cssSelector("div#dialog-body-1 input[type='text']");
     private By sellerSaveInvoicebtnBy = By.xpath("//button[text()='Save invoice ID']");
-    private By sellerReadyToShipbtnBy = By.xpath("//button[text()='Ready to ship']");
+    private By sellerReadyToShipbtnBy = By.xpath("//button[text()='Ready to ship'] | //button[text()='Ready to Ship']");
     private By sellerRTSPopupClosebtnBy = By.xpath("//button[text()='Close']");
     private By sellerEmailtxtboxBy = By.xpath("//input[@type='text'][@name='TPL_username']");
     private By alibabaUserNametxtboxBy = By.xpath("//input[@type='text'][@name='domainAccount']");
@@ -110,6 +112,7 @@ public class Order_Deliver_Page extends PageObject {
     private By warehHouseAcceptedOrderStatusBy = By.xpath("//text()[contains(.,'WAREHOUSE_ACCEPTED')]/ancestor::span[1]");
     private By orderStatusSubmitbtnBy = By.xpath("//button[text()='Submit']");
     private By orderDeliveredSuccessBy = By.xpath("//div[contains(text(),'success')] | //div[contains(text(),'Success')]");
+    private By hubPopupClosebtnBy = By.xpath("//*[@class='lzd-layout-next-icon lzd-layout-next-icon-close lzd-layout-next-icon-xs closeAd']");
 
 
     String winHandleBefore = driver.getWindowHandle();
@@ -222,6 +225,8 @@ public class Order_Deliver_Page extends PageObject {
             break;
         }
         signIntoSellerCenter(orderGetProperty.getVenture());
+        if (booleanwaitUntilPresentOfElementBy(hubPopupClosebtnBy,10))
+            hubPopupClosebtn.click();
         waitUntilClickable(orderManagementClosebtnBy);
         orderManagementClosebtn.click();
         waitUntilClickable(sellerOrdertxtboxBy);
@@ -264,12 +269,13 @@ public class Order_Deliver_Page extends PageObject {
             waitUntilVisible(createPackagebtn);
             createPackagebtn.click();
         }
-        waitUntilVisible(sellerInvoicetxtbox);
-        waitUntilClickable(sellerInvoicetxtboxBy);
         for(String winHandle : driver.getWindowHandles()){
             driver.switchTo().window(winHandle);
         }
-        sellerInvoicetxtbox.sendKeys(Seller_Invoice);
+//        waitUntilVisible(sellerInvoicetxtbox);
+      if (booleanwaitUntilPresentOfElementBy(sellerInvoicetxtboxBy,20)) {
+          sellerInvoicetxtbox.sendKeys(Seller_Invoice);
+      }
         waitUntilClickable(sellerSaveInvoicebtnBy);
         sellerSaveInvoicebtn.click();
         waitUntilClickable(sellerReadyToShipbtnBy);
@@ -315,6 +321,8 @@ public class Order_Deliver_Page extends PageObject {
                 sellerEmailtxtbox.sendKeys(sellerAccountsGetProperty.getMMEmail());
                 sellerPasswordtxtbox.sendKeys(sellerAccountsGetProperty.getMMPassword());
             }
+            break;
+
         }
         sellerSignInbtn.click();
     }
@@ -371,6 +379,7 @@ public class Order_Deliver_Page extends PageObject {
                 else
                     deliveredOrderedSetProperty.lkComboOrder(orderGetProperty.getComboOrderNumber());
             }
+            break;
 
             case "np":
             {
@@ -385,6 +394,7 @@ public class Order_Deliver_Page extends PageObject {
                 else
                     deliveredOrderedSetProperty.npComboOrder(orderGetProperty.getComboOrderNumber());
             }
+            break;
 
             case "mm":
             {
@@ -399,7 +409,9 @@ public class Order_Deliver_Page extends PageObject {
                 else
                     deliveredOrderedSetProperty.mmComboOrder(orderGetProperty.getComboOrderNumber());
             }
+            break;
         }
+
     }
 
     public void addComboToCart()
