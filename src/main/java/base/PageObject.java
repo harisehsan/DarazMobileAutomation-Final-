@@ -7,6 +7,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -66,7 +68,7 @@ public class PageObject {
     protected void waitUntilClickable(By by) {
         waitUntilClickable(by,DEFAULT_TIMEOUT);
     }
-    
+
     protected void waitUntilClickable(By by, int timeOutInSeconds) {
         new WebDriverWait(driver, timeOutInSeconds)
                 .until(ExpectedConditions.elementToBeClickable(by));
@@ -142,7 +144,6 @@ public class PageObject {
                 ele.sendKeys(sendKeys);
                 Action ob = action.build();
                 ob.perform();
-                System.out.println(">>>>> SendTry"+(FLAG+1));
                 if (!ele.getAttribute("value").equalsIgnoreCase(""))
                  break;
                 else
@@ -178,5 +179,25 @@ public class PageObject {
         } catch (Exception e) {
            return false;
         }
+    }
+
+    protected void clickWithoutExceptionForElements(List<WebElement> ele)
+    {
+      int flag =0;
+        do {
+            try {
+                //waitUntilVisible(ele.get(0));
+                Actions action = new Actions(driver);
+                hover(ele.get(0));
+                action.click(ele.get(0));
+                Action ob = action.build();
+                ob.perform();
+                flag++;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        while (ele.size() > 0 && flag <= 10);
+
     }
 }

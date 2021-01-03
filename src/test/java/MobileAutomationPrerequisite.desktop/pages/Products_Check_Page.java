@@ -112,7 +112,7 @@ public class Products_Check_Page extends PageObject {
         try {
             waitUntilPresentOfElementBy(productslstBy);
             waitUntilClickable(productslstBy);
-            productslst.get(0).click();
+            clickWithoutExceptionForElements(productslst);
             waitUntilPresentOfElementBy(productTitleBy);
         } catch (Exception e) {
            // e.printStackTrace();
@@ -147,11 +147,15 @@ public class Products_Check_Page extends PageObject {
 
     public boolean verifyForTheSellerVoucher(String voucherType)
     {
-        waitUntilVisibility(tagNamelblBy);
-        if (booleanwaitUntilPresentOfElementBy(overSeasPopupClosebtnBy,10))
-            overSeasPopupClosebtn.click();
-        waitUntilClickable(tagNamelblBy);
-        tagNamelbl.click();
-        return isExistedByButtonText(voucherType);
+        try {
+            waitUntilVisibility(tagNamelblBy);
+            if (booleanwaitUntilPresentOfElementBy(overSeasPopupClosebtnBy,10))
+                overSeasPopupClosebtn.click();
+            waitUntilClickable(tagNamelblBy);
+            tagNamelbl.click();
+            return isExistedByButtonText(voucherType);
+        } catch (Exception e) {
+         throw new RuntimeException("Seller voucher is not existed on this product");
+        }
     }
 }

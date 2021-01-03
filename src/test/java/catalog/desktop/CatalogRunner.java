@@ -12,7 +12,7 @@ import cucumber.api.CucumberOptions;
 
 @CucumberOptions(
         features = {"src/test/java/catalog/desktop/features"},
-        tags = {"@catalog"},
+        tags = {"@20128963"},
         glue = {"catalog.desktop.step_definitions"})
 
 public class CatalogRunner extends TestRunner {

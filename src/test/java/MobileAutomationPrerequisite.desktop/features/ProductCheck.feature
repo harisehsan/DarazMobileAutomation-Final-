@@ -40,7 +40,6 @@ Feature: Products Checking
     And I select the last SKU of product
     Then I verify that the product is in stock
 
-
   @30475025 @verify_third_item_from_pdp_properties
   Scenario: verify the third item from Pdp property file
     When I go to HomePage
@@ -97,31 +96,31 @@ Feature: Products Checking
     Then I verify that the product is in stock
     Then I verify for the digital product
 
-  @30475025 @verify_tenth_item_from_pdp_properties @no_bd @no_lk @no_np @no_mm
-  Scenario: verify the tenth item from Pdp property file
-    When I go to HomePage
-    When I search for the 10 SKU from "Pdp" property file
-    And I goto the product
-    Then I verify that the product is in stock
-
-  @30475025 @verify_eleventh_item_from_pdp_properties @no_bd @no_lk @no_np @no_mm
-  Scenario: verify the eleventh item from Pdp property file
-    When I go to HomePage
-    When I search for the 11 SKU from "Pdp" property file
-    And  I goto the product
-    Then I verify that the product is in stock
-
-  @30475025 @verify_twelveth_item_from_pdp_properties @no_bd @no_lk @no_np @no_mm
-  Scenario: verify the twelveth item from Pdp property file
-    When I go to HomePage
-    When I search for the 12 SKU from "Pdp" property file
-    And  I goto the product
-    Then I verify that the product is in stock
-
-  @30475025 @verify_thirteenth_item_from_pdp_properties @no_bd @no_lk @no_np @no_mm
-  Scenario: verify the thirteenth item from Pdp property file
-    When I go to HomePage
-    When I search for the 13 SKU from "Pdp" property file
-    And  I goto the product
-    Then I verify that the product is in stock
-    Then I verify for the digital product
+#  @30475025 @verify_tenth_item_from_pdp_properties @no_bd @no_lk @no_np @no_mm
+#  Scenario: verify the tenth item from Pdp property file
+#    When I go to HomePage
+#    When I search for the 10 SKU from "Pdp" property file
+#    And I goto the product
+#    Then I verify that the product is in stock
+#
+#  @30475025 @verify_eleventh_item_from_pdp_properties @no_bd @no_lk @no_np @no_mm
+#  Scenario: verify the eleventh item from Pdp property file
+#    When I go to HomePage
+#    When I search for the 11 SKU from "Pdp" property file
+#    And  I goto the product
+#    Then I verify that the product is in stock
+#
+#  @30475025 @verify_twelveth_item_from_pdp_properties @no_bd @no_lk @no_np @no_mm
+#  Scenario: verify the twelveth item from Pdp property file
+#    When I go to HomePage
+#    When I search for the 12 SKU from "Pdp" property file
+#    And  I goto the product
+#    Then I verify that the product is in stock
+#
+#  @30475025 @verify_thirteenth_item_from_pdp_properties @no_bd @no_lk @no_np @no_mm
+#  Scenario: verify the thirteenth item from Pdp property file
+#    When I go to HomePage
+#    When I search for the 13 SKU from "Pdp" property file
+#    And  I goto the product
+#    Then I verify that the product is in stock
+#    Then I verify for the digital product
