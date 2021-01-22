@@ -8,6 +8,7 @@ import net.bytebuddy.implementation.bytecode.Throw;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,10 +28,12 @@ public class Products_Check_Page extends PageObject {
     public List <WebElement> chatNowlnktxt;
     @FindBy (css = ".sku-variable-size")
     public List <WebElement> skuSizebtn;
-    @FindBy (css = ".tag-name")
-    public WebElement tagNamelbl;
+    @FindBy (css = "#module_promotion_tags > div > div > div > div.promotion-tag-item.has-arrow > div")
+    public List <WebElement> tagNamelbl;
     @FindBy (xpath = "//*[@class='next-icon next-icon-close next-icon-small']")
     public WebElement overSeasPopupClosebtn;
+    @FindBy (css = "span[class='pdp-mod-product-badge-title']")
+    public WebElement productNamelbl;
 
     public By searchBarBy = By.id("q");
     public By searchButtonBy = By.xpath("//button[text()='SEARCH']");
@@ -38,8 +41,10 @@ public class Products_Check_Page extends PageObject {
     public By productTitleBy = By.cssSelector("span[class='pdp-mod-product-badge-title']");
     public By outOfStockBy = By.cssSelector("span[class='quantity-content-warning']");
     public By chatNowlnktxtBy = By.xpath("//span[text()='Chat Now']");
-    public By tagNamelblBy = By.cssSelector(".tag-name");
+    public By tagNamelblBy = By.cssSelector("#module_promotion_tags > div > div > div > div.promotion-tag-item.has-arrow > div");
     public By overSeasPopupClosebtnBy = By.xpath("//*[@class='next-icon next-icon-close next-icon-small']");
+
+    private String promotionLabel = "Min. spend";
 
     ProductsGetProperty productsGetProperty = new ProductsGetProperty();
     PdpGetProperty pdpGetProperty = new PdpGetProperty();
@@ -147,15 +152,27 @@ public class Products_Check_Page extends PageObject {
 
     public boolean verifyForTheSellerVoucher(String voucherType)
     {
+        int tries = 5;
         try {
             waitUntilVisibility(tagNamelblBy);
             if (booleanwaitUntilPresentOfElementBy(overSeasPopupClosebtnBy,10))
                 overSeasPopupClosebtn.click();
             waitUntilClickable(tagNamelblBy);
-            tagNamelbl.click();
-            return isExistedByButtonText(voucherType);
+           do {
+               tagNamelbl.get(0).click();
+               if (isExistedByButtonText(voucherType))
+                  return true;
+               tries++;
+           }
+            while(tries < 5 && isExistedByButtonText(voucherType));
+            return false;
         } catch (Exception e) {
          throw new RuntimeException("Seller voucher is not existed on this product");
         }
+    }
+
+    public boolean verifyTheApostrphieSignInTheProductName()
+    {
+        return productNamelbl.getText().contains("'");
     }
 }

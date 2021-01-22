@@ -47,6 +47,11 @@ public class ProductsCheckSteps {
 
     @Then("I verify for the seller {string} voucher")
     public void iVerifyForTheSellerVoucher(String voucherType) {
-        products_check_page.verifyForTheSellerVoucher(voucherType);
+      Assert.assertTrue(products_check_page.verifyForTheSellerVoucher(voucherType),"The seller voucher is not existed on this product");
+    }
+
+    @Then("I verify that no apostrophe sign in the product name")
+    public void iVerifyThatNoApostropheSignInTheProductName() {
+        Assert.assertFalse(products_check_page.verifyTheApostrphieSignInTheProductName(),"The Product name contains apostrophe sign!");
     }
 }
