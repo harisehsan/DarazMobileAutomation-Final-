@@ -28,7 +28,7 @@ public class Products_Check_Page extends PageObject {
     public List <WebElement> chatNowlnktxt;
     @FindBy (css = ".sku-variable-size")
     public List <WebElement> skuSizebtn;
-    @FindBy (css = "#module_promotion_tags > div > div > div > div.promotion-tag-item.has-arrow > div")
+    @FindBy (css = ".has-arrow")
     public List <WebElement> tagNamelbl;
     @FindBy (xpath = "//*[@class='next-icon next-icon-close next-icon-small']")
     public WebElement overSeasPopupClosebtn;
@@ -41,7 +41,7 @@ public class Products_Check_Page extends PageObject {
     public By productTitleBy = By.cssSelector("span[class='pdp-mod-product-badge-title']");
     public By outOfStockBy = By.cssSelector("span[class='quantity-content-warning']");
     public By chatNowlnktxtBy = By.xpath("//span[text()='Chat Now']");
-    public By tagNamelblBy = By.cssSelector("#module_promotion_tags > div > div > div > div.promotion-tag-item.has-arrow > div");
+    public By tagNamelblBy = By.cssSelector(".has-arrow");
     public By overSeasPopupClosebtnBy = By.xpath("//*[@class='next-icon next-icon-close next-icon-small']");
 
     private String promotionLabel = "Min. spend";
