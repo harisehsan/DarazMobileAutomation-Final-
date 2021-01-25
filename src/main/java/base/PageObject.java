@@ -166,6 +166,11 @@ public class PageObject {
         return (driver.findElements(By.xpath("//div[contains(text(),'"+Text+"')]")).size() > 0);
     }
 
+    protected WebElement webElementByTextContains(String Text)
+    {
+        return driver.findElement(By.xpath("//div[contains(text(),'"+Text+"')]"));
+    }
+
     protected boolean isExistedByButtonText(String Text)
     {
         return (driver.findElements(By.xpath("//button[text()='"+Text+"']")).size() > 0);
